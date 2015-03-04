@@ -1,0 +1,67 @@
+tile.cavestokingdoms_altarBlock.name=Altar of Restoration
+tile.cavestokingdoms_spiritStone.name=Spirit Stone
+tile.cavestokingdoms_islandMapper.name=Island Mapper
+tile.cavestokingdoms_scannerController.name=Scanner Controller
+tile.cavestokingdoms_bedrockBrick.name=Bedrock Brick
+tile.cavestokingdoms_gaugeBlock0.name=Biome Purification Gauge (Bottom)
+tile.cavestokingdoms_gaugeBlock1.name=Biome Purification Gauge (Middle)
+tile.cavestokingdoms_gaugeBlock2.name=Biome Purification Gauge (Top)
+tile.cavestokingdoms_gaugeBlock3.name=Biome Purification Display (Left)
+tile.cavestokingdoms_gaugeBlock4.name=Biome Purification Gauge (Right)
+tile.cavestokingdoms_dawnTotem.name=Totem of Dawn
+
+item.cavestokingdoms_purityFocus.name=Wand Focus: Purity
+item.cavestokingdoms_silverPotion.name=Silverleaf Splash Potion
+item.cavestokingdoms_worldTainter.name=World Tainter
+item.cavestokingdoms_requisitionCredit.name=Requisition Credit
+item.cavestokingdoms:basicManual.0.name=Materials: Common Terrestrial Edition
+item.cavestokingdoms:basicManual.1.name=Materials: Rare Terrestrial Edition
+item.cavestokingdoms:basicManual.2.name=Materials: Alien Edition
+item.cavestokingdoms:basicManual.3.name=Materials: Alien Nether Edition
+item.cavestokingdoms:basicManual.4.name=Tools and Modifiers
+item.cavestokingdoms:basicManual.5.name=Materials: Complete Edition
+blightfallmanual.geology=By Ayumu Nagasawa
+blightfallmanual.ben=By Archmage Xillith
+blightfallmanual.taint=By Dagomawr the Scribe
+
+tc.research_name.SILVERPOTION=Silverwood potions
+tc.research_text.SILVERPOTION=Spot cleaning taint!
+tc.research_page.SILVERPOTION.1=Ethereal blooms are wonderful, but if you plant them too far apart, you can miss spots, especially in the corners. This potion, made from silverwood leaves, will cure blighted land in a 5 block radius. It doesn't eradicate tainted blocks besides those it hits directly, but any remaining blocks will not survive long on cured land. Unlike a bloom, this potion does not offer continuous protection, meaning it's possible for the land to become reinfected, sometimes quite quickly.
+tc.research_name.PURITYFOCUS=Purity Focus
+tc.research_text.PURITYFOCUS=The Blightbuster
+tc.research_page.PURITYFOCUS.1=You have found a way to infuse the properties of an ethereal bloom into a wand focus. When you right click on a block, that block and all blocks above and below it will immediately be cured of taint. The enlarge enchantment is especially useful on this focus, increasing the radius of the cleansing to 3, 5, 7, or 9, depending on the level. Beware rapidly spawning thaumic slimes when working near crusted taint. Also beware the high vis cost, especially when enlarge is applied. On the plus side, you can heal tainted creatures simply by right-clicking them with this wand.
+tc.research_name.DAWNTOTEM=Totems of Dawn
+tc.research_text.DAWNTOTEM=The start of a glorious new era!
+tc.research_page.DAWNTOTEM.1=By infusing ethereal blooms into a silverwood log, you have created the totem of dawn. It is the greatest magical protection against taint you have yet devised. Boasting an area much larger than a bloom, this totem also excels in keeping the edges of its area free of taint. It may take slightly longer to completely clean an area, however.
+
+ubc.cavestokingdoms.cinnabar=Cinnabar
+ubc.cavestokingdoms.air=- Air Infused
+ubc.cavestokingdoms.fire=- Fire Infused
+ubc.cavestokingdoms.water=- Water Infused
+ubc.cavestokingdoms.earth=- Earth Infused
+ubc.cavestokingdoms.order=- Order Infused
+ubc.cavestokingdoms.entropy=- Entropy Infused
+ubc.cavestokingdoms.amber=Amber
+
+ubc.cavestokingdoms.lead=Lead
+ubc.cavestokingdoms.nickel=Nickel
+
+ubc.cavestokingdoms.certus=Certus Quartz
+ubc.cavestokingdoms.certuscharged=Charged Certus Quartz
+ubc.cavestokingdoms.quartz=Terrestrial Nether Quartz
+
+ubc.cavestokingdoms.cinnabar.name=Cinnabar
+ubc.cavestokingdoms.air.name=- Air Infused
+ubc.cavestokingdoms.fire.name=- Fire Infused
+ubc.cavestokingdoms.water.name=- Water Infused
+ubc.cavestokingdoms.earth.name=- Earth Infused
+ubc.cavestokingdoms.order.name=- Order Infused
+ubc.cavestokingdoms.entropy.name=- Entropy Infused
+ubc.cavestokingdoms.amber.name=Amber
+
+ubc.cavestokingdoms.lead.name=Lead
+ubc.cavestokingdoms.nickel.name=Nickel
+
+ubc.cavestokingdoms.certus.name=Certus Quartz
+ubc.cavestokingdoms.certuscharged.name=Charged Certus Quartz
+ubc.cavestokingdoms.quartz.name=Terrestrial Nether Quartz

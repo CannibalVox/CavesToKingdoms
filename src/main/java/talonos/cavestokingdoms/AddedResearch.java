@@ -15,6 +15,7 @@ import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.api.wands.WandTriggerRegistry;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.config.ConfigResearch;
@@ -101,6 +102,8 @@ public class AddedResearch
 		dawnTotemResearch.setParents(new String[] { "SILVERPOTION" , "PURITYFOCUS"});
 		dawnTotemResearch.registerResearchItem();
 
+		
+		WandTriggerRegistry.registerWandBlockTrigger(new TalonosWandTriggerManager(), 0, CtKBlock.dawnTotem, -1, "cavestokingdoms");
 	}
 
 }
