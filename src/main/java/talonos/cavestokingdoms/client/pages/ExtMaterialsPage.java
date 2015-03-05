@@ -1,6 +1,6 @@
 package talonos.cavestokingdoms.client.pages;
 
-import iguanaman.iguanatweakstconstruct.override.XPAdjustmentMap;
+//import iguanaman.iguanatweakstconstruct.override.XPAdjustmentMap;
 import mantle.client.pages.BookPage;
 import mantle.lib.client.MantleClientRegistry;
 import net.minecraft.block.Block;
@@ -18,7 +18,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.PatternBuilder;
 import tconstruct.library.tools.ToolMaterial;
-import iguanaman.iguanatweakstconstruct.util.HarvestLevels;
+//import iguanaman.iguanatweakstconstruct.util.HarvestLevels;
 
 public class ExtMaterialsPage extends BookPage
 {
@@ -175,11 +175,11 @@ public class ExtMaterialsPage extends BookPage
         
         if (ore[0] != null)
         {
-        	manual.fonts.drawString(harvestDiff + ": " + ore[0].getHarvestLevel(oreMetadata) + " (" + HarvestLevels.getHarvestLevelName(ore[0].getHarvestLevel(oreMetadata)) + "\u00a70)", localWidth, localHeight + 50, 0);
+        	//manual.fonts.drawString(harvestDiff + ": " + ore[0].getHarvestLevel(oreMetadata) + " (" + HarvestLevels.getHarvestLevelName(ore[0].getHarvestLevel(oreMetadata)) + "\u00a70)", localWidth, localHeight + 50, 0);
         }
         if (material != null)
         {
-        	manual.fonts.drawString(harvestLevel + ": " + material.harvestLevel() + " (" + HarvestLevels.getHarvestLevelName(material.harvestLevel()) + "\u00a70)", localWidth, localHeight + 60, 0);
+        	//manual.fonts.drawString(harvestLevel + ": " + material.harvestLevel() + " (" + HarvestLevels.getHarvestLevelName(material.harvestLevel()) + "\u00a70)", localWidth, localHeight + 60, 0);
         	manual.fonts.drawString(durability + ": " + material.durability(), localWidth, localHeight + 70, 0);
         	manual.fonts.drawString(handleModifier + ": " + material.handleDurability() + "x", localWidth, localHeight + 80, 0);
         	manual.fonts.drawString(miningSpeed + ": " + material.toolSpeed() / 100f, localWidth, localHeight + 90, 0);
@@ -193,7 +193,7 @@ public class ExtMaterialsPage extends BookPage
         	{
         		manual.fonts.drawString(baseAttack + ": " + material.attack() / 2f + heart, localWidth, localHeight + 100, 0);
         	}
-        	manual.fonts.drawString(xpRequired + ": " + (XPAdjustmentMap.get(material.materialName) * 100f)+"% "+normal, localWidth, localHeight + 110, 0);
+        	//manual.fonts.drawString(xpRequired + ": " + (XPAdjustmentMap.get(material.materialName) * 100f)+"% "+normal, localWidth, localHeight + 110, 0);
 
 
         	//Here starts a list of attributes.

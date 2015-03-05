@@ -10,7 +10,6 @@ import net.minecraft.util.*;
 import org.w3c.dom.Document;
 
 import talonos.cavestokingdoms.lib.DEFS;
-import tconstruct.client.TProxyClient;
 
 import java.io.InputStream;
 

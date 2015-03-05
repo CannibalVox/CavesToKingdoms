@@ -25,8 +25,15 @@ public class AddedResearch
 
 	public static void initResearch() 
 	{
+		/*ShapedArcaneRecipe dawnTotemRecipie = ThaumcraftApi.addArcaneCraftingRecipe("DAWNTOTEM", new ItemStack(CtKBlock.dawnTotem), new AspectList().add(Aspect.EARTH, 60).add(Aspect.ORDER, 60), new Object[] {
+		"SSS",
+		"SFS",
+		"SSS",
+		'S', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 7),
+		'F', new ItemStack(ConfigBlocks.blockCustomPlant, 1, 4)
+		});*/
 		//ResearchCategories.registerCategory("ANTITAINT, arg1, arg2);
-		
+		/*
 		ShapedArcaneRecipe silverPotRecipe = ThaumcraftApi.addArcaneCraftingRecipe("SILVERPOTION", new ItemStack(CtKItems.silverPotion, 6), new AspectList().add(Aspect.WATER, 15).add(Aspect.ORDER, 24), new Object[] {
 				"FLF",
 				'L', new ItemStack(ConfigBlocks.blockMagicalLeaves, 1, 1),
@@ -43,13 +50,6 @@ public class AddedResearch
 			'F', new ItemStack(ConfigBlocks.blockCustomPlant, 1, 4)
 			});
 		
-		/*ShapedArcaneRecipe dawnTotemRecipie = ThaumcraftApi.addArcaneCraftingRecipe("DAWNTOTEM", new ItemStack(CtKBlock.dawnTotem), new AspectList().add(Aspect.EARTH, 60).add(Aspect.ORDER, 60), new Object[] {
-			"SSS",
-			"SFS",
-			"SSS",
-			'S', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 7),
-			'F', new ItemStack(ConfigBlocks.blockCustomPlant, 1, 4)
-			});*/
 		
 		InfusionRecipe dawnTotemRecipe = ThaumcraftApi.addInfusionCraftingRecipe("DAWNTOTEM", new ItemStack(CtKBlock.dawnTotem), 6, 
 				new AspectList().add(Aspect.AURA, 32).add(Aspect.HEAL, 48).add(Aspect.LIFE, 64)
@@ -104,6 +104,7 @@ public class AddedResearch
 
 		
 		WandTriggerRegistry.registerWandBlockTrigger(new TalonosWandTriggerManager(), 0, CtKBlock.dawnTotem, -1, "cavestokingdoms");
+		*/
 	}
 
 }

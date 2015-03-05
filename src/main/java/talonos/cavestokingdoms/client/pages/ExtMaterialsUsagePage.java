@@ -3,7 +3,6 @@ package talonos.cavestokingdoms.client.pages;
 import java.util.ArrayList;
 import java.util.List;
 
-import iguanaman.iguanatweakstconstruct.override.XPAdjustmentMap;
 import mantle.client.pages.BookPage;
 import mantle.lib.client.MantleClientRegistry;
 import net.minecraft.client.renderer.RenderHelper;
@@ -21,7 +20,6 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.PatternBuilder;
 import tconstruct.library.tools.ToolMaterial;
-import iguanaman.iguanatweakstconstruct.util.HarvestLevels;
 
 public class ExtMaterialsUsagePage extends BookPage
 {

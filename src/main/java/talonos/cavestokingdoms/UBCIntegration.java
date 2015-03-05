@@ -2,13 +2,13 @@ package talonos.cavestokingdoms;
 
 import java.util.logging.Logger;
 
-import appeng.api.AEApi;
+//import appeng.api.AEApi;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import thaumcraft.common.config.ConfigBlocks;
-import thermalfoundation.block.TFBlocks;
+//import thermalfoundation.block.TFBlocks;
 import exterminatorJeff.undergroundBiomes.api.UBAPIHook;
 import exterminatorJeff.undergroundBiomes.api.UBOreTexturizer;
 
@@ -30,12 +30,12 @@ public class UBCIntegration
             UBAPIHook.ubAPIHook.ubOreTexturizer.requestUBOreSetup(ConfigBlocks.blockCustomOre, 7, "cavestokingdoms:misc/amberore", "ubc.cavestokingdoms.amber");
 
             Logger.getAnonymousLogger().warning("Trying to UBify Thermal ores...");
-            UBAPIHook.ubAPIHook.ubOreTexturizer.requestUBOreSetup(TFBlocks.blockOre, 3, "cavestokingdoms:misc/Ore_Lead", "ubc.cavestokingdoms.lead");
-            UBAPIHook.ubAPIHook.ubOreTexturizer.requestUBOreSetup(TFBlocks.blockOre, 4, "cavestokingdoms:misc/Ore_Nickel", "ubc.cavestokingdoms.nickel");
+           // UBAPIHook.ubAPIHook.ubOreTexturizer.requestUBOreSetup(TFBlocks.blockOre, 3, "cavestokingdoms:misc/Ore_Lead", "ubc.cavestokingdoms.lead");
+           // UBAPIHook.ubAPIHook.ubOreTexturizer.requestUBOreSetup(TFBlocks.blockOre, 4, "cavestokingdoms:misc/Ore_Nickel", "ubc.cavestokingdoms.nickel");
             
             Logger.getAnonymousLogger().warning("Trying to UBify AE Ores...");
-            UBAPIHook.ubAPIHook.ubOreTexturizer.requestUBOreSetup(AEApi.instance().blocks().blockQuartzOre.block(), 7, "cavestokingdoms:misc/OreQuartz", "ubc.cavestokingdoms.certus");
-            UBAPIHook.ubAPIHook.ubOreTexturizer.requestUBOreSetup(AEApi.instance().blocks().blockQuartzOreCharged.block(), 7, "cavestokingdoms:misc/OreQuartzCharged", "ubc.cavestokingdoms.certuscharged");
+          //  UBAPIHook.ubAPIHook.ubOreTexturizer.requestUBOreSetup(AEApi.instance().blocks().blockQuartzOre.block(), 7, "cavestokingdoms:misc/OreQuartz", "ubc.cavestokingdoms.certus");
+          //  UBAPIHook.ubAPIHook.ubOreTexturizer.requestUBOreSetup(AEApi.instance().blocks().blockQuartzOreCharged.block(), 7, "cavestokingdoms:misc/OreQuartzCharged", "ubc.cavestokingdoms.certuscharged");
             
             UBAPIHook.ubAPIHook.ubOreTexturizer.requestUBOreSetup(Blocks.quartz_ore, 0, "cavestokingdoms:misc/quartz_ore", "ubc.cavestokingdoms.quartz");
             
