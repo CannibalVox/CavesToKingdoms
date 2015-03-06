@@ -4,7 +4,6 @@ import talonos.cavestokingdoms.blocks.CtKBlock;
 import talonos.cavestokingdoms.blocks.entities.TileEntityIslandMapper;
 import talonos.cavestokingdoms.blocks.entities.TileEntityIslandScanner;
 import talonos.cavestokingdoms.extendedproperties.OrbEventHandler;
-import talonos.cavestokingdoms.items.PurityFocusEventHandler;
 import talonos.cavestokingdoms.lib.DEFS;
 import talonos.cavestokingdoms.proxies.CommonProxy;
 import net.minecraft.init.Blocks;
@@ -41,9 +40,6 @@ public class CavesToKindgoms
     public static void init(FMLInitializationEvent event)
     {
     	MinecraftForge.EVENT_BUS.register(new OrbEventHandler());
-    	
-    	MinecraftForge.EVENT_BUS.register(new PurityFocusEventHandler());
-        FMLCommonHandler.instance().bus().register(new PurityFocusEventHandler());
         
         manualInfo = new ManualInfo();
     }
@@ -51,7 +47,6 @@ public class CavesToKindgoms
     @Mod.EventHandler
     public static void postInit(FMLPostInitializationEvent event)
     {
-    	AddedResearch.initResearch();
         proxy.registerRenderers();
         BiomeMapColors.initColors();
     }

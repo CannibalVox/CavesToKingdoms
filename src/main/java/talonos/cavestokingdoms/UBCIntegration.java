@@ -2,13 +2,11 @@ package talonos.cavestokingdoms;
 
 import java.util.logging.Logger;
 
-//import appeng.api.AEApi;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import thaumcraft.common.config.ConfigBlocks;
-//import thermalfoundation.block.TFBlocks;
 import exterminatorJeff.undergroundBiomes.api.UBAPIHook;
 import exterminatorJeff.undergroundBiomes.api.UBOreTexturizer;
 

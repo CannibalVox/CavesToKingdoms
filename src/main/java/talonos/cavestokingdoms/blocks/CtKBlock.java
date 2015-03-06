@@ -43,7 +43,6 @@ public class CtKBlock extends Block
     public static Block gaugeBot;
     public static Block gaugeMid;
     public static Block gaugeTop;
-    public static Block dawnTotem;
 
 	public static void init() 
 	{
@@ -57,7 +56,6 @@ public class CtKBlock extends Block
 	    gaugeBot = new GaugeBlockBot();
 	    gaugeMid = new GaugeBlockMid();
 	    gaugeTop = new GaugeBlockTop();
-	    dawnTotem = new BlockDawnTotem(Material.wood);
 	}
 
 }
