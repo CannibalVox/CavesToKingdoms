@@ -1,5 +1,6 @@
 package talonos.blightbuster;
 
+import talonos.cavestokingdoms.lib.DEFS;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -19,7 +20,7 @@ public class ItemSilverPotion extends Item
 
 		public ItemSilverPotion() 
 		{
-			setUnlocalizedName(BlightBuster.MODID + "_" + BBStrings.silverPotionName );
+			setUnlocalizedName(DEFS.MODID + "_" + BBStrings.silverPotionName );
 			GameRegistry.registerItem(this, BBStrings.silverPotionName);
 			setCreativeTab(CreativeTabs.tabMaterials);
 			setTextureName(BlightBuster.MODID + ":" + BBStrings.silverPotionName);

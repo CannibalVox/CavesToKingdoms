@@ -51,8 +51,8 @@ public class AddedResearch
 		
 		
 		InfusionRecipe dawnTotemRecipe = ThaumcraftApi.addInfusionCraftingRecipe("DAWNTOTEM", new ItemStack(BBBlock.dawnTotem), 6, 
-				new AspectList().add(Aspect.AURA, 32).add(Aspect.HEAL, 48).add(Aspect.LIFE, 64)
-				                .add(Aspect.LIGHT, 32).add(Aspect.ARMOR, 48).add(Aspect.ORDER, 64), 
+				new AspectList().add(Aspect.AURA, 16).add(Aspect.HEAL, 32).add(Aspect.LIFE, 48)
+				                .add(Aspect.LIGHT, 16).add(Aspect.ARMOR, 32).add(Aspect.ORDER, 48), 
 				new ItemStack(ConfigBlocks.blockMagicalLog,1,1), new ItemStack[] {
 			         new ItemStack(ConfigBlocks.blockCustomPlant, 1, 4), new ItemStack(ConfigBlocks.blockCustomPlant, 1, 4), 
 			         new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 3), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 3), 

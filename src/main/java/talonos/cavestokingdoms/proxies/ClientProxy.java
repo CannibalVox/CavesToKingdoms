@@ -19,10 +19,6 @@ public class ClientProxy extends CommonProxy
     public void registerRenderers() 
     {
     	super.registerRenderers();	
-        //EntityRegistry.registerGlobalEntityID(EntitySilverPotion.class, "SilverPotion", ModLoader.getUniqueEntityId());
-        
-        System.out.println(RenderManager.instance.entityRenderMap);
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityIslandMapper.class, new TileEntityMapperRenderer());
         
         MProxyClient.registerManualPage("extMaterialPage", ExtMaterialsPage.class);
         MProxyClient.registerManualPage("extMaterialUsePage", ExtMaterialsUsagePage.class);

@@ -15,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
+import talonos.cavestokingdoms.lib.DEFS;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.wands.FocusUpgradeType;
@@ -41,7 +42,7 @@ public class ItemPurityFocus extends ItemFocusBasic
 
 	public ItemPurityFocus() 
 	{
-		setUnlocalizedName(BlightBuster.MODID + "_" + BBStrings.purityFocusName );
+		setUnlocalizedName(DEFS.MODID + "_" + BBStrings.purityFocusName );
 		GameRegistry.registerItem(this, BBStrings.purityFocusName);
 		setCreativeTab(Thaumcraft.tabTC);
 		setTextureName(BlightBuster.MODID + ":" + BBStrings.purityFocusName);
@@ -52,7 +53,7 @@ public class ItemPurityFocus extends ItemFocusBasic
 		return "BE" + super.getSortingHelper(itemstack);
 	}
 
-	private static final AspectList cost = new AspectList().add(Aspect.EARTH, 100).add(Aspect.ORDER, 150);
+	private static final AspectList cost = new AspectList().add(Aspect.EARTH, 10).add(Aspect.ORDER, 15);
 
 	public boolean isVisCostPerTick()
 	{
@@ -62,7 +63,7 @@ public class ItemPurityFocus extends ItemFocusBasic
 	public ItemStack onFocusRightClick(ItemStack itemstack, World world, EntityPlayer p, MovingObjectPosition mop)
 	{
 		ItemWandCasting wand = (ItemWandCasting)itemstack.getItem();
-		int potency = wand.getFocusEnlarge(itemstack);
+		int potency = wand.getFocusEnlarge(itemstack)+1;
 
 		if (!wand.consumeAllVis(itemstack, p, getBigVisCost(potency), false, false))
 		{
@@ -160,7 +161,7 @@ public class ItemPurityFocus extends ItemFocusBasic
 
 	private AspectList getBigVisCost(int potency) 
 	{
-		AspectList toReturn = new AspectList().add(Aspect.EARTH, 100*(potency*2+1)*(potency*2+1)).add(Aspect.ORDER, 150*(potency*2+1)*(potency*2+1));
+		AspectList toReturn = new AspectList().add(Aspect.EARTH, 10*(potency*2+1)*(potency*2+1)).add(Aspect.ORDER, 15*(potency*2+1)*(potency*2+1));
 		return toReturn;
 	}
 

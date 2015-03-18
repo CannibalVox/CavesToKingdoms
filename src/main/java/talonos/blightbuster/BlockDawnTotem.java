@@ -1,5 +1,6 @@
 package talonos.blightbuster;
 
+import talonos.cavestokingdoms.lib.DEFS;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -18,7 +19,7 @@ public class BlockDawnTotem extends BBBlock
 	public BlockDawnTotem(Material m)
 	{
 		super(m);
-		this.setBlockName(BlightBuster.MODID+"_"+BBStrings.dawnTotemBlockName);
+		this.setBlockName(DEFS.MODID+"_"+BBStrings.dawnTotemBlockName);
 		this.setStepSound(soundTypeWood);
 		this.setBlockTextureName("dawnTotem");
 		this.setCreativeTab(CreativeTabs.tabBlock);

@@ -9,8 +9,6 @@ public class CommonProxy
 {
     public void registerTileEntities()
     {
-        GameRegistry.registerTileEntity(TileEntityIslandMapper.class, "islandMapper");
-        GameRegistry.registerTileEntity(TileEntityIslandScanner.class, "islandScanner");
         GameRegistry.registerTileEntity(AltarEntity.class, "AltarEntity");
     }
     
