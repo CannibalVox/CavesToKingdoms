@@ -17,7 +17,7 @@ public class GaugeBlock extends CtKBlock
 
 	public GaugeBlock(int pos) 
 	{
-		this.setBlockName(BiomeScanner.MODID+"_"+DEFS.GaugeBlockName+pos);
+		this.setBlockName(BiomeScanner.MODID+"_"+BSStrings.GaugeBlockName+pos);
 		this.setBlockUnbreakable();
 		this.setResistance(6000000.0F);
 		this.setStepSound(soundTypePiston);

@@ -1,8 +1,5 @@
 package talonos.biomescanner;
 
-import talonos.cavestokingdoms.blocks.CtKBlock;
-import talonos.cavestokingdoms.blocks.entities.TileEntityIslandMapper;
-import talonos.cavestokingdoms.lib.DEFS;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -14,12 +11,12 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class BlockIslandMapper extends CtKBlock implements ITileEntityProvider
+public class BlockIslandMapper extends BSBlock implements ITileEntityProvider
 {
 
 	public BlockIslandMapper() 
 	{
-		this.setBlockName(BiomeScanner.MODID+"_"+DEFS.blockIslandMapperName);
+		this.setBlockName(BiomeScanner.MODID+"_"+BSStrings.blockIslandMapperName);
 		this.setBlockUnbreakable();
 		this.setResistance(6000000.0F);
 		this.setStepSound(soundTypePiston);
@@ -32,7 +29,7 @@ public class BlockIslandMapper extends CtKBlock implements ITileEntityProvider
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
-		this.blockIcon = par1IconRegister.registerIcon(DEFS.MODID + ":" + DEFS.bedrockBrickName);
+		this.blockIcon = par1IconRegister.registerIcon(BiomeScanner.MODID + ":" + BSStrings.bedrockBrickName);
 	}
 	
     /**

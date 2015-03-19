@@ -46,6 +46,7 @@ public class BiomeScanner
     @Mod.EventHandler
     public static void postInit(FMLPostInitializationEvent event)
     {
+        BiomeMapColors.initColors();
         proxy.registerRenderers();
     }
 }

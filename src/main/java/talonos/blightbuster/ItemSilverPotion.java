@@ -20,7 +20,7 @@ public class ItemSilverPotion extends Item
 
 		public ItemSilverPotion() 
 		{
-			setUnlocalizedName(DEFS.MODID + "_" + BBStrings.silverPotionName );
+			setUnlocalizedName(BlightBuster.MODID + "_" + BBStrings.silverPotionName );
 			GameRegistry.registerItem(this, BBStrings.silverPotionName);
 			setCreativeTab(CreativeTabs.tabMaterials);
 			setTextureName(BlightBuster.MODID + ":" + BBStrings.silverPotionName);

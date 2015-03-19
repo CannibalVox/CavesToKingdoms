@@ -1,7 +1,5 @@
 package talonos.biomescanner;
 
-import talonos.cavestokingdoms.blocks.CtKBlock;
-import talonos.cavestokingdoms.lib.DEFS;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -10,12 +8,12 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 
-public class BedrockBrick extends CtKBlock
+public class BedrockBrick extends BSBlock
 {
 
 	public BedrockBrick()
 	{
-		this.setBlockName(BiomeScanner.MODID+"_"+DEFS.bedrockBrickName);
+		this.setBlockName(BiomeScanner.MODID+"_"+BSStrings.bedrockBrickName);
 		this.setBlockUnbreakable();
 		this.setResistance(6000000.0F);
 		this.setStepSound(soundTypePiston);
@@ -35,6 +33,6 @@ public class BedrockBrick extends CtKBlock
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister iconRegister)
     {
-        this.blockIcon = iconRegister.registerIcon(DEFS.MODID+":"+DEFS.bedrockBrickName);
+        this.blockIcon = iconRegister.registerIcon(BiomeScanner.MODID+":"+BSStrings.bedrockBrickName);
     }
 }

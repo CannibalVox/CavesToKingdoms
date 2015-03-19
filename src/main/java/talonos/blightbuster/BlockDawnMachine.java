@@ -45,10 +45,10 @@ public class BlockDawnMachine extends BlockContainer
   
   public void registerBlockIcons(IIconRegister ir)
   {
-    for (int a = 0; a < 31; a++) 
+    /*for (int a = 0; a < 31; a++) 
     {
-        this.icon[a] = ir.registerIcon("cavestokingdoms:dawnmachine" + a);
-    }
+        this.icon[a] = ir.registerIcon(BlightBuster.MODID+":dawnmachine" + a);
+    }*/
   }
   
   @SideOnly(Side.CLIENT)

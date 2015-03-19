@@ -1,8 +1,9 @@
 package talonos.cavestokingdoms;
 
+import talonos.biomescanner.BiomeMapColors;
+import talonos.biomescanner.TileEntityIslandMapper;
+import talonos.biomescanner.TileEntityIslandScanner;
 import talonos.cavestokingdoms.blocks.CtKBlock;
-import talonos.cavestokingdoms.blocks.entities.TileEntityIslandMapper;
-import talonos.cavestokingdoms.blocks.entities.TileEntityIslandScanner;
 import talonos.cavestokingdoms.extendedproperties.OrbEventHandler;
 import talonos.cavestokingdoms.lib.DEFS;
 import talonos.cavestokingdoms.proxies.CommonProxy;
@@ -48,6 +49,5 @@ public class CavesToKindgoms
     public static void postInit(FMLPostInitializationEvent event)
     {
         proxy.registerRenderers();
-        BiomeMapColors.initColors();
     }
 }

@@ -19,7 +19,7 @@ public class BlockDawnTotem extends BBBlock
 	public BlockDawnTotem(Material m)
 	{
 		super(m);
-		this.setBlockName(DEFS.MODID+"_"+BBStrings.dawnTotemBlockName);
+		this.setBlockName(BlightBuster.MODID+"_"+BBStrings.dawnTotemBlockName);
 		this.setStepSound(soundTypeWood);
 		this.setBlockTextureName("dawnTotem");
 		this.setCreativeTab(CreativeTabs.tabBlock);

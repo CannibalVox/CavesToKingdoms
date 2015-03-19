@@ -1,13 +1,5 @@
 tile.cavestokingdoms_altarBlock.name=Altar of Restoration
 tile.cavestokingdoms_spiritStone.name=Spirit Stone
-tile.cavestokingdoms_islandMapper.name=Island Mapper
-tile.cavestokingdoms_scannerController.name=Scanner Controller
-tile.cavestokingdoms_bedrockBrick.name=Bedrock Brick
-tile.cavestokingdoms_gaugeBlock0.name=Biome Purification Gauge (Bottom)
-tile.cavestokingdoms_gaugeBlock1.name=Biome Purification Gauge (Middle)
-tile.cavestokingdoms_gaugeBlock2.name=Biome Purification Gauge (Top)
-tile.cavestokingdoms_gaugeBlock3.name=Biome Purification Display (Left)
-tile.cavestokingdoms_gaugeBlock4.name=Biome Purification Gauge (Right)
 
 item.cavestokingdoms_requisitionCredit.name=Requisition Credit
 item.cavestokingdoms:basicManual.0.name=Materials: Common Terrestrial Edition

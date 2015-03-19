@@ -42,7 +42,7 @@ public class ItemPurityFocus extends ItemFocusBasic
 
 	public ItemPurityFocus() 
 	{
-		setUnlocalizedName(DEFS.MODID + "_" + BBStrings.purityFocusName );
+		setUnlocalizedName(BlightBuster.MODID + "_" + BBStrings.purityFocusName );
 		GameRegistry.registerItem(this, BBStrings.purityFocusName);
 		setCreativeTab(Thaumcraft.tabTC);
 		setTextureName(BlightBuster.MODID + ":" + BBStrings.purityFocusName);
