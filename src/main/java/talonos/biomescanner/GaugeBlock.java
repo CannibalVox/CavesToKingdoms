@@ -1,7 +1,5 @@
 package talonos.biomescanner;
 
-import talonos.cavestokingdoms.blocks.CtKBlock;
-import talonos.cavestokingdoms.lib.DEFS;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -11,7 +9,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.IIcon;
 
-public class GaugeBlock extends CtKBlock
+public class GaugeBlock extends BSBlock
 {
 	int pos;
 
@@ -41,13 +39,13 @@ public class GaugeBlock extends CtKBlock
 	   biomeIcons = new IIcon[22*4];
 	   for(int i = 0; i < 48; i++)
 	   {
-		   icons[i] = par1IconRegister.registerIcon(DEFS.MODID + ":" + "statbar" + (i));
+		   icons[i] = par1IconRegister.registerIcon(BiomeScanner.MODID + ":" + "statbar" + (i));
 	   }
 	   for (int x = 0; x < 1; x++)
 	   {
 		   for (int y = 0; y < 1; y++)
 		   {
-			   biomeIcons[x*4+y] = par1IconRegister.registerIcon(DEFS.MODID+":"+"biomeMon" +x+"."+y);			   
+			   biomeIcons[x*4+y] = par1IconRegister.registerIcon(BiomeScanner.MODID+":"+"biomeMon" +x+"."+y);			   
 		   }
 	   }
 	}

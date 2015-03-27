@@ -8,6 +8,7 @@ public class BBItems
     public static Item purityFocus;
     public static Item silverPotion;
     public static Item worldTainter;
+    public static Item worldSuperTainter;
     public static Item worldOreKiller;
 
 	public static void init() 
@@ -16,6 +17,7 @@ public class BBItems
 		silverPotion = new ItemSilverPotion();
 		worldTainter = new ItemWorldTainter();
 		worldOreKiller = new ItemWorldOreKiller();
+		worldSuperTainter = new ItemSuperTestWorldTainter();
 	}
 }
 

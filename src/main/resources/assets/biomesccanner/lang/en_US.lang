@@ -1,0 +1,8 @@
+tile.biomescanner_islandMapper.name=Island Mapper
+tile.biomescanner_scannerController.name=Scanner Controller
+tile.biomescanner_bedrockBrick.name=Bedrock Brick
+tile.biomescanner_gaugeBlock0.name=Biome Purification Gauge (Bottom)
+tile.biomescanner_gaugeBlock1.name=Biome Purification Gauge (Middle)
+tile.biomescanner_gaugeBlock2.name=Biome Purification Gauge (Top)
+tile.biomescanner_gaugeBlock3.name=Biome Purification Display (Left)
+tile.biomescanner_gaugeBlock4.name=Biome Purification Gauge (Right)
