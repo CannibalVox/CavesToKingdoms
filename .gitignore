@@ -16,3 +16,6 @@ forge-1.7.10-10.13.2.1291-changelog.txt
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
 libs/
+*.iml
+*.ipr
+*.iws
