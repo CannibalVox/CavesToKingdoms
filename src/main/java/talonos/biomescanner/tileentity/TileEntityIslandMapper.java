@@ -6,9 +6,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-import talonos.biomescanner.client.BiomeMapColors;
+import talonos.biomescanner.map.BiomeMapColors;
 
 public class TileEntityIslandMapper extends TileEntity
 {

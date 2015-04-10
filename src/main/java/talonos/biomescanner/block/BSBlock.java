@@ -1,5 +1,6 @@
 package talonos.biomescanner.block;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
@@ -43,6 +44,12 @@ public class BSBlock extends Block
 	    gaugeMid = new GaugeBlock().setPos(1);
 	    gaugeTop = new GaugeBlock().setPos(2);
 	    bedrockBrick = new BedrockBrick();
+
+        GameRegistry.registerBlock(gaugeBot, gaugeBot.getUnlocalizedName());
+        GameRegistry.registerBlock(gaugeMid, gaugeMid.getUnlocalizedName());
+        GameRegistry.registerBlock(gaugeTop, gaugeTop.getUnlocalizedName());
+        GameRegistry.registerBlock(monitorLeft, monitorLeft.getUnlocalizedName());
+        GameRegistry.registerBlock(monitorRight, monitorRight.getUnlocalizedName());
 	}
 
 }

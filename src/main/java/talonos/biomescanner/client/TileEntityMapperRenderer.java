@@ -34,8 +34,8 @@ public class TileEntityMapperRenderer extends TileEntitySpecialRenderer
     public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float par8)
     {
     	TileEntityIslandMapper mapper = (TileEntityIslandMapper)entity;
-        for (int pixY = 0; pixY < 176; pixY++) {
-            for (int pixX = 0; pixX < 180; pixX++) {
+        for (int pixY = 0; pixY < 180; pixY++) {
+            for (int pixX = 0; pixX < 176; pixX++) {
                 this.intArray[(pixY * mapper.blockWidth)+pixX] = mapper.getColor(pixX, pixY);
             }
         }

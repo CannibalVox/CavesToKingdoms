@@ -6,7 +6,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import talonos.biomescanner.block.BSBlock;
-import talonos.biomescanner.client.BiomeMapColors;
+import talonos.biomescanner.map.BiomeMapColors;
 
 @Mod(modid = BiomeScanner.MODID, name = BiomeScanner.MODNAME, version = BiomeScanner.VERSION, dependencies = BiomeScanner.DEPS)
 public class BiomeScanner

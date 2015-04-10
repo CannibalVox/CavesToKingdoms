@@ -4,7 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import net.minecraft.block.Block;
-import talonos.biomescanner.client.BiomeMapColors;
+import talonos.biomescanner.map.BiomeMapColors;
+import talonos.biomescanner.map.RegionMap;
 import thaumcraft.common.config.ConfigBlocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -17,9 +18,12 @@ public class TileEntityIslandScanner extends TileEntity
 	public static final int mapWidthChunks = 110;
 
 	int lastScannedChunk = 0;
+    private static RegionMap regionMap = null;
 
 	public TileEntityIslandScanner() 
 	{
+        if (regionMap == null)
+            regionMap = new RegionMap();
 	}
 
 	@Override
@@ -55,6 +59,8 @@ public class TileEntityIslandScanner extends TileEntity
 					}
 				}
 			}
+
+            regionMap.wipeData();
 		}
 		
 		
@@ -82,7 +88,10 @@ public class TileEntityIslandScanner extends TileEntity
 						if (getTaintAt(x, z)) 
 						{
 							color += 128;
-						}
+                            regionMap.incrementBlock(x,z,true);
+						} else {
+                            regionMap.incrementBlock(x,z,false);
+                        }
 
 						if (lastScannedChunk == 0) 
 						{
@@ -149,6 +158,7 @@ public class TileEntityIslandScanner extends TileEntity
 			lastScannedChunk++;
 			if (lastScannedChunk >= (22 * 135))
 			{
+                regionMap.updateData();
 				lastScannedChunk = -1;
 			}
 		}
