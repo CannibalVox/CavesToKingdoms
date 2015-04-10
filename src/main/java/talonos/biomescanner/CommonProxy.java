@@ -1,7 +1,8 @@
 package talonos.biomescanner;
 
-import talonos.cavestokingdoms.blocks.entities.AltarEntity;
+import talonos.biomescanner.tileentity.TileEntityIslandMapper;
 import cpw.mods.fml.common.registry.GameRegistry;
+import talonos.biomescanner.tileentity.TileEntityIslandScanner;
 
 public class CommonProxy 
 {

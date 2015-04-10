@@ -1,4 +1,4 @@
-package talonos.biomescanner;
+package talonos.biomescanner.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -35,13 +35,13 @@ public class BSBlock extends Block
 
 	public static void init() 
 	{
-	    monitorLeft = new BiomeMonitorLeft();
-	    monitorRight = new BiomeMonitorRight();
+	    monitorLeft = new GaugeBlock().setPos(3);
+	    monitorRight = new GaugeBlock().setPos(4);
 	    islandMapper = new BlockIslandMapper();
 	    scannerController = new BlockScannerController();
-	    gaugeBot = new GaugeBlockBot();
-	    gaugeMid = new GaugeBlockMid();
-	    gaugeTop = new GaugeBlockTop();
+	    gaugeBot = new GaugeBlock().setPos(0);
+	    gaugeMid = new GaugeBlock().setPos(1);
+	    gaugeTop = new GaugeBlock().setPos(2);
 	    bedrockBrick = new BedrockBrick();
 	}
 

@@ -1,4 +1,4 @@
-package talonos.biomescanner;
+package talonos.biomescanner.tileentity;
 
 import java.util.Random;
 import net.minecraft.nbt.NBTTagCompound;
@@ -8,13 +8,14 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import talonos.biomescanner.client.BiomeMapColors;
 
 public class TileEntityIslandMapper extends TileEntity
 {
 	public static final int blockWidth = 176;
 	public static final int blockHeight = 180;
 	
-	byte[] mapData = new byte[176*180];
+	private byte[] mapData = new byte[176*180];
 	
 	public TileEntityIslandMapper()
 	{
@@ -23,6 +24,28 @@ public class TileEntityIslandMapper extends TileEntity
 		Random r = new Random();
 		r.nextBytes(mapData);
 	}
+
+    public void initColors() {
+        for (int b = 0; b < this.mapData.length; b++)
+        {
+            int usByte = 0 | this.mapData[b];
+            if (usByte < 64 || (usByte >= 128 && usByte < 192))
+            {
+                // Darken the map spot.
+                this.mapData[b] = (byte) (usByte + 64);
+            }
+        }
+    }
+
+    public int getColor(int x, int y) {
+        byte b0 = this.mapData[(y*blockWidth)+x];
+        int b = b0 & 0xFF;
+        return BiomeMapColors.colors[b];
+    }
+
+    public void setColor(int x, int y, byte color) {
+        this.mapData[x + this.blockWidth * y] = color;
+    }
 
 	
     @Override

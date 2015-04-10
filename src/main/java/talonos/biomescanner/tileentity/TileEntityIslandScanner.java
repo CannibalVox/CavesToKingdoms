@@ -1,10 +1,10 @@
-package talonos.biomescanner;
+package talonos.biomescanner.tileentity;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import net.minecraft.block.Block;
-import thaumcraft.common.config.Config;
+import talonos.biomescanner.client.BiomeMapColors;
 import thaumcraft.common.config.ConfigBlocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -41,19 +41,11 @@ public class TileEntityIslandScanner extends TileEntity
 				{
 					TileEntity hopefullyAMap = worldObj.getTileEntity(
 							this.xCoord + x, this.yCoord + y, this.zCoord + 7);
-					if (hopefullyAMap instanceof TileEntityIslandMapper) 
+					if (hopefullyAMap instanceof TileEntityIslandMapper)
 					{
 						TileEntityIslandMapper map = (TileEntityIslandMapper) hopefullyAMap;
 
-						for (int b = 0; b < map.mapData.length; b++) 
-						{
-							int usByte = 0 | map.mapData[b];
-							if (usByte < 64 || (usByte >= 128 && usByte < 192)) 
-							{
-								// Darken the map spot.
-								map.mapData[b] = (byte) (usByte + 64);
-							}
-						}
+                        map.initColors();
 
 						worldObj.markBlockForUpdate(map.xCoord, map.yCoord,
 								map.zCoord);
@@ -122,7 +114,7 @@ public class TileEntityIslandScanner extends TileEntity
 
 							int xPix = (newx / 2) % map.blockWidth;
 							int yPix = (z / 2) % map.blockHeight;
-							map.mapData[xPix + map.blockWidth * yPix] = (byte) color;
+                            map.setColor(xPix, yPix, (byte)color);
 
 							worldObj.markBlockForUpdate(map.xCoord, map.yCoord,
 									map.zCoord);

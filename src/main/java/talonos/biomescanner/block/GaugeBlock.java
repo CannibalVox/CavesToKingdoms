@@ -1,30 +1,35 @@
-package talonos.biomescanner;
+package talonos.biomescanner.block;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.IIcon;
+import talonos.biomescanner.BSStrings;
+import talonos.biomescanner.BiomeScanner;
+import talonos.biomescanner.block.BSBlock;
 
 public class GaugeBlock extends BSBlock
 {
 	int pos;
 
-	public GaugeBlock(int pos) 
+	public GaugeBlock()
 	{
-		this.setBlockName(BiomeScanner.MODID+"_"+BSStrings.GaugeBlockName+pos);
 		this.setBlockUnbreakable();
 		this.setResistance(6000000.0F);
 		this.setStepSound(soundTypePiston);
 		this.disableStats();
 		this.setCreativeTab(CreativeTabs.tabBlock);
 		GameRegistry.registerBlock(this, this.getUnlocalizedName());
-		this.pos=pos;
 		this.setBlockUnbreakable();
 	}
+
+    public GaugeBlock setPos(int pos) {
+        this.pos=pos;
+        this.setBlockName(BiomeScanner.MODID+"_"+ BSStrings.GaugeBlockName+pos);
+        return this;
+    }
 	
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;

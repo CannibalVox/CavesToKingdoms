@@ -1,29 +1,33 @@
-package talonos.biomescanner;
+package talonos.biomescanner.block;
 
-import net.minecraft.block.Block;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.ITileEntityProvider;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import talonos.biomescanner.BSStrings;
+import talonos.biomescanner.BiomeScanner;
+import talonos.biomescanner.tileentity.TileEntityIslandMapper;
 
-public class BlockScannerController extends BSBlock implements ITileEntityProvider
+public class BlockIslandMapper extends BSBlock implements ITileEntityProvider
 {
-	public BlockScannerController() 
+
+	public BlockIslandMapper() 
 	{
-		this.setBlockName(BiomeScanner.MODID+"_"+BSStrings.blockScannerControllerName);
+		this.setBlockName(BiomeScanner.MODID+"_"+ BSStrings.blockIslandMapperName);
 		this.setBlockUnbreakable();
 		this.setResistance(6000000.0F);
 		this.setStepSound(soundTypePiston);
 		this.disableStats();
 		this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setLightLevel(1.0f);
 		GameRegistry.registerBlock(this, this.getUnlocalizedName());
 	}
 	      
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
@@ -43,6 +47,6 @@ public class BlockScannerController extends BSBlock implements ITileEntityProvid
 	@Override
 	public TileEntity createNewTileEntity(World world, int iDunno) 
 	{
-		return new TileEntityIslandScanner();
+		return new TileEntityIslandMapper();
 	}
 }

@@ -1,4 +1,4 @@
-package talonos.biomescanner;
+package talonos.biomescanner.client;
 
 public class BiomeMapColors 
 {

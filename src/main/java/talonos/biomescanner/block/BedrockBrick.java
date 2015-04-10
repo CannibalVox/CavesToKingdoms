@@ -1,19 +1,19 @@
-package talonos.biomescanner;
+package talonos.biomescanner.block;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import talonos.biomescanner.BSStrings;
+import talonos.biomescanner.BiomeScanner;
 
 public class BedrockBrick extends BSBlock
 {
 
 	public BedrockBrick()
 	{
-		this.setBlockName(BiomeScanner.MODID+"_"+BSStrings.bedrockBrickName);
+		this.setBlockName(BiomeScanner.MODID+"_"+ BSStrings.bedrockBrickName);
 		this.setBlockUnbreakable();
 		this.setResistance(6000000.0F);
 		this.setStepSound(soundTypePiston);

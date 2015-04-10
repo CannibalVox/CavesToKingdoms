@@ -1,22 +1,15 @@
 package talonos.cavestokingdoms;
 
-import talonos.biomescanner.BiomeMapColors;
-import talonos.biomescanner.TileEntityIslandMapper;
-import talonos.biomescanner.TileEntityIslandScanner;
 import talonos.cavestokingdoms.blocks.CtKBlock;
 import talonos.cavestokingdoms.extendedproperties.OrbEventHandler;
 import talonos.cavestokingdoms.lib.DEFS;
 import talonos.cavestokingdoms.proxies.CommonProxy;
-import net.minecraft.init.Blocks;
 import net.minecraftforge.common.MinecraftForge;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = DEFS.MODID, name = DEFS.MODNAME, version = DEFS.VERSION, dependencies = DEFS.DEPS)
 public class CavesToKindgoms

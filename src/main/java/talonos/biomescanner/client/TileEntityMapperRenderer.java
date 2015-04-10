@@ -1,21 +1,16 @@
-package talonos.biomescanner;
+package talonos.biomescanner.client;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.material.MapColor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.client.settings.GameSettings;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityBeacon;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
+import talonos.biomescanner.tileentity.TileEntityIslandMapper;
 
 @SideOnly(Side.CLIENT)
 public class TileEntityMapperRenderer extends TileEntitySpecialRenderer
@@ -39,11 +34,10 @@ public class TileEntityMapperRenderer extends TileEntitySpecialRenderer
     public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float par8)
     {
     	TileEntityIslandMapper mapper = (TileEntityIslandMapper)entity;
-        for (int i = 0; i < 176*180; ++i)
-        {
-            byte b0 = mapper.mapData[i];
-            int b = b0 & 0xFF;
-            this.intArray[i] = BiomeMapColors.colors[b];
+        for (int pixY = 0; pixY < 176; pixY++) {
+            for (int pixX = 0; pixX < 180; pixX++) {
+                this.intArray[(pixY * mapper.blockWidth)+pixX] = mapper.getColor(pixX, pixY);
+            }
         }
 
         this.bufferedImage.updateDynamicTexture();
