@@ -22,6 +22,7 @@ public class BlockIslandMapper extends BSBlock implements ITileEntityProvider
 		this.setStepSound(soundTypePiston);
 		this.disableStats();
 		this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setLightLevel(1.0f);
 		GameRegistry.registerBlock(this, this.getUnlocalizedName());
 	}
 	      

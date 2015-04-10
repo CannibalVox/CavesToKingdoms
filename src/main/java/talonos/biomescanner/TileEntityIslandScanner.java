@@ -3,6 +3,7 @@ package talonos.biomescanner;
 import java.util.HashSet;
 import java.util.Set;
 
+import net.minecraft.block.Block;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigBlocks;
 import net.minecraft.nbt.NBTTagCompound;
@@ -67,23 +68,23 @@ public class TileEntityIslandScanner extends TileEntity
 		
 		if (lastScannedChunk != -1) //If it's "on",
 		{
-			int chunkX = lastScannedChunk % mapWidthChunks;
-			int chunkZ = lastScannedChunk / mapWidthChunks;
-			BiomeGenBase[] biomesForGeneration = null;
+			int chunkX = (lastScannedChunk % (mapWidthChunks/5))*5;
+			int chunkZ = (lastScannedChunk / (mapWidthChunks/5))*1;
+			BiomeGenBase[] biomesForGeneration = this.worldObj.getWorldChunkManager()
+                    .loadBlockGeneratorData(null, chunkX*16, chunkZ*16,
+                            80, 16);
 
-			for (int xInChunk = 0; xInChunk < 16; xInChunk += 2) 
+			for (int xInChunk = 0; xInChunk < 80; xInChunk += 2)
 			{
 				int x = chunkX * 16 + xInChunk;
-				for (int zInChunk = 0; zInChunk < 16; zInChunk += 2) 
+				for (int zInChunk = 0; zInChunk < 16; zInChunk += 2)
 				{
 					int z = chunkZ * 16 + zInChunk;
-					biomesForGeneration = this.worldObj.getWorldChunkManager()
-							.loadBlockGeneratorData(biomesForGeneration, x, z,
-									1, 1);
+                    int biomeIndex = (zInChunk * 80)+xInChunk;
 					if ((biomesForGeneration != null)
-							&& (biomesForGeneration[0] != null)) 
+							&& (biomesForGeneration[biomeIndex] != null))
 					{
-						int biomeID = biomesForGeneration[0].biomeID;
+						int biomeID = biomesForGeneration[biomeIndex].biomeID;
 						int color = BiomeMapColors.biomeLookup[biomeID];
 
 						if (getTaintAt(x, z)) 
@@ -96,7 +97,7 @@ public class TileEntityIslandScanner extends TileEntity
 							System.out.println("Chunk five: Scanning " + x
 									+ ", " + z + ": got a "
 									+ (getTaintAt(x, z) ? "tainted " : "")
-									+ biomesForGeneration[0].biomeName);
+									+ biomesForGeneration[biomeIndex].biomeName);
 						}
 
 						int newx = (mapWidthChunks * 16) - x - 1;
@@ -149,12 +150,12 @@ public class TileEntityIslandScanner extends TileEntity
 					{
 						System.out.println("Error!");
 						System.out.println(biomesForGeneration != null);
-						System.out.println(biomesForGeneration[0] != null);
+						System.out.println(biomesForGeneration[biomeIndex] != null);
 					}
 				}
 			}
 			lastScannedChunk++;
-			if (lastScannedChunk == 110 * 135) 
+			if (lastScannedChunk >= (22 * 135))
 			{
 				lastScannedChunk = -1;
 			}
@@ -163,16 +164,20 @@ public class TileEntityIslandScanner extends TileEntity
 
 	private boolean getTaintAt(int x, int z) 
 	{
-		for (int y = 0; y < 255; y++) 
+		for (int y = 0; y <= 255; y++)
 		{
-			if (worldObj.getBlock(x, y, z) == ConfigBlocks.blockTaint
-					|| worldObj.getBlock(x + 1, y, z) == ConfigBlocks.blockTaint
-					|| worldObj.getBlock(x, y, z + 1) == ConfigBlocks.blockTaint
-					|| worldObj.getBlock(x + 1, y, z + 1) == ConfigBlocks.blockTaint
-					|| worldObj.getBlock(x, y, z) == ConfigBlocks.blockTaintFibres
-					|| worldObj.getBlock(x + 1, y, z) == ConfigBlocks.blockTaintFibres
-					|| worldObj.getBlock(x, y, z + 1) == ConfigBlocks.blockTaintFibres
-					|| worldObj.getBlock(x + 1, y, z + 1) == ConfigBlocks.blockTaintFibres) 
+            Block northwest = worldObj.getBlock(x,y,z);
+            Block northeast = worldObj.getBlock(x+1, y, z);
+            Block southwest = worldObj.getBlock(x, y, z+1);
+            Block southeast = worldObj.getBlock(x+1, y, z+1);
+			if (northwest == ConfigBlocks.blockTaint
+					|| northeast == ConfigBlocks.blockTaint
+					|| southwest == ConfigBlocks.blockTaint
+					|| southeast == ConfigBlocks.blockTaint
+					|| northwest == ConfigBlocks.blockTaintFibres
+					|| northeast == ConfigBlocks.blockTaintFibres
+					|| southwest == ConfigBlocks.blockTaintFibres
+					|| southeast == ConfigBlocks.blockTaintFibres)
 			{
 				return true;
 			}
