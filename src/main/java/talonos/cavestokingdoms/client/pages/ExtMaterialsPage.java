@@ -18,6 +18,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.PatternBuilder;
 import tconstruct.library.tools.ToolMaterial;
+import tconstruct.library.util.HarvestLevels;
 //import iguanaman.iguanatweakstconstruct.util.HarvestLevels;
 
 public class ExtMaterialsPage extends BookPage
@@ -175,11 +176,11 @@ public class ExtMaterialsPage extends BookPage
         
         if (ore[0] != null)
         {
-        	//manual.fonts.drawString(harvestDiff + ": " + ore[0].getHarvestLevel(oreMetadata) + " (" + HarvestLevels.getHarvestLevelName(ore[0].getHarvestLevel(oreMetadata)) + "\u00a70)", localWidth, localHeight + 50, 0);
+        	manual.fonts.drawString(harvestDiff + ": " + ore[0].getHarvestLevel(oreMetadata) + " (" + HarvestLevels.getHarvestLevelName(ore[0].getHarvestLevel(oreMetadata)) + "\u00a70)", localWidth, localHeight + 50, 0);
         }
         if (material != null)
         {
-        	//manual.fonts.drawString(harvestLevel + ": " + material.harvestLevel() + " (" + HarvestLevels.getHarvestLevelName(material.harvestLevel()) + "\u00a70)", localWidth, localHeight + 60, 0);
+        	manual.fonts.drawString(harvestLevel + ": " + material.harvestLevel() + " (" + HarvestLevels.getHarvestLevelName(material.harvestLevel()) + "\u00a70)", localWidth, localHeight + 60, 0);
         	manual.fonts.drawString(durability + ": " + material.durability(), localWidth, localHeight + 70, 0);
         	manual.fonts.drawString(handleModifier + ": " + material.handleDurability() + "x", localWidth, localHeight + 80, 0);
         	manual.fonts.drawString(miningSpeed + ": " + material.toolSpeed() / 100f, localWidth, localHeight + 90, 0);
