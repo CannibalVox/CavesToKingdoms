@@ -3,11 +3,14 @@ package talonos.biomescanner.block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.common.util.ForgeDirection;
 import talonos.biomescanner.BSStrings;
 import talonos.biomescanner.BiomeScanner;
 import talonos.biomescanner.map.MapScanner;
@@ -69,5 +72,21 @@ public class BlockScannerController extends BSBlock implements ITileEntityProvid
         }
 
         return metadata;
+    }
+
+    @Override
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+        if (ForgeDirection.VALID_DIRECTIONS[side] == ForgeDirection.UP) {
+            if (!world.isRemote) {
+                if (MapScanner.instance.isActive()) {
+                    player.addChatComponentMessage(new ChatComponentTranslation("scanner.gui.alreadyactive"));
+                } else {
+                    MapScanner.instance.activate();
+                }
+            }
+            return true;
+        }
+
+        return false;
     }
 }

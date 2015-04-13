@@ -222,6 +222,9 @@ public class MapScanner {
         return false;
     }
 
+    public boolean isActive() { return lastScannedChunk >= 0; }
+    public void activate() { lastScannedChunk = 0; }
+
     public void setColor(int x, int y, byte color) {
         this.mapPixels[y][x] = color;
     }

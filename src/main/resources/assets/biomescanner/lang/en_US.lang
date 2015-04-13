@@ -6,3 +6,4 @@ tile.biomescanner_gaugeBlock1.name=Biome Purification Gauge (Middle)
 tile.biomescanner_gaugeBlock2.name=Biome Purification Gauge (Top)
 tile.biomescanner_gaugeBlock3.name=Biome Purification Display (Left)
 tile.biomescanner_gaugeBlock4.name=Biome Purification Gauge (Right)
+scanner.gui.alreadyactive=A scan is already in progress!
