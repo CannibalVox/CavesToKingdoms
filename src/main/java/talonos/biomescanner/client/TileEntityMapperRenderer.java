@@ -10,6 +10,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
+import talonos.biomescanner.map.MapScanner;
 import talonos.biomescanner.tileentity.TileEntityIslandMapper;
 
 @SideOnly(Side.CLIENT)
@@ -34,14 +35,17 @@ public class TileEntityMapperRenderer extends TileEntitySpecialRenderer
     public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float par8)
     {
     	TileEntityIslandMapper mapper = (TileEntityIslandMapper)entity;
-        for (int pixY = 0; pixY < 180; pixY++) {
-            for (int pixX = 0; pixX < 176; pixX++) {
-                this.intArray[(pixY * mapper.blockWidth)+pixX] = mapper.getColor(pixX, pixY);
+
+        for (int pixY = 0; pixY < MapScanner.blockHeight; pixY++) {
+            for (int pixX = 0; pixX < MapScanner.blockWidth; pixX++) {
+                int worldX = mapper.getMapX()+pixX;
+                int worldY = mapper.getMapY()+pixY;
+                this.intArray[(pixY * MapScanner.blockWidth) + pixX] = MapScanner.instance.getColor(worldX, worldY);
             }
         }
 
         this.bufferedImage.updateDynamicTexture();
-        
+
         this.bindTexture(location);
 
         Tessellator tessellator = Tessellator.instance;

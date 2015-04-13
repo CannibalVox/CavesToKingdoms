@@ -3,6 +3,7 @@ package talonos.biomescanner.block;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -10,6 +11,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import talonos.biomescanner.BSStrings;
 import talonos.biomescanner.BiomeScanner;
+import talonos.biomescanner.map.MapScanner;
 import talonos.biomescanner.tileentity.TileEntityIslandMapper;
 
 public class BlockIslandMapper extends BSBlock implements ITileEntityProvider
@@ -49,4 +51,10 @@ public class BlockIslandMapper extends BSBlock implements ITileEntityProvider
 	{
 		return new TileEntityIslandMapper();
 	}
+
+    @Override
+    public void breakBlock(World world, int x, int y, int z, Block block, int side) {
+        if (world.getTileEntity(x,y,z) != null)
+            MapScanner.instance.bus().unregister(world.getTileEntity(x,y,z));
+    }
 }

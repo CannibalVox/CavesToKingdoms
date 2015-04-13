@@ -1,12 +1,15 @@
 package talonos.biomescanner;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.common.MinecraftForge;
 import talonos.biomescanner.block.BSBlock;
 import talonos.biomescanner.map.BiomeMapColors;
+import talonos.biomescanner.map.MapScanner;
 
 @Mod(modid = BiomeScanner.MODID, name = BiomeScanner.MODNAME, version = BiomeScanner.VERSION, dependencies = BiomeScanner.DEPS)
 public class BiomeScanner
@@ -37,7 +40,8 @@ public class BiomeScanner
     @Mod.EventHandler
     public static void init(FMLInitializationEvent event)
     {
-
+        FMLCommonHandler.instance().bus().register(MapScanner.instance);
+        MinecraftForge.EVENT_BUS.register(MapScanner.instance);
     }
  
     @Mod.EventHandler

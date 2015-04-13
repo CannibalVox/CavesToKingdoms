@@ -1,67 +1,72 @@
 package talonos.biomescanner.tileentity;
 
 import java.util.Random;
+
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import talonos.biomescanner.map.BiomeMapColors;
+import talonos.biomescanner.map.MapScanner;
+import talonos.biomescanner.map.event.UpdateMapEvent;
 
 public class TileEntityIslandMapper extends TileEntity
 {
-	public static final int blockWidth = 176;
-	public static final int blockHeight = 180;
-	
-	private byte[] mapData = new byte[176*180];
-	
-	public TileEntityIslandMapper()
-	{
-		super();
-		
-		Random r = new Random();
-		r.nextBytes(mapData);
-	}
+    private int mapX;
+    private int mapY;
+    private boolean isRenderDirty = true;
 
-    public void initColors() {
-        for (int b = 0; b < this.mapData.length; b++)
-        {
-            int usByte = 0 | this.mapData[b];
-            if (usByte < 64 || (usByte >= 128 && usByte < 192))
-            {
-                // Darken the map spot.
-                this.mapData[b] = (byte) (usByte + 64);
-            }
-        }
+    public boolean isRenderDirty() { return isRenderDirty; }
+    public void setRenderDirty(boolean renderDirty) { isRenderDirty = renderDirty; }
+
+    public int getMapX() { return mapX; }
+    public int getMapY() { return mapY; }
+    public void setMapCoords(int x, int y) {
+        this.mapX = x;
+        this.mapY = y;
     }
 
-    public int getColor(int x, int y) {
-        byte b0 = this.mapData[(y*blockWidth)+x];
-        int b = b0 & 0xFF;
-        return BiomeMapColors.colors[b];
+    public TileEntityIslandMapper() {
+        super();
+        MapScanner.instance.bus().register(this);
     }
 
-    public void setColor(int x, int y, byte color) {
-        this.mapData[x + this.blockWidth * y] = color;
-    }
-
-	
     @Override
-    public void writeToNBT(NBTTagCompound par1)
-    {
-    	super.writeToNBT(par1);
-    	par1.setByteArray("mapData", mapData);
+    public void onChunkUnload() {
+        super.onChunkUnload();
+        MapScanner.instance.bus().unregister(this);
+    }
+
+    @SubscribeEvent
+    public void onMapUpdated(UpdateMapEvent event) {
+        //If the updated area of the map intersects with our area of the map,
+        //it's time to update the dynamic texture
+        boolean shouldUpdate =
+                (Math.abs(mapX - event.getX()) * 2 < MapScanner.blockWidth + event.getWidth()) &&
+                (Math.abs(mapY - event.getY()) * 2 < MapScanner.blockHeight + event.getHeight());
+
+        if (shouldUpdate)
+            setRenderDirty(true);
     }
 
     @Override
     public void readFromNBT(NBTTagCompound par1)
     {
     	super.readFromNBT(par1);
-    	mapData = par1.getByteArray("mapData");
-    	if (mapData.length>(176*180))
-    	{
-    		mapData = new byte[176*180];
-    	}
+        mapX = par1.getInteger("mapX");
+        mapY = par1.getInteger("mapY");
+        setRenderDirty(true);
+
+    }
+
+    @Override
+    public void writeToNBT(NBTTagCompound par1)
+    {
+        super.writeToNBT(par1);
+        par1.setInteger("mapX", mapX);
+        par1.setInteger("mapY", mapY);
     }
     
     @Override

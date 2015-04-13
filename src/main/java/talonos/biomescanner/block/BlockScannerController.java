@@ -10,6 +10,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import talonos.biomescanner.BSStrings;
 import talonos.biomescanner.BiomeScanner;
+import talonos.biomescanner.map.MapScanner;
+import talonos.biomescanner.tileentity.TileEntityIslandMapper;
 import talonos.biomescanner.tileentity.TileEntityIslandScanner;
 
 public class BlockScannerController extends BSBlock implements ITileEntityProvider
@@ -46,4 +48,26 @@ public class BlockScannerController extends BSBlock implements ITileEntityProvid
 	{
 		return new TileEntityIslandScanner();
 	}
+
+    @Override
+    public int onBlockPlaced(World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int metadata) {
+        for (int iterX = 0; iterX <= 4; iterX++)
+        {
+            for (int iterY = 0; iterY <= 6; iterY++)
+            {
+                TileEntity hopefullyAMap = world.getTileEntity(x + iterX - 2, y + iterY, z + 7);
+
+                if (hopefullyAMap instanceof TileEntityIslandMapper)
+                {
+                    TileEntityIslandMapper map = (TileEntityIslandMapper) hopefullyAMap;
+
+                    map.setMapCoords(iterX* MapScanner.blockWidth, (5-iterY)*MapScanner.blockHeight);
+
+                    world.markBlockForUpdate(map.xCoord, map.yCoord, map.zCoord);
+                }
+            }
+        }
+
+        return metadata;
+    }
 }

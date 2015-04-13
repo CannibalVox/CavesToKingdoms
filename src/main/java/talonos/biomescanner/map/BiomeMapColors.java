@@ -160,7 +160,7 @@ public class BiomeMapColors
 	}
 
 	public static double FLASH_DIVISOR = 6;
-	public static void updateFlash(long worldTime) 
+	public static void updateFlash(long worldTime)
 	{
 		double sinish = (Math.sin((double)worldTime/FLASH_DIVISOR)+1.0)/2.0;
 		for (int x = 0; x < 54; x++)

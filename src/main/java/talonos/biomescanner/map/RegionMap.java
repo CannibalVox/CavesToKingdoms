@@ -1,9 +1,12 @@
 package talonos.biomescanner.map;
 
+import talonos.biomescanner.map.event.UpdateCompletionEvent;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RegionMap {
@@ -37,7 +40,7 @@ public class RegionMap {
         }
     }
 
-    public void incrementBlock(int x, int y, boolean isClean) {
+    public Zone incrementBlock(int x, int y, boolean isClean) {
         Zone zone = zoneMap[y/2][x/2];
         if (buildingBaseline) {
             increment(totalBlocksCount, zone);
@@ -47,6 +50,18 @@ public class RegionMap {
 
         if (isClean)
             increment(cleanBlocksCount, zone);
+
+        return zone;
+    }
+
+    public UpdateCompletionEvent getUpdateEvent(List<Zone> updatedZones) {
+        Map<Zone, Float> completion = new HashMap<Zone, Float>();
+
+        for (Zone zone : updatedZones) {
+            completion.put(zone, getZoneCompletion(zone));
+        }
+
+        return new UpdateCompletionEvent(completion, getCompletion());
     }
 
     public void wipeData() {
