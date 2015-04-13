@@ -1,5 +1,6 @@
 package talonos.biomescanner.map;
 
+import net.minecraft.nbt.NBTTagCompound;
 import talonos.biomescanner.map.event.UpdateCompletionEvent;
 
 import javax.imageio.ImageIO;
@@ -37,6 +38,42 @@ public class RegionMap {
             }
         } catch (IOException ex) {
             throw new RuntimeException(ex);
+        }
+    }
+
+    public void read(NBTTagCompound tag) {
+        NBTTagCompound totals = tag.getCompoundTag("TotalBlocks");
+        NBTTagCompound baseline = tag.getCompoundTag("BaselineBlocks");
+        NBTTagCompound clean = tag.getCompoundTag("CleanBlocks");
+        for (Zone zone : Zone.values()) {
+            String ordinal = Integer.toString(zone.ordinal());
+            if (totals.hasKey(ordinal))
+                totalBlocksCount.put(zone, totals.getInteger(ordinal));
+            if (baseline.hasKey(ordinal))
+                baselineCleanBlocksCount.put(zone, baseline.getInteger(ordinal));
+            if (clean.hasKey(ordinal))
+                cleanBlocksCount.put(zone, clean.getInteger(ordinal));
+        }
+        tag.setBoolean("BuildingBaseline", buildingBaseline);
+    }
+
+    public void write(NBTTagCompound tag) {
+        NBTTagCompound totals = new NBTTagCompound();
+        tag.setTag("TotalBlocks", totals);
+        NBTTagCompound baseline = new NBTTagCompound();
+        tag.setTag("BaselineBlocks", baseline);
+        NBTTagCompound clean = new NBTTagCompound();
+        tag.setTag("CleanBlocks", clean);
+        tag.setBoolean("BuildingBaseline", buildingBaseline);
+
+        for (Zone zone : Zone.values()) {
+            String ordinal = Integer.toString(zone.ordinal());
+            if (totalBlocksCount.containsKey(zone))
+                totals.setInteger(ordinal, totalBlocksCount.get(zone));
+            if (baselineCleanBlocksCount.containsKey(zone))
+                baseline.setInteger(ordinal, baselineCleanBlocksCount.get(zone));
+            if (cleanBlocksCount.containsKey(zone))
+                clean.setInteger(ordinal, cleanBlocksCount.get(zone));
         }
     }
 

@@ -105,6 +105,7 @@ public class MapScanner {
         for (int y = 0; y < 7*blockHeight; y++) {
             mapPixels[y] = dataTag.getByteArray(Integer.toString(y));
         }
+        regionMap.read(tag.getCompoundTag("RegionMap"));
     }
 
     private void writeNBT(NBTTagCompound tag) {
@@ -114,6 +115,9 @@ public class MapScanner {
         for (int y = 0; y < 7*blockHeight; y++) {
             dataTag.setByteArray(Integer.toString(y), mapPixels[y]);
         }
+        NBTTagCompound regionMapTag = new NBTTagCompound();
+        regionMap.write(regionMapTag);
+        tag.setTag("RegionMap", regionMapTag);
     }
 
     @SubscribeEvent
@@ -171,8 +175,6 @@ public class MapScanner {
 
                     int newx = (mapWidthChunks * 16) - x - 1;
 
-//                    Set<TileEntityIslandMapper> toUpdate = new HashSet<TileEntityIslandMapper>();
-
                     int xPix = (newx / 2);
                     int yPix = (z / 2);
                     setColor(xPix, yPix, (byte)color);
@@ -187,6 +189,8 @@ public class MapScanner {
             }
         }
 
+        bus().post(regionMap.getUpdateEvent(updatedZones));
+
         int minX = ((mapWidthChunks * 16) - (chunkX * 16) - 80 - 1) /2;
         int minY = (chunkZ * 16) / 2;
         bus().post(new UpdateMapEvent(minX, minY, 80, 16));
@@ -194,7 +198,6 @@ public class MapScanner {
         if (lastScannedChunk >= (22 * 135))
         {
             regionMap.updateData();
-            bus().post(regionMap.getUpdateEvent(updatedZones));
             lastScannedChunk = -1;
         }
     }
