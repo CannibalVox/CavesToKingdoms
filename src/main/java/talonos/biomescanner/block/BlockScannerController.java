@@ -1,5 +1,6 @@
 package talonos.biomescanner.block;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -14,6 +15,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import talonos.biomescanner.BSStrings;
 import talonos.biomescanner.BiomeScanner;
 import talonos.biomescanner.map.MapScanner;
+import talonos.biomescanner.tileentity.TileEntityGauge;
 import talonos.biomescanner.tileentity.TileEntityIslandMapper;
 import talonos.biomescanner.tileentity.TileEntityIslandScanner;
 
@@ -86,8 +88,19 @@ public class BlockScannerController extends BSBlock implements ITileEntityProvid
                 }
             }
             return true;
+        } else {
+            if (world.getTileEntity(x, y, z) != null && !player.isSneaking()) {
+                player.openGui(BiomeScanner.instance, 0, world, x, y, z);
+                return true;
+            }
         }
 
         return false;
+    }
+
+    @Override
+    public void breakBlock(World world, int x, int y, int z, Block block, int side) {
+        if (world.getTileEntity(x,y,z) != null)
+            ((TileEntityIslandScanner)world.getTileEntity(x,y,z)).unregister();
     }
 }

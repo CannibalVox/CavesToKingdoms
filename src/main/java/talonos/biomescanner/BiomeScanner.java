@@ -6,8 +6,10 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import talonos.biomescanner.block.BSBlock;
+import talonos.biomescanner.gui.GuiHandlerBadgePrinter;
 import talonos.biomescanner.map.BiomeMapColors;
 import talonos.biomescanner.map.MapScanner;
 
@@ -26,7 +28,8 @@ public class BiomeScanner
 	
 	@SidedProxy(clientSide = BiomeScanner.CLIENTPROXYLOCATION, serverSide = BiomeScanner.COMMONPROXYLOCATION)
 	public static CommonProxy proxy;
-	
+
+    @Mod.Instance(BiomeScanner.MODID)
 	public static BiomeScanner instance;
 	
 	@Mod.EventHandler
@@ -49,5 +52,6 @@ public class BiomeScanner
     {
         BiomeMapColors.initColors();
         proxy.registerRenderers();
+        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandlerBadgePrinter());
     }
 }
