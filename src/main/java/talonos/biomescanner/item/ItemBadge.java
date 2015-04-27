@@ -16,11 +16,13 @@ import java.util.List;
 public class ItemBadge extends Item {
     private IIcon[] zoneIcons = new IIcon[Zone.values().length * 3];
     private IIcon completionIcon;
+    private IIcon beginnerIcon;
 
     @SideOnly(Side.CLIENT)
     @Override
     public void registerIcons(IIconRegister iconRegister) {
         completionIcon = iconRegister.registerIcon("biomescanner:completionBadge");
+        beginnerIcon = iconRegister.registerIcon("biomescanner:beginnerBadge");
 
         for(Zone zone : Zone.values()) {
             zoneIcons[zone.ordinal()*3] = iconRegister.registerIcon("biomescanner:zoneBadge-"+zone.toString()+"-bronze");
@@ -34,16 +36,20 @@ public class ItemBadge extends Item {
     public IIcon getIconFromDamage(int damage) {
         if (damage < zoneIcons.length)
             return zoneIcons[damage];
-        else
+        else if (zoneIcons.length == damage)
             return completionIcon;
+        else
+            return beginnerIcon;
     }
 
     @Override
     public String getItemStackDisplayName(ItemStack stack)
     {
         int damage = stack.getItemDamage();
-        if (damage >= zoneIcons.length)
+        if (damage == zoneIcons.length)
             return StatCollector.translateToLocal("item.completionBadge.name");
+        if (damage > zoneIcons.length)
+            return StatCollector.translateToLocal("item.beginnerBadge.name");
 
         int medalType = damage % 3;
 
@@ -85,7 +91,12 @@ public class ItemBadge extends Item {
             return;
         }
 
-        addBadgeData("gui.completionInfo", "", info);
+        if (damage == zoneIcons.length) {
+            addBadgeData("gui.completionInfo", "", info);
+            return;
+        }
+
+        addBadgeData("gui.beginnerInfo", "", info);
     }
 
     @SideOnly(Side.CLIENT)
@@ -95,6 +106,7 @@ public class ItemBadge extends Item {
             list.add(new ItemStack(this, 1, i));
         }
         list.add(new ItemStack(this, 1, zoneIcons.length));
+        list.add(new ItemStack(this, 1, zoneIcons.length+1));
     }
 
     private void addBadgeData(String value, String zoneName, List info) {
