@@ -6,7 +6,6 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
-import talonos.biomescanner.tileentity.ContainerBadgePrinter;
 import talonos.biomescanner.tileentity.TileEntityIslandScanner;
 
 public class GuiBadgePrinter extends GuiContainer {
