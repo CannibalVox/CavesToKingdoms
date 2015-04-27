@@ -19,6 +19,7 @@ public class TileEntityGauge extends TileEntity {
     public TileEntityGauge() {
         super();
         register();
+        completion = MapScanner.instance.getRegionMap().getZoneCompletion(targetZone);
     }
 
     public Zone getTargetZone() { return targetZone; }
@@ -93,10 +94,9 @@ public class TileEntityGauge extends TileEntity {
     public void readFromNBT(NBTTagCompound par1)
     {
         super.readFromNBT(par1);
-        completion = par1.getFloat("Completion");
         int ordinal = par1.getInteger("Zone");
         targetZone = Zone.values()[ordinal];
-
+        completion = MapScanner.instance.getRegionMap().getZoneCompletion(targetZone);
     }
 
     @Override
@@ -104,7 +104,6 @@ public class TileEntityGauge extends TileEntity {
     {
         super.writeToNBT(par1);
         par1.setInteger("Zone", targetZone.ordinal());
-        par1.setFloat("Completion", completion);
     }
 
     @Override
