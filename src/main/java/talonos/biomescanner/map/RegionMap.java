@@ -45,6 +45,7 @@ public class RegionMap {
         NBTTagCompound totals = tag.getCompoundTag("TotalBlocks");
         NBTTagCompound baseline = tag.getCompoundTag("BaselineBlocks");
         NBTTagCompound clean = tag.getCompoundTag("CleanBlocks");
+        buildingBaseline = tag.getBoolean("BuildingBaseline");
         for (Zone zone : Zone.values()) {
             String ordinal = Integer.toString(zone.ordinal());
             if (totals.hasKey(ordinal))
@@ -54,7 +55,6 @@ public class RegionMap {
             if (clean.hasKey(ordinal))
                 cleanBlocksCount.put(zone, clean.getInteger(ordinal));
         }
-        tag.setBoolean("BuildingBaseline", buildingBaseline);
     }
 
     public void write(NBTTagCompound tag) {
