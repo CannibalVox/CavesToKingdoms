@@ -41,6 +41,13 @@ public class RegionMap {
         }
     }
 
+    public void resetBaseline() {
+        totalBlocksCount.clear();
+        cleanBlocksCount.clear();
+        baselineCleanBlocksCount.clear();
+        buildingBaseline = true;
+    }
+
     public void read(NBTTagCompound tag) {
         NBTTagCompound totals = tag.getCompoundTag("TotalBlocks");
         NBTTagCompound baseline = tag.getCompoundTag("BaselineBlocks");

@@ -54,3 +54,4 @@ gui.goldInfo2=habitable.
 gui.beginnerInfo0=Certifies mastery with the Jaded's
 gui.beginnerInfo1=Two-In-One Biological Anomoly Scanner
 gui.beginnerInfo2=And Incentive Award Fabricator
+command.resetBaseline.success=The data for the baseline level of taint has been wiped and a map scan has been force-started.  This scan MUST be allowed to complete normally to calculate the baseline taint!
