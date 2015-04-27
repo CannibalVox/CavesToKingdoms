@@ -31,6 +31,7 @@ public class BlockScannerController extends BSBlock implements ITileEntityProvid
 	}
 	      
 	@SideOnly(Side.CLIENT)
+    @Override
 	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
 		this.blockIcon = par1IconRegister.registerIcon(BiomeScanner.MODID + ":" + BSStrings.bedrockBrickName);

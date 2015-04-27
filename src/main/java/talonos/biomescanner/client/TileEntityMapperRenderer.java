@@ -32,6 +32,7 @@ public class TileEntityMapperRenderer extends TileEntitySpecialRenderer
         }
     }
 
+    @Override
     public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float par8)
     {
     	TileEntityIslandMapper mapper = (TileEntityIslandMapper)entity;

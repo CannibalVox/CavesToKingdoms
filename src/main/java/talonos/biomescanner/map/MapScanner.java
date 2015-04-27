@@ -53,6 +53,8 @@ public class MapScanner {
         bus().post(new UpdateMapEvent(0,5*blockWidth,0,7*blockHeight));
     }
 
+    public RegionMap getRegionMap() { return regionMap; }
+
     @SubscribeEvent
     public void onWorldLoad(WorldEvent.Load event) {
         if (event.world.provider.dimensionId == 0 && !event.world.isRemote) {
