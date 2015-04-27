@@ -18,8 +18,8 @@ buildscript {
 apply plugin: 'forge'
 
 version = "1.0"
-group= "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "modid"
+group= "talonos" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "cavestokingdoms"
 
 repositories {
     ivy {
@@ -29,6 +29,10 @@ repositories {
     maven {
         name 'DVS1 Maven FS'
         url 'http://dvs1.progwml6.com/files/maven'
+    }
+    maven {
+        name 'Chicken Bones'
+        url 'http://chickenbones.net/maven'
     }
 }
 
@@ -41,7 +45,7 @@ dependencies {
     compile 'Azanor:Thaumcraft:4.2.3.5:deobf@jar'
     compile 'Azanor:Baubles:1.0.1.10:deobf@jar'
     compile "mantle:Mantle:1.7.10-0.3.2.jenkins187:deobf"
-    compile "tconstruct:TConstruct:1.7.10-1.7.0.build734:deobf"
+    compile "tconstruct:TConstruct:1.7.10-1.8.3.build926:deobf"
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"
@@ -59,10 +63,6 @@ dependencies {
 
 processResources
 {
-    // this will ensure that this task is redone when the versions change.
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
-
     // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
@@ -74,5 +74,14 @@ processResources
     // copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
+    }
+}
+
+afterEvaluate {
+    allprojects { project ->
+        if (project.plugins.hasPlugin("idea"))
+        {
+            idea { module { inheritOutputDirs = true } }
+        }
     }
 }
