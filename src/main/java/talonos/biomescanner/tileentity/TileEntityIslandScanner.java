@@ -7,6 +7,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import talonos.biomescanner.BSItems;
 import talonos.biomescanner.map.MapScanner;
@@ -18,6 +22,7 @@ import talonos.blightbuster.ItemSuperTestWorldTainter;
 public class TileEntityIslandScanner extends TileEntity implements ISidedInventory
 {
     private ItemStack[] tempInventory;
+    private boolean hasScanned = false;
 
     private int[] noSlots = new int[] {};
     private int[] allSlots;
@@ -37,6 +42,13 @@ public class TileEntityIslandScanner extends TileEntity implements ISidedInvento
         for (Zone zone : Zone.values()) {
             updateZoneCompletion(zone.ordinal(), MapScanner.instance.getRegionMap().getZoneCompletion(zone));
         }
+        updateSlot(Zone.values().length*3+1, hasScanned);
+    }
+
+    public void scanOrdered() {
+        hasScanned = true;
+        markDirty();
+        updateSlot(Zone.values().length*3+1, true);
     }
 
     @Override
@@ -160,5 +172,43 @@ public class TileEntityIslandScanner extends TileEntity implements ISidedInvento
             else
                 tempInventory[slot] = null;
         }
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound par1)
+    {
+        super.readFromNBT(par1);
+        hasScanned = par1.getBoolean("HasScanned");
+        updateSlot(Zone.values().length+1, hasScanned);
+
+    }
+
+    @Override
+    public void writeToNBT(NBTTagCompound par1)
+    {
+        super.writeToNBT(par1);
+        par1.setBoolean("HasScanned", hasScanned);
+    }
+
+    @Override
+    public Packet getDescriptionPacket()
+    {
+        NBTTagCompound tag = new NBTTagCompound();
+        writeToNBT(tag);
+        return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 1, tag);
+    }
+
+    /**
+     * Called when you receive a TileEntityData packet for the location this
+     * TileEntity is currently in. On the client, the NetworkManager will always
+     * be the remote server. On the server, it will be whomever is responsible for
+     * sending the packet.
+     *
+     * @param net The NetworkManager the packet originated from
+     * @param pkt The data packet
+     */
+    public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
+    {
+        readFromNBT(pkt.func_148857_g());
     }
 }

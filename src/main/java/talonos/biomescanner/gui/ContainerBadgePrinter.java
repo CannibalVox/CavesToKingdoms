@@ -23,7 +23,8 @@ public class ContainerBadgePrinter extends Container {
             }
         }
 
-        this.addSlotToContainer(new BadgeSlot(scanner, 72, 8, 149));
+        this.addSlotToContainer(new BadgeSlot(scanner, 73, 8, 149));
+        this.addSlotToContainer(new BadgeSlot(scanner, 72, 8, 176));
 
         for (int j = 0; j < 3; ++j)
         {
@@ -54,7 +55,7 @@ public class ContainerBadgePrinter extends Container {
         if (slotIndex < tileEntity.getSizeInventory()) {
             ItemStack currentStack = slot.getStack();
 
-            if (!this.mergeItemStack(currentStack, tileEntity.getSizeInventory()-1, 35+tileEntity.getSizeInventory(), true))
+            if (!this.mergeItemStack(currentStack, tileEntity.getSizeInventory(), 36+tileEntity.getSizeInventory(), true))
                 return null;
 
             slot.putStack(new ItemStack(BSItems.badge, 1, slotIndex));

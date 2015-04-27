@@ -85,6 +85,9 @@ public class BlockScannerController extends BSBlock implements ITileEntityProvid
                     player.addChatComponentMessage(new ChatComponentTranslation("scanner.gui.alreadyactive"));
                 } else {
                     MapScanner.instance.activate();
+                    TileEntityIslandScanner scanner = ((TileEntityIslandScanner)world.getTileEntity(x,y,z));
+                    if (scanner != null)
+                        scanner.scanOrdered();
                 }
             }
             return true;
