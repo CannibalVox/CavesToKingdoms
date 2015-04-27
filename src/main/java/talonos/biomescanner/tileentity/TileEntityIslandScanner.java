@@ -136,14 +136,12 @@ public class TileEntityIslandScanner extends TileEntity implements ISidedInvento
     }
 
     private void updateTotalCompletion(float completion) {
-        completion = 1.0f;
         boolean complete = completion >= 0.9999f;
 
         updateSlot(Zone.values().length * 3, complete);
     }
 
     private void updateZoneCompletion(int zoneOrdinal, float completion) {
-        completion = 1.0f;
         boolean bronzeCompletion = completion >= 0.1999f;
         boolean silverCompletion = completion >= 0.4999f;
         boolean goldCompletion = completion >= 0.9999f;
