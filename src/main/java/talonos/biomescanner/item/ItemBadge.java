@@ -3,6 +3,7 @@ package talonos.biomescanner.item;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -85,6 +86,15 @@ public class ItemBadge extends Item {
         }
 
         addBadgeData("gui.completionInfo", "", info);
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void getSubItems(Item item, CreativeTabs tab, List list) {
+        for (int i = 0; i < zoneIcons.length; i++) {
+            list.add(new ItemStack(this, 1, i));
+        }
+        list.add(new ItemStack(this, 1, zoneIcons.length));
     }
 
     private void addBadgeData(String value, String zoneName, List info) {

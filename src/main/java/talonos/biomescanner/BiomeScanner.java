@@ -7,6 +7,11 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import talonos.biomescanner.block.BSBlock;
 import talonos.biomescanner.gui.GuiHandlerBadgePrinter;
@@ -23,8 +28,16 @@ public class BiomeScanner
     public static final String DEPS = "before:UndergroundBiomes;after:ThermalFoundation;after:appliedenergistics2;after:Thaumcraft";
 	public static final String COMMONPROXYLOCATION = "talonos."+MODID+".CommonProxy";
 	public static final String CLIENTPROXYLOCATION = "talonos."+MODID+".ClientProxy";
-	
-	
+
+    public static final CreativeTabs badgesTab = new CreativeTabs("badges")
+    {
+        private static final String __OBFID = "CL_00000011";
+        @SideOnly(Side.CLIENT)
+        public Item getTabIconItem()
+        {
+            return BSItems.badge;
+        }
+    };
 	
 	@SidedProxy(clientSide = BiomeScanner.CLIENTPROXYLOCATION, serverSide = BiomeScanner.COMMONPROXYLOCATION)
 	public static CommonProxy proxy;
@@ -38,6 +51,8 @@ public class BiomeScanner
 		BSBlock.init();
 		BSItems.init();
 		proxy.registerTileEntities();
+
+
     }
  
     @Mod.EventHandler

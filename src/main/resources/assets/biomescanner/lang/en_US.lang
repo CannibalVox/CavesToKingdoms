@@ -10,6 +10,7 @@ item.completionBadge.name=Colony Purification Badge
 item.zoneBronze.name=Bronze {0} Badge
 item.zoneSilver.name=Silver {0} Badge
 item.zoneGold.name=Gold {0} Badge
+itemGroup.badges=Colony Badges
 scanner.gui.alreadyactive=A scan is already in progress!
 scanner.gui.changetarget=Changed zone to %s!
 zone.swampbay=Swamp Bay
