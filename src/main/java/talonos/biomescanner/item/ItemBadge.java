@@ -33,6 +33,13 @@ public class ItemBadge extends Item {
 
     @SideOnly(Side.CLIENT)
     @Override
+    public boolean hasEffect(ItemStack stack, int pass) {
+        //The total completion badge should have one of them fancy enchantment effects on it to show how fancy it is
+        return pass == 0 && zoneIcons.length == stack.getItemDamage();
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
     public IIcon getIconFromDamage(int damage) {
         if (damage < zoneIcons.length)
             return zoneIcons[damage];
