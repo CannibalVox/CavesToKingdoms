@@ -7,6 +7,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -21,6 +22,12 @@ import talonos.biomescanner.tileentity.TileEntityIslandScanner;
 
 public class BlockScannerController extends BSBlock implements ITileEntityProvider
 {
+    private IIcon back;
+    private IIcon front;
+    private IIcon top;
+    private IIcon bottom;
+    private IIcon sides;
+
 	public BlockScannerController() 
 	{
 		this.setBlockName(BiomeScanner.MODID+"_"+ BSStrings.blockScannerControllerName);
@@ -29,6 +36,7 @@ public class BlockScannerController extends BSBlock implements ITileEntityProvid
 		this.setStepSound(soundTypePiston);
 		this.disableStats();
 		this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setLightLevel(0.16f);
 		GameRegistry.registerBlock(this, this.getUnlocalizedName());
 	}
 	      
@@ -36,8 +44,29 @@ public class BlockScannerController extends BSBlock implements ITileEntityProvid
     @Override
 	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
-		this.blockIcon = par1IconRegister.registerIcon(BiomeScanner.MODID + ":" + BSStrings.bedrockBrickName);
+        back = par1IconRegister.registerIcon("biomescanner:controller-back");
+        front = par1IconRegister.registerIcon("biomescanner:controller-front");
+        sides = par1IconRegister.registerIcon("biomescanner:controller-sides");
+        bottom = par1IconRegister.registerIcon("biomescanner:controller-bottom");
+        top = par1IconRegister.registerIcon("biomescanner:controller-top");
+        this.blockIcon = top;
 	}
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public IIcon getIcon(int side, int meta)
+    {
+        if (side == 0)
+            return bottom;
+        else if (side == 1)
+            return top;
+        else if (side == 2)
+            return front;
+        else if (side == 3)
+            return back;
+        else
+            return sides;
+    }
 	
     /**
      * Is this block (a) opaque and (b) a full 1m cube?  This determines whether or not to render the shared face of two
