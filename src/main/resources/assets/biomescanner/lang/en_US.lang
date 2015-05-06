@@ -6,6 +6,7 @@ tile.biomescanner_gaugeBlock1.name=Biome Purification Gauge (Middle)
 tile.biomescanner_gaugeBlock2.name=Biome Purification Gauge (Top)
 tile.biomescanner_gaugeBlock3.name=Biome Purification Display (Left)
 tile.biomescanner_gaugeBlock4.name=Biome Purification Gauge (Right)
+tile.biomescanner_scannerGaugeBlock.name=Biome Purification Gauge
 item.completionBadge.name=Colony Purification Badge
 item.beginnerBadge.name=Scanner Merit Badge
 item.zoneBronze.name=Bronze {0} Badge

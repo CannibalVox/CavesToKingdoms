@@ -46,6 +46,7 @@ public class TileEntityGauge extends TileEntity {
             targetZone = Zone.values()[newOrdinal];
 
             updateZone(MapScanner.instance.getRegionMap().getZoneCompletion(targetZone));
+            worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
             markDirty();
         }
     }

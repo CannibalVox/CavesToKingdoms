@@ -38,7 +38,6 @@ public class BlockScannerGauge extends BSBlock implements ITileEntityProvider {
                 TileEntityGauge gauge = (TileEntityGauge) world.getTileEntity(x, y, z);
                 if (gauge != null) {
                     gauge.cycleZone();
-                    player.addChatComponentMessage(new ChatComponentTranslation("scanner.gui.changetarget", StatCollector.translateToLocal(gauge.getTargetZone().getDisplay())));
                 }
             }
             return true;
