@@ -46,6 +46,7 @@ dependencies {
     compile 'Azanor:Baubles:1.0.1.10:deobf@jar'
     compile "mantle:Mantle:1.7.10-0.3.2.jenkins187:deobf"
     compile "tconstruct:TConstruct:1.7.10-1.8.3.build926:deobf"
+    compile "boni:IguanaTinkerTweaks:1.7.10-2.1.3.131:deobf"
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"

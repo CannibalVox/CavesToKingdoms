@@ -1,6 +1,7 @@
 package talonos.cavestokingdoms.client.pages;
 
 //import iguanaman.iguanatweakstconstruct.override.XPAdjustmentMap;
+import iguanaman.iguanatweakstconstruct.override.XPAdjustmentMap;
 import mantle.client.pages.BookPage;
 import mantle.lib.client.MantleClientRegistry;
 import net.minecraft.block.Block;
@@ -18,8 +19,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.PatternBuilder;
 import tconstruct.library.tools.ToolMaterial;
-import tconstruct.library.util.HarvestLevels;
-//import iguanaman.iguanatweakstconstruct.util.HarvestLevels;
+import iguanaman.iguanatweakstconstruct.util.HarvestLevels;
 
 public class ExtMaterialsPage extends BookPage
 {
@@ -125,7 +125,7 @@ public class ExtMaterialsPage extends BookPage
         if (material == null)
         {
         	System.err.println("Warning! "+title+" could not be found as a material!");
-        	//material = TConstructRegistry.getMaterial("Stone");
+        	material = TConstructRegistry.getMaterial("Stone");
         }
         
     }
@@ -194,7 +194,7 @@ public class ExtMaterialsPage extends BookPage
         	{
         		manual.fonts.drawString(baseAttack + ": " + material.attack() / 2f + heart, localWidth, localHeight + 100, 0);
         	}
-        	//manual.fonts.drawString(xpRequired + ": " + (XPAdjustmentMap.get(material.materialName) * 100f)+"% "+normal, localWidth, localHeight + 110, 0);
+        	manual.fonts.drawString(xpRequired + ": " + (XPAdjustmentMap.get(material.materialName) * 100f)+"% "+normal, localWidth, localHeight + 110, 0);
 
 
         	//Here starts a list of attributes.
