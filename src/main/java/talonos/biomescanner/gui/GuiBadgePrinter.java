@@ -1,11 +1,13 @@
 package talonos.biomescanner.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
+import talonos.biomescanner.BSItems;
 import talonos.biomescanner.tileentity.TileEntityIslandScanner;
 
 public class GuiBadgePrinter extends GuiContainer {
@@ -42,5 +44,15 @@ public class GuiBadgePrinter extends GuiContainer {
         int l = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(k, l, 0, 0, this.xSize, 6 * 18 + 17);
         this.drawTexturedModalRect(k, l + 6 * 18 + 17, 0, 126, this.xSize, 96);
+        this.mc.getTextureManager().bindTexture(TextureMap.locationItemsTexture);
+
+        for (int badgeY = 0; badgeY < 6; badgeY++) {
+            for (int badgeX = 0; badgeX < 12; badgeX++) {
+                this.drawTexturedModelRectFromIcon(k+8 + (badgeX*18), l+18 + (badgeY*18), BSItems.badge.getZoneSilhouette(), 16, 16);
+            }
+        }
+
+        this.drawTexturedModelRectFromIcon(k+8, l+149, BSItems.badge.getBeginnerSilhouette(), 16, 16);
+        this.drawTexturedModelRectFromIcon(k+8, l+176, BSItems.badge.getCompletionSilhouette(), 16, 16);
     }
 }

@@ -7,9 +7,9 @@ import talonos.biomescanner.item.ItemBadge;
 public class BSItems {
 
     public static void init() {
-        badge = new ItemBadge().setMaxStackSize(1).setCreativeTab(BiomeScanner.badgesTab);
+        badge = (ItemBadge)new ItemBadge().setMaxStackSize(1).setCreativeTab(BiomeScanner.badgesTab);
         GameRegistry.registerItem(badge, "biomescanner:badge");
     }
 
-    public static Item badge;
+    public static ItemBadge badge;
 }

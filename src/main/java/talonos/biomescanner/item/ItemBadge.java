@@ -18,11 +18,18 @@ public class ItemBadge extends Item {
     private IIcon completionIcon;
     private IIcon beginnerIcon;
 
+    private IIcon zoneSilhouette;
+    private IIcon beginnerSilhouette;
+    private IIcon completionSilhouette;
+
     @SideOnly(Side.CLIENT)
     @Override
     public void registerIcons(IIconRegister iconRegister) {
         completionIcon = iconRegister.registerIcon("biomescanner:completionBadge");
         beginnerIcon = iconRegister.registerIcon("biomescanner:beginnerBadge");
+        zoneSilhouette = iconRegister.registerIcon("biomescanner:zoneBadgeSilhouette");
+        beginnerSilhouette = iconRegister.registerIcon("biomescanner:beginnerSilhouette");
+        completionSilhouette = iconRegister.registerIcon("biomescanner:completionSilhouette");
 
         for(Zone zone : Zone.values()) {
             zoneIcons[zone.ordinal()*3] = iconRegister.registerIcon("biomescanner:zoneBadge-"+zone.toString()+"-bronze");
@@ -30,6 +37,10 @@ public class ItemBadge extends Item {
             zoneIcons[zone.ordinal()*3 + 2] = iconRegister.registerIcon("biomescanner:zoneBadge-"+zone.toString()+"-gold");
         }
     }
+
+    public IIcon getZoneSilhouette() { return zoneSilhouette; }
+    public IIcon getCompletionSilhouette() { return completionSilhouette; }
+    public IIcon getBeginnerSilhouette() { return beginnerSilhouette; }
 
     @SideOnly(Side.CLIENT)
     @Override
