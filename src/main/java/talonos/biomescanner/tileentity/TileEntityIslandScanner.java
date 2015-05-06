@@ -179,7 +179,7 @@ public class TileEntityIslandScanner extends TileEntity implements ISidedInvento
     {
         super.readFromNBT(par1);
         hasScanned = par1.getBoolean("HasScanned");
-        updateSlot(Zone.values().length+1, hasScanned);
+        updateSlot((Zone.values().length*3)+1, hasScanned);
 
     }
 
