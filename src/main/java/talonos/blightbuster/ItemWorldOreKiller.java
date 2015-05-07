@@ -208,6 +208,7 @@ public class ItemWorldOreKiller extends Item
 					listOfOres.add(GameRegistry.findBlock("UndergroundBiomes", "igneous_metal.block.base.ore"));
 					listOfOres.add(GameRegistry.findBlock("UndergroundBiomes", "metamorphic_metal.block.base.ore"));
 					listOfOres.add(GameRegistry.findBlock("UndergroundBiomes", "sedimentary_metal.block.base.ore"));
+					listOfOres.add(GameRegistry.findBlock("TConstruct", "BattleSignBlock"));
 			}
 			
 			for (int xLoc = x-64; xLoc<x+80; xLoc++)
@@ -237,6 +238,8 @@ public class ItemWorldOreKiller extends Item
 						}
 						if (listOfOres.contains(theWorld.getBlock(xLoc, yLoc, zLoc)))
 						{
+							if (theWorld.getTileEntity(xLoc, yLoc, zLoc) != null)
+								theWorld.removeTileEntity(xLoc, yLoc, zLoc);
 							theWorld.setBlock(xLoc, yLoc, zLoc, s.stone(yLoc).block, s.stone(yLoc).metadata, 2);
 						}
 					}
