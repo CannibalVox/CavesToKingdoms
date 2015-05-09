@@ -16,6 +16,10 @@ public class UpdateMapPacket extends BiomeScannerPacketBase {
 
     private byte[] updateData;
 
+    public UpdateMapPacket() {
+
+    }
+
     public UpdateMapPacket(int mapX, int mapY, int width, int height, byte[] data) {
         this.mapX = mapX;
         this.mapY = mapY;

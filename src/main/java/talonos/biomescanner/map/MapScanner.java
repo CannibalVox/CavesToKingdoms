@@ -50,7 +50,7 @@ public class MapScanner {
                     this.mapPixels[y][x] = (byte)(usByte + 64);
             }
         }
-        bus().post(new UpdateMapEvent(0,5*blockWidth,0,7*blockHeight));
+        bus().post(new UpdateMapEvent(0,0,5*blockWidth,7*blockHeight));
     }
 
     public RegionMap getRegionMap() { return regionMap; }
@@ -193,9 +193,9 @@ public class MapScanner {
 
         bus().post(regionMap.getUpdateEvent(updatedZones));
 
-        int minX = ((mapWidthChunks * 16) - (chunkX * 16) - 80 - 1) /2;
-        int minY = (chunkZ * 16) / 2;
-        bus().post(new UpdateMapEvent(minX, minY, 80, 16));
+        int minX = ((mapWidthChunks * 8) - (chunkX * 8) - 40);
+        int minY = chunkZ * 8;
+        bus().post(new UpdateMapEvent(minX, minY, 40, 8));
         lastScannedChunk++;
         if (lastScannedChunk >= (22 * 135))
         {

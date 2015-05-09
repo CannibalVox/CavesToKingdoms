@@ -19,6 +19,7 @@ import talonos.biomescanner.command.ResetBaselineCommand;
 import talonos.biomescanner.gui.GuiHandlerBadgePrinter;
 import talonos.biomescanner.map.BiomeMapColors;
 import talonos.biomescanner.map.MapScanner;
+import talonos.biomescanner.network.BiomeScannerNetwork;
 
 @Mod(modid = BiomeScanner.MODID, name = BiomeScanner.MODNAME, version = BiomeScanner.VERSION, dependencies = BiomeScanner.DEPS)
 public class BiomeScanner
@@ -68,6 +69,7 @@ public class BiomeScanner
         BiomeMapColors.initColors();
         proxy.registerRenderers();
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandlerBadgePrinter());
+        BiomeScannerNetwork.init();
     }
 
     @Mod.EventHandler
