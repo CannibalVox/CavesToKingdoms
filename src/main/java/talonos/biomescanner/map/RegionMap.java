@@ -49,24 +49,40 @@ public class RegionMap {
         buildingBaseline = true;
     }
 
-    public void read(NBTTagCompound tag) {
+    public boolean read(NBTTagCompound tag) {
         NBTTagCompound totals = tag.getCompoundTag("TotalBlocks");
         NBTTagCompound baseline = tag.getCompoundTag("BaselineBlocks");
         NBTTagCompound clean = tag.getCompoundTag("CleanBlocks");
         buildingBaseline = tag.getBoolean("BuildingBaseline");
+
+        boolean forceRescan = false;
         for (Zone zone : Zone.values()) {
             String ordinal = Integer.toString(zone.ordinal());
             if (totals.hasKey(ordinal))
                 totalBlocksCount.put(zone, totals.getInteger(ordinal));
 
-            if (BiomeScanner.zoneBaselines[zone.ordinal()] != null)
+            if (BiomeScanner.zoneBaselines[zone.ordinal()] != null) {
+                int configBaseline = BiomeScanner.zoneBaselines[zone.ordinal()];
+                int mapBaseline = baseline.getInteger(ordinal);
+
+                if (configBaseline != mapBaseline)
+                    forceRescan = true;
+
                 baselineCleanBlocksCount.put(zone, BiomeScanner.zoneBaselines[zone.ordinal()]);
-            else if (baseline.hasKey(ordinal))
+            } else if (baseline.hasKey(ordinal))
                 baselineCleanBlocksCount.put(zone, baseline.getInteger(ordinal));
 
             if (clean.hasKey(ordinal))
                 cleanBlocksCount.put(zone, clean.getInteger(ordinal));
         }
+
+        if (forceRescan) {
+            for (Zone zone : cleanBlocksCount.keySet()) {
+                cleanBlocksCount.put(zone, 0);
+            }
+        }
+
+        return forceRescan;
     }
 
     public void write(NBTTagCompound tag) {

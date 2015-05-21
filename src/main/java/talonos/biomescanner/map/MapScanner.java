@@ -108,7 +108,9 @@ public class MapScanner {
         for (int y = 0; y < 7*blockHeight; y++) {
             mapPixels[y] = dataTag.getByteArray(Integer.toString(y));
         }
-        regionMap.read(tag.getCompoundTag("RegionMap"));
+
+        if (regionMap.read(tag.getCompoundTag("RegionMap")))
+            lastScannedChunk = 0;
     }
 
     private void writeNBT(NBTTagCompound tag) {
