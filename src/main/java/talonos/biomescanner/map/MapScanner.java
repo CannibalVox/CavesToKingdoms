@@ -170,9 +170,9 @@ public class MapScanner {
                     if (getTaintAt(x, z, worldObj))
                     {
                         color += 128;
-                        updatedZones.add(regionMap.incrementBlock(x,z,true));
-                    } else {
                         updatedZones.add(regionMap.incrementBlock(x,z,false));
+                    } else {
+                        updatedZones.add(regionMap.incrementBlock(x,z,true));
                     }
 
                     int newx = (mapWidthChunks * 16) - x - 1;
