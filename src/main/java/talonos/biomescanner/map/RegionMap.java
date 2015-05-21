@@ -1,6 +1,7 @@
 package talonos.biomescanner.map;
 
 import net.minecraft.nbt.NBTTagCompound;
+import talonos.biomescanner.BiomeScanner;
 import talonos.biomescanner.map.event.UpdateCompletionEvent;
 
 import javax.imageio.ImageIO;
@@ -57,8 +58,12 @@ public class RegionMap {
             String ordinal = Integer.toString(zone.ordinal());
             if (totals.hasKey(ordinal))
                 totalBlocksCount.put(zone, totals.getInteger(ordinal));
-            if (baseline.hasKey(ordinal))
+
+            if (BiomeScanner.zoneBaselines[zone.ordinal()] != null)
+                baselineCleanBlocksCount.put(zone, BiomeScanner.zoneBaselines[zone.ordinal()]);
+            else if (baseline.hasKey(ordinal))
                 baselineCleanBlocksCount.put(zone, baseline.getInteger(ordinal));
+
             if (clean.hasKey(ordinal))
                 cleanBlocksCount.put(zone, clean.getInteger(ordinal));
         }

@@ -13,13 +13,21 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.nbt.CompressedStreamTools;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
 import talonos.biomescanner.block.BSBlock;
 import talonos.biomescanner.command.ResetBaselineCommand;
 import talonos.biomescanner.gui.GuiHandlerBadgePrinter;
 import talonos.biomescanner.map.BiomeMapColors;
 import talonos.biomescanner.map.MapScanner;
+import talonos.biomescanner.map.Zone;
 import talonos.biomescanner.network.BiomeScannerNetwork;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 @Mod(modid = BiomeScanner.MODID, name = BiomeScanner.MODNAME, version = BiomeScanner.VERSION, dependencies = BiomeScanner.DEPS)
 public class BiomeScanner
@@ -47,13 +55,49 @@ public class BiomeScanner
 
     @Mod.Instance(BiomeScanner.MODID)
 	public static BiomeScanner instance;
-	
+
+    public static Integer[] zoneBaselines = new Integer[Zone.values().length];
+
 	@Mod.EventHandler
     public static void preInit(FMLPreInitializationEvent event)
     {
 		BSBlock.init();
 		BSItems.init();
 		proxy.registerTileEntities();
+
+        File configFile = event.getSuggestedConfigurationFile();
+        Configuration config = new Configuration(configFile);
+
+        boolean useBaselineFile = config.get(Configuration.CATEGORY_GENERAL, "useBaselineFile", false).getBoolean();
+        String baselineFileName = config.get(Configuration.CATEGORY_GENERAL, "baselineFileName", "baseline.dat").getString();
+        config.save();
+
+        for (int i = 0; i < zoneBaselines.length; i++)
+            zoneBaselines[i] = null;
+
+        if (useBaselineFile) {
+            File baselineFile = new File(configFile.getParent(), baselineFileName);
+            if (baselineFile.exists()) {
+                try {
+                    NBTTagCompound loadedData = CompressedStreamTools.readCompressed(new FileInputStream(baselineFile));
+                    loadBaselineData(loadedData);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private static void loadBaselineData(NBTTagCompound loadedData) {
+        NBTTagCompound regionMap = loadedData.getCompoundTag("RegionMap");
+        NBTTagCompound baseline = regionMap.getCompoundTag("BaselineBlocks");
+
+        for (int i = 0; i < zoneBaselines.length; i++) {
+            if (baseline.hasKey(Integer.toString(i)))
+                zoneBaselines[i] = baseline.getInteger(Integer.toString(i));
+            else
+                zoneBaselines[i] = null;
+        }
     }
  
     @Mod.EventHandler

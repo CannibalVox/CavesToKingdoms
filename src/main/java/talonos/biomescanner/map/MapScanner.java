@@ -59,6 +59,7 @@ public class MapScanner {
     public void onWorldLoad(WorldEvent.Load event) {
         if (event.world.provider.dimensionId == 0 && !event.world.isRemote) {
             loadData(new File(event.world.getSaveHandler().getWorldDirectory(), "scanner.dat"));
+            bus().post(regionMap.getUpdateEvent(Arrays.asList(Zone.values())));
         }
     }
 
