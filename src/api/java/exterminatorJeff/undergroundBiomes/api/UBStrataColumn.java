@@ -1,13 +1,12 @@
 package exterminatorJeff.undergroundBiomes.api;
 
-/**
- *
- * @author Zeno410
- */
-public interface UBStrataColumn {
-    public BlockCodes stone(int heigth);
-    public BlockCodes cobblestone(int heigth);
-    public BlockCodes stone();
-    public BlockCodes cobblestone();
+public abstract interface UBStrataColumn
+{
+    public abstract BlockCodes stone(int paramInt);
 
+    public abstract BlockCodes cobblestone(int paramInt);
+
+    public abstract BlockCodes stone();
+
+    public abstract BlockCodes cobblestone();
 }

@@ -1,9 +1,6 @@
 package exterminatorJeff.undergroundBiomes.api;
 
-/**
- *
- * @author Zeno410
- */
-public interface UBDimensionalStrataColumnProvider {
-    public UBStrataColumnProvider ubStrataColumnProvider(int dimension);
+public abstract interface UBDimensionalStrataColumnProvider
+{
+    public abstract UBStrataColumnProvider ubStrataColumnProvider(int paramInt);
 }

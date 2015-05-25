@@ -1,21 +1,11 @@
 build
 .gradle
 eclipse
-src/main/resources/assets/iguanatweakstconstruct
-src/main/java/iguanaman
 bin
 .project
 .settings
 
-CREDITS-fml.txt
-LICENSE-fml.txt
-MinecraftForge-Credits.txt
-MinecraftForge-License.txt
-README.txt
-forge-1.7.10-10.13.2.1291-changelog.txt
-gradle/wrapper/gradle-wrapper.jar
-gradle/wrapper/gradle-wrapper.properties
-libs/
 *.iml
 *.ipr
 *.iws
+out/

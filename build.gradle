@@ -42,11 +42,16 @@ minecraft {
 }
 
 dependencies {
+    compile "codechicken:CodeChickenLib:1.7.10-1.1.3.127:dev"
+    compile "codechicken:ForgeMultipart:1.7.10-1.1.2.331:dev"
+    compile "codechicken:CodeChickenCore:1.7.10-1.0.4.29:dev"
+    compile "codechicken:NotEnoughItems:1.7.10-1.0.3.74:dev"
     compile 'Azanor:Thaumcraft:4.2.3.5:deobf@jar'
     compile 'Azanor:Baubles:1.0.1.10:deobf@jar'
     compile "mantle:Mantle:1.7.10-0.3.2.jenkins187:deobf"
     compile "tconstruct:TConstruct:1.7.10-1.8.3.build926:deobf"
     compile "boni:IguanaTinkerTweaks:1.7.10-2.1.3.131:deobf"
+
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"
