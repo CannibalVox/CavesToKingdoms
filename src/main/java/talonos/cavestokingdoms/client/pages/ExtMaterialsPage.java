@@ -1,6 +1,5 @@
 package talonos.cavestokingdoms.client.pages;
 
-//import iguanaman.iguanatweakstconstruct.override.XPAdjustmentMap;
 import iguanaman.iguanatweakstconstruct.override.XPAdjustmentMap;
 import mantle.client.pages.BookPage;
 import mantle.lib.client.MantleClientRegistry;
@@ -35,7 +34,7 @@ public class ExtMaterialsPage extends BookPage
     int oreMetadata = 0;
     int iconMetadata = 0;
     
-    //Itemstacks representing the icons we'll end up drawing on the page.
+    //Desctiption of the material
     String description;
 
     //I think this initializes the instance of a page, given an XML page element.
@@ -108,10 +107,6 @@ public class ExtMaterialsPage extends BookPage
         	}
         }
         
-        //System.out.println("=========================");
-        //System.out.println("==ORE IS "+ore[0]+"!");
-        //System.out.println("=========================");
-        
         nodes = element.getElementsByTagName("toolmaterial");
         if (nodes != null && nodes.getLength() > 0)
         {
@@ -125,7 +120,7 @@ public class ExtMaterialsPage extends BookPage
         if (material == null)
         {
         	System.err.println("Warning! "+title+" could not be found as a material!");
-        	material = TConstructRegistry.getMaterial("Stone");
+        	//material = TConstructRegistry.getMaterial("Stone");
         }
         
     }

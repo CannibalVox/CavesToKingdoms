@@ -15,16 +15,6 @@ import java.io.InputStream;
 
 import javax.xml.parsers.*;
 
-import mantle.client.SmallFontRenderer;
-import mantle.lib.client.MantleClientRegistry;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.init.*;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
-
-import org.w3c.dom.Document;
-
 public class ManualInfo
 {
 
@@ -33,8 +23,8 @@ public class ManualInfo
     public BookData mats3 = new BookData();
     public BookData mats4 = new BookData();
     public BookData mats0 = new BookData();
-    public BookData ben1 = new BookData();
-    public BookData ben2 = new BookData();
+    public BookData mats5 = new BookData();
+    public BookData mats6 = new BookData();
     public BookData ben3 = new BookData();
     public BookData ben4 = new BookData();
     public BookData ben5 = new BookData();
@@ -46,8 +36,8 @@ public class ManualInfo
     private Document mats3Doc;
     private Document mats4Doc;
     private Document mats0Doc;
-    private Document ben1Doc;
-    private Document ben2Doc;
+    private Document mats5doc;
+    private Document mats6doc;
     private Document ben3Doc;
     private Document ben4Doc;
     private Document ben5Doc;
@@ -68,10 +58,10 @@ public class ManualInfo
         initManual(mats4, "basicManual.3", "\u00a7o" + StatCollector.translateToLocal("manual1.tooltip"), d, "tinker:tinkerbook_diary") ;
         d = mats0Doc;
         initManual(mats0, "basicManual.4", "\u00a7o" + StatCollector.translateToLocal("manual1.tooltip"), d, "tinker:tinkerbook_diary") ;
-        d = ben1Doc;
-        initManual(ben1, "basicManual.5", "\u00a7o" + StatCollector.translateToLocal("manual1.tooltip"), d, "tinker:tinkerbook_diary") ;
-        d = ben2Doc;
-        initManual(ben2, "basicManual.6", "\u00a7o" + StatCollector.translateToLocal("manual1.tooltip"), d, "tinker:tinkerbook_diary") ;
+        d = mats5doc;
+        initManual(mats5, "basicManual.5", "\u00a7o" + StatCollector.translateToLocal("manual1.tooltip"), d, "tinker:tinkerbook_diary") ;
+        d = mats6doc;
+        initManual(mats6, "basicManual.6", "\u00a7o" + StatCollector.translateToLocal("manual1.tooltip"), d, "tinker:tinkerbook_diary") ;
         d = ben3Doc;
         initManual(ben3, "basicManual.7", "\u00a7o" + StatCollector.translateToLocal("manual1.tooltip"), d, "tinker:tinkerbook_diary") ;
         d = ben4Doc;
@@ -104,8 +94,8 @@ public class ManualInfo
         mats3Doc = readManual("/assets/cavestokingdoms/manuals/materials_3.xml", dbFactory);
         mats4Doc = readManual("/assets/cavestokingdoms/manuals/materials_4.xml", dbFactory);
         mats0Doc = readManual("/assets/cavestokingdoms/manuals/materials_0.xml", dbFactory);
-        ben1Doc = readManual("/assets/cavestokingdoms/manuals/materials_5.xml", dbFactory);
-        ben2Doc = readManual("/assets/cavestokingdoms/manuals/materials_1.xml", dbFactory);
+        mats5doc = readManual("/assets/cavestokingdoms/manuals/materials_5.xml", dbFactory);
+        mats6doc = readManual("/assets/cavestokingdoms/manuals/materials_6.xml", dbFactory);
         ben3Doc = readManual("/assets/cavestokingdoms/manuals/materials_1.xml", dbFactory);
         ben4Doc = readManual("/assets/cavestokingdoms/manuals/materials_1.xml", dbFactory);
         ben5Doc = readManual("/assets/cavestokingdoms/manuals/materials_1.xml", dbFactory);

@@ -13,7 +13,6 @@ import tconstruct.library.TConstructRegistry;
 import mantle.Mantle;
 import mantle.books.BookData;
 import mantle.client.gui.GuiManual;
-import mantle.items.abstracts.CraftingItem;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -68,9 +67,9 @@ public class ItemManual extends Item
         case 4:
             return CavesToKindgoms.manualInfo.mats0;
         case 5:
-            return CavesToKindgoms.manualInfo.ben1;
+            return CavesToKindgoms.manualInfo.mats5;
         case 6:
-            return CavesToKindgoms.manualInfo.ben2;
+            return CavesToKindgoms.manualInfo.mats6;
         case 7:
             return CavesToKindgoms.manualInfo.ben3;
         case 8:
@@ -97,10 +96,10 @@ public class ItemManual extends Item
         case 2:
         case 3:
         case 4:
-        case 5:
+            case 5:
+            case 6:
             list.add("\u00a7o" + StatCollector.translateToLocal("blightfallmanual.geology"));
             break;
-        case 6:
         case 7:
         case 8:
         case 9:

@@ -434,7 +434,7 @@ when Skyla wrote his seminal work.
 <title>Platinum</title>
 <icon>ThermalFoundation:material:69</icon>
 <ore>Metallurgy:precious.ore:2</ore>
-<text>A weak terrestrial alloy better suited for ornamentation than tools. Like electrum, but mines faster and levels nearly twice as quickly. High harvest level.</text>
+<text>A weak terrestrial metal better suited for ornamentation than tools. Like electrum, but mines faster and levels nearly twice as quickly. High harvest level.</text>
 </page>
 
 <page type = "extMaterialUsePage">
@@ -455,8 +455,6 @@ when Skyla wrote his seminal work.
    <icon>Metallurgy:metallurgy.platinum.boots</icon>
 </armor>
 </page>
-
-
 
 
 </book>

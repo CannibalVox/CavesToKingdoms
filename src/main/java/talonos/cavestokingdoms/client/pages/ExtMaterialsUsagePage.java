@@ -3,6 +3,7 @@ package talonos.cavestokingdoms.client.pages;
 import java.util.ArrayList;
 import java.util.List;
 
+import iguanaman.iguanatweakstconstruct.util.HarvestLevels;
 import mantle.client.pages.BookPage;
 import mantle.lib.client.MantleClientRegistry;
 import net.minecraft.client.renderer.RenderHelper;
@@ -10,9 +11,11 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
+import net.minecraftforge.common.util.EnumHelper;
 import org.lwjgl.opengl.*;
 import org.w3c.dom.*;
 
@@ -30,7 +33,7 @@ public class ExtMaterialsUsagePage extends BookPage
     List<ItemStack> armors = new ArrayList<ItemStack>();
     List<ItemStack> tools = new ArrayList<ItemStack>();
 
-    //0 = none, 1 = normal, 2 = requires Smeltery.
+    //0 = none, 1 = normal, 2 = requires Smeltery (or wood, or prohibited by executive mandate).
     int toolType = 0;
     int partType = 0;
     int armorType = 0;
@@ -173,7 +176,22 @@ public class ExtMaterialsUsagePage extends BookPage
         
         for (int armor = 0; armor < armors.size(); armor++)
         {
-        	manual.renderitem.renderItemAndEffectIntoGUI(manual.fonts, manual.getMC().renderEngine, armors.get(armor), localWidth + 6, localHeight + 63 + (armor*18));
+        	manual.renderitem.renderItemAndEffectIntoGUI(manual.fonts, manual.getMC().renderEngine, armors.get(armor), localWidth + 6, localHeight + 83 + (armor*18));
+        }
+        //Tool Description builder:
+        String toolDesc1 = "";
+        String toolDesc2 = "";
+        if (tools.size()!=0&&tools.get(0)!= null&&toolType != 2)
+        {
+            toolDesc1+="Durability: "+tools.get(0).getMaxDamage();
+            if (tools.get(0).getItem() instanceof ItemPickaxe)
+            {
+                ItemPickaxe pick = (ItemPickaxe)tools.get(0).getItem();
+                Item.ToolMaterial mat = Item.ToolMaterial.valueOf(pick.getToolMaterialName());
+                toolDesc1 += " - Harvest Level: "+ HarvestLevels.getHarvestLevelName(mat.getHarvestLevel());
+                toolDesc2 += "Speed: "+ mat.getEfficiencyOnProperMaterial();
+                toolDesc2 += " - Free Ench. Levels: "+ mat.getEnchantability();
+            }
         }
         
         //Switch back to normal layer.
@@ -185,8 +203,11 @@ public class ExtMaterialsUsagePage extends BookPage
         
         //It seems as though each row is 10 high.
         manual.fonts.drawString(toolStrings[toolType], localWidth, localHeight + 15, 0);
-        manual.fonts.drawString(partStrings[partType], localWidth, localHeight + 43, 0);
-        manual.fonts.drawString(armorStrings[armorType], localWidth, localHeight + 53, 0);
+
+        manual.fonts.drawString(toolDesc1, localWidth, localHeight + 43, 0);
+        manual.fonts.drawString(toolDesc2, localWidth, localHeight + 53, 0);
+        manual.fonts.drawString(partStrings[partType], localWidth, localHeight + 63, 0);
+        manual.fonts.drawString(armorStrings[armorType], localWidth, localHeight + 73, 0);
         
         for (int armor = 0; armor < armors.size(); armor++)
         {
@@ -195,7 +216,7 @@ public class ExtMaterialsUsagePage extends BookPage
         	{
         		int maxDurability = ((ItemArmor)armorStack.getItem()).getMaxDamage(armorStack);
         		int protection = ((ItemArmor)armorStack.getItem()).damageReduceAmount;
-        		manual.fonts.drawString("Durability: "+maxDurability+"   Armor Points: "+protection, localWidth + 24, localHeight+67+(armor*18), 0);
+        		manual.fonts.drawString("Durability: "+maxDurability+"   Armor Points: "+protection, localWidth + 24, localHeight+87+(armor*18), 0);
         	}
         }
 

@@ -196,6 +196,32 @@ when Skyla wrote his seminal work.
 </armor>
 </page>
 
+    <page type="extMaterialPage">
+        <title>Void Metal</title>
+        <icon>Thaumcraft:ItemResource:16</icon>
+        <ore></ore>
+        <text>A strange metal that repairs itself. Possibly biological in nature? Scientists seem uncomfortable working with it.</text>
+    </page>
+
+    <page type = "extMaterialUsePage">
+        <title>Void Metal</title>
+        <tools type = "1">
+            <icon>Thaumcraft:ItemPickVoid</icon>
+            <icon>Thaumcraft:ItemShovelVoid</icon>
+            <icon>Thaumcraft:ItemAxeVoid</icon>
+            <icon>Thaumcraft:ItemHoeVoid</icon>
+            <icon>Thaumcraft:ItemSwordVoid</icon>
+        </tools>
+        <mods type = "1">
+        </mods>
+        <armor type = "1">
+            <icon>Thaumcraft:ItemHelmetVoid</icon>
+            <icon>Thaumcraft:ItemChestplateVoid</icon>
+            <icon>Thaumcraft:ItemLeggingsVoid</icon>
+            <icon>Thaumcraft:ItemBootsVoid</icon>
+        </armor>
+    </page>
+
 
 <page type="extMaterialPage">
 <title>Mithril</title>
@@ -483,5 +509,79 @@ when Skyla wrote his seminal work.
    <icon>Metallurgy:metallurgy.quicksilver.boots</icon>
 </armor>
 </page>
+
+   <page type="extMaterialPage">
+      <title>Manasteel</title>
+      <icon>Botania:manaResource:0</icon>
+      <ore></ore>
+      <text>A strange, easily worked metal that seems to repair itself only under certain unknown conditions.</text>
+   </page>
+
+   <page type = "extMaterialUsePage">
+      <title>Manasteel</title>
+      <tools type = "1">
+         <icon>Botania:manasteelPick</icon>
+         <icon>Botania:manasteelShovel</icon>
+         <icon>Botania:manasteelAxe</icon>
+         <icon>Botania:manasteelSword</icon>
+      </tools>
+      <mods type = "1">
+      </mods>
+      <armor type = "1">
+         <icon>Botania:manasteelHelm</icon>
+         <icon>Botania:manasteelChest</icon>
+         <icon>Botania:manasteelLegs</icon>
+         <icon>Botania:manasteelBoots</icon>
+      </armor>
+   </page>
+
+   <page type="extMaterialPage">
+      <title>Terrasteel</title>
+      <icon>Botania:manaResource:4</icon>
+      <ore></ore>
+      <text>A supremely durable yet easily worked metal. All reports of successfully damaging it turn out to be mysteriously false.</text>
+   </page>
+
+   <page type = "extMaterialUsePage">
+      <title>Terrasteel</title>
+      <tools type = "1">
+          <icon>Botania:terraPick</icon>
+          <icon>Botania:terraAxe</icon>
+          <icon>Botania:terraSword</icon>
+      </tools>
+      <mods type = "1">
+      </mods>
+      <armor type = "1">
+          <icon>Botania:terrasteelHelm</icon>
+          <icon>Botania:terrasteelChest</icon>
+          <icon>Botania:terrasteelLegs</icon>
+          <icon>Botania:terrasteelBoots</icon>
+      </armor>
+   </page>
+
+    <page type="extMaterialPage">
+        <title>Elementium</title>
+        <icon>Botania:manaResource:7</icon>
+        <ore></ore>
+        <text>A strange metal that never responds to tests the same way twice. It seems soft when worked but durable once used as a tool.</text>
+    </page>
+
+    <page type = "extMaterialUsePage">
+        <title>Elementium</title>
+        <tools type = "1">
+            <icon>Botania:elementiumPick</icon>
+            <icon>Botania:elementiumShovel</icon>
+            <icon>Botania:elementiumAxe</icon>
+            <icon>Botania:elementiumSword</icon>
+        </tools>
+        <mods type = "1">
+        </mods>
+        <armor type = "1">
+            <icon>Botania:elementiumHelm</icon>
+            <icon>Botania:elementiumChest</icon>
+            <icon>Botania:elementiumLegs</icon>
+            <icon>Botania:elementiumBoots</icon>
+        </armor>
+    </page>
 
 </book>
