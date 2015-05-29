@@ -71,7 +71,7 @@ public class ItemManual extends Item
         case 6:
             return CavesToKindgoms.manualInfo.mats6;
         case 7:
-            return CavesToKindgoms.manualInfo.ben3;
+            return CavesToKindgoms.manualInfo.mats7;
         case 8:
             return CavesToKindgoms.manualInfo.ben4;
         case 9:
@@ -98,9 +98,9 @@ public class ItemManual extends Item
         case 4:
             case 5:
             case 6:
+            case 7:
             list.add("\u00a7o" + StatCollector.translateToLocal("blightfallmanual.geology"));
             break;
-        case 7:
         case 8:
         case 9:
             list.add("\u00a7o" + StatCollector.translateToLocal("blightfallmanual.ben"));

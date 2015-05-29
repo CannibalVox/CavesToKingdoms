@@ -27,14 +27,15 @@ public class BowMaterialsPage extends BookPage
     private static final int MAT_OFFSET = 78;
 
     //The materials this page depicts.
-    ToolMaterial[] materials = new ToolMaterial[NUMBER_OF_MATS_PER_PAGE];
-    BowMaterial[] bowMaterials = new BowMaterial[NUMBER_OF_MATS_PER_PAGE];
-    ArrowMaterial[] arrowMaterials = new ArrowMaterial[NUMBER_OF_MATS_PER_PAGE];
-    String[] matNames = new String[NUMBER_OF_MATS_PER_PAGE];
+    private ToolMaterial[] materials = new ToolMaterial[NUMBER_OF_MATS_PER_PAGE];
+    private BowMaterial[] bowMaterials = new BowMaterial[NUMBER_OF_MATS_PER_PAGE];
+    private ArrowMaterial[] arrowMaterials = new ArrowMaterial[NUMBER_OF_MATS_PER_PAGE];
+    private String[] matNames = new String[NUMBER_OF_MATS_PER_PAGE];
+    private String[] descriptions = new String[NUMBER_OF_MATS_PER_PAGE];
     
     //Itemstacks representing the icons we'll end up drawing on the page.
-    ItemStack[] icons = new ItemStack[NUMBER_OF_MATS_PER_PAGE];
-    int[] iconMetadata = new int[NUMBER_OF_MATS_PER_PAGE];
+    private ItemStack[] icons = new ItemStack[NUMBER_OF_MATS_PER_PAGE];
+    private int[] iconMetadata = new int[NUMBER_OF_MATS_PER_PAGE];
 
     public static HashMap<String, Integer> mappings = new HashMap();
     public static boolean init = false;
@@ -62,8 +63,19 @@ public class BowMaterialsPage extends BookPage
             for (int i = 0; i < NUMBER_OF_MATS_PER_PAGE; i++) {
                 //Get the name
                 nodes = element.getElementsByTagName("mat" + i);
-                if (nodes != null) {
+                if (nodes != null)
+                {
                     matNames[i] = nodes.item(0).getTextContent();
+                }
+
+                nodes = element.getElementsByTagName("desc" + i);
+                if (nodes != null&&nodes.item(0)!=null&&nodes.item(0).getTextContent()!=null)
+                {
+                    descriptions[i] = nodes.item(0).getTextContent();
+                }
+                else
+                {
+                    descriptions[i] = "";
                 }
 
                 //Get the icon
@@ -130,11 +142,10 @@ public class BowMaterialsPage extends BookPage
     public void renderContentLayer (int localWidth, int localHeight, boolean isTranslatable)
     {
         String durability = new String("Durability");
-        String drawSpeed = new String("Draw Speed");
-        String flightSpeed = new String("Flight Speed");
+        String drawSpeed = new String("Draw Delay");
+        String flightSpeed = new String("Launch Strength");
         String xpRequired = new String("XP Required");
         String mass = new String("Mass");
-        String handleDur = new String("Shaft Durability");
         String breakChance = new String("Break Chance");
         String baseAttack = new String("Attack Damage");
         String heart_ = new String("Heart");
@@ -179,14 +190,15 @@ public class BowMaterialsPage extends BookPage
                 }
                 manual.fonts.drawString(xpRequired + ": " + (XPAdjustmentMap.get(materials[i].materialName) * 100f)+"% ", localWidth, localHeight + 50 + offset, 0);
 
+                manual.fonts.drawString(descriptions[i], localWidth, localHeight + 65 + offset, 0);
+
                 if (arrowsOn)
                 {
                     manual.fonts.drawString(mass + ": " + arrowMaterials[i].mass, localWidth + 85, localHeight + 20 + offset, 0);
-                    manual.fonts.drawString(handleDur + ": x" + materials[i].handleDurability(), localWidth + 85, localHeight + 30 + offset, 0);
                     //So, it's dumb, but break chance is multipled by .15 before actually being applied.
-                    //That's with wood. Other materials have other break rates.
+                    //And that's just with wood. Other materials have other break rates.
                     //We'll use wood as the staple here.
-                    manual.fonts.drawString(breakChance + ": " + (arrowMaterials[i].breakChance * 15f)+"% ", localWidth + 85, localHeight + 40 + offset, 0);
+                    manual.fonts.drawString(breakChance + ": " + (arrowMaterials[i].breakChance * 15f)+"% ", localWidth + 85, localHeight + 30 + offset, 0);
                 }
 
                 //Attack is weird.
@@ -194,7 +206,7 @@ public class BowMaterialsPage extends BookPage
                 String heart = (attack == 2 ? " " + heart_ : " " + hearts);
                 //Only make it a decimal if it's not an even heart.
                 String totalString = baseAttack + ": " + (attack % 2 == 0? materials[i].attack() / 2: materials[i].attack() / 2f) +heart;
-                manual.fonts.drawString(totalString, localWidth + 85, localHeight + 50 + offset, 0);
+                manual.fonts.drawString(totalString, localWidth + 85, localHeight + 40 + offset, 0);
             }
         }
     }

@@ -25,7 +25,7 @@ public class ManualInfo
     public BookData mats0 = new BookData();
     public BookData mats5 = new BookData();
     public BookData mats6 = new BookData();
-    public BookData ben3 = new BookData();
+    public BookData mats7 = new BookData();
     public BookData ben4 = new BookData();
     public BookData ben5 = new BookData();
     public BookData taint1 = new BookData();
@@ -38,7 +38,7 @@ public class ManualInfo
     private Document mats0Doc;
     private Document mats5doc;
     private Document mats6doc;
-    private Document ben3Doc;
+    private Document mats7Doc;
     private Document ben4Doc;
     private Document ben5Doc;
     private Document taint1Doc;
@@ -62,8 +62,8 @@ public class ManualInfo
         initManual(mats5, "basicManual.5", "\u00a7o" + StatCollector.translateToLocal("manual1.tooltip"), d, "tinker:tinkerbook_diary") ;
         d = mats6doc;
         initManual(mats6, "basicManual.6", "\u00a7o" + StatCollector.translateToLocal("manual1.tooltip"), d, "tinker:tinkerbook_diary") ;
-        d = ben3Doc;
-        initManual(ben3, "basicManual.7", "\u00a7o" + StatCollector.translateToLocal("manual1.tooltip"), d, "tinker:tinkerbook_diary") ;
+        d = mats7Doc;
+        initManual(mats7, "basicManual.7", "\u00a7o" + StatCollector.translateToLocal("manual1.tooltip"), d, "tinker:tinkerbook_diary") ;
         d = ben4Doc;
         initManual(ben4, "basicManual.8", "\u00a7o" + StatCollector.translateToLocal("manual1.tooltip"), d, "tinker:tinkerbook_diary") ;
         d = ben5Doc;
@@ -96,7 +96,7 @@ public class ManualInfo
         mats0Doc = readManual("/assets/cavestokingdoms/manuals/materials_0.xml", dbFactory);
         mats5doc = readManual("/assets/cavestokingdoms/manuals/materials_5.xml", dbFactory);
         mats6doc = readManual("/assets/cavestokingdoms/manuals/materials_6.xml", dbFactory);
-        ben3Doc = readManual("/assets/cavestokingdoms/manuals/materials_1.xml", dbFactory);
+        mats7Doc = readManual("/assets/cavestokingdoms/manuals/materials_7.xml", dbFactory);
         ben4Doc = readManual("/assets/cavestokingdoms/manuals/materials_1.xml", dbFactory);
         ben5Doc = readManual("/assets/cavestokingdoms/manuals/materials_1.xml", dbFactory);
         taint1Doc = readManual("/assets/cavestokingdoms/manuals/materials_1.xml", dbFactory);

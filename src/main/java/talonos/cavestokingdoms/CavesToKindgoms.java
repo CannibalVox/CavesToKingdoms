@@ -1,6 +1,8 @@
 package talonos.cavestokingdoms;
 
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import talonos.cavestokingdoms.blocks.CtKBlock;
+import talonos.cavestokingdoms.command.ListShaftMaterials;
 import talonos.cavestokingdoms.extendedproperties.OrbEventHandler;
 import talonos.cavestokingdoms.lib.DEFS;
 import talonos.cavestokingdoms.proxies.CommonProxy;
@@ -38,6 +40,12 @@ public class CavesToKindgoms
     	MinecraftForge.EVENT_BUS.register(new OrbEventHandler());
 
         manualInfo = new ManualInfo();
+    }
+
+    @Mod.EventHandler
+    public static void serverLoad(FMLServerStartingEvent event)
+    {
+        event.registerServerCommand(new ListShaftMaterials());
     }
  
     @Mod.EventHandler

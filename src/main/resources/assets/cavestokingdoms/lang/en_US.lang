@@ -45,3 +45,5 @@ ubc.cavestokingdoms.nickel.name=Nickel
 ubc.cavestokingdoms.certus.name=Certus Quartz
 ubc.cavestokingdoms.certuscharged.name=Charged Certus Quartz
 ubc.cavestokingdoms.quartz.name=Terrestrial Nether Quartz
+
+command.listshaftmaterials.success=Printing all known shaft materials:

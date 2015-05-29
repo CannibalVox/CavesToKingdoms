@@ -166,17 +166,10 @@
 
 
  <page type="bowMaterialsPage">
-  <mat0>Cactus</mat0>
-  <icon0>minecraft:cactus</icon0>
-  <mat1>Plastic</mat1>
-  <icon1>MineFactoryReloaded:plastic.sheet:0</icon1>
- </page>
-
- <page type="bowMaterialsPage">
   <mat0>Damascus Steel</mat0>
   <icon0>Metallurgy:damascus.steel.ingot</icon0>
   <mat1>Alumite</mat1>
-  <icon1>TConstruct:materials:9</icon1>
+  <icon1>TConstruct:materials:15</icon1>
  </page>
 
 
