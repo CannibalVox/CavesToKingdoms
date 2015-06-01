@@ -1,0 +1,217 @@
+<?xml version="1.0"?>
+
+<book>
+ <page type="intro">
+  <text>Materials - Terrestrial Weaponry
+   A Guide to Material Properties
+
+   By Ayumu Nagasawa</text>
+ </page>
+
+ <page type="text">
+  <text>The previous materials books may help with classical tinker tools, but new advances by Dr. Boni have necessitated an additional volume due to the additional material statistics introduced by tinker bows and arrows. This volume lists the same materials as volumes one and two of Materials, but only lists statistics useful for ranged tinker weapons.</text>
+ </page>
+
+ <page type="bowMaterialsPage">
+  <mat0>Wood</mat0>
+  <icon0>minecraft:planks</icon0>
+  <mat1>Stone</mat1>
+  <icon1>minecraft:cobblestone</icon1>
+ </page>
+
+ <page type="bowMaterialsPage">
+  <mat0>Flint</mat0>
+  <icon0>minecraft:flint</icon0>
+  <mat1>Paper</mat1>
+  <icon1>minecraft:paper</icon1>
+ </page>
+
+
+
+ <page type="bowMaterialsPage">
+  <mat0>Slime</mat0>
+  <icon0>TConstruct:materials:1</icon0>
+  <mat1>Bone</mat1>
+  <icon1>minecraft:bone</icon1>
+ </page>
+
+ <page type="bowMaterialsPage">
+  <mat0>Copper</mat0>
+  <icon0>TConstruct:materials:9</icon0>
+  <mat1>Tin</mat1>
+  <icon1>TConstruct:materials:10</icon1>
+ </page>
+
+
+
+ <page type="bowMaterialsPage">
+  <mat0>Bronze</mat0>
+  <icon0>TConstruct:materials:13</icon0>
+  <mat1>Iron</mat1>
+  <icon1>minecraft:iron_ingot</icon1>
+ </page>
+
+ <page type="bowMaterialsPage">
+  <mat0>Nickel</mat0>
+  <icon0>ThermalFoundation:material:68</icon0>
+  <mat1>Invar</mat1>
+  <icon1>ThermalFoundation:material:72</icon1>
+ </page>
+
+
+
+ <page type="bowMaterialsPage">
+  <mat0>Lead</mat0>
+  <icon0>ThermalFoundation:material:67</icon0>
+  <mat1>Steel</mat1>
+  <icon1>TConstruct:materials:16</icon1>
+ </page>
+
+
+
+ <page type="bowMaterialsPage">
+  <mat0>Silver</mat0>
+  <icon0>ThermalFoundation:material:66</icon0>
+  <mat1>Platinum</mat1>
+  <icon1>ThermalFoundation:material:69</icon1>
+ </page>
+
+ <page type="bowMaterialsPage">
+  <mat0>Cardboard</mat0>
+  <icon0>betterstorage:cardboardSheet</icon0>
+  <mat1>Glue</mat1>
+  <icon1>TConstruct:materials:36</icon1>
+ </page>
+
+
+
+ <page type="bowMaterialsPage">
+  <mat0>Ruby</mat0>
+  <icon0>customnpcs:npcRuby</icon0>
+  <mat1>Peridot</mat1>
+  <icon1>ExtraTiC:chunk:165</icon1>
+ </page>
+
+ <page type="bowMaterialsPage">
+  <mat0>Sapphire</mat0>
+  <icon0>customnpcs:npcSaphire</icon0>
+  <mat1>Amethyst</mat1>
+  <icon1>customnpcs:npcAmethyst</icon1>
+ </page>
+
+
+
+ <page type="bowMaterialsPage">
+  <mat0>Bedrockium</mat0>
+  <icon0>ExtraUtilities:bedrockiumIngot</icon0>
+  <mat1>Enderium</mat1>
+  <icon1>ThermalFoundation:material:76</icon1>
+ </page>
+
+ <page type="bowMaterialsPage">
+  <mat0>Signalum</mat0>
+  <icon0>ThermalFoundation:material:74</icon0>
+  <mat1>Lumium</mat1>
+  <icon1>ThermalFoundation:material:75</icon1>
+ </page>
+
+
+
+ <page type="bowMaterialsPage">
+  <mat0>Netherrack</mat0>
+  <icon0>minecraft:netherrack</icon0>
+  <mat1>Certus Quartz</mat1>
+  <icon1>appliedenergistics2:item.ItemMultiMaterial</icon1>
+ </page>
+
+ <page type="bowMaterialsPage">
+  <mat0>Nether Quartz</mat0>
+  <icon0>minecraft:quartz</icon0>
+  <mat1>Obsidian</mat1>
+  <icon1>minecraft:obsidian</icon1>
+ </page>
+
+
+
+ <page type="bowMaterialsPage">
+  <mat0>Ghostwood</mat0>
+  <icon0>Natura:planks:2</icon0>
+  <mat1>Darkwood</mat1>
+  <icon1>Natura:planks:11</icon1>
+ </page>
+
+ <page type="bowMaterialsPage">
+  <mat0>Fusewood</mat0>
+  <icon0>Natura:planks:12</icon0>
+  <mat1>Bloodwood</mat1>
+  <icon1>Natura:planks:4</icon1>
+ </page>
+
+
+
+ <page type="bowMaterialsPage">
+  <mat0>Cactus</mat0>
+  <icon0>minecraft:cactus</icon0>
+  <mat1>Plastic</mat1>
+  <icon1>MineFactoryReloaded:plastic.sheet:0</icon1>
+ </page>
+
+ <page type="bowMaterialsPage">
+  <mat0>BlueSlime</mat0>
+  <icon0>TConstruct:materials:17</icon0>
+  <mat1>Pink Slime</mat1>
+  <icon1>MineFactoryReloaded:pinkslime:1</icon1>
+ </page>
+
+
+
+ <page type="bowMaterialsPage">
+  <mat0>Damascus Steel</mat0>
+  <icon0>Metallurgy:damascus.steel.ingot</icon0>
+  <mat1>Alumite</mat1>
+  <icon1>TConstruct:materials:15</icon1>
+ </page>
+
+
+
+ <page type="bowMaterialsPage">
+  <mat0>Cobalt</mat0>
+  <icon0>TConstruct:materials:3</icon0>
+  <mat1>Ardite</mat1>
+  <icon1>TConstruct:materials:4</icon1>
+ </page>
+
+ <page type="bowMaterialsPage">
+  <mat0>Manyullyn</mat0>
+  <icon0>TConstruct:materials:5</icon0>
+  <mat1>Brass</mat1>
+  <icon1>Metallurgy:brass.ingot</icon1>
+ </page>
+
+
+
+ <page type="bowMaterialsPage">
+  <mat0>Angmallen</mat0>
+  <icon0>Metallurgy:angmallen.ingot</icon0>
+  <mat1>Hepatizon</mat1>
+  <icon1>Metallurgy:hepatizon.ingot</icon1>
+ </page>
+
+ <page type="bowMaterialsPage">
+  <mat0>Electrum</mat0>
+  <icon0>Metallurgy:electrum.ingot</icon0>
+  <mat1>Pokefennium</mat1>
+  <icon1>ExtraTiC:funStuffIngot:1</icon1>
+ </page>
+
+
+
+ <page type="bowMaterialsPage">
+  <mat0>Fairy</mat0>
+  <icon0>ExtraTiC:funStuffIngot</icon0>
+  <mat1>PigIron</mat1>
+  <icon1>TConstruct:materials:34</icon1>
+ </page>
+
+
+</book>

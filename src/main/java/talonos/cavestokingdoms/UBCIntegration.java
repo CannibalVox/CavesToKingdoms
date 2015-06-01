@@ -35,7 +35,7 @@ public class UBCIntegration
             //UBAPIHook.ubAPIHook.ubOreTexturizer.requestUBOreSetup(AEApi.instance().blocks().blockQuartzOre.block(), 7, "cavestokingdoms:misc/OreQuartz", "ubc.cavestokingdoms.certus");
             //UBAPIHook.ubAPIHook.ubOreTexturizer.requestUBOreSetup(AEApi.instance().blocks().blockQuartzOreCharged.block(), 7, "cavestokingdoms:misc/OreQuartzCharged", "ubc.cavestokingdoms.certuscharged");
             
-            UBAPIHook.ubAPIHook.ubOreTexturizer.requestUBOreSetup(Blocks.quartz_ore, 0, "cavestokingdoms:misc/quartz_ore", "ubc.cavestokingdoms.quartz");
+            //UBAPIHook.ubAPIHook.ubOreTexturizer.requestUBOreSetup(Blocks.quartz_ore, 0, "cavestokingdoms:misc/quartz_ore", "ubc.cavestokingdoms.quartz");
             
     	} 
     	catch (Exception ex) 

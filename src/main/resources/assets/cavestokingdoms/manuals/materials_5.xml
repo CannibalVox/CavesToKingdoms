@@ -454,7 +454,184 @@ when Skyla wrote his seminal work.
 </armor>
 </page>
 
+   <page type="extMaterialPage">
+      <title>Cardboard</title>
+      <icon>betterstorage:cardboardSheet</icon>
+      <ore></ore>
+      <text>Better than paper in every way, except you can't write on it. Which basically makes it worse in every way.</text>
+   </page>
 
+   <page type = "extMaterialUsePage">
+      <title>Cardboard</title>
+      <tools type = "1">
+         <icon>betterstorage:cardboardPickaxe</icon>
+         <icon>betterstorage:cardboardShovel</icon>
+         <icon>betterstorage:cardboardAxe</icon>
+         <icon>betterstorage:cardboardHoe</icon>
+         <icon>betterstorage:cardboardSword</icon>
+      </tools>
+      <mods type = "1">
+      </mods>
+      <armor type = "1">
+         <icon>betterstorage:cardboardHelmet</icon>
+         <icon>betterstorage:cardboardChestplate</icon>
+         <icon>betterstorage:cardboardLeggings</icon>
+         <icon>betterstorage:cardboardBoots</icon>
+      </armor>
+   </page>
+
+   <page type="extMaterialPage">
+      <title>Glue</title>
+      <icon>TConstruct:materials:36</icon>
+      <ore></ore>
+      <text>Bindings made of glue help tools hold together. Anything else made of glue is a really bad idea.</text>
+   </page>
+
+   <page type = "extMaterialUsePage">
+      <title>Glue</title>
+      <tools type = "0">
+      </tools>
+      <mods type = "1">
+      </mods>
+      <armor type = "0">
+      </armor>
+   </page>
+
+   <page type="extMaterialPage">
+      <title>Ruby</title>
+      <icon>customnpcs:npcRuby</icon>
+      <ore></ore>
+      <text>A rare gem. Unusually high attack damage.</text>
+   </page>
+
+   <page type = "extMaterialUsePage">
+      <title>Ruby</title>
+      <tools type = "0">
+      </tools>
+      <mods type = "1">
+      </mods>
+      <armor type = "0">
+      </armor>
+   </page>
+
+   <page type="extMaterialPage">
+      <title>Peridot</title>
+      <icon>ExtraTiC:chunk:165</icon>
+      <ore></ore>
+      <text>A rare gem. Unusually high Mining Speed</text>
+   </page>
+
+   <page type = "extMaterialUsePage">
+      <title>Peridot</title>
+      <tools type = "0">
+      </tools>
+      <mods type = "1">
+      </mods>
+      <armor type = "0">
+      </armor>
+   </page>
+
+   <page type="extMaterialPage">
+      <title>Sapphire</title>
+      <icon>customnpcs:npcSaphire</icon>
+      <ore></ore>
+      <text>A rare gem. Unusually high durability.</text>
+   </page>
+
+   <page type = "extMaterialUsePage">
+      <title>Sapphire</title>
+      <tools type = "0">
+      </tools>
+      <mods type = "1">
+      </mods>
+      <armor type = "0">
+      </armor>
+   </page>
+
+   <page type="extMaterialPage">
+      <title>Amethyst</title>
+      <icon>customnpcs:npcAmethyst</icon>
+      <ore></ore>
+      <text>A gem like diamond but used to make modular tools. Tools made with Amethyst are as good as diamond historically was.</text>
+   </page>
+
+   <page type = "extMaterialUsePage">
+      <title>Amethyst</title>
+      <tools type = "0">
+      </tools>
+      <mods type = "1">
+      </mods>
+      <armor type = "0">
+      </armor>
+   </page>
+
+    <page type="extMaterialPage">
+        <title>Bedrockium</title>
+        <icon>ExtraUtilities:bedrockiumIngot</icon>
+        <ore></ore>
+        <text>An amazingly tough metal. That's all that's good about it.</text>
+    </page>
+
+    <page type = "extMaterialUsePage">
+        <title>Bedrockium</title>
+        <tools type = "0">
+        </tools>
+        <mods type = "2">
+        </mods>
+        <armor type = "0">
+        </armor>
+    </page>
+
+    <page type="extMaterialPage">
+        <title>Enderium</title>
+        <icon>ThermalFoundation:material:76</icon>
+        <ore></ore>
+        <text>A soft, pulsating alloy made from ender pearls. Takes a fantastically sharp edge... but has a hard time keeping it.</text>
+    </page>
+
+    <page type = "extMaterialUsePage">
+        <title>Enderium</title>
+        <tools type = "0">
+        </tools>
+        <mods type = "2">
+        </mods>
+        <armor type = "0">
+        </armor>
+    </page>
+
+    <page type="extMaterialPage">
+        <title>Signalum</title>
+        <icon>ThermalFoundation:material:74</icon>
+        <ore></ore>
+        <text>An artificial alloy made from copper. Known to conduct redstone quite well. Like copper, but twice as durable and levels twice as fast.</text>
+    </page>
+
+    <page type = "extMaterialUsePage">
+        <title>Signalum</title>
+        <tools type = "0">
+        </tools>
+        <mods type = "2">
+        </mods>
+        <armor type = "0">
+        </armor>
+    </page>
+
+    <page type="extMaterialPage">
+        <title>Lumium</title>
+        <icon>ThermalFoundation:material:75</icon>
+        <ore></ore>
+        <text>A synthetic, glowing metal not normally used in tools. Levels extremely fast, but...</text>
+    </page>
+
+    <page type = "extMaterialUsePage">
+        <title>Lumium</title>
+        <tools type = "0">
+        </tools>
+        <mods type = "2">
+        </mods>
+        <armor type = "0">
+        </armor>
+    </page>
 
 <page type="extMaterialPage">
 <title>Prometheum</title>
@@ -607,6 +784,32 @@ when Skyla wrote his seminal work.
    <icon>Thaumcraft:ItemBootsThaumium</icon>
 </armor>
 </page>
+
+    <page type="extMaterialPage">
+        <title>Void Metal</title>
+        <icon>Thaumcraft:ItemResource:16</icon>
+        <ore></ore>
+        <text>A strange metal that repairs itself. Possibly biological in nature? Scientists seem uncomfortable working with it.</text>
+    </page>
+
+    <page type = "extMaterialUsePage">
+        <title>Void Metal</title>
+        <tools type = "1">
+            <icon>Thaumcraft:ItemPickVoid</icon>
+            <icon>Thaumcraft:ItemShovelVoid</icon>
+            <icon>Thaumcraft:ItemAxeVoid</icon>
+            <icon>Thaumcraft:ItemHoeVoid</icon>
+            <icon>Thaumcraft:ItemSwordVoid</icon>
+        </tools>
+        <mods type = "1">
+        </mods>
+        <armor type = "1">
+            <icon>Thaumcraft:ItemHelmetVoid</icon>
+            <icon>Thaumcraft:ItemChestplateVoid</icon>
+            <icon>Thaumcraft:ItemLeggingsVoid</icon>
+            <icon>Thaumcraft:ItemBootsVoid</icon>
+        </armor>
+    </page>
 
 
 <page type="extMaterialPage">
@@ -1827,7 +2030,98 @@ when Skyla wrote his seminal work.
 </armor>
 </page>
 
+    <page type = "extMaterialUsePage">
+        <title>Quicksilver</title>
+        <tools type = "1">
+            <icon>Metallurgy:quicksilver.pickaxe</icon>
+            <icon>Metallurgy:quicksilver.shovel</icon>
+            <icon>Metallurgy:quicksilver.axe</icon>
+            <icon>Metallurgy:quicksilver.hoe</icon>
+            <icon>Metallurgy:quicksilver.sword</icon>
+        </tools>
+        <mods type = "2">
+        </mods>
+        <armor type = "1">
+            <icon>Metallurgy:metallurgy.quicksilver.helmet</icon>
+            <icon>Metallurgy:metallurgy.quicksilver.chestplate</icon>
+            <icon>Metallurgy:metallurgy.quicksilver.leggings</icon>
+            <icon>Metallurgy:metallurgy.quicksilver.boots</icon>
+        </armor>
+    </page>
 
+    <page type="extMaterialPage">
+        <title>Manasteel</title>
+        <icon>Botania:manaResource:0</icon>
+        <ore></ore>
+        <text>A strange, easily worked metal that seems to repair itself only under certain unknown conditions.</text>
+    </page>
+
+    <page type = "extMaterialUsePage">
+        <title>Manasteel</title>
+        <tools type = "1">
+            <icon>Botania:manasteelPick</icon>
+            <icon>Botania:manasteelShovel</icon>
+            <icon>Botania:manasteelAxe</icon>
+            <icon>Botania:manasteelSword</icon>
+        </tools>
+        <mods type = "1">
+        </mods>
+        <armor type = "1">
+            <icon>Botania:manasteelHelm</icon>
+            <icon>Botania:manasteelChest</icon>
+            <icon>Botania:manasteelLegs</icon>
+            <icon>Botania:manasteelBoots</icon>
+        </armor>
+    </page>
+
+    <page type="extMaterialPage">
+        <title>Terrasteel</title>
+        <icon>Botania:manaResource:4</icon>
+        <ore></ore>
+        <text>A supremely durable yet easily worked metal. All reports of successfully damaging it turn out to be mysteriously false.</text>
+    </page>
+
+    <page type = "extMaterialUsePage">
+        <title>Terrasteel</title>
+        <tools type = "1">
+            <icon>Botania:terraPick</icon>
+            <icon>Botania:terraAxe</icon>
+            <icon>Botania:terraSword</icon>
+        </tools>
+        <mods type = "1">
+        </mods>
+        <armor type = "1">
+            <icon>Botania:terrasteelHelm</icon>
+            <icon>Botania:terrasteelChest</icon>
+            <icon>Botania:terrasteelLegs</icon>
+            <icon>Botania:terrasteelBoots</icon>
+        </armor>
+    </page>
+
+    <page type="extMaterialPage">
+        <title>Elementium</title>
+        <icon>Botania:manaResource:7</icon>
+        <ore></ore>
+        <text>A strange metal that never responds to tests the same way twice. It seems soft when worked but durable once used as a tool.</text>
+    </page>
+
+    <page type = "extMaterialUsePage">
+        <title>Elementium</title>
+        <tools type = "1">
+            <icon>Botania:elementiumPick</icon>
+            <icon>Botania:elementiumShovel</icon>
+            <icon>Botania:elementiumAxe</icon>
+            <icon>Botania:elementiumSword</icon>
+        </tools>
+        <mods type = "1">
+        </mods>
+        <armor type = "1">
+            <icon>Botania:elementiumHelm</icon>
+            <icon>Botania:elementiumChest</icon>
+            <icon>Botania:elementiumLegs</icon>
+            <icon>Botania:elementiumBoots</icon>
+        </armor>
+    </page>
 
 
 </book>

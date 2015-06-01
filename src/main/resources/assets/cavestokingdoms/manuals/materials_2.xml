@@ -567,5 +567,184 @@ when Skyla wrote his seminal work.
 </armor>
 </page>
 
+   <page type="extMaterialPage">
+      <title>Cardboard</title>
+      <icon>betterstorage:cardboardSheet</icon>
+      <ore></ore>
+      <text>Better than paper in every way, except you can't write on it. Which basically makes it worse in every way.</text>
+   </page>
+
+   <page type = "extMaterialUsePage">
+      <title>Cardboard</title>
+      <tools type = "1">
+         <icon>betterstorage:cardboardPickaxe</icon>
+         <icon>betterstorage:cardboardShovel</icon>
+         <icon>betterstorage:cardboardAxe</icon>
+         <icon>betterstorage:cardboardHoe</icon>
+         <icon>betterstorage:cardboardSword</icon>
+      </tools>
+      <mods type = "1">
+      </mods>
+      <armor type = "1">
+         <icon>betterstorage:cardboardHelmet</icon>
+         <icon>betterstorage:cardboardChestplate</icon>
+         <icon>betterstorage:cardboardLeggings</icon>
+         <icon>betterstorage:cardboardBoots</icon>
+      </armor>
+   </page>
+
+   <page type="extMaterialPage">
+      <title>Glue</title>
+      <icon>TConstruct:materials:36</icon>
+      <ore></ore>
+      <text>Bindings made of glue help tools hold together. Anything else made of glue is a really bad idea.</text>
+   </page>
+
+   <page type = "extMaterialUsePage">
+      <title>Glue</title>
+      <tools type = "0">
+      </tools>
+      <mods type = "1">
+      </mods>
+      <armor type = "0">
+      </armor>
+   </page>
+
+   <page type="extMaterialPage">
+      <title>Ruby</title>
+      <icon>customnpcs:npcRuby</icon>
+      <ore></ore>
+      <text>A rare gem. Unusually high attack damage.</text>
+   </page>
+
+   <page type = "extMaterialUsePage">
+      <title>Ruby</title>
+      <tools type = "0">
+      </tools>
+      <mods type = "1">
+      </mods>
+      <armor type = "0">
+      </armor>
+   </page>
+
+   <page type="extMaterialPage">
+      <title>Peridot</title>
+      <icon>ExtraTiC:chunk:165</icon>
+      <ore></ore>
+      <text>A rare gem. Unusually high Mining Speed</text>
+   </page>
+
+   <page type = "extMaterialUsePage">
+      <title>Peridot</title>
+      <tools type = "0">
+      </tools>
+      <mods type = "1">
+      </mods>
+      <armor type = "0">
+      </armor>
+   </page>
+
+   <page type="extMaterialPage">
+      <title>Sapphire</title>
+      <icon>customnpcs:npcSaphire</icon>
+      <ore></ore>
+      <text>A rare gem. Unusually high durability.</text>
+   </page>
+
+   <page type = "extMaterialUsePage">
+      <title>Sapphire</title>
+      <tools type = "0">
+      </tools>
+      <mods type = "1">
+      </mods>
+      <armor type = "0">
+      </armor>
+   </page>
+
+   <page type="extMaterialPage">
+      <title>Amethyst</title>
+      <icon>customnpcs:npcAmethyst</icon>
+      <ore></ore>
+      <text>A gem like diamond but used to make modular tools. Tools made with Amethyst are as good as diamond historically was.</text>
+   </page>
+
+   <page type = "extMaterialUsePage">
+      <title>Amethyst</title>
+      <tools type = "0">
+      </tools>
+      <mods type = "1">
+      </mods>
+      <armor type = "0">
+      </armor>
+   </page>
+
+   <page type="extMaterialPage">
+      <title>Bedrockium</title>
+      <icon>ExtraUtilities:bedrockiumIngot</icon>
+      <ore></ore>
+      <text>An amazingly tough metal. That's all that's good about it.</text>
+   </page>
+
+   <page type = "extMaterialUsePage">
+      <title>Bedrockium</title>
+      <tools type = "0">
+      </tools>
+      <mods type = "2">
+      </mods>
+      <armor type = "0">
+      </armor>
+   </page>
+
+   <page type="extMaterialPage">
+      <title>Enderium</title>
+      <icon>ThermalFoundation:material:76</icon>
+      <ore></ore>
+      <text>A soft, pulsating alloy made from ender pearls. Takes a fantastically sharp edge... but has a hard time keeping it.</text>
+   </page>
+
+   <page type = "extMaterialUsePage">
+      <title>Enderium</title>
+      <tools type = "0">
+      </tools>
+      <mods type = "2">
+      </mods>
+      <armor type = "0">
+      </armor>
+   </page>
+
+   <page type="extMaterialPage">
+      <title>Signalum</title>
+      <icon>ThermalFoundation:material:74</icon>
+      <ore></ore>
+      <text>An artificial alloy made from copper. Known to conduct redstone quite well. Like copper, but twice as durable and levels twice as fast.</text>
+   </page>
+
+   <page type = "extMaterialUsePage">
+      <title>Signalum</title>
+      <tools type = "0">
+      </tools>
+      <mods type = "2">
+      </mods>
+      <armor type = "0">
+      </armor>
+   </page>
+
+   <page type="extMaterialPage">
+      <title>Lumium</title>
+      <icon>ThermalFoundation:material:75</icon>
+      <ore></ore>
+      <text>A synthetic, glowing metal not normally used in tools. Levels extremely fast, but...</text>
+   </page>
+
+   <page type = "extMaterialUsePage">
+      <title>Lumium</title>
+      <tools type = "0">
+      </tools>
+      <mods type = "2">
+      </mods>
+      <armor type = "0">
+      </armor>
+   </page>
+
 
 </book>

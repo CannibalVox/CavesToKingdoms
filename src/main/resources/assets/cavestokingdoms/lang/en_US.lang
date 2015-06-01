@@ -8,6 +8,7 @@ item.cavestokingdoms:basicManual.2.name=Materials: Alien Edition
 item.cavestokingdoms:basicManual.3.name=Materials: Alien Nether Edition
 item.cavestokingdoms:basicManual.4.name=Tools and Modifiers
 item.cavestokingdoms:basicManual.5.name=Materials: Complete Edition
+item.cavestokingdoms:basicManual.6.name=Materials: Terrestrial Weaponry Edition
 blightfallmanual.geology=By Ayumu Nagasawa
 blightfallmanual.ben=By Archmage Xillith
 blightfallmanual.taint=By Dagomawr the Scribe
@@ -44,3 +45,5 @@ ubc.cavestokingdoms.nickel.name=Nickel
 ubc.cavestokingdoms.certus.name=Certus Quartz
 ubc.cavestokingdoms.certuscharged.name=Charged Certus Quartz
 ubc.cavestokingdoms.quartz.name=Terrestrial Nether Quartz
+
+command.listshaftmaterials.success=Printing all known shaft materials:

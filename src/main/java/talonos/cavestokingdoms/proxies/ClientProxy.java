@@ -4,6 +4,7 @@ import mantle.client.MProxyClient;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.init.Blocks;
+import talonos.cavestokingdoms.client.pages.BowMaterialsPage;
 import talonos.cavestokingdoms.client.pages.ExtMaterialsPage;
 import talonos.cavestokingdoms.client.pages.ExtMaterialsUsagePage;
 import cpw.mods.fml.client.registry.ClientRegistry;
@@ -19,5 +20,6 @@ public class ClientProxy extends CommonProxy
         
         MProxyClient.registerManualPage("extMaterialPage", ExtMaterialsPage.class);
         MProxyClient.registerManualPage("extMaterialUsePage", ExtMaterialsUsagePage.class);
+        MProxyClient.registerManualPage("bowMaterialsPage", BowMaterialsPage.class);
     }
 }
