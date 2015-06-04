@@ -200,16 +200,27 @@ when Skyla wrote his seminal work.
 <title>Tin</title>
 <icon>TConstruct:materials:10</icon>
 <ore>Metallurgy:base.ore:1</ore>
-<text>A tech metal rare on this world. Useless for tools, but used in tech and in making bronze.</text>
+<text>A tech metal rare on this world. Not great for tools, but used in tech and in making bronze.</text>
 </page>
+
+
 
 <page type = "extMaterialUsePage">
 <title>Tin</title>
-<tools type = "0">
+<tools type = "1">
+   <icon>ThermalFoundation:tool.pickaxeTin</icon>
+   <icon>ThermalFoundation:tool.shovelTin</icon>
+   <icon>ThermalFoundation:tool.axeTin</icon>
+   <icon>ThermalFoundation:tool.hoeTin</icon>
+   <icon>ThermalFoundation:tool.swordTin</icon>
 </tools>
 <mods type = "0">
 </mods>
-<armor type = "0">
+<armor type = "1">
+   <icon>ThermalFoundation:armor.helmetTin</icon>
+   <icon>ThermalFoundation:armor.plateTin</icon>
+   <icon>ThermalFoundation:armor.legsTin</icon>
+   <icon>ThermalFoundation:armor.bootsTin</icon>
 </armor>
 </page>
 
@@ -277,12 +288,21 @@ when Skyla wrote his seminal work.
 
 <page type = "extMaterialUsePage">
 <title>Nickel</title>
-<tools type = "0">
-</tools>
-<mods type = "2">
-</mods>
-<armor type = "0">
-</armor>
+   <tools type = "1">
+      <icon>ThermalFoundation:tool.pickaxeNickel</icon>
+      <icon>ThermalFoundation:tool.shovelNickel</icon>
+      <icon>ThermalFoundation:tool.axeNickel</icon>
+      <icon>ThermalFoundation:tool.hoeNickel</icon>
+      <icon>ThermalFoundation:tool.swordNickel</icon>
+   </tools>
+   <mods type = "2">
+   </mods>
+   <armor type = "1">
+      <icon>ThermalFoundation:armor.helmetNickel</icon>
+      <icon>ThermalFoundation:armor.plateNickel</icon>
+      <icon>ThermalFoundation:armor.legsNickel</icon>
+      <icon>ThermalFoundation:armor.bootsNickel</icon>
+   </armor>
 </page>
 
 
@@ -322,12 +342,21 @@ when Skyla wrote his seminal work.
 
 <page type = "extMaterialUsePage">
 <title>Lead</title>
-<tools type = "0">
-</tools>
-<mods type = "2">
-</mods>
-<armor type = "0">
-</armor>
+   <tools type = "1">
+      <icon>ThermalFoundation:tool.pickaxeLead</icon>
+      <icon>ThermalFoundation:tool.shovelLead</icon>
+      <icon>ThermalFoundation:tool.axeLead</icon>
+      <icon>ThermalFoundation:tool.hoeLead</icon>
+      <icon>ThermalFoundation:tool.swordLead</icon>
+   </tools>
+   <mods type = "2">
+   </mods>
+   <armor type = "1">
+      <icon>ThermalFoundation:armor.helmetLead</icon>
+      <icon>ThermalFoundation:armor.plateLead</icon>
+      <icon>ThermalFoundation:armor.legsLead</icon>
+      <icon>ThermalFoundation:armor.bootsLead</icon>
+   </armor>
 </page>
 
 
