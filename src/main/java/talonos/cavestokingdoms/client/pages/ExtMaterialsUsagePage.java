@@ -187,8 +187,9 @@ public class ExtMaterialsUsagePage extends BookPage
             if (tools.get(0).getItem() instanceof ItemPickaxe)
             {
                 ItemPickaxe pick = (ItemPickaxe)tools.get(0).getItem();
+                int hlvl = pick.getHarvestLevel(tools.get(0), "pickaxe");
                 Item.ToolMaterial mat = Item.ToolMaterial.valueOf(pick.getToolMaterialName());
-                toolDesc1 += " - Harvest Level: "+ HarvestLevels.getHarvestLevelName(mat.getHarvestLevel());
+                toolDesc1 += " - Harvest Level: "+ HarvestLevels.getHarvestLevelName(hlvl);
                 toolDesc2 += "Speed: "+ mat.getEfficiencyOnProperMaterial();
                 toolDesc2 += " - Free Ench. Levels: "+ mat.getEnchantability();
             }
