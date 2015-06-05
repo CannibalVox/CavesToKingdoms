@@ -11,6 +11,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import talonos.blightbuster.network.BlightbusterNetwork;
 
 @Mod(modid = BlightBuster.MODID, name = BlightBuster.MODNAME, version = BlightBuster.VERSION, dependencies = BlightBuster.DEPS)
 public class BlightBuster
@@ -42,6 +43,7 @@ public class BlightBuster
     @Mod.EventHandler
     public static void init(FMLInitializationEvent event)
     {
+        BlightbusterNetwork.init();
     	MinecraftForge.EVENT_BUS.register(new PurityFocusEventHandler());
         FMLCommonHandler.instance().bus().register(new PurityFocusEventHandler());
     }

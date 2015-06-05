@@ -12,4 +12,8 @@ public class CommonProxy
     public void registerRenderers() 
     {
     }
+
+    public double getBestCleanseSpawnHeight() {
+        return 0;
+    }
 }
