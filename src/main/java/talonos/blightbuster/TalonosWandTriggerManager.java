@@ -1,5 +1,6 @@
 package talonos.blightbuster;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -24,7 +25,7 @@ public class TalonosWandTriggerManager implements IWandTriggerManager
 		{
 		case 0:
 			//if (ResearchManager.isResearchComplete(
-			//		player.getCommandSenderName(), "DAWNMACHINE")) 
+			//		player.getCommandSenderName(), "DAWNMACHINE"))
 			{
 				return createDawnMachine(wand, player, world, x, y, z);
 			}
@@ -36,96 +37,64 @@ public class TalonosWandTriggerManager implements IWandTriggerManager
 	private boolean createDawnMachine(ItemStack stack, EntityPlayer player,
 			World world, int x, int y, int z) 
 	{
+		if (world.isRemote)
+			return false;
+
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
-		switch(fitDawnMachine(world, x, y, z))
+		int orientation = fitDawnMachine(world, x, y, z);
+
+		if (orientation == 0)
+			return false;
+
+		if (wand.consumeAllVisCrafting(stack, player, new AspectList().add(Aspect.ORDER, 20), true))
 		{
-		case 0:
-			return false;
-		case 1:
-			if (wand.consumeAllVisCrafting(stack, player, new AspectList().add(Aspect.ORDER, 20), true))
+			if (!world.isRemote)
 			{
-				if (!world.isRemote)
-				{
-					replaceDawnMachineZ(player, world, x, y, z);
-					return true;
-				}
-				return false;
+				replaceDawnMachine(player, world, x, y, z, orientation);
+				return true;
 			}
 			return false;
-		case 2:
-			if (wand.consumeAllVisCrafting(stack, player, new AspectList().add(Aspect.ORDER, 20), true))
-			{
-				if (!world.isRemote)
-				{
-					replaceDawnMachineX(player, world, x, y, z);
-					return true;
-				}
-				return false;
-			}
-			return false;
-		default:
-			return false;
-		} 
+		}
+		return false;
 	}
 
-	private void replaceDawnMachineZ(EntityPlayer player, World world, int x, int y, int z) 
+	private void replaceDawnMachine(EntityPlayer player, World world, int x, int y, int z, int orientation)
 	{
-		player.addChatMessage(new ChatComponentText("Valid Z Dawn Machine"));
-	}
-	
-	private void replaceDawnMachineX(EntityPlayer player, World world, int x, int y, int z) 
-	{
-		player.addChatMessage(new ChatComponentText("Valid Z Dawn Machine"));
+		player.addChatMessage(new ChatComponentText("Valid Dawn Machine"));
 	}
 
 	private int fitDawnMachine(World world, int x, int y, int z) 
 	{
 		if (world.getBlock(x, y, z).equals(BBBlock.dawnTotem));
 		{
-			if (checkZAlignedDawnMachine(world, x, y, z))
-			{
-				return 1;
-			}
-			if (checkXAlignedDawnMachine(world, x, y, z))
-			{
-				return 2;
+			for (int orientation = 1; orientation <= 2; orientation++) {
+				if (checkDawnMachine(world, x, y, z, orientation)) {
+					return orientation;
+				}
 			}
 		}
 		return 0;
 	}
 
-	private boolean checkXAlignedDawnMachine(World world, int x, int y, int z) 
+	private boolean checkDawnMachine(World world, int x, int y, int z, int orientation)
 	{
+		int orientationX = (orientation == 1)?1:0;
+		int orientationZ = (orientation == 2)?1:0;
+
 		for (int yy = y-1; yy <= y+1; yy++)
 		{
-			if (!(world.getBlock(x, yy, z-1).equals(ConfigBlocks.blockMagicalLog)&&world.getBlockMetadata(x, yy, z-1)==1&&
-			     world.getBlock(x, yy, z+1).equals(ConfigBlocks.blockMagicalLog)&&world.getBlockMetadata(x, yy, z+1)==1))
+			if (!(world.getBlock(x-orientationX, yy, z-orientationZ).equals(ConfigBlocks.blockMagicalLog)&&world.getBlockMetadata(x-orientationX, yy, z-orientationZ)==1&&
+			     world.getBlock(x+orientationX, yy, z+orientationZ).equals(ConfigBlocks.blockMagicalLog)&&world.getBlockMetadata(x+orientationX, yy, z+orientationZ)==1))
 			{
 				return false;
 			}
 		}
-		if (!world.getBlock(x, y+1, z).equals(Blocks.air)||!world.getBlock(x, y-1, z).equals(Blocks.air))
-		{
+
+		if (world.getBlock(x, y+1, z).isOpaqueCube())
 			return false;
-		}
+		if (world.getBlock(x, y-1, z).isOpaqueCube())
+			return false;
+
 		return true;
 	}
-
-	private boolean checkZAlignedDawnMachine(World world, int x, int y, int z) 
-	{
-		for (int yy = y-1; yy <= y+1; yy++)
-		{
-			if (!(world.getBlock(x-1, yy, z).equals(ConfigBlocks.blockMagicalLog)&&world.getBlockMetadata(x-1, yy, z)==1&&
-			     world.getBlock(x+1, yy, z).equals(ConfigBlocks.blockMagicalLog)&&world.getBlockMetadata(x+1, yy, z)==1))
-			{
-				return false;
-			}
-		}
-		if (!world.getBlock(x, y+1, z).equals(Blocks.air)||!world.getBlock(x, y-1, z).equals(Blocks.air))
-		{
-			return false;
-		}
-		return true;
-	}
-
 }
