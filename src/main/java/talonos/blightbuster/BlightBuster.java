@@ -1,5 +1,6 @@
 package talonos.blightbuster;
 
+import cpw.mods.fml.common.registry.EntityRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -35,6 +36,7 @@ public class BlightBuster
 		BBBlock.init();
 		BBItems.init();
 		proxy.registerTileEntities();
+        EntityRegistry.registerModEntity(EntitySilverPotion.class, "silverPotion", 0, MODID, 250, 5, true);
     }
  
     @Mod.EventHandler
