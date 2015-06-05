@@ -1,7 +1,6 @@
-package talonos.blightbuster;
+package talonos.blightbuster.items;
 
 import net.minecraft.item.Item;
-import talonos.cavestokingdoms.items.ItemManual;
 
 public class BBItems 
 {

@@ -1,8 +1,10 @@
-package talonos.blightbuster;
+package talonos.blightbuster.items;
 
 import java.util.HashSet;
 import java.util.Set;
 
+import talonos.blightbuster.BBStrings;
+import talonos.blightbuster.BlightBuster;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.lib.utils.Utils;
 import thaumcraft.common.lib.world.ThaumcraftWorldGenerator;

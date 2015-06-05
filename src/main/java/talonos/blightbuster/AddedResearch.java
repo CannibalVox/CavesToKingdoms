@@ -1,23 +1,20 @@
 package talonos.blightbuster;
 
-import cpw.mods.fml.common.registry.GameData;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
+import talonos.blightbuster.blocks.BBBlock;
+import talonos.blightbuster.handlers.TalonosWandTriggerManager;
+import talonos.blightbuster.items.BBItems;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
-import thaumcraft.api.crafting.IArcaneRecipe;
 import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.crafting.ShapedArcaneRecipe;
-import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.api.wands.WandTriggerRegistry;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigItems;
-import thaumcraft.common.config.ConfigResearch;
 
 public class AddedResearch 
 {
@@ -50,7 +47,7 @@ public class AddedResearch
 			});
 		
 		
-		InfusionRecipe dawnTotemRecipe = ThaumcraftApi.addInfusionCraftingRecipe("DAWNTOTEM", new ItemStack(BBBlock.dawnTotem), 6, 
+		InfusionRecipe dawnTotemRecipe = ThaumcraftApi.addInfusionCraftingRecipe("DAWNTOTEM", new ItemStack(BBBlock.dawnTotem), 6,
 				new AspectList().add(Aspect.AURA, 16).add(Aspect.HEAL, 32).add(Aspect.LIFE, 48)
 				                .add(Aspect.LIGHT, 16).add(Aspect.ARMOR, 32).add(Aspect.ORDER, 48), 
 				new ItemStack(ConfigBlocks.blockMagicalLog,1,1), new ItemStack[] {

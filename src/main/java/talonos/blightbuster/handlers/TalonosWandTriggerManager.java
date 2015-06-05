@@ -1,17 +1,15 @@
-package talonos.blightbuster;
+package talonos.blightbuster.handlers;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
+import talonos.blightbuster.blocks.BBBlock;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.wands.IWandTriggerManager;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.items.wands.ItemWandCasting;
-import thaumcraft.common.lib.research.ResearchManager;
 
 public class TalonosWandTriggerManager implements IWandTriggerManager 
 {

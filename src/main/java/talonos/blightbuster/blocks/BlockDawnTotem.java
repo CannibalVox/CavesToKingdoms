@@ -1,12 +1,13 @@
-package talonos.blightbuster;
+package talonos.blightbuster.blocks;
 
-import talonos.cavestokingdoms.lib.DEFS;
+import talonos.blightbuster.BBStrings;
+import talonos.blightbuster.BlightBuster;
+import talonos.blightbuster.tileentity.DawnTotemEntity;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
@@ -19,7 +20,7 @@ public class BlockDawnTotem extends BBBlock
 	public BlockDawnTotem(Material m)
 	{
 		super(m);
-		this.setBlockName(BlightBuster.MODID+"_"+BBStrings.dawnTotemBlockName);
+		this.setBlockName(BlightBuster.MODID+"_"+ BBStrings.dawnTotemBlockName);
 		this.setStepSound(soundTypeWood);
 		this.setBlockTextureName("dawnTotem");
 		this.setCreativeTab(CreativeTabs.tabBlock);

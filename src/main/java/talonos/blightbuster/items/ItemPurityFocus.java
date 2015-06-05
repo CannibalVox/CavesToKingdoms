@@ -1,4 +1,4 @@
-package talonos.blightbuster;
+package talonos.blightbuster.items;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
@@ -15,6 +15,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
+import talonos.blightbuster.BBStrings;
+import talonos.blightbuster.BlightBuster;
 import talonos.cavestokingdoms.lib.DEFS;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;

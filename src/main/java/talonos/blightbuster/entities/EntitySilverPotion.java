@@ -1,4 +1,4 @@
-package talonos.blightbuster;
+package talonos.blightbuster.entities;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

@@ -1,4 +1,4 @@
-package talonos.blightbuster;
+package talonos.blightbuster.tileentity;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
