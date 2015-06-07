@@ -29,10 +29,16 @@ public class BBBlock extends Block
     }
     
     public static Block dawnTotem;
+    public static Block dawnMachineInput;
+    public static Block dawnMachineBuffer;
+    public static Block dawnMachine;
 
 	public static void init() 
 	{
 	    dawnTotem = new BlockDawnTotem(Material.wood);
+        dawnMachineInput = new BlockDawnMachineInput();
+        dawnMachineBuffer = new BlockDawnMachineDummy();
+        dawnMachine = new BlockDawnMachine();
 	}
 
 }
