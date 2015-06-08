@@ -18,6 +18,7 @@ public class BBItems
 		worldTainter = new ItemWorldTainter();
 		worldOreKiller = new ItemWorldOreKiller();
 		worldSuperTainter = new ItemSuperTestWorldTainter();
+		worldSuperTainter = new ItemAlienTome();
 	}
 }
 

@@ -4,6 +4,7 @@ item.blightbuster_purityFocus.name=Wand Focus: Purity
 item.blightbuster_silverPotion.name=Silverleaf Splash Potion
 item.blightbuster_worldTainter.name=World Tainter
 item.blightbuster_worldOreKiller.name=Ore Killer
+item.blightbuster_researchnote.name=Translated Alien Grimoire
 
 tc.research_name.SILVERPOTION=Silverwood potions
 tc.research_text.SILVERPOTION=Spot cleaning taint!
@@ -14,3 +15,5 @@ tc.research_page.PURITYFOCUS.1=You have found a way to infuse the properties of 
 tc.research_name.DAWNTOTEM=Totems of Dawn
 tc.research_text.DAWNTOTEM=The start of a glorious new era!
 tc.research_page.DAWNTOTEM.1=By infusing ethereal blooms into a silverwood log, you have created the totem of dawn. It is the greatest magical protection against taint you have yet devised. Boasting an area much larger than a bloom, this totem also excels in keeping the edges of its area free of taint. It may take slightly longer to completely clean an area, however.
+
+blightbuster.researchnote=The alien grimoire reveals secret thaumaturgic knowledge!
