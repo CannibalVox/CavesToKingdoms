@@ -17,7 +17,6 @@ import talonos.biomescanner.map.MapScanner;
 import talonos.biomescanner.map.Zone;
 import net.minecraft.tileentity.TileEntity;
 import talonos.biomescanner.map.event.UpdateCompletionEvent;
-import talonos.blightbuster.ItemSuperTestWorldTainter;
 
 public class TileEntityIslandScanner extends TileEntity implements ISidedInventory
 {

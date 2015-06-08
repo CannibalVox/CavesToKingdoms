@@ -1,9 +1,11 @@
-package talonos.blightbuster;
+package talonos.blightbuster.items;
 
 import java.awt.image.BufferedImage;
 import java.util.HashSet;
 import java.util.Set;
 
+import talonos.blightbuster.BBStrings;
+import talonos.blightbuster.BlightBuster;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.lib.utils.Utils;
@@ -24,17 +26,17 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.IntCache;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class ItemSuperTestWorldTainter extends Item
+public class ItemWorldTainter extends Item
 {
 	
 	//All items in this set have a 50% chance of being replaced with Fibrous Taint when the world-tainter is used. 
 	private static Set<Block> toRandomlyReplace;
 	
 	//Boilerplate setup stuff.
-	public ItemSuperTestWorldTainter() 
+	public ItemWorldTainter() 
 	{
-		setUnlocalizedName(BlightBuster.MODID + "_" + BBStrings.worldTainterName+"super");
-		GameRegistry.registerItem(this, BBStrings.worldTainterName+"super");
+		setUnlocalizedName(BlightBuster.MODID + "_" + BBStrings.worldTainterName);
+		GameRegistry.registerItem(this, BBStrings.worldTainterName);
 		setCreativeTab(CreativeTabs.tabMaterials);
 		setTextureName(BlightBuster.MODID + ":" + BBStrings.worldTainterName);
 	}
@@ -62,9 +64,9 @@ public class ItemSuperTestWorldTainter extends Item
 			thePlayer.addChatMessage(new ChatComponentText("  xSection: "+x+", zSection: "+z));
 			
 			//Taint an 11 chunk diameter area.
-			for (int xLoc = 0; xLoc<1800; xLoc++)
+			for (int xLoc = x-80; xLoc<x+96; xLoc++)
 			{
-				for (int zLoc = z-32; zLoc<z+48; zLoc++)
+				for (int zLoc = z-80; zLoc<z+96; zLoc++)
 				{
 					//Dunno how this works. Thaumcraft's "Utils" package does all the real work. :/
 					Utils.setBiomeAt(theWorld, xLoc, zLoc, ThaumcraftWorldGenerator.biomeTaint);
@@ -92,9 +94,9 @@ public class ItemSuperTestWorldTainter extends Item
 			thePlayer.addChatMessage(new ChatComponentText("  World should now be tainted.")); //Well it should. :/
 
 			//While we're at it, UBify all ores in the area around us as well.
-			for (int xLoc = 0; xLoc<1800; xLoc+=16)
+			for (int xLoc = x-80; xLoc<x+96; xLoc+=16)
 			{
-				for (int zLoc = z-32; zLoc<z+48; zLoc+=16)
+				for (int zLoc = z-80; zLoc<z+96; zLoc+=16)
 				{
 					UBAPIHook.ubAPIHook.ubOreTexturizer.redoOres(xLoc, zLoc, theWorld);    			
 				}

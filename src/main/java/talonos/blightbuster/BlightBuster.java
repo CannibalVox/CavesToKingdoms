@@ -1,15 +1,18 @@
 package talonos.blightbuster;
 
-import net.minecraft.init.Blocks;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
+import talonos.blightbuster.blocks.BBBlock;
+import talonos.blightbuster.entities.EntitySilverPotion;
+import talonos.blightbuster.handlers.PurityFocusEventHandler;
+import talonos.blightbuster.items.BBItems;
+import talonos.blightbuster.network.BlightbusterNetwork;
 
 @Mod(modid = BlightBuster.MODID, name = BlightBuster.MODNAME, version = BlightBuster.VERSION, dependencies = BlightBuster.DEPS)
 public class BlightBuster
@@ -35,11 +38,13 @@ public class BlightBuster
 		BBBlock.init();
 		BBItems.init();
 		proxy.registerTileEntities();
+        EntityRegistry.registerModEntity(EntitySilverPotion.class, "silverPotion", 0, MODID, 250, 5, true);
     }
  
     @Mod.EventHandler
     public static void init(FMLInitializationEvent event)
     {
+        BlightbusterNetwork.init();
     	MinecraftForge.EVENT_BUS.register(new PurityFocusEventHandler());
         FMLCommonHandler.instance().bus().register(new PurityFocusEventHandler());
     }

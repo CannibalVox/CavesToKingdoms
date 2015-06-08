@@ -1,4 +1,4 @@
-package talonos.blightbuster;
+package talonos.blightbuster.handlers;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityCreeper;

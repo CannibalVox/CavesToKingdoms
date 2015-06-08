@@ -1,12 +1,7 @@
-package talonos.blightbuster;
+package talonos.blightbuster.blocks;
 
-import talonos.cavestokingdoms.lib.DEFS;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
 
 /**
  * Thanks to Martijn Woudstra for the code samples.
@@ -34,10 +29,16 @@ public class BBBlock extends Block
     }
     
     public static Block dawnTotem;
+    public static Block dawnMachineInput;
+    public static Block dawnMachineBuffer;
+    public static Block dawnMachine;
 
 	public static void init() 
 	{
 	    dawnTotem = new BlockDawnTotem(Material.wood);
+        dawnMachineInput = new BlockDawnMachineInput();
+        dawnMachineBuffer = new BlockDawnMachineDummy();
+        dawnMachine = new BlockDawnMachine();
 	}
 
 }
