@@ -9,5 +9,7 @@ public class BBStrings
 	public static final String oreKillerName = "worldOreKiller";
 	public static final String worldTainterName = "worldTainter";
 	public static final String researchnoteName = "researchnote";
-
+	public static final String dawnMachineInputName = "dawnMachineInput";
+	public static final String dawnMachineBufferName = "dawnMachineBuffer";
+	public static final String dawnMachineName = "dawnMachine";
 }
