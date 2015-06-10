@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.util.HashSet;
 import java.util.Set;
 
+import exterminatorJeff.undergroundBiomes.api.UBStrataColumn;
 import talonos.blightbuster.BBStrings;
 import talonos.blightbuster.BlightBuster;
 import thaumcraft.common.config.Config;
@@ -101,8 +102,25 @@ public class ItemSuperTestWorldTainter extends Item
 					UBAPIHook.ubAPIHook.ubOreTexturizer.redoOres(xLoc, zLoc, theWorld);    			
 				}
 			}
+
+			//While we're at *that*, also kill any gravel ore.
+
+            for (int xLoc = 0; xLoc<1800; xLoc++)
+            {
+                for (int zLoc = z-32; zLoc<z+48; zLoc++)
+				{
+					for (int yLoc = 254; yLoc > 1; yLoc--)
+					{
+						Block gravelOre = GameRegistry.findBlock("TConstruct","GravelOre");
+						if (theWorld.getBlock(xLoc, yLoc, zLoc).equals(gravelOre))
+						{
+							theWorld.setBlock(xLoc, yLoc, zLoc, Blocks.gravel);
+						}
+					}
+				}
+			}
 			
-			thePlayer.addChatMessage(new ChatComponentText("  Ores should now be fixed."));
+			thePlayer.addChatMessage(new ChatComponentText("  Ores should now be fixed, with gravel ore deleted."));
 			
 			//I was told by Zeno112 that this should prevent memory leaks.
 			theWorld.getChunkProvider().unloadQueuedChunks();
