@@ -6,21 +6,26 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.client.ForgeHooksClient;
 import talonos.blightbuster.BBStrings;
 import talonos.blightbuster.BlightBuster;
+import talonos.blightbuster.multiblock.BlockMultiblock;
 import thaumcraft.common.Thaumcraft;
+import thaumcraft.common.config.ConfigBlocks;
 
-public class BlockDawnMachineDummy extends Block {
+import java.util.Random;
+
+public class BlockDawnMachineDummy extends BlockMultiblock {
 
     private IIcon backgroundTop;
     private IIcon backgroundSide;
     private IIcon[] bufferLayer = new IIcon[6];
 
     protected BlockDawnMachineDummy() {
-        super(Material.iron);
+        super(Material.iron, BBBlock.dawnMachineMultiblock);
 
         this.setBlockName(BlightBuster.MODID+"_"+ BBStrings.dawnMachineBufferName);
         this.setStepSound(soundTypeWood);
@@ -68,10 +73,18 @@ public class BlockDawnMachineDummy extends Block {
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int meta) {
         if (ForgeHooksClient.getWorldRenderPass() == 1)
-            return bufferLayer[side];
+            return bufferLayer[transformSide(side, meta)];
 
         if (side == 0 || side == 1)
             return backgroundTop;
         return backgroundSide;
     }
+
+    @Override
+    public Item getItemDropped(int meta, Random par2Random, int par3) {
+        return Item.getItemFromBlock(ConfigBlocks.blockMagicalLog);
+    }
+
+    @Override
+    public int damageDropped(int p_149692_1_) { return 1; }
 }

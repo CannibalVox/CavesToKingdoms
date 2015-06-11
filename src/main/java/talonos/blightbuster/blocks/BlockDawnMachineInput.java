@@ -7,16 +7,21 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.common.util.ForgeDirection;
 import talonos.blightbuster.BBStrings;
 import talonos.blightbuster.BlightBuster;
+import talonos.blightbuster.multiblock.BlockMultiblock;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.Thaumcraft;
+import thaumcraft.common.config.ConfigBlocks;
 
-public class BlockDawnMachineInput extends Block {
+import java.util.Random;
+
+public class BlockDawnMachineInput extends BlockMultiblock {
 
     private IIcon backgroundTop;
     private IIcon backgroundSide;
@@ -39,23 +44,13 @@ public class BlockDawnMachineInput extends Block {
     };
 
     protected BlockDawnMachineInput() {
-        super(Material.iron);
+        super(Material.iron, BBBlock.dawnMachineMultiblock);
 
         this.setBlockName(BlightBuster.MODID+"_"+ BBStrings.dawnMachineInputName);
         this.setStepSound(soundTypeWood);
         this.setLightLevel(.875f);
         this.setBlockTextureName("dawnMachineBuffer");
         GameRegistry.registerBlock(this, this.getUnlocalizedName());
-    }
-
-    public boolean onBlockEventReceived(World par1World, int par2, int par3, int par4, int par5, int par6) {
-        if (par5 == 1) {
-            if (par1World.isRemote) {
-                Thaumcraft.proxy.blockSparkle(par1World, par2, par3, par4, 16736256, 5);
-            }
-            return true;
-        }
-        return super.onBlockEventReceived(par1World, par2, par3, par4, par5, par6);
     }
 
     @SideOnly(Side.CLIENT)
@@ -111,14 +106,21 @@ public class BlockDawnMachineInput extends Block {
     @Override
     public IIcon getIcon(int side, int meta) {
         if (ForgeHooksClient.getWorldRenderPass() == 1) {
-            ForgeDirection sideDir = getInputSide(side, meta);
-            return getInputIcon(sideDir.ordinal(), meta);
+            return getInputIcon(transformSide(side, meta), meta);
         }
 
         if (side == 0 || side == 1)
             return backgroundTop;
         return backgroundSide;
     }
+
+    @Override
+    public Item getItemDropped(int meta, Random par2Random, int par3) {
+        return Item.getItemFromBlock(ConfigBlocks.blockMagicalLog);
+    }
+
+    @Override
+    public int damageDropped(int p_149692_1_) { return 1; }
 
     private IIcon getInputIcon(int side, int meta) {
         int block = meta/4;
@@ -135,19 +137,8 @@ public class BlockDawnMachineInput extends Block {
         }
     }
 
-    public ForgeDirection getInputSide(int side, int meta) {
-        int orientation = meta & 0x3;
-        ForgeDirection sideDir = ForgeDirection.VALID_DIRECTIONS[side];
-
-        for (int i = 0; i < orientation; i++) {
-            sideDir = sideDir.getRotation(ForgeDirection.DOWN);
-        }
-
-        return sideDir;
-    }
-
     public Aspect getSpoutAspect(int side, int meta) {
-        ForgeDirection sideDir = getInputSide(side, meta);
+        ForgeDirection sideDir = ForgeDirection.VALID_DIRECTIONS[transformSide(side, meta)];
         int inputBlockIndex = meta/4;
 
         switch (inputBlockIndex) {

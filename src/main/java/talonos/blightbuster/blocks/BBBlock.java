@@ -38,11 +38,14 @@ public class BBBlock extends Block
 
 	public static void init() 
 	{
+        dawnMachineMultiblock = new DawnMachineMultiblock();
+
 	    dawnTotem = new BlockDawnTotem(Material.wood);
         dawnMachineInput = new BlockDawnMachineInput();
         dawnMachineBuffer = new BlockDawnMachineDummy();
         dawnMachine = new BlockDawnMachine();
-        dawnMachineMultiblock = new DawnMachineMultiblock();
+
+        dawnMachineMultiblock.init();
 	}
 
 }

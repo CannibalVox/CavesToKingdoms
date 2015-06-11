@@ -12,7 +12,9 @@ public class DawnMachineMultiblock extends Multiblock {
     private List<MultiblockEntry> entries = new ArrayList<MultiblockEntry>(9);
 
     public DawnMachineMultiblock() {
+    }
 
+    public void init() {
         IMultiblockEntryState silverwoodLog = new BasicMultiblockState(ConfigBlocks.blockMagicalLog, 1);
         IMultiblockEntryState dawnTotem = new BasicMultiblockState(BBBlock.dawnTotem);
         IMultiblockEntryState blankSpace = new NonSolidBlockState();

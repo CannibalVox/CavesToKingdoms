@@ -10,34 +10,41 @@ import talonos.blightbuster.multiblock.entries.MultiblockEntry;
 
 public abstract class Multiblock {
 
+    public abstract void init();
+
     public int findMultiblockFit(World world, int x, int y, int z) {
         return findMultiblockFit(world, x, y, z, false, null);
     }
 
     public int findMultiblockFit(World world, int x, int y, int z, boolean isConverted, MultiblockEntry centerEntry) {
-        ForgeDirection zAxis = ForgeDirection.SOUTH;
-        ForgeDirection xAxis = ForgeDirection.EAST;
-
         for (int orientation = 0; orientation < 4; orientation++) {
-
-            int offsetX = 0;
-            int offsetY = 0;
-            int offsetZ = 0;
-
-            if (centerEntry != null) {
-                offsetX = xAxis.offsetX * centerEntry.getXOffset() + zAxis.offsetX * centerEntry.getZOffset();
-                offsetZ = xAxis.offsetZ * centerEntry.getXOffset() + zAxis.offsetZ * centerEntry.getZOffset();
-                offsetY = centerEntry.getYOffset();
-
-                zAxis = zAxis.getRotation(ForgeDirection.UP);
-                xAxis = xAxis.getRotation(ForgeDirection.UP);
-            }
-
-            if (hasMultiblockFitWithOrientation(world, x - offsetX, y - offsetY, z - offsetZ, orientation, isConverted, centerEntry))
+            if (checkSingleFit(world, x, y, z, orientation, isConverted, centerEntry))
                 return orientation;
         }
 
         return -1;
+    }
+
+    protected boolean checkSingleFit(World world, int x, int y, int z, int orientation, boolean isConverted, MultiblockEntry centerEntry) {
+        int offsetX = 0;
+        int offsetY = 0;
+        int offsetZ = 0;
+
+        if (centerEntry != null) {
+            ForgeDirection zAxis = ForgeDirection.SOUTH;
+            ForgeDirection xAxis = ForgeDirection.EAST;
+
+            for (int i = 0; i < orientation; i++) {
+                zAxis = zAxis.getRotation(ForgeDirection.UP);
+                xAxis = xAxis.getRotation(ForgeDirection.UP);
+            }
+
+            offsetX = xAxis.offsetX * centerEntry.getXOffset() + zAxis.offsetX * centerEntry.getZOffset();
+            offsetZ = xAxis.offsetZ * centerEntry.getXOffset() + zAxis.offsetZ * centerEntry.getZOffset();
+            offsetY = centerEntry.getYOffset();
+        }
+
+        return hasMultiblockFitWithOrientation(world, x - offsetX, y - offsetY, z - offsetZ, orientation, isConverted, centerEntry);
     }
 
     protected abstract Iterable<MultiblockEntry> getMultiblockSchema();
@@ -56,7 +63,7 @@ public abstract class Multiblock {
                     if (outOrientation >= 0)
                         return new ImmutablePair<MultiblockEntry, Integer>(entry, outOrientation);
                 } else {
-                    if (hasMultiblockFitWithOrientation(world, x, y, z, orientation, true, entry))
+                    if (checkSingleFit(world, x, y, z, orientation, true, entry))
                         return new ImmutablePair<MultiblockEntry, Integer>(entry, orientation);
                 }
             }
