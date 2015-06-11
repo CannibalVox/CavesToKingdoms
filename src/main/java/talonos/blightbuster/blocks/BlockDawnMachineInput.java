@@ -69,30 +69,30 @@ public class BlockDawnMachineInput extends Block {
         topLeftIcons[0] = bufferLayer;
         topLeftIcons[1] = bufferLayer;
         topLeftIcons[2] = spoutLayer;
-        topLeftIcons[3] = bufferLayer;
+        topLeftIcons[3] = spoutLayer;
         topLeftIcons[4] = spoutLayer;
-        topLeftIcons[5] = spoutLayer;
+        topLeftIcons[5] = bufferLayer;
 
         topRightIcons[0] = bufferLayer;
         topRightIcons[1] = bufferLayer;
-        topRightIcons[2] = bufferLayer;
+        topRightIcons[2] = spoutLayer;
         topRightIcons[3] = spoutLayer;
-        topRightIcons[4] = spoutLayer;
+        topRightIcons[4] = bufferLayer;
         topRightIcons[5] = spoutLayer;
 
         bottomLeftIcons[0] = bufferLayer;
         bottomLeftIcons[1] = bufferLayer;
-        bottomLeftIcons[2] = bufferLayer;
-        bottomLeftIcons[3] = bufferLayer;
-        bottomLeftIcons[4] = spoutLayer;
-        bottomLeftIcons[5] = spoutLayer;
+        bottomLeftIcons[2] = spoutLayer;
+        bottomLeftIcons[3] = spoutLayer;
+        bottomLeftIcons[4] = bufferLayer;
+        bottomLeftIcons[5] = bufferLayer;
 
         bottomRightIcons[0] = bufferLayer;
         bottomRightIcons[1] = bufferLayer;
-        bottomRightIcons[2] = bufferLayer;
-        bottomRightIcons[3] = bufferLayer;
-        bottomRightIcons[4] = spoutLayer;
-        bottomRightIcons[5] = spoutLayer;
+        bottomRightIcons[2] = spoutLayer;
+        bottomRightIcons[3] = spoutLayer;
+        bottomRightIcons[4] = bufferLayer;
+        bottomRightIcons[5] = bufferLayer;
     }
 
     @Override
@@ -138,11 +138,9 @@ public class BlockDawnMachineInput extends Block {
     public ForgeDirection getInputSide(int side, int meta) {
         int orientation = meta & 0x3;
         ForgeDirection sideDir = ForgeDirection.VALID_DIRECTIONS[side];
-        ForgeDirection orientationDir = ForgeDirection.VALID_DIRECTIONS[orientation+2];
 
-        while (orientationDir != ForgeDirection.WEST) {
-            orientationDir = orientationDir.getRotation(ForgeDirection.UP);
-            sideDir = sideDir.getRotation(ForgeDirection.UP);
+        for (int i = 0; i < orientation; i++) {
+            sideDir = sideDir.getRotation(ForgeDirection.DOWN);
         }
 
         return sideDir;
