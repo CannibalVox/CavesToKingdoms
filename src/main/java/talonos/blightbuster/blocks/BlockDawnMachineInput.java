@@ -44,12 +44,14 @@ public class BlockDawnMachineInput extends BlockMultiblock {
     };
 
     protected BlockDawnMachineInput() {
-        super(Material.iron, BBBlock.dawnMachineMultiblock);
+        super(Material.wood, BBBlock.dawnMachineMultiblock);
 
         this.setBlockName(BlightBuster.MODID+"_"+ BBStrings.dawnMachineInputName);
         this.setStepSound(soundTypeWood);
         this.setLightLevel(.875f);
         this.setBlockTextureName("dawnMachineBuffer");
+        this.setHardness(10.0F);
+        this.setResistance(500.0F);
         GameRegistry.registerBlock(this, this.getUnlocalizedName());
     }
 
