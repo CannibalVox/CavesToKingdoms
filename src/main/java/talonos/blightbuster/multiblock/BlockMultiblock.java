@@ -3,6 +3,7 @@ package talonos.blightbuster.multiblock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import org.apache.commons.lang3.tuple.Pair;
@@ -55,5 +56,32 @@ public abstract class BlockMultiblock extends Block {
             getMultiblock().convertMultiblockWithOrientationFromSideBlock(world, x, y, z, entry.getValue(), true, entry.getKey());
 
         super.breakBlock(world, x, y, z, block, meta);
+    }
+
+    public TileEntity getMultiblockController(World world, int x, int y, int z) {
+        int meta = world.getBlockMetadata(x, y, z);
+        Pair<MultiblockEntry, Integer> entry = getMultiblock().getEntry(world, x, y, z, getOrientation(meta), this, meta);
+
+        if (entry == null)
+            return null;
+
+        MultiblockEntry controller = getMultiblock().getControllerEntry();
+
+        ForgeDirection zAxis = ForgeDirection.SOUTH;
+        ForgeDirection xAxis = ForgeDirection.EAST;
+
+        for (int i = 0; i < entry.getValue(); i++) {
+            zAxis = zAxis.getRotation(ForgeDirection.UP);
+            xAxis = xAxis.getRotation(ForgeDirection.UP);
+        }
+
+        int thisXOffset = xAxis.offsetX * entry.getKey().getXOffset() + zAxis.offsetX * entry.getKey().getZOffset();
+        int thisZOffset = xAxis.offsetZ * entry.getKey().getXOffset() + zAxis.offsetZ * entry.getKey().getZOffset();
+        int thisYOffset = entry.getKey().getYOffset();
+        int controllerXOffset = xAxis.offsetX * controller.getXOffset() + zAxis.offsetX * controller.getZOffset();
+        int controllerZOffset = xAxis.offsetZ * controller.getXOffset() + zAxis.offsetZ * controller.getZOffset();
+        int controllerYOffset = controller.getYOffset();
+
+        return world.getTileEntity(x - thisXOffset + controllerXOffset, y - thisYOffset + controllerYOffset, z - thisZOffset + controllerZOffset);
     }
 }

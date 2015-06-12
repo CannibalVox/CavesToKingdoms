@@ -10,6 +10,7 @@ import java.util.List;
 public class DawnMachineMultiblock extends Multiblock {
 
     private List<MultiblockEntry> entries = new ArrayList<MultiblockEntry>(9);
+    private MultiblockEntry controller = null;
 
     public DawnMachineMultiblock() {
     }
@@ -31,7 +32,8 @@ public class DawnMachineMultiblock extends Multiblock {
         entries.add(new MultiblockEntry(0, 1, 0, blankSpace, nullState));
         entries.add(new MultiblockEntry(1, 1, 0, silverwoodLog, topRightSpout));
         entries.add(new MultiblockEntry(-1, 0, 0, silverwoodLog, bottomLeftSpout));
-        entries.add(new MultiblockEntry(0, 0, 0, dawnTotem, dawnMachine));
+        controller = new MultiblockEntry(0, 0, 0, dawnTotem, dawnMachine);
+        entries.add(controller);
         entries.add(new MultiblockEntry(1, 0, 0, silverwoodLog, bottomRightSpout));
         entries.add(new MultiblockEntry(-1, -1, 0, silverwoodLog, buffer));
         entries.add(new MultiblockEntry(1, -1, 0, silverwoodLog, buffer));
@@ -40,5 +42,10 @@ public class DawnMachineMultiblock extends Multiblock {
     @Override
     protected Iterable<MultiblockEntry> getMultiblockSchema() {
         return entries;
+    }
+
+    @Override
+    public MultiblockEntry getControllerEntry() {
+        return controller;
     }
 }

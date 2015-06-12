@@ -8,6 +8,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.client.ForgeHooksClient;
@@ -15,6 +16,8 @@ import net.minecraftforge.common.util.ForgeDirection;
 import talonos.blightbuster.BBStrings;
 import talonos.blightbuster.BlightBuster;
 import talonos.blightbuster.multiblock.BlockMultiblock;
+import talonos.blightbuster.tileentity.DawnMachineSpoutTileEntity;
+import talonos.blightbuster.tileentity.DawnTotemEntity;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.config.ConfigBlocks;
@@ -30,20 +33,7 @@ public class BlockDawnMachineInput extends BlockMultiblock {
     private IIcon[] bottomLeftIcons = new IIcon[6];
     private IIcon[] bottomRightIcons = new IIcon[6];
 
-    private Aspect[] spoutAspects = {
-            Aspect.HEAL,
-            Aspect.FIRE,
-            Aspect.AIR,
-            Aspect.MIND,
-            Aspect.MECHANISM,
-            Aspect.AURA,
-            Aspect.VOID,
-            Aspect.ORDER,
-            Aspect.TREE,
-            Aspect.PLANT
-    };
-
-    protected BlockDawnMachineInput() {
+    public BlockDawnMachineInput() {
         super(Material.wood, BBBlock.dawnMachineMultiblock);
 
         this.setBlockName(BlightBuster.MODID+"_"+ BBStrings.dawnMachineInputName);
@@ -139,45 +129,57 @@ public class BlockDawnMachineInput extends BlockMultiblock {
         }
     }
 
+    @Override
+    public boolean hasTileEntity(int meta)
+    {
+        return true;
+    }
+
+    @Override
+    public TileEntity createTileEntity(World world, int meta)
+    {
+        return new DawnMachineSpoutTileEntity();
+    }
+
     public Aspect getSpoutAspect(int side, int meta) {
         ForgeDirection sideDir = ForgeDirection.VALID_DIRECTIONS[transformSide(side, meta)];
         int inputBlockIndex = meta/4;
 
         switch (inputBlockIndex) {
             case 0:
-                //North lower block, sano is west, machina is east
-                if (sideDir == ForgeDirection.WEST)
-                    return Aspect.HEAL;
-                else if (sideDir == ForgeDirection.EAST)
-                    return Aspect.MECHANISM;
-                else
-                    return null;
-            case 1:
-                //South lower block, auram is east, herba is west
-                if (sideDir == ForgeDirection.WEST)
+                //West lower block, auram is south, herba is north
+                if (sideDir == ForgeDirection.NORTH)
                     return Aspect.PLANT;
-                else if (sideDir == ForgeDirection.EAST)
+                else if (sideDir == ForgeDirection.SOUTH)
                     return Aspect.AURA;
                 else
                     return null;
+            case 1:
+                //East lower block, sano is north, machina is south
+                if (sideDir == ForgeDirection.NORTH)
+                    return Aspect.HEAL;
+                else if (sideDir == ForgeDirection.SOUTH)
+                    return Aspect.MECHANISM;
+                else
+                    return null;
             case 2:
-                //North upper block, ignis is west, aer is north, cognitio is east
-                if (sideDir == ForgeDirection.WEST)
-                    return Aspect.FIRE;
+                //West upper block, west is ordo, north is arbor, south is vacuos
+                if (sideDir == ForgeDirection.SOUTH)
+                    return Aspect.VOID;
                 else if (sideDir == ForgeDirection.NORTH)
-                    return Aspect.AIR;
-                else if (sideDir == ForgeDirection.EAST)
-                    return Aspect.MIND;
+                    return Aspect.TREE;
+                else if (sideDir == ForgeDirection.WEST)
+                    return Aspect.ORDER;
                 else
                     return null;
             default:
-                //South upper block, vacuos is east, ordo is south, arbor is west
-                if (sideDir == ForgeDirection.WEST)
-                    return Aspect.TREE;
+                //East upper block, east is aer, north is ignis, south is cognitio
+                if (sideDir == ForgeDirection.NORTH)
+                    return Aspect.FIRE;
                 else if (sideDir == ForgeDirection.SOUTH)
-                    return Aspect.ORDER;
+                    return Aspect.MIND;
                 else if (sideDir == ForgeDirection.EAST)
-                    return Aspect.VOID;
+                    return Aspect.AIR;
                 else
                     return null;
         }

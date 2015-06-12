@@ -2,6 +2,7 @@ package talonos.blightbuster.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import talonos.blightbuster.multiblock.BlockMultiblock;
 import talonos.blightbuster.multiblock.DawnMachineMultiblock;
 import talonos.blightbuster.multiblock.Multiblock;
 
@@ -31,7 +32,7 @@ public class BBBlock extends Block
     }
     
     public static Block dawnTotem;
-    public static Block dawnMachineInput;
+    public static BlockDawnMachineInput dawnMachineInput;
     public static Block dawnMachineBuffer;
     public static Block dawnMachine;
     public static Multiblock dawnMachineMultiblock;

@@ -48,6 +48,7 @@ public abstract class Multiblock {
     }
 
     protected abstract Iterable<MultiblockEntry> getMultiblockSchema();
+    public abstract MultiblockEntry getControllerEntry();
 
     public Pair<MultiblockEntry, Integer> getEntry(World world, int x, int y, int z, int orientation, Block block, int meta) {
         boolean convertedMultiblock = false;
