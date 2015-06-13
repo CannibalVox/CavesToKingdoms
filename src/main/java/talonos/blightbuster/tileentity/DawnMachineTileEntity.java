@@ -1,5 +1,7 @@
 package talonos.blightbuster.tileentity;
 
+import cofh.api.energy.IEnergyReceiver;
+import cofh.api.energy.IEnergyStorage;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import talonos.blightbuster.tileentity.dawnmachine.DawnMachineResource;
@@ -8,8 +10,10 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectSource;
 import thaumcraft.api.aspects.IEssentiaTransport;
 
-public class DawnMachineTileEntity extends TileEntity implements IAspectSource {
+public class DawnMachineTileEntity extends TileEntity implements IAspectSource, IEnergyReceiver, IEnergyStorage {
 
+    private int currentRf = 0;
+    public static final int MAX_RF = 8000;
     private AspectList internalAspectList = new AspectList();
 
     public DawnMachineTileEntity() {
@@ -114,5 +118,61 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource {
             return false;
 
         return (relevantResource.getMaximumValue() - internalAspectList.getAmount(aspect)) >= relevantResource.getValueMultiplier();
+    }
+
+    @Override
+    public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate) {
+        if (from != ForgeDirection.DOWN)
+            return 0;
+
+        int room = MAX_RF - currentRf;
+
+        int actualReceive = Math.min(maxReceive, room);
+
+        if (!simulate)
+            currentRf += actualReceive;
+
+        return actualReceive;
+    }
+
+    @Override
+    public int getEnergyStored(ForgeDirection from) {
+        if (from != ForgeDirection.DOWN)
+            return 0;
+
+        return currentRf;
+    }
+
+    @Override
+    public int getMaxEnergyStored(ForgeDirection from) {
+        if (from != ForgeDirection.DOWN)
+            return 0;
+
+        return MAX_RF;
+    }
+
+    @Override
+    public boolean canConnectEnergy(ForgeDirection from) {
+        return (from == ForgeDirection.DOWN);
+    }
+
+    @Override
+    public int receiveEnergy(int maxReceive, boolean simulate) {
+        return receiveEnergy(ForgeDirection.DOWN, maxReceive, simulate);
+    }
+
+    @Override
+    public int extractEnergy(int maxExtract, boolean simulate) {
+        return 0;
+    }
+
+    @Override
+    public int getEnergyStored() {
+        return currentRf;
+    }
+
+    @Override
+    public int getMaxEnergyStored() {
+        return MAX_RF;
     }
 }
