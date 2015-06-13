@@ -2,6 +2,7 @@ package talonos.blightbuster.tileentity;
 
 import cofh.api.energy.IEnergyReceiver;
 import cofh.api.energy.IEnergyStorage;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import talonos.blightbuster.tileentity.dawnmachine.DawnMachineResource;
@@ -174,5 +175,24 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
     @Override
     public int getMaxEnergyStored() {
         return MAX_RF;
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound tag) {
+        super.readFromNBT(tag);
+
+        internalAspectList.readFromNBT(tag.getCompoundTag("Essentia"));
+        currentRf = tag.getInteger("CurrentRF");
+    }
+
+    @Override
+    public void writeToNBT(NBTTagCompound tag) {
+        super.writeToNBT(tag);
+
+        NBTTagCompound essentia = new NBTTagCompound();
+        internalAspectList.writeToNBT(essentia);
+        tag.setTag("Essentia", essentia);
+
+        tag.setInteger("CurrentRF", currentRf);
     }
 }
