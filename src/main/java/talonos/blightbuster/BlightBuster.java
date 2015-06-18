@@ -1,6 +1,8 @@
 package talonos.blightbuster;
 
+import cpw.mods.fml.common.event.FMLServerStoppingEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
+import net.minecraftforge.common.ForgeChunkManager;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -13,6 +15,7 @@ import talonos.blightbuster.entities.EntitySilverPotion;
 import talonos.blightbuster.handlers.PurityFocusEventHandler;
 import talonos.blightbuster.items.BBItems;
 import talonos.blightbuster.network.BlightbusterNetwork;
+import talonos.blightbuster.tileentity.dawnmachine.DawnMachineChunkLoader;
 
 @Mod(modid = BlightBuster.MODID, name = BlightBuster.MODNAME, version = BlightBuster.VERSION, dependencies = BlightBuster.DEPS)
 public class BlightBuster
@@ -29,12 +32,15 @@ public class BlightBuster
 	
 	@SidedProxy(clientSide = BlightBuster.CLIENTPROXYLOCATION, serverSide = BlightBuster.COMMONPROXYLOCATION)
 	public static CommonProxy proxy;
-	
+
 	public static BlightBuster instance;
+
+    public DawnMachineChunkLoader chunkLoader = null;
 	
 	@Mod.EventHandler
-    public static void preInit(FMLPreInitializationEvent event)
+    public void preInit(FMLPreInitializationEvent event)
     {
+        instance = this;
 		BBBlock.init();
 		BBItems.init();
 		proxy.registerTileEntities();
@@ -42,15 +48,18 @@ public class BlightBuster
     }
  
     @Mod.EventHandler
-    public static void init(FMLInitializationEvent event)
+    public void init(FMLInitializationEvent event)
     {
         BlightbusterNetwork.init();
     	MinecraftForge.EVENT_BUS.register(new PurityFocusEventHandler());
         FMLCommonHandler.instance().bus().register(new PurityFocusEventHandler());
+
+        chunkLoader = new DawnMachineChunkLoader();
+        ForgeChunkManager.setForcedChunkLoadingCallback(this, chunkLoader);
     }
  
     @Mod.EventHandler
-    public static void postInit(FMLPostInitializationEvent event)
+    public void postInit(FMLPostInitializationEvent event)
     {
     	AddedResearch.initResearch();
         proxy.registerRenderers();

@@ -83,4 +83,16 @@ public class BlockDawnMachine extends BlockMultiblock {
     {
         return new DawnMachineTileEntity();
     }
+
+    @Override
+    public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
+        super.breakBlock(world, x, y, z, block, meta);
+
+        BlightBuster.instance.chunkLoader.eliminateDawnMachine(world, x, y, z);
+    }
+
+    @Override
+    public void onBlockAdded(World world, int x, int y, int z) {
+        BlightBuster.instance.chunkLoader.newDawnMachine(world, x, y, z);
+    }
 }
