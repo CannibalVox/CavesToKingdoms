@@ -57,7 +57,7 @@ public class OreDiscoveryRegistry {
             if (getDiscoveryItem() != stack.getItem())
                 return false;
 
-            return ((getDiscoveryMeta() & getDiscoveryMetaFlags()) != (stack.getItemDamage() & getDiscoveryMetaFlags()));
+            return ((getDiscoveryMeta() & getDiscoveryMetaFlags()) == (stack.getItemDamage() & getDiscoveryMetaFlags()));
         }
     }
 
@@ -66,7 +66,7 @@ public class OreDiscoveryRegistry {
 
     public OreDiscoveryRegistry() {
         try {
-            manualItemStack = GuiManual.class.getField("itemstackBook");
+            manualItemStack = GuiManual.class.getDeclaredField("itemstackBook");
             manualItemStack.setAccessible(true);
         } catch (NoSuchFieldException ex) {
             throw new RuntimeException("Failed to find 'itemstackBook' field of GuiManual.", ex);
