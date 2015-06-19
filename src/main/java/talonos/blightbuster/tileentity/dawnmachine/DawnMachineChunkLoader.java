@@ -16,13 +16,6 @@ public class DawnMachineChunkLoader implements ForgeChunkManager.LoadingCallback
 
     @Override
     public void ticketsLoaded(List<ForgeChunkManager.Ticket> tickets, World world) {
-        for (int i = tickets.size()-1; i >= 0; i--) {
-            if (tickets.get(i).world == world) {
-                ForgeChunkManager.releaseTicket(tickets.get(i));
-                tickets.remove(i);
-            }
-        }
-
         for (ForgeChunkManager.Ticket ticket : tickets) {
             NBTTagCompound data = ticket.getModData();
             int x = data.getInteger("X");
