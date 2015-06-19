@@ -73,14 +73,12 @@ public class BlockDawnMachine extends BlockMultiblock {
     }
 
     @Override
-    public boolean hasTileEntity(int meta)
-    {
+    public boolean hasTileEntity(int meta) {
         return true;
     }
 
     @Override
-    public TileEntity createTileEntity(World world, int meta)
-    {
+    public TileEntity createTileEntity(World world, int meta) {
         return new DawnMachineTileEntity();
     }
 
@@ -89,10 +87,5 @@ public class BlockDawnMachine extends BlockMultiblock {
         super.breakBlock(world, x, y, z, block, meta);
 
         BlightBuster.instance.chunkLoader.eliminateDawnMachine(world, x, y, z);
-    }
-
-    @Override
-    public void onBlockAdded(World world, int x, int y, int z) {
-        BlightBuster.instance.chunkLoader.newDawnMachine(world, x, y, z);
     }
 }

@@ -53,6 +53,9 @@ public class DawnMachineSpoutTileEntity extends TileEntity implements IEssentiaT
     }
 
     public int addToContainer(Aspect aspect, int i) {
+        if (i == 0)
+            return 0;
+
         DawnMachineTileEntity controller = getController();
 
         return (controller == null)?i:controller.addToContainer(aspect, i);

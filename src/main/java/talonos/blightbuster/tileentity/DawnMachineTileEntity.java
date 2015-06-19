@@ -50,14 +50,21 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
 
     private AspectList internalAspectList = new AspectList();
 
+    private boolean hasInitializedChunkloading = false;
+
     public DawnMachineTileEntity() {
 
     }
 
     @Override
     public void updateEntity() {
-        if (!getWorldObj().isRemote)
+        if (getWorldObj().isRemote)
             return;
+
+        if (!hasInitializedChunkloading) {
+            BlightBuster.instance.chunkLoader.newDawnMachine(getWorldObj(), xCoord, yCoord, zCoord);
+            hasInitializedChunkloading = true;
+        }
 
         if (aerCooldownRemaining > 0)
             aerCooldownRemaining--;
@@ -85,8 +92,11 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
                     spend(DawnMachineResource.MACHINA);
 
                 executeCleanse();
+                ticksSinceLastCleanse++;
                 break;
             }
+        } else {
+            ticksSinceLastCleanse++;
         }
     }
 
@@ -104,8 +114,6 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
             cleanseMobs();
 
         BlightbusterNetwork.sendToNearbyPlayers(new SpawnCleanseParticlesPacket(lastCleanseX, lastCleanseZ, didUseIgnis), worldObj.provider.dimensionId, lastCleanseX, 128.0f, lastCleanseZ, 150);
-
-        ticksSinceLastCleanse++;
     }
 
     protected boolean hasAnythingToCleanseHere() {
@@ -445,15 +453,21 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
     }
 
     private void generateScanlineCoords(int minX, int minZ, int maxX, int maxZ) {
-        if (lastCleanseX == Integer.MAX_VALUE || lastCleanseX >= maxX)
-            lastCleanseX = minX;
-        else
-            lastCleanseX++;
-
-        if (lastCleanseZ == Integer.MAX_VALUE || lastCleanseZ >= maxZ)
+        if (lastCleanseX == Integer.MAX_VALUE || lastCleanseX < minX)
+            lastCleanseX = minX-1;
+        if (lastCleanseZ == Integer.MAX_VALUE || lastCleanseZ < minZ)
             lastCleanseZ = minZ;
-        else
+
+        lastCleanseX++;
+
+        if (lastCleanseX > maxX) {
+            lastCleanseX = minX;
             lastCleanseZ++;
+        }
+
+        if (lastCleanseZ > maxZ) {
+            lastCleanseZ = minZ;
+        }
     }
 
     private void generateRandomCoords(int minX, int minZ, int maxX, int maxZ) {
