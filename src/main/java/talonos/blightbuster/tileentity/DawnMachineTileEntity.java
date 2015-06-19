@@ -209,19 +209,31 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
 
             boolean thisIsCrustedTaint = (block == ConfigBlocks.blockTaint && meta == 0);
 
+            if (!thisIsCrustedTaint && consecutiveCrustedTaint > 0 && getWorldObj().isAirBlock(lastCleanseX, y, lastCleanseZ)) {
+                List swarmerSpawns = getWorldObj().getEntitiesWithinAABB(EntityTaintSporeSwarmer.class, AxisAlignedBB.getBoundingBox(lastCleanseX, y, lastCleanseZ, lastCleanseX + 1, y + 1, lastCleanseZ + 1));
+                if (swarmerSpawns.size() > 0)
+                    thisIsCrustedTaint = true;
+            }
+
             boolean plantSaplingAbove = false;
             if (thisIsCrustedTaint && haveEnoughFor(DawnMachineResource.IGNIS) && haveEnoughFor(DawnMachineResource.VACUOS))
                 consecutiveCrustedTaint++;
             else {
                 if (canArbor && !thisIsCrustedTaint && consecutiveCrustedTaint >= 3)
                     plantSaplingAbove = true;
-                consecutiveCrustedTaint = 0;
+                else
+                    consecutiveCrustedTaint = 0;
             }
 
             haveUsedIgnis = cleanseSingleBlock(lastCleanseX, y, lastCleanseZ, block, meta, canHerba && y == herbaTopBlock) || haveUsedIgnis;
 
             if (plantSaplingAbove) {
                 canArbor = spendAndCheck(DawnMachineResource.ARBOR);
+
+                for (Object swarmerObj : getWorldObj().getEntitiesWithinAABB(EntityTaintSporeSwarmer.class, AxisAlignedBB.getBoundingBox(lastCleanseX, y+1, lastCleanseZ, lastCleanseX + 1, y + 1 + consecutiveCrustedTaint, lastCleanseZ + 1))) {
+                    ((Entity)swarmerObj).setDead();
+                }
+
                 BiomeGenBase biome = getWorldObj().getBiomeGenForCoords(lastCleanseX, lastCleanseZ);
                 String biomeName = biome.biomeName.toLowerCase(Locale.ENGLISH);
 
@@ -239,6 +251,7 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
                     treeType = 5;
 
                 getWorldObj().setBlock(lastCleanseX, y + 1, lastCleanseZ, Blocks.sapling, treeType, 3);
+                consecutiveCrustedTaint = 0;
             }
         }
 
