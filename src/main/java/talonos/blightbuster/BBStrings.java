@@ -12,4 +12,5 @@ public class BBStrings
 	public static final String dawnMachineInputName = "dawnMachineInput";
 	public static final String dawnMachineBufferName = "dawnMachineBuffer";
 	public static final String dawnMachineName = "dawnMachine";
+	public static final String cyberTotemName = "cyberTotem";
 }

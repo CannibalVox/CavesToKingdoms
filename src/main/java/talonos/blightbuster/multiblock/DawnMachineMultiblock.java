@@ -17,7 +17,7 @@ public class DawnMachineMultiblock extends Multiblock {
 
     public void init() {
         IMultiblockEntryState silverwoodLog = new BasicMultiblockState(ConfigBlocks.blockMagicalLog, 1);
-        IMultiblockEntryState dawnTotem = new BasicMultiblockState(BBBlock.dawnTotem);
+        IMultiblockEntryState cyberTotem = new BasicMultiblockState(BBBlock.cyberTotem);
         IMultiblockEntryState blankSpace = new NonSolidBlockState();
 
         IMultiblockEntryState nullState = new NullMultiblockState();
@@ -32,7 +32,7 @@ public class DawnMachineMultiblock extends Multiblock {
         entries.add(new MultiblockEntry(0, 1, 0, blankSpace, nullState));
         entries.add(new MultiblockEntry(1, 1, 0, silverwoodLog, topRightSpout));
         entries.add(new MultiblockEntry(-1, 0, 0, silverwoodLog, bottomLeftSpout));
-        controller = new MultiblockEntry(0, 0, 0, dawnTotem, dawnMachine);
+        controller = new MultiblockEntry(0, 0, 0, cyberTotem, dawnMachine);
         entries.add(controller);
         entries.add(new MultiblockEntry(1, 0, 0, silverwoodLog, bottomRightSpout));
         entries.add(new MultiblockEntry(-1, -1, 0, silverwoodLog, buffer));
