@@ -10,6 +10,9 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.*;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -20,6 +23,7 @@ import talonos.blightbuster.network.packets.SpawnCleanseParticlesPacket;
 import talonos.blightbuster.tileentity.dawnmachine.DawnMachineResource;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IAspectSource;
 import thaumcraft.api.entities.ITaintedMob;
 import thaumcraft.api.nodes.NodeType;
@@ -33,7 +37,7 @@ import thaumcraft.common.tiles.TileNode;
 import java.util.List;
 import java.util.Locale;
 
-public class DawnMachineTileEntity extends TileEntity implements IAspectSource, IEnergyReceiver, IEnergyStorage {
+public class DawnMachineTileEntity extends TileEntity implements IAspectSource, IAspectContainer, IEnergyReceiver, IEnergyStorage {
 
     private int currentRf = 0;
     public static final int MAX_RF = 8000;
@@ -399,6 +403,7 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
             cost /= 2;
 
         internalAspectList.remove(resource.getAspect(), cost);
+        signalUpdate();
     }
 
     private void setUpAerRange() {
@@ -530,6 +535,7 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
             int essentiaToMove = Math.min(i, essentiaRemaining);
             i -= essentiaToMove;
             internalAspectList.add(aspect, essentiaToMove * relevantResource.getValueMultiplier());
+            signalUpdate();
         }
 
         return i;
@@ -603,6 +609,8 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
         if (!simulate)
             currentRf += actualReceive;
 
+        signalUpdate();
+
         return actualReceive;
     }
 
@@ -651,6 +659,10 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
     public void readFromNBT(NBTTagCompound tag) {
         super.readFromNBT(tag);
 
+        readCustomNBT(tag);
+    }
+
+    private void readCustomNBT(NBTTagCompound tag) {
         internalAspectList.readFromNBT(tag.getCompoundTag("Essentia"));
         currentRf = tag.getInteger("CurrentRF");
     }
@@ -659,10 +671,32 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
     public void writeToNBT(NBTTagCompound tag) {
         super.writeToNBT(tag);
 
+        writeCustomNBT(tag);
+    }
+
+    private void writeCustomNBT(NBTTagCompound tag) {
         NBTTagCompound essentia = new NBTTagCompound();
         internalAspectList.writeToNBT(essentia);
         tag.setTag("Essentia", essentia);
 
         tag.setInteger("CurrentRF", currentRf);
+    }
+
+    protected void signalUpdate() {
+        this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
+        markDirty();
+    }
+
+    public Packet getDescriptionPacket()
+    {
+        NBTTagCompound nbttagcompound = new NBTTagCompound();
+        writeCustomNBT(nbttagcompound);
+        return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, -999, nbttagcompound);
+    }
+
+    public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
+    {
+        super.onDataPacket(net, pkt);
+        readCustomNBT(pkt.func_148857_g());
     }
 }

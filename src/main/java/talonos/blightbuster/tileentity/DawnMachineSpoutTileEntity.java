@@ -5,11 +5,13 @@ import net.minecraftforge.common.util.ForgeDirection;
 import talonos.blightbuster.blocks.BBBlock;
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
 
 import java.util.HashMap;
 
-public class DawnMachineSpoutTileEntity extends TileEntity implements IEssentiaTransport {
+public class DawnMachineSpoutTileEntity extends TileEntity implements IEssentiaTransport, IAspectContainer {
 
     public DawnMachineSpoutTileEntity() {
 
@@ -52,6 +54,29 @@ public class DawnMachineSpoutTileEntity extends TileEntity implements IEssentiaT
         }
     }
 
+    @Override
+    public AspectList getAspects() {
+        DawnMachineTileEntity controller = getController();
+
+        return (controller == null)? new AspectList() : getController().getAspects();
+    }
+
+    @Override
+    public void setAspects(AspectList aspectList) {
+        DawnMachineTileEntity controller = getController();
+
+        if (controller != null)
+            controller.setAspects(aspectList);
+    }
+
+    @Override
+    public boolean doesContainerAccept(Aspect aspect) {
+        DawnMachineTileEntity controller = getController();
+
+        return (controller == null)?false:controller.doesContainerAccept(aspect);
+    }
+
+    @Override
     public int addToContainer(Aspect aspect, int i) {
         if (i == 0)
             return 0;
@@ -61,10 +86,39 @@ public class DawnMachineSpoutTileEntity extends TileEntity implements IEssentiaT
         return (controller == null)?i:controller.addToContainer(aspect, i);
     }
 
+    @Override
     public boolean takeFromContainer(Aspect aspect, int i) {
         DawnMachineTileEntity controller = getController();
 
         return (controller == null) ? false : controller.takeFromContainer(aspect, i);
+    }
+
+    @Override
+    public boolean takeFromContainer(AspectList aspectList) {
+        DawnMachineTileEntity controller = getController();
+
+        return (controller == null) ? false : controller.takeFromContainer(aspectList);
+    }
+
+    @Override
+    public boolean doesContainerContainAmount(Aspect aspect, int i) {
+        DawnMachineTileEntity controller = getController();
+
+        return (controller == null)?false:controller.doesContainerContainAmount(aspect, i);
+    }
+
+    @Override
+    public boolean doesContainerContain(AspectList aspectList) {
+        DawnMachineTileEntity controller = getController();
+
+        return (controller == null)?false:controller.doesContainerContain(aspectList);
+    }
+
+    @Override
+    public int containerContains(Aspect aspect) {
+        DawnMachineTileEntity controller = getController();
+
+        return (controller == null)?0:controller.containerContains(aspect);
     }
 
     @Override
