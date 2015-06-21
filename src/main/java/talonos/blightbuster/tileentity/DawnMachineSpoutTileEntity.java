@@ -30,14 +30,17 @@ public class DawnMachineSpoutTileEntity extends TileEntity implements IEssentiaT
         //Implement suction myself because ???
         super.updateEntity();
 
+        DawnMachineTileEntity controller = getController();
+
+        if (controller == null)
+            return;
+
         if ((!this.worldObj.isRemote) && (getWorldObj().getWorldTime() % 5 == 0)) {
             for (int i = 0; i < 6; i++) {
                 ForgeDirection dir = ForgeDirection.VALID_DIRECTIONS[i];
                 Aspect aspect = getEssentiaType(dir);
                 if (aspect == null)
                     continue;
-
-                DawnMachineTileEntity controller = getController();
 
                 if (!controller.needsMore(aspect))
                     continue;
