@@ -81,9 +81,9 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
             setUpAerRange();
 
             for (int i = 0; i < 5; i++) {
-                getNewCleanseCoords();
+                int secondaryBlocks = getNewCleanseCoords();
 
-                boolean anythingToDo = hasAnythingToCleanseHere();
+                boolean anythingToDo = hasAnythingToCleanseHere(secondaryBlocks);
 
                 if (!anythingToDo) {
                     if (haveEnoughFor(DawnMachineResource.COGNITIO)) {
@@ -95,7 +95,7 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
                 if (cleanseLength == 7)
                     spend(DawnMachineResource.MACHINA);
 
-                executeCleanse();
+                executeCleanse(secondaryBlocks);
                 ticksSinceLastCleanse++;
                 break;
             }
@@ -104,13 +104,13 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
         }
     }
 
-    protected void executeCleanse() {
+    protected void executeCleanse(int secondaryBlocks) {
         if (spendAer) {
             spendAer = false;
             spend(DawnMachineResource.AER);
         }
 
-        cleanseBiome();
+        cleanseBiome(secondaryBlocks);
 
         boolean didUseIgnis = cleanseBlocks();
 
@@ -120,14 +120,26 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
         BlightbusterNetwork.sendToNearbyPlayers(new SpawnCleanseParticlesPacket(lastCleanseX, lastCleanseZ, didUseIgnis), worldObj.provider.dimensionId, lastCleanseX, 128.0f, lastCleanseZ, 150);
     }
 
-    protected boolean hasAnythingToCleanseHere() {
-        BiomeGenBase biome = getWorldObj().getBiomeGenForCoords(lastCleanseX, lastCleanseZ);
-
+    protected boolean hasAnythingToCleanseHere(int secondaryBlocks) {
         //Can cleanse biome?
-        if (biome.biomeID == Config.biomeTaintID ||
-                biome.biomeID == Config.biomeEerieID ||
-                biome.biomeID == Config.biomeMagicalForestID)
-            return true;
+        for (int z = -1; z <= 1; z++) {
+            for (int x = -1; x <= 1; x++) {
+                if (z < 0 && (secondaryBlocks & 0x4) == 0)
+                    continue;
+                if (z > 0 && (secondaryBlocks & 0x8) == 0)
+                    continue;
+                if (x < 0 && (secondaryBlocks & 0x1) == 0)
+                    continue;
+                if (x > 0 && (secondaryBlocks & 0x2) == 0)
+                    continue;
+
+                BiomeGenBase biome = getWorldObj().getBiomeGenForCoords(lastCleanseX+x, lastCleanseZ+z);
+                if (biome.biomeID == Config.biomeTaintID ||
+                        biome.biomeID == Config.biomeEerieID ||
+                        biome.biomeID == Config.biomeMagicalForestID)
+                    return true;
+            }
+        }
 
         int herbaTopBlock = -1;
         boolean canHerba = haveEnoughFor(DawnMachineResource.HERBA);
@@ -173,17 +185,31 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
         return false;
     }
 
-    protected void cleanseBiome() {
-        BiomeGenBase biome = getWorldObj().getBiomeGenForCoords(lastCleanseX, lastCleanseZ);
-        if (biome.biomeID != Config.biomeTaintID &&
-                biome.biomeID != Config.biomeEerieID &&
-                biome.biomeID != Config.biomeMagicalForestID)
-            return;
+    protected void cleanseBiome(int secondaryBlocks) {
+        for (int z = -1; z <= 1; z++) {
+            for (int x = -1; x <= 1; x++) {
+                if (z < 0 && (secondaryBlocks & 0x4) == 0)
+                    continue;
+                if (z > 0 && (secondaryBlocks & 0x8) == 0)
+                    continue;
+                if (x < 0 && (secondaryBlocks & 0x1) == 0)
+                    continue;
+                if (x > 0 && (secondaryBlocks & 0x2) == 0)
+                    continue;
 
-        BiomeGenBase[] genBiomes = null;
-        genBiomes = getWorldObj().getWorldChunkManager().loadBlockGeneratorData(genBiomes, lastCleanseX, lastCleanseZ, 1, 1);
-        if (genBiomes != null && genBiomes.length > 0 && genBiomes[0] != null) {
-            Utils.setBiomeAt(getWorldObj(), lastCleanseX, lastCleanseZ, genBiomes[0]);
+                BiomeGenBase biome = getWorldObj().getBiomeGenForCoords(lastCleanseX, lastCleanseZ);
+                if (biome.biomeID == Config.biomeTaintID ||
+                        biome.biomeID == Config.biomeEerieID ||
+                        biome.biomeID == Config.biomeMagicalForestID) {
+
+                    BiomeGenBase[] genBiomes = null;
+                    genBiomes = getWorldObj().getWorldChunkManager().loadBlockGeneratorData(genBiomes, lastCleanseX, lastCleanseZ, 1, 1);
+                    if (genBiomes != null && genBiomes.length > 0 && genBiomes[0] != null) {
+                        Utils.setBiomeAt(getWorldObj(), lastCleanseX+x, lastCleanseZ+z, genBiomes[0]);
+                    }
+                }
+
+            }
         }
     }
 
@@ -424,7 +450,7 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
         }
     }
 
-    private void getNewCleanseCoords() {
+    private int getNewCleanseCoords() {
         int chunkX = xCoord / 16;
         int chunkZ = zCoord / 16;
         int xInChunk = xCoord % 16;
@@ -457,17 +483,35 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
             maxChunkZ--;
         }
 
+        int minBlockX = minChunkX * 16;
+        int minBlockZ = minChunkZ * 16;
+        int maxBlockX = maxChunkX * 16 + 15;
+        int maxBlockZ = maxChunkZ * 16 + 15;
+
         if (haveEnoughFor(DawnMachineResource.ORDO)) {
             spend(DawnMachineResource.ORDO);
-            generateScanlineCoords(minChunkX * 16, minChunkZ * 16, maxChunkX * 16 + 15, maxChunkZ * 16 + 15);
+            generateScanlineCoords(minBlockX, minBlockZ, maxBlockX, maxBlockZ);
         } else
-            generateRandomCoords(minChunkX * 16, minChunkZ * 16, maxChunkX * 16 + 15, maxChunkZ * 16 + 15);
+            generateRandomCoords(minBlockX, minBlockZ, maxBlockX, maxBlockZ);
 
         int cleanseChunkX = lastCleanseX / 16;
         int cleanseChunkZ = lastCleanseZ / 16;
 
         if (cleanseChunkX < freeMinChunkX || cleanseChunkZ < freeMinChunkZ || cleanseChunkX > freeMaxChunkX || cleanseChunkZ > freeMaxChunkZ)
             spendAer = true;
+
+        int secondaryBlocks = 0xF;
+        if (lastCleanseX == minBlockX)
+            secondaryBlocks &= 0xE;
+        else if (lastCleanseX == maxBlockX)
+            secondaryBlocks &= 0xD;
+
+        if (lastCleanseZ == minBlockZ)
+            secondaryBlocks &= 0xB;
+        else if (lastCleanseZ == maxBlockZ)
+            secondaryBlocks &= 0x7;
+
+        return secondaryBlocks;
     }
 
     private void generateScanlineCoords(int minX, int minZ, int maxX, int maxZ) {
