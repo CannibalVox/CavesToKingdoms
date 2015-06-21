@@ -73,7 +73,7 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
         if (aerCooldownRemaining > 0)
             aerCooldownRemaining--;
 
-        int cleanseLength = haveEnoughFor(DawnMachineResource.MACHINA) ? 7 : 20;
+        int cleanseLength = haveEnoughFor(DawnMachineResource.MACHINA) ? 4 : 12;
 
         ticksSinceLastCleanse %= cleanseLength;
 
