@@ -12,6 +12,7 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.wands.IWandTriggerManager;
 import thaumcraft.common.items.wands.ItemWandCasting;
+import thaumcraft.common.lib.research.ResearchManager;
 
 public class TalonosWandTriggerManager implements IWandTriggerManager {
 
@@ -21,12 +22,12 @@ public class TalonosWandTriggerManager implements IWandTriggerManager {
 
         switch (event) {
             case 0:
-                //if (ResearchManager.isResearchComplete(
-                //		player.getCommandSenderName(), "DAWNMACHINE"))
+            if (ResearchManager.isResearchComplete(
+                    player.getCommandSenderName(), "DAWNMACHINE"))
             {
                 return createDawnMachine(wand, player, world, x, y, z);
             }
-            //break;
+            break;
         }
         return false;
     }
