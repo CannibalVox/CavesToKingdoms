@@ -226,8 +226,8 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
 
         //Get the y-value of the block herba might want to act on
         int herbaTopBlock = -1;
-        if (haveEnoughFor(DawnMachineResource.HERBA))
-            herbaTopBlock = getWorldObj().getTopSolidOrLiquidBlock(lastCleanseX, lastCleanseZ);
+        if (canHerba)
+            herbaTopBlock = getWorldObj().getTopSolidOrLiquidBlock(lastCleanseX, lastCleanseZ)-1;
 
         //We do the cleanse from top to bottom and every time we find crusted taint, we count how many consecutive
         //ones we cleanse.  When we find something that isn't crusted taint, after cleansing it, we plant a sapling on
