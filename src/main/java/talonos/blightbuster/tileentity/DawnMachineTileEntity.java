@@ -348,6 +348,8 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
             if (node != null && node.getNodeType() == NodeType.TAINTED) {
                 spend(DawnMachineResource.AURAM);
                 node.setNodeType(NodeType.NORMAL);
+                node.markDirty();
+                getWorldObj().markBlockForUpdate(lastCleanseX, y, lastCleanseZ);
             }
             return false;
         }
