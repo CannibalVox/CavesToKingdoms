@@ -5,7 +5,7 @@ import thaumcraft.api.aspects.Aspect;
 public enum DawnMachineResource {
 
     SANO(Aspect.HEAL, 128, 2, 4096, 63),
-    IGNIS(Aspect.FIRE, 256, 2, 8192, 32),
+    IGNIS(Aspect.FIRE, 512, 2, 16384, 16),
     AER(Aspect.AIR, 128, 2, 4096, 63),
     COGNITIO(Aspect.MIND, 32, 2, 1024, 250),
     MACHINA(Aspect.MECHANISM, 128, 2, 4096, 63),
