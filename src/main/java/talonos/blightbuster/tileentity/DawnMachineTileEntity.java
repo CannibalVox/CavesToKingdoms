@@ -30,6 +30,7 @@ import thaumcraft.api.nodes.NodeType;
 import thaumcraft.common.blocks.BlockFluxGoo;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigBlocks;
+import thaumcraft.common.entities.EntityFallingTaint;
 import thaumcraft.common.entities.monster.*;
 import thaumcraft.common.lib.utils.Utils;
 import thaumcraft.common.tiles.TileNode;
@@ -116,6 +117,14 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
 
         if (haveEnoughFor(DawnMachineResource.SANO))
             cleanseMobs();
+
+        for (Object entityObj : getWorldObj().getEntitiesWithinAABB(EntityTaintSporeSwarmer.class, AxisAlignedBB.getBoundingBox(lastCleanseX, 0, lastCleanseZ, lastCleanseX+1, 255, lastCleanseZ+1))) {
+            ((Entity)entityObj).setDead();
+        }
+
+        for (Object entityObj : getWorldObj().getEntitiesWithinAABB(EntityFallingTaint.class, AxisAlignedBB.getBoundingBox(lastCleanseX, 0, lastCleanseZ, lastCleanseX+1, 255, lastCleanseZ))) {
+            ((Entity)entityObj).setDead();
+        }
 
         BlightbusterNetwork.sendToNearbyPlayers(new SpawnCleanseParticlesPacket(lastCleanseX, lastCleanseZ, didUseIgnis), worldObj.provider.dimensionId, lastCleanseX, 128.0f, lastCleanseZ, 150);
     }
@@ -240,9 +249,7 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
             boolean thisIsCrustedTaint = (block == ConfigBlocks.blockTaint && meta == 0);
 
             if (!thisIsCrustedTaint && consecutiveCrustedTaint > 0 && getWorldObj().isAirBlock(lastCleanseX, y, lastCleanseZ)) {
-                List swarmerSpawns = getWorldObj().getEntitiesWithinAABB(EntityTaintSporeSwarmer.class, AxisAlignedBB.getBoundingBox(lastCleanseX, y, lastCleanseZ, lastCleanseX + 1, y + 1, lastCleanseZ + 1));
-                if (swarmerSpawns.size() > 0)
-                    thisIsCrustedTaint = true;
+
             }
 
             boolean plantSaplingAbove = false;
