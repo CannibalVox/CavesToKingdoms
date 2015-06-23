@@ -253,14 +253,14 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
         boolean canHerba = haveEnoughFor(DawnMachineResource.HERBA);
 
         //Get the y-value of the block herba might want to act on
-        int herbaTopBlock = -1;
-        if (canHerba)
-            herbaTopBlock = getWorldObj().getTopSolidOrLiquidBlock(lastCleanseX, lastCleanseZ)-1;
+        int topBlock = -1;
+        if (canHerba || canArbor)
+            topBlock = getWorldObj().getTopSolidOrLiquidBlock(lastCleanseX, lastCleanseZ)-1;
 
         //We do the cleanse from top to bottom and every time we find crusted taint, we count how many consecutive
         //ones we cleanse.  When we find something that isn't crusted taint, after cleansing it, we plant a sapling on
         //it if there was enough crusted taint above it
-        int consecutiveCrustedTaint = 0;
+        int columnCrustedTaint = 0;
         for (int y = 255; y >= 0; y--) {
             Block block = getWorldObj().getBlock(lastCleanseX, y, lastCleanseZ);
             int meta = getWorldObj().getBlockMetadata(lastCleanseX, y, lastCleanseZ);
@@ -269,42 +269,30 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
 
             boolean plantSaplingAbove = false;
             if (thisIsCrustedTaint && haveEnoughFor(DawnMachineResource.IGNIS) && haveEnoughFor(DawnMachineResource.VACUOS))
-                consecutiveCrustedTaint++;
-            else {
-                if (canArbor && !thisIsCrustedTaint && consecutiveCrustedTaint >= 3)
-                    plantSaplingAbove = true;
-                else
-                    consecutiveCrustedTaint = 0;
-            }
+                columnCrustedTaint++;
 
-            haveUsedIgnis = cleanseSingleBlock(lastCleanseX, y, lastCleanseZ, block, meta, canHerba && y == herbaTopBlock) || haveUsedIgnis;
+            haveUsedIgnis = cleanseSingleBlock(lastCleanseX, y, lastCleanseZ, block, meta, canHerba && y == topBlock) || haveUsedIgnis;
+        }
 
-            if (plantSaplingAbove) {
-                canArbor = spendAndCheck(DawnMachineResource.ARBOR);
+        if (columnCrustedTaint >= 3) {
+            BiomeGenBase biome = getWorldObj().getBiomeGenForCoords(lastCleanseX, lastCleanseZ);
+            String biomeName = biome.biomeName.toLowerCase(Locale.ENGLISH);
 
-                for (Object swarmerObj : getWorldObj().getEntitiesWithinAABB(EntityTaintSporeSwarmer.class, AxisAlignedBB.getBoundingBox(lastCleanseX, y+1, lastCleanseZ, lastCleanseX + 1, y + 1 + consecutiveCrustedTaint, lastCleanseZ + 1))) {
-                    ((Entity)swarmerObj).setDead();
-                }
+            //Default to oak
+            int treeType = 0;
+            if (biomeName.contains("jungle"))
+                treeType = 3; //Jungle tree
+            else if (biomeName.contains("taiga") || biomeName.contains("tundra"))
+                treeType = 2; //Spruce trees
+            else if (biomeName.contains("birch"))
+                treeType = 1; //Birch trees
+            else if (biomeName.contains("savanna"))
+                treeType = 4; //Acacia trees
+            else if (biomeName.contains("roof"))
+                treeType = 5;
 
-                BiomeGenBase biome = getWorldObj().getBiomeGenForCoords(lastCleanseX, lastCleanseZ);
-                String biomeName = biome.biomeName.toLowerCase(Locale.ENGLISH);
-
-                //Default to oak
-                int treeType = 0;
-                if (biomeName.contains("jungle"))
-                    treeType = 3; //Jungle tree
-                else if (biomeName.contains("taiga") || biomeName.contains("tundra"))
-                    treeType = 2; //Spruce trees
-                else if (biomeName.contains("birch"))
-                    treeType = 1; //Birch trees
-                else if (biomeName.contains("savanna"))
-                    treeType = 4; //Acacia trees
-                else if (biomeName.contains("roof"))
-                    treeType = 5;
-
-                getWorldObj().setBlock(lastCleanseX, y + 1, lastCleanseZ, Blocks.sapling, treeType, 3);
-                consecutiveCrustedTaint = 0;
-            }
+            getWorldObj().setBlock(lastCleanseX, topBlock + 1, lastCleanseZ, Blocks.sapling, treeType, 3);
+            spend(DawnMachineResource.ARBOR);
         }
 
         return haveUsedIgnis;
