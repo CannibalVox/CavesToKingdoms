@@ -17,7 +17,6 @@ import talonos.blightbuster.BBStrings;
 import talonos.blightbuster.BlightBuster;
 import talonos.blightbuster.multiblock.BlockMultiblock;
 import talonos.blightbuster.tileentity.DawnMachineSpoutTileEntity;
-import talonos.blightbuster.tileentity.DawnTotemEntity;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.config.ConfigBlocks;

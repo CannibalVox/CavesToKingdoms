@@ -99,7 +99,7 @@ public class AddedResearch
 		dawnTotemResearch.registerResearchItem();
 
 		
-		WandTriggerRegistry.registerWandBlockTrigger(new TalonosWandTriggerManager(), 0, BBBlock.dawnTotem, -1, "cavestokingdoms");
+		WandTriggerRegistry.registerWandBlockTrigger(new TalonosWandTriggerManager(), 0, BBBlock.cyberTotem, -1, "cavestokingdoms");
 		WandTriggerRegistry.registerWandBlockTrigger(new TalonosWandTriggerManager(), 0, ConfigBlocks.blockMagicalLog, 1, "cavestokingdoms");
 	}
 

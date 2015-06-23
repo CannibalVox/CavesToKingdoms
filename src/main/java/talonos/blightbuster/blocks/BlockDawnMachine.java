@@ -20,7 +20,6 @@ import talonos.blightbuster.BBStrings;
 import talonos.blightbuster.BlightBuster;
 import talonos.blightbuster.multiblock.BlockMultiblock;
 import talonos.blightbuster.tileentity.DawnMachineTileEntity;
-import talonos.blightbuster.tileentity.DawnTotemEntity;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.tiles.TileArcaneFurnace;
@@ -69,7 +68,7 @@ public class BlockDawnMachine extends BlockMultiblock {
 
     @Override
     public Item getItemDropped(int meta, Random par2Random, int par3) {
-        return Item.getItemFromBlock(BBBlock.dawnTotem);
+        return Item.getItemFromBlock(BBBlock.cyberTotem);
     }
 
     @Override
