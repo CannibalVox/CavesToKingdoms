@@ -270,9 +270,8 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
         boolean canHerba = haveEnoughFor(DawnMachineResource.HERBA);
 
         //Get the y-value of the block herba might want to act on
+        boolean foundTopBlock = false;
         int topBlock = -1;
-        if (canHerba || canArbor)
-            topBlock = getWorldObj().getTopSolidOrLiquidBlock(lastCleanseX, lastCleanseZ)-1;
 
         //We do the cleanse from top to bottom and every time we find crusted taint, we count how many consecutive
         //ones we cleanse.  When we find something that isn't crusted taint, after cleansing it, we plant a sapling on
@@ -284,14 +283,22 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
 
             boolean thisIsCrustedTaint = (block == ConfigBlocks.blockTaint && meta == 0);
 
-            boolean plantSaplingAbove = false;
             if (thisIsCrustedTaint && haveEnoughFor(DawnMachineResource.IGNIS) && haveEnoughFor(DawnMachineResource.VACUOS))
                 columnCrustedTaint++;
 
-            haveUsedIgnis = cleanseSingleBlock(lastCleanseX, y, lastCleanseZ, block, meta, canHerba && y == topBlock) || haveUsedIgnis;
+            if (!foundTopBlock && (canHerba || canArbor) && block.isBlockNormalCube()) {
+                foundTopBlock = true;
+                topBlock = y;
+            }
+
+            boolean didUseIgnis = cleanseSingleBlock(lastCleanseX, y, lastCleanseZ, block, meta, canHerba && foundTopBlock && y == topBlock);
+            haveUsedIgnis = didUseIgnis || haveUsedIgnis;
+
+            if (didUseIgnis)
+                foundTopBlock = false;
         }
 
-        if (columnCrustedTaint >= 3) {
+        if (columnCrustedTaint >= 3 && foundTopBlock) {
             BiomeGenBase biome = getWorldObj().getBiomeGenForCoords(lastCleanseX, lastCleanseZ);
             String biomeName = biome.biomeName.toLowerCase(Locale.ENGLISH);
 
