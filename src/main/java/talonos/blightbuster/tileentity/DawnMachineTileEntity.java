@@ -214,6 +214,7 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
     }
 
     protected void cleanseBiome(int secondaryBlocks) {
+        boolean canVacuos = haveEnoughFor(DawnMachineResource.VACUOS);
         for (int z = -1; z <= 1; z++) {
             for (int x = -1; x <= 1; x++) {
                 if (z < 0 && (secondaryBlocks & 0x4) == 0)
@@ -225,18 +226,34 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
                 if (x > 0 && (secondaryBlocks & 0x2) == 0)
                     continue;
 
-                BiomeGenBase biome = getWorldObj().getBiomeGenForCoords(lastCleanseX, lastCleanseZ);
+                BiomeGenBase biome = getWorldObj().getBiomeGenForCoords(lastCleanseX+x, lastCleanseZ+z);
                 if (biome.biomeID == Config.biomeTaintID ||
                         biome.biomeID == Config.biomeEerieID ||
                         biome.biomeID == Config.biomeMagicalForestID) {
 
                     BiomeGenBase[] genBiomes = null;
-                    genBiomes = getWorldObj().getWorldChunkManager().loadBlockGeneratorData(genBiomes, lastCleanseX, lastCleanseZ, 1, 1);
+                    genBiomes = getWorldObj().getWorldChunkManager().loadBlockGeneratorData(genBiomes, lastCleanseX+x, lastCleanseZ+z, 1, 1);
                     if (genBiomes != null && genBiomes.length > 0 && genBiomes[0] != null) {
                         Utils.setBiomeAt(getWorldObj(), lastCleanseX+x, lastCleanseZ+z, genBiomes[0]);
                     }
                 }
 
+                if (!canVacuos)
+                    continue;
+
+                if (x != 0 || z != 0) {
+                    for (int y = 0; y < 255; y++) {
+                        Block block = getWorldObj().getBlock(lastCleanseX+x, y, lastCleanseZ+z);
+                        if (block == ConfigBlocks.blockFluxGoo) {
+                            getWorldObj().setBlock(lastCleanseX+x, y, lastCleanseZ+z, Blocks.air);
+                            spend(DawnMachineResource.VACUOS);
+                            canVacuos = haveEnoughFor(DawnMachineResource.VACUOS);
+
+                            if (!canVacuos)
+                                break;
+                        }
+                    }
+                }
             }
         }
     }
