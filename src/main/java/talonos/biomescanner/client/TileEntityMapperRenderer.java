@@ -41,6 +41,9 @@ public class TileEntityMapperRenderer extends TileEntitySpecialRenderer
             for (int pixX = 0; pixX < MapScanner.blockWidth; pixX++) {
                 int worldX = mapper.getMapX()+pixX;
                 int worldY = mapper.getMapY()+pixY;
+
+                worldX = (worldX >= 0)?worldX:0;
+                worldY = (worldY >= 0)?worldY:0;
                 this.intArray[(pixY * MapScanner.blockWidth) + pixX] = MapScanner.instance.getColor(worldX, worldY);
             }
         }
