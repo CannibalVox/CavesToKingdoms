@@ -111,20 +111,39 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
             spend(DawnMachineResource.AER);
         }
 
+        for (Object entityObj : getWorldObj().getEntitiesWithinAABB(EntityTaintSporeSwarmer.class, AxisAlignedBB.getBoundingBox(lastCleanseX, 0, lastCleanseZ, lastCleanseX+1, 255, lastCleanseZ+1))) {
+            Entity entity = (Entity)entityObj;
+            if (haveEnoughFor(DawnMachineResource.IGNIS)) {
+                spend(DawnMachineResource.IGNIS);
+
+                if (haveEnoughFor(DawnMachineResource.VACUOS))
+                    spend(DawnMachineResource.VACUOS);
+                else
+                    getWorldObj().setBlock((int)entity.posX, (int)entity.posY, (int)entity.posZ, ConfigBlocks.blockFluxGoo, ((BlockFluxGoo)ConfigBlocks.blockFluxGoo).getQuanta(), 3);
+                entity.setDead();
+            }
+        }
+
+        for (Object entityObj : getWorldObj().getEntitiesWithinAABB(EntityFallingTaint.class, AxisAlignedBB.getBoundingBox(lastCleanseX, 0, lastCleanseZ, lastCleanseX+1, 255, lastCleanseZ))) {
+            if (haveEnoughFor(DawnMachineResource.IGNIS)) {
+                Entity entity = (Entity)entityObj;
+                spend(DawnMachineResource.IGNIS);
+
+                if (haveEnoughFor(DawnMachineResource.VACUOS))
+                    spend(DawnMachineResource.VACUOS);
+                else
+                    getWorldObj().setBlock((int)entity)
+
+                ((Entity) entityObj).setDead();
+            }
+        }
+
         cleanseBiome(secondaryBlocks);
 
         boolean didUseIgnis = cleanseBlocks();
 
         if (haveEnoughFor(DawnMachineResource.SANO))
             cleanseMobs();
-
-        for (Object entityObj : getWorldObj().getEntitiesWithinAABB(EntityTaintSporeSwarmer.class, AxisAlignedBB.getBoundingBox(lastCleanseX, 0, lastCleanseZ, lastCleanseX+1, 255, lastCleanseZ+1))) {
-            ((Entity)entityObj).setDead();
-        }
-
-        for (Object entityObj : getWorldObj().getEntitiesWithinAABB(EntityFallingTaint.class, AxisAlignedBB.getBoundingBox(lastCleanseX, 0, lastCleanseZ, lastCleanseX+1, 255, lastCleanseZ))) {
-            ((Entity)entityObj).setDead();
-        }
 
         BlightbusterNetwork.sendToNearbyPlayers(new SpawnCleanseParticlesPacket(lastCleanseX, lastCleanseZ, didUseIgnis), worldObj.provider.dimensionId, lastCleanseX, 128.0f, lastCleanseZ, 150);
     }
