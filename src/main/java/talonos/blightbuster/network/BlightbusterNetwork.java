@@ -189,12 +189,15 @@ public class BlightbusterNetwork extends FMLIndexedMessageToMessageCodec<Blightb
 
     public static void setBiomeAt(World world, int x, int z, BiomeGenBase biome) {
         if(biome != null) {
-            Chunk chunk = world.getChunkFromBlockCoords(x, z);
-            byte[] array = chunk.getBiomeArray();
-            array[(z & 15) << 4 | x & 15] = (byte)(biome.biomeID & 255);
-            chunk.setBiomeArray(array);
+            if (!world.isRemote || world.getChunkProvider().chunkExists(x >> 4, z >> 4)) {
+                Chunk chunk = world.getChunkFromBlockCoords(x, z);
+                byte[] array = chunk.getBiomeArray();
+                array[(z & 15) << 4 | x & 15] = (byte) (biome.biomeID & 255);
+                chunk.setBiomeArray(array);
+            }
+
             if(!world.isRemote) {
-                sendToAllPlayers(new BiomeChangePacket(x, z, (short)biome.biomeID));
+                sendToAllPlayers(new BiomeChangePacket(x, z, (short) biome.biomeID));
             }
         }
     }
