@@ -9,7 +9,7 @@ import thaumcraft.common.config.Config;
 import thaumcraft.common.lib.utils.Utils;
 
 public class DawnTotemEntity extends TileEntity {
-    public long lastWorldTick = 0;
+    public long queuedTicks = 0;
     public long offset = -1;
 
     public boolean canUpdate() {
@@ -19,21 +19,18 @@ public class DawnTotemEntity extends TileEntity {
     public void updateEntity() {
         super.updateEntity();
 
-        if (this.lastWorldTick == 0) {
-            this.lastWorldTick = worldObj.getWorldTime();
-        }
-
         if (this.offset < 0)
             this.offset = worldObj.rand.nextInt(20);
 
-        long currentWorldTick = worldObj.getWorldTime();
+        queuedTicks++;
 
         int cleansedSquares = 0;
-        while (cleansedSquares < 5 && lastWorldTick < currentWorldTick) {
-            lastWorldTick++;
-            if ((lastWorldTick + offset) % 20 == 0) {
+        while (cleansedSquares < 5 && queuedTicks > 0) {
+            queuedTicks--;
+            offset = (offset+1) % 20;
+            if (offset == 0) {
                 cleansedSquares++;
-                cleanseSquare(currentWorldTick == lastWorldTick);
+                cleanseSquare(queuedTicks == 0);
             }
         }
     }
@@ -41,7 +38,10 @@ public class DawnTotemEntity extends TileEntity {
     @Override
     public void readFromNBT(NBTTagCompound tag) {
         super.readFromNBT(tag);
-        lastWorldTick = tag.getLong("LastWorldTick");
+        long lastWorldTick = tag.getLong("LastWorldTick");
+        queuedTicks = tag.getLong("QueuedTicks");
+        long passedTicks = Math.max(getWorldObj().getWorldTime() - lastWorldTick, 0);
+        queuedTicks += passedTicks;
         offset = tag.getLong("TickOffset");
     }
 
@@ -49,7 +49,8 @@ public class DawnTotemEntity extends TileEntity {
     public void writeToNBT(NBTTagCompound tag) {
         super.writeToNBT(tag);
 
-        tag.setLong("LastWorldTick", lastWorldTick);
+        tag.setLong("QueuedTicks", queuedTicks);
+        tag.setLong("LastWorldTick", getWorldObj().getWorldTime());
         tag.setLong("TickOffset", offset);
     }
 
