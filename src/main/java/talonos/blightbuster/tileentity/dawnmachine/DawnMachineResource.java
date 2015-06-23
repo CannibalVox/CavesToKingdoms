@@ -7,7 +7,7 @@ public enum DawnMachineResource {
     SANO(Aspect.HEAL, 128, 2, 4096, 63),
     IGNIS(Aspect.FIRE, 512, 2, 16384, 16),
     AER(Aspect.AIR, 128, 2, 4096, 63),
-    COGNITIO(Aspect.MIND, 32, 2, 1024, 250),
+    COGNITIO(Aspect.MIND, 128, 2, 4096, 63),
     MACHINA(Aspect.MECHANISM, 128, 2, 4096, 63),
     AURAM(Aspect.AURA, 1, 16, 32, 64000),
     VACUOS(Aspect.VOID, 128, 2, 4096, 63),

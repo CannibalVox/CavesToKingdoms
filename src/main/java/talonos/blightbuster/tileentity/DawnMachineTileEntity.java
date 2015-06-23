@@ -132,9 +132,9 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
                 if (haveEnoughFor(DawnMachineResource.VACUOS))
                     spend(DawnMachineResource.VACUOS);
                 else
-                    getWorldObj().setBlock((int)entity)
+                    getWorldObj().setBlock((int) entity.posX, (int) entity.posY, (int) entity.posZ, ConfigBlocks.blockFluxGoo, ((BlockFluxGoo)ConfigBlocks.blockFluxGoo).getQuanta(), 3);
 
-                ((Entity) entityObj).setDead();
+                entity.setDead();
             }
         }
 
@@ -266,10 +266,6 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
             int meta = getWorldObj().getBlockMetadata(lastCleanseX, y, lastCleanseZ);
 
             boolean thisIsCrustedTaint = (block == ConfigBlocks.blockTaint && meta == 0);
-
-            if (!thisIsCrustedTaint && consecutiveCrustedTaint > 0 && getWorldObj().isAirBlock(lastCleanseX, y, lastCleanseZ)) {
-
-            }
 
             boolean plantSaplingAbove = false;
             if (thisIsCrustedTaint && haveEnoughFor(DawnMachineResource.IGNIS) && haveEnoughFor(DawnMachineResource.VACUOS))
