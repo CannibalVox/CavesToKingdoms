@@ -23,9 +23,8 @@ public class ContainerBadgePrinter extends Container {
             }
         }
 
-        this.addSlotToContainer(new BadgeSlot(scanner, 73, 8, 149));
         this.addSlotToContainer(new BadgeSlot(scanner, 72, 8, 176));
-
+        this.addSlotToContainer(new BadgeSlot(scanner, 73, 8, 149));
         for (int j = 0; j < 3; ++j)
         {
             for (int k = 0; k < 9; ++k)
