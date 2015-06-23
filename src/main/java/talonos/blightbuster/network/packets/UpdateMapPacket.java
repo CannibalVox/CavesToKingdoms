@@ -1,4 +1,4 @@
-package talonos.biomescanner.network.packets;
+package talonos.blightbuster.network.packets;
 
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
@@ -6,8 +6,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.world.World;
 import talonos.biomescanner.map.MapScanner;
+import talonos.blightbuster.network.packets.BlightbusterPacketBase;
 
-public class UpdateMapPacket extends BiomeScannerPacketBase {
+public class UpdateMapPacket extends BlightbusterPacketBase {
 
     private int mapX;
     private int mapY;

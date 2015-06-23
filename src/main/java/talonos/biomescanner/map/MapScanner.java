@@ -14,10 +14,9 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.event.world.WorldEvent;
 import scala.actors.threadpool.Arrays;
-import talonos.biomescanner.BiomeScanner;
 import talonos.biomescanner.map.event.UpdateMapEvent;
-import talonos.biomescanner.network.BiomeScannerNetwork;
-import talonos.biomescanner.network.packets.UpdateMapPacket;
+import talonos.blightbuster.network.BlightbusterNetwork;
+import talonos.blightbuster.network.packets.UpdateMapPacket;
 import thaumcraft.common.config.ConfigBlocks;
 
 import java.io.File;
@@ -268,6 +267,6 @@ public class MapScanner {
             }
         }
 
-        BiomeScannerNetwork.sendToPlayer(new UpdateMapPacket(0, 0, width, height, data), entityPlayer);
+        BlightbusterNetwork.sendToPlayer(new UpdateMapPacket(0, 0, width, height, data), entityPlayer);
     }
 }

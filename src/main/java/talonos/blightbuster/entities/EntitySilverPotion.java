@@ -20,6 +20,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
+import talonos.blightbuster.network.BlightbusterNetwork;
 import thaumcraft.common.blocks.BlockFluxGoo;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigBlocks;
@@ -86,7 +87,7 @@ public class EntitySilverPotion extends EntityThrowable
                       BiomeGenBase[] biomesForGeneration = null;
                       biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(biomesForGeneration, x + (int)this.posX, z + (int)this.posZ, 1, 1);
                       if ((biomesForGeneration != null) && (biomesForGeneration[0] != null)) {
-                        Utils.setBiomeAt(this.worldObj, x + (int)this.posX, z + (int)this.posZ, biomesForGeneration[0]);
+                        BlightbusterNetwork.setBiomeAt(this.worldObj, x + (int) this.posX, z + (int) this.posZ, biomesForGeneration[0]);
                       }
                     }
                     

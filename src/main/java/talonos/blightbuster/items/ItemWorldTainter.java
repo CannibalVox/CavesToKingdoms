@@ -6,6 +6,7 @@ import java.util.Set;
 
 import talonos.blightbuster.BBStrings;
 import talonos.blightbuster.BlightBuster;
+import talonos.blightbuster.network.BlightbusterNetwork;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.lib.utils.Utils;
@@ -69,7 +70,7 @@ public class ItemWorldTainter extends Item
 				for (int zLoc = z-80; zLoc<z+96; zLoc++)
 				{
 					//Dunno how this works. Thaumcraft's "Utils" package does all the real work. :/
-					Utils.setBiomeAt(theWorld, xLoc, zLoc, ThaumcraftWorldGenerator.biomeTaint);
+					BlightbusterNetwork.setBiomeAt(theWorld, xLoc, zLoc, ThaumcraftWorldGenerator.biomeTaint);
 					
 					//For each Y level...
 					for (int yLoc = 1; yLoc < 254; yLoc++)

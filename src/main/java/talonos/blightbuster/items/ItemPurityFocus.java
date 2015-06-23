@@ -17,6 +17,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import talonos.blightbuster.BBStrings;
 import talonos.blightbuster.BlightBuster;
+import talonos.blightbuster.network.BlightbusterNetwork;
 import talonos.cavestokingdoms.lib.DEFS;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -181,7 +182,7 @@ public class ItemPurityFocus extends ItemFocusBasic
 				biomesForGeneration = world.getWorldChunkManager().loadBlockGeneratorData(biomesForGeneration, x, z, 1, 1);
 				if ((biomesForGeneration != null) && (biomesForGeneration[0] != null)) 
 				{
-					Utils.setBiomeAt(world, x, z, biomesForGeneration[0]);
+					BlightbusterNetwork.setBiomeAt(world, x, z, biomesForGeneration[0]);
 				}
 			}
 		}

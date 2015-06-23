@@ -234,7 +234,7 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
                     BiomeGenBase[] genBiomes = null;
                     genBiomes = getWorldObj().getWorldChunkManager().loadBlockGeneratorData(genBiomes, lastCleanseX+x, lastCleanseZ+z, 1, 1);
                     if (genBiomes != null && genBiomes.length > 0 && genBiomes[0] != null) {
-                        Utils.setBiomeAt(getWorldObj(), lastCleanseX+x, lastCleanseZ+z, genBiomes[0]);
+                        BlightbusterNetwork.setBiomeAt(getWorldObj(), lastCleanseX+x, lastCleanseZ+z, genBiomes[0]);
                     }
                 }
 

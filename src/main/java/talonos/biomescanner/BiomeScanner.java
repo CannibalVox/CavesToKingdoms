@@ -11,7 +11,6 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
@@ -23,7 +22,7 @@ import talonos.biomescanner.gui.GuiHandlerBadgePrinter;
 import talonos.biomescanner.map.BiomeMapColors;
 import talonos.biomescanner.map.MapScanner;
 import talonos.biomescanner.map.Zone;
-import talonos.biomescanner.network.BiomeScannerNetwork;
+import talonos.blightbuster.network.BlightbusterNetwork;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -113,7 +112,6 @@ public class BiomeScanner
         BiomeMapColors.initColors();
         proxy.registerRenderers();
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandlerBadgePrinter());
-        BiomeScannerNetwork.init();
     }
 
     @Mod.EventHandler

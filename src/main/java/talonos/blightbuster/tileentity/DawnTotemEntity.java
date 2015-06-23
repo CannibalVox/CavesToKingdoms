@@ -76,7 +76,7 @@ public class DawnTotemEntity extends TileEntity {
                     biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(biomesForGeneration, x + this.xCoord, z + this.zCoord, 1, 1);
                     if ((biomesForGeneration != null) && (biomesForGeneration[0] != null)) {
                         BiomeGenBase biome = biomesForGeneration[0];
-                        Utils.setBiomeAt(this.worldObj, x + this.xCoord, z + this.zCoord, biome);
+                        BlightbusterNetwork.setBiomeAt(this.worldObj, x + this.xCoord, z + this.zCoord, biome);
                     }
                 }
             }
