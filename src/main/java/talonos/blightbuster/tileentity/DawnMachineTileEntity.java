@@ -294,7 +294,7 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
             boolean didUseIgnis = cleanseSingleBlock(lastCleanseX, y, lastCleanseZ, block, meta, canHerba && foundTopBlock && y == topBlock);
             haveUsedIgnis = didUseIgnis || haveUsedIgnis;
 
-            if (didUseIgnis)
+            if (didUseIgnis && getWorldObj().getBlock(lastCleanseX, y, lastCleanseZ) != Blocks.dirt)
                 foundTopBlock = false;
         }
 
