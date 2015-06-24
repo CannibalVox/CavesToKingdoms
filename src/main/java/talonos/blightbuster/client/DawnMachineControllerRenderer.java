@@ -32,6 +32,7 @@ public class DawnMachineControllerRenderer extends TileEntitySpecialRenderer {
 
         GL11.glPushMatrix();
         GL11.glTranslated(x + 0.5, y + 0.5, z + 0.5);
+        GL11.glColor3f(1,1,1);
         GL11.glBegin(GL11.GL_QUADS);
 
         GL11.glTexCoord2f(top.getMaxU(), top.getMaxV());
