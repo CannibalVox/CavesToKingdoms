@@ -1,5 +1,6 @@
 package talonos.blightbuster.tileentity;
 
+import codechicken.lib.math.MathHelper;
 import cofh.api.energy.IEnergyReceiver;
 import cofh.api.energy.IEnergyStorage;
 import net.minecraft.block.Block;
@@ -15,6 +16,7 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.util.ForgeDirection;
 import talonos.blightbuster.BlightBuster;
@@ -35,13 +37,21 @@ import thaumcraft.common.entities.monster.*;
 import thaumcraft.common.lib.utils.Utils;
 import thaumcraft.common.tiles.TileNode;
 
+import javax.vecmath.Vector3d;
 import java.util.List;
 import java.util.Locale;
 
 public class DawnMachineTileEntity extends TileEntity implements IAspectSource, IAspectContainer, IEnergyReceiver, IEnergyStorage {
 
     private int currentRf = 0;
-    public static final int MAX_RF = 8000;
+    public static final int MAX_RF = 128000;
+    protected static final int FULLGREEN_RF = 80000;
+    protected static final int FULLYELLOW_RF = 40000;
+    protected static final int FULLRED_RF = 20000;
+    public static final int DEAD_RF = 150;
+    protected static final Vec3 COLOR_GREEN = Vec3.createVectorHelper(0, 0.8, 0);
+    protected static final Vec3 COLOR_YELLOW = Vec3.createVectorHelper(0.8, 0.8, 0);
+    protected static final Vec3 COLOR_RED = Vec3.createVectorHelper(0.8, 0, 0);
 
     private boolean aerIsActive = false;
     private int aerCooldownRemaining = 0;
@@ -53,6 +63,8 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
     private int lastCleanseX = Integer.MAX_VALUE;
     private int lastCleanseZ = Integer.MAX_VALUE;
 
+    private double blinkProgress = 0;
+
     private AspectList internalAspectList = new AspectList();
 
     private boolean hasInitializedChunkloading = false;
@@ -63,8 +75,12 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
 
     @Override
     public void updateEntity() {
-        if (getWorldObj().isRemote)
+        if (getWorldObj().isRemote) {
+            if (currentRf <= FULLRED_RF)
+                blinkProgress += 1.0;
+
             return;
+        }
 
         if (!hasInitializedChunkloading) {
             BlightBuster.instance.chunkLoader.newDawnMachine(getWorldObj(), xCoord, yCoord, zCoord);
@@ -93,7 +109,7 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
                     }
                 }
 
-                if (cleanseLength == 7)
+                if (cleanseLength == 4)
                     spend(DawnMachineResource.MACHINA);
 
                 executeCleanse(secondaryBlocks);
@@ -778,5 +794,28 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
     {
         super.onDataPacket(net, pkt);
         readCustomNBT(pkt.func_148857_g());
+    }
+
+    public Vec3 getGlowColor(double partialTicks) {
+        if (currentRf >= FULLGREEN_RF)
+            return COLOR_GREEN;
+        else if (currentRf >= FULLYELLOW_RF) {
+            double progress = (double)(currentRf - FULLYELLOW_RF) / (double)(FULLGREEN_RF - FULLYELLOW_RF);
+            return interpColor(COLOR_GREEN, COLOR_YELLOW, progress);
+        } else if (currentRf >= FULLRED_RF) {
+            double progress = (double)(currentRf - FULLRED_RF) / (double)(FULLYELLOW_RF - FULLRED_RF);
+            return interpColor(COLOR_YELLOW, COLOR_RED, progress);
+        } else if (currentRf > DEAD_RF)
+            return COLOR_RED;
+        else
+            return null;
+    }
+
+    protected Vec3 interpColor(Vec3 left, Vec3 right, double progress) {
+        double red = (left.xCoord - right.xCoord) * progress;
+        double green = (left.yCoord - right.yCoord) * progress;
+        double blue = (left.zCoord - right.zCoord) * progress;
+
+        return Vec3.createVectorHelper(right.xCoord + red, right.yCoord + green, right.zCoord + blue);
     }
 }

@@ -29,7 +29,10 @@ import java.util.Random;
 public class BlockDawnMachine extends BlockMultiblock {
 
     private IIcon top;
-    private IIcon side;
+    private IIcon bottom;
+    private IIcon sideLive;
+    private IIcon sideDead;
+    private IIcon glow;
 
     public BlockDawnMachine() {
         super(Material.wood, BBBlock.dawnMachineMultiblock);
@@ -55,16 +58,21 @@ public class BlockDawnMachine extends BlockMultiblock {
     @Override
     public void registerBlockIcons(IIconRegister registry) {
         top = registry.registerIcon("blightbuster:dawnMachineTop");
-        side = registry.registerIcon("blightbuster:dawnMachineSide");
+        sideLive = registry.registerIcon("blightbuster:dawnMachineSide");
+        sideDead = registry.registerIcon("blightbuster:dawnMachineDeactivated");
+        bottom = registry.registerIcon("blightbuster:dawnMachineBottom");
+        glow = registry.registerIcon("blightbuster:dawnMachineGlow");
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public IIcon getIcon(int side, int meta) {
-        if (side == 0 || side == 1)
-            return top;
-        return this.side;
-    }
+    public int getRenderType() { return -1; }
+
+    public IIcon getTopIcon() { return top; }
+    public IIcon getBottomIcon() { return bottom; }
+    public IIcon getLiveSideIcon() { return sideLive; }
+    public IIcon getDeadSideIcon() { return sideDead; }
+    public IIcon getGlowIcon() { return glow; }
 
     @Override
     public Item getItemDropped(int meta, Random par2Random, int par3) {

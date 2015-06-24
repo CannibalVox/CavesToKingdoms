@@ -34,7 +34,7 @@ public class BBBlock extends Block
     public static Block dawnTotem;
     public static BlockDawnMachineInput dawnMachineInput;
     public static Block dawnMachineBuffer;
-    public static Block dawnMachine;
+    public static BlockDawnMachine dawnMachine;
     public static Block cyberTotem;
     public static Multiblock dawnMachineMultiblock;
 

@@ -49,36 +49,43 @@ public class BlockDawnMachineInput extends BlockMultiblock {
     public void registerBlockIcons(IIconRegister registry) {
         backgroundTop = registry.registerIcon("thaumcraft:silverwoodtop");
         backgroundSide = registry.registerIcon("thaumcraft:silverwoodside");
-        IIcon bufferLayer = registry.registerIcon("blightbuster:dawnMachineBuffer");
-        IIcon spoutLayer = registry.registerIcon("blightbuster:dawnMachineSpout");
+        IIcon frontLeftA = registry.registerIcon("blightbuster:limb-front-left-a");
+        IIcon frontLeftB = registry.registerIcon("blightbuster:limb-front-left-b");
+        IIcon frontRightA = registry.registerIcon("blightbuster:limb-front-right-a");
+        IIcon frontRightB = registry.registerIcon("blightbuster:limb-front-right-b");
+        IIcon outsideLeftA = registry.registerIcon("blightbuster:limb-left-outside-a");
+        IIcon outsideLeftB = registry.registerIcon("blightbuster:limb-left-outside-b");
+        IIcon outsideRightA = registry.registerIcon("blightbuster:limb-right-outside-a");
+        IIcon outsideRightB = registry.registerIcon("blightbuster:limb-right-outside-b");
+        IIcon blankDummy = registry.registerIcon("blightbuster:blankDummy");
 
-        topLeftIcons[0] = bufferLayer;
-        topLeftIcons[1] = bufferLayer;
-        topLeftIcons[2] = spoutLayer;
-        topLeftIcons[3] = spoutLayer;
-        topLeftIcons[4] = spoutLayer;
-        topLeftIcons[5] = bufferLayer;
+        topLeftIcons[0] = blankDummy;
+        topLeftIcons[1] = blankDummy;
+        topLeftIcons[2] = frontRightA;
+        topLeftIcons[3] = frontLeftA;
+        topLeftIcons[4] = outsideLeftA;
+        topLeftIcons[5] = blankDummy;
 
-        topRightIcons[0] = bufferLayer;
-        topRightIcons[1] = bufferLayer;
-        topRightIcons[2] = spoutLayer;
-        topRightIcons[3] = spoutLayer;
-        topRightIcons[4] = bufferLayer;
-        topRightIcons[5] = spoutLayer;
+        topRightIcons[0] = blankDummy;
+        topRightIcons[1] = blankDummy;
+        topRightIcons[2] = frontLeftA;
+        topRightIcons[3] = frontRightA;
+        topRightIcons[4] = blankDummy;
+        topRightIcons[5] = outsideRightA;
 
-        bottomLeftIcons[0] = bufferLayer;
-        bottomLeftIcons[1] = bufferLayer;
-        bottomLeftIcons[2] = spoutLayer;
-        bottomLeftIcons[3] = spoutLayer;
-        bottomLeftIcons[4] = bufferLayer;
-        bottomLeftIcons[5] = bufferLayer;
+        bottomLeftIcons[0] = blankDummy;
+        bottomLeftIcons[1] = blankDummy;
+        bottomLeftIcons[2] = frontRightB;
+        bottomLeftIcons[3] = frontLeftB;
+        bottomLeftIcons[4] = outsideLeftB;
+        bottomLeftIcons[5] = blankDummy;
 
-        bottomRightIcons[0] = bufferLayer;
-        bottomRightIcons[1] = bufferLayer;
-        bottomRightIcons[2] = spoutLayer;
-        bottomRightIcons[3] = spoutLayer;
-        bottomRightIcons[4] = bufferLayer;
-        bottomRightIcons[5] = bufferLayer;
+        bottomRightIcons[0] = blankDummy;
+        bottomRightIcons[1] = blankDummy;
+        bottomRightIcons[2] = frontLeftB;
+        bottomRightIcons[3] = frontRightB;
+        bottomRightIcons[4] = blankDummy;
+        bottomRightIcons[5] = outsideRightB;
     }
 
     @Override
