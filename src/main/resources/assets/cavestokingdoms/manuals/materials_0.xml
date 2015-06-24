@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 
+<!-- This is going to be the modifiers book. -->
+
 <book>
 <page type="intro">
 <text>Tools and Modifiers
@@ -247,7 +249,7 @@ Class: Utility Tool</text>
 <page type="toolpage">
 <title>Hammer</title>
 <text>The Hammer is a heavy mining tool meant for digging out large areas. It is also effective on undead.</text>
-<text>Natural Abilities: 
+<text>Natural Abilities:
 - Area of Effect, Mines a 3x3 area. The direction depends on which face is pounded.
 - Smite II, Does 2-4 extra hearts of damage against undead.
 - Huge Durability, this tool has very high durability to make up for the constant beating it will recieve.
@@ -304,7 +306,7 @@ Class: Broad Mining Tool</text>
 <page type="toolpage">
 <title>Excavator</title>
 <text>The Excavator is a large digging tool used for clearing out large swaths of land, gravel, or snow.</text>
-<text>Natural Abilities: 
+<text>Natural Abilities:
 Area of Effect
 - Mines a 3x3 area. The direction depends on which face is scooped.
 
@@ -331,7 +333,7 @@ Class: Broad Mining Tool</text>
 <page type="toolpage">
 <title>Scythe</title>
 <text>The Scythe is well known for its large swinging area. It can be used to harvest crops, leaves, and is a decent weapon.</text>
-<text>Natural Abilities: 
+<text>Natural Abilities:
 Area of Effect
 - Attacks mobs in a 3x3x3.
 - Harvests a 3x3x3 area.
@@ -362,7 +364,7 @@ Class: Broad Melee Weapon</text>
 <text>Right-click: Block
 - Blocking cuts a wide variety of damage types in half.
 
-Natural Abilities: 
+Natural Abilities:
 - Beheading II, Beheads mobs. Their head is dropped as loot.
 - Heavy, Base attack is increased at the cost of swing time
 
@@ -392,7 +394,7 @@ Class: Heavy Melee Weapon</text>
 <text>Right-click: TBD
 - This ability is incomplete
 
-Natural Abilities: 
+Natural Abilities:
 - Area of Effect, harvests wood blocks in a 1x9 tower.
 - Bash, knocks the enemy further away than normal.
 

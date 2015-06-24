@@ -22,7 +22,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
-public class ItemManual extends Item
+public class ItemManual extends ItemOreManual
 {
 	String name = "basicManual";
 	

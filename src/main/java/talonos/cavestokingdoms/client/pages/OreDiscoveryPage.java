@@ -11,11 +11,24 @@ public abstract class OreDiscoveryPage extends BookPage {
         this.discoveryName = discoveryName;
     }
 
-    protected boolean isDiscovered() {
+    protected OreDiscoveryPage(){}
+
+    protected boolean isDiscovered()
+    {
+        return isDiscovered(discoveryName);
+    }
+
+    protected boolean isDiscovered(String neededDiscovery)
+    {
+        if (neededDiscovery == null)
+        {
+            //No discovery needed; default to true;
+            return true;
+        }
         ItemStack book = OreDiscoveryRegistry.getInstance().getManualBook(manual);
-        if (OreDiscoveryRegistry.getInstance().hasDiscovery(book.getTagCompound(), discoveryName))
+        if (OreDiscoveryRegistry.getInstance().hasDiscovery(book.getTagCompound(), neededDiscovery))
             return true;
 
-        return OreDiscoveryRegistry.getInstance().hasDiscovery(manual.getMC().thePlayer, discoveryName);
+        return OreDiscoveryRegistry.getInstance().hasDiscovery(manual.getMC().thePlayer, neededDiscovery);
     }
 }
