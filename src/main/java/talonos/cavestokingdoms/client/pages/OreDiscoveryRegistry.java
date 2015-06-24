@@ -133,6 +133,9 @@ public class OreDiscoveryRegistry {
     }
 
     public boolean hasDiscovery(NBTTagCompound tag, String discoveryOre) {
+        if (tag == null)
+            return false;
+
         NBTTagList list = tag.getTagList("cavesToKingdomsOreDiscoveries", 8);
         for (int i = 0; i < list.tagCount(); i++) {
             if (list.getStringTagAt(i).equals(discoveryOre))
