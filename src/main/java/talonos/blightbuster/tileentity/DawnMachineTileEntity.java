@@ -109,7 +109,7 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
                     }
                 }
 
-                if (cleanseLength == 7)
+                if (cleanseLength == 4)
                     spend(DawnMachineResource.MACHINA);
 
                 executeCleanse(secondaryBlocks);
