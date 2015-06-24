@@ -22,12 +22,12 @@ public class TalonosWandTriggerManager implements IWandTriggerManager {
 
         switch (event) {
             case 0:
-//            if (ResearchManager.isResearchComplete(
-//                    player.getCommandSenderName(), "DAWNMACHINE"))
-//            {
+            if (ResearchManager.isResearchComplete(
+                    player.getCommandSenderName(), "DAWNMACHINE"))
+            {
                 return createDawnMachine(wand, player, world, x, y, z);
-//            }
-//            break;
+            }
+            break;
         }
         return false;
     }
