@@ -22,7 +22,8 @@ public class DawnMachineMultiblock extends Multiblock {
 
         IMultiblockEntryState nullState = new NullMultiblockState();
         IMultiblockEntryState dawnMachine = new OrientationMultiblockState(BBBlock.dawnMachine);
-        IMultiblockEntryState buffer = new OrientationMultiblockState(BBBlock.dawnMachineBuffer);
+        IMultiblockEntryState leftBuffer = new OrientationMultiblockState(BBBlock.dawnMachineBuffer, 0, 0xC);
+        IMultiblockEntryState rightBuffer = new OrientationMultiblockState(BBBlock.dawnMachineBuffer, 4, 0xC);
         IMultiblockEntryState bottomLeftSpout = new OrientationMultiblockState(BBBlock.dawnMachineInput, 0, 0xC);
         IMultiblockEntryState bottomRightSpout = new OrientationMultiblockState(BBBlock.dawnMachineInput, 4, 0xC);
         IMultiblockEntryState topLeftSpout = new OrientationMultiblockState(BBBlock.dawnMachineInput, 8, 0xC);
@@ -35,8 +36,8 @@ public class DawnMachineMultiblock extends Multiblock {
         controller = new MultiblockEntry(0, 0, 0, cyberTotem, dawnMachine);
         entries.add(controller);
         entries.add(new MultiblockEntry(1, 0, 0, silverwoodLog, bottomRightSpout));
-        entries.add(new MultiblockEntry(-1, -1, 0, silverwoodLog, buffer));
-        entries.add(new MultiblockEntry(1, -1, 0, silverwoodLog, buffer));
+        entries.add(new MultiblockEntry(-1, -1, 0, silverwoodLog, leftBuffer));
+        entries.add(new MultiblockEntry(1, -1, 0, silverwoodLog, rightBuffer));
     }
 
     @Override

@@ -14,6 +14,7 @@ public class BlockCyberTotem extends BBBlock {
 
     private IIcon topIcon;
     private IIcon sideIcon;
+    private IIcon bottomIcon;
 
     public BlockCyberTotem() {
         super(Material.wood);
@@ -30,14 +31,17 @@ public class BlockCyberTotem extends BBBlock {
     @Override
     public void registerBlockIcons(IIconRegister registry) {
         topIcon = registry.registerIcon("blightbuster:dawnMachineTop");
-        sideIcon = registry.registerIcon("blightbuster:dawnMachineSide");
+        sideIcon = registry.registerIcon("blightbuster:dawnMachineDeactivated");
+        bottomIcon = registry.registerIcon("blightbuster:dawnMachineBottom");
     }
 
     @SideOnly(Side.CLIENT)
     @Override
     public IIcon getIcon(int side, int meta) {
-        if (side == 0 || side == 1)
+        if (side == 1)
             return topIcon;
+        if (side == 0)
+            return bottomIcon;
         return this.sideIcon;
     }
 }

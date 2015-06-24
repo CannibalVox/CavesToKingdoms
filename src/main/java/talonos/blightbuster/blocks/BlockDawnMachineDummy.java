@@ -22,7 +22,8 @@ public class BlockDawnMachineDummy extends BlockMultiblock {
 
     private IIcon backgroundTop;
     private IIcon backgroundSide;
-    private IIcon[] bufferLayer = new IIcon[6];
+    private IIcon[] leftBufferLayer = new IIcon[6];
+    private IIcon[] rightBufferLayer = new IIcon[6];
 
     protected BlockDawnMachineDummy() {
         super(Material.wood, BBBlock.dawnMachineMultiblock);
@@ -40,14 +41,25 @@ public class BlockDawnMachineDummy extends BlockMultiblock {
     public void registerBlockIcons(IIconRegister registry) {
         backgroundTop = registry.registerIcon("thaumcraft:silverwoodtop");
         backgroundSide = registry.registerIcon("thaumcraft:silverwoodside");
-        IIcon buffer = registry.registerIcon("blightbuster:dawnMachineBuffer");
+        IIcon frontLeftC = registry.registerIcon("blightbuster:limb-front-left-c");
+        IIcon frontRightC = registry.registerIcon("blightbuster:limb-front-right-c");
+        IIcon outsideLeftC = registry.registerIcon("blightbuster:limb-left-outside-c");
+        IIcon outsideRightC = registry.registerIcon("blightbuster:limb-right-outside-c");
+        IIcon blankDummy = registry.registerIcon("blightbuster:blankDummy");
 
-        bufferLayer[0] = buffer;
-        bufferLayer[1] = buffer;
-        bufferLayer[2] = buffer;
-        bufferLayer[3] = buffer;
-        bufferLayer[4] = buffer;
-        bufferLayer[5] = buffer;
+        leftBufferLayer[0] = blankDummy;
+        leftBufferLayer[1] = blankDummy;
+        leftBufferLayer[2] = frontRightC;
+        leftBufferLayer[3] = frontLeftC;
+        leftBufferLayer[4] = outsideLeftC;
+        leftBufferLayer[5] = blankDummy;
+
+        rightBufferLayer[0] = blankDummy;
+        rightBufferLayer[1] = blankDummy;
+        rightBufferLayer[2] = frontLeftC;
+        rightBufferLayer[3] = frontRightC;
+        rightBufferLayer[4] = blankDummy;
+        rightBufferLayer[5] = outsideRightC;
     }
 
     public boolean onBlockEventReceived(World par1World, int par2, int par3, int par4, int par5, int par6) {
@@ -75,11 +87,22 @@ public class BlockDawnMachineDummy extends BlockMultiblock {
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int meta) {
         if (ForgeHooksClient.getWorldRenderPass() == 1)
-            return bufferLayer[transformSide(side, meta)];
+            return getInputIcon(transformSide(side, meta), meta);
 
         if (side == 0 || side == 1)
             return backgroundTop;
         return backgroundSide;
+    }
+
+    private IIcon getInputIcon(int side, int meta) {
+        int block = meta/4;
+
+        switch(block) {
+            case 1:
+                return rightBufferLayer[side];
+            default:
+                return leftBufferLayer[side];
+        }
     }
 
     @Override
