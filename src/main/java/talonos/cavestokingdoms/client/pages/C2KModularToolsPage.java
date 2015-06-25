@@ -88,7 +88,7 @@ public class C2KModularToolsPage extends OreDiscoveryPage
                 Item iconItem = GameRegistry.findItem(mod, itemName);
                 if (iconItem != null)
                 {
-                    icons[0] = new ItemStack(GameRegistry.findItem(mod, itemName), 1, meta);
+                    icons[i] = new ItemStack(GameRegistry.findItem(mod, itemName), 1, meta);
                 }
             }
         }
@@ -190,12 +190,13 @@ public class C2KModularToolsPage extends OreDiscoveryPage
         String pleasetouch = StatCollector.translateToLocal("manual.cavestokingdoms.pleasetouch");
         String tounlock = StatCollector.translateToLocal("manual.cavestokingdoms.tounlock");
 
-        String itemName = "";
+        manual.fonts.drawString("\u00a7n" + undiscovered, localWidth + 14, localHeight + 4, 0);
+        manual.fonts.drawString(pleasetouch, localWidth + 18, localHeight + 21, 0);
+        manual.fonts.drawString(tounlock, localWidth + 60, localHeight + 32, 0);
 
+        String nameOfItem = icons[1].getDisplayName();
 
-        manual.fonts.drawString("\u00a7n" + undiscovered, localWidth + 20, localHeight + 4, 0);
-        manual.fonts.drawString("\u00a7n" + pleasetouch, localWidth + 20, localHeight + 18, 0);
-        manual.fonts.drawString("\u00a7n" + tounlock, localWidth + 20, localHeight + 32, 0);
+        manual.fonts.drawString(nameOfItem, localWidth + 83-(int)(nameOfItem.length()*1.7), localHeight + 94, 0);
 
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
         RenderHelper.enableGUIStandardItemLighting();

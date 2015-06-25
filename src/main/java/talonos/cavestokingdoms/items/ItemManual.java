@@ -42,6 +42,7 @@ public class ItemManual extends ItemOreManual
     @SideOnly(Side.CLIENT)
     public ItemStack onItemRightClick (ItemStack stack, World world, EntityPlayer player)
     {
+        super.onItemRightClick(stack, world, player);
     	for (tconstruct.library.tools.ToolMaterial m : TConstructRegistry.toolMaterials.values())
     	{
     		System.out.println("Tool: "+m.name());
