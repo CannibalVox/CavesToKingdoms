@@ -48,3 +48,24 @@ ubc.cavestokingdoms.certuscharged.name=Charged Certus Quartz
 ubc.cavestokingdoms.quartz.name=Terrestrial Nether Quartz
 
 command.listshaftmaterials.success=Printing all known shaft materials:
+
+manual.cavestokingdoms.undiscovered=This material has not been discovered!
+manual.cavestokingdoms.pleasetouch=You must acquire the following item
+manual.cavestokingdoms.tounlock=To unlock it!
+
+manual.cavestokingdoms.harvestlevel=Harvest Level
+manual.cavestokingdoms.durability=Durability
+manual.cavestokingdoms.handlemod=Handle Mod
+manual.cavestokingdoms.miningspeed=Mining Speed
+manual.cavestokingdoms.xprequired=XP Required
+manual.cavestokingdoms.attackdamage=Attack Damage
+manual.cavestokingdoms.heart=Heart
+manual.cavestokingdoms.hearts=Hearts
+manual.cavestokingdoms.materialtraits=Material Traits
+manual.cavestokingdoms.extramod=+1 Modifiers
+manual.cavestokingdoms.normal=normal
+
+blightfallmanual.discovery.add=Your discovery of %s has unlocked more info in your materials books!
+
+discover.cavestokingdoms.gravel=Gravel
+discover.cavestokingdoms.reeds=Sugarcane

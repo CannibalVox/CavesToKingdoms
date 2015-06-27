@@ -2,6 +2,7 @@ package talonos.cavestokingdoms;
 
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import talonos.cavestokingdoms.blocks.CtKBlock;
+import talonos.cavestokingdoms.client.pages.OreDiscoveryRegistry;
 import talonos.cavestokingdoms.command.ListShaftMaterials;
 import talonos.cavestokingdoms.extendedproperties.OrbEventHandler;
 import talonos.cavestokingdoms.lib.DEFS;
@@ -52,5 +53,6 @@ public class CavesToKindgoms
     public static void postInit(FMLPostInitializationEvent event)
     {
         proxy.registerRenderers();
+        OreDiscoveryRegistry.getInstance(); //Constructs and therefore loads all discovery registry stuff.
     }
 }
