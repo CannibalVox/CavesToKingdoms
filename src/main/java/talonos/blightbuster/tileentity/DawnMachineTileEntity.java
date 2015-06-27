@@ -49,9 +49,9 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
     protected static final int FULLYELLOW_RF = 40000;
     protected static final int FULLRED_RF = 20000;
     public static final int DEAD_RF = 150;
-    protected static final Vec3 COLOR_GREEN = Vec3.createVectorHelper(0, 0.8, 0);
-    protected static final Vec3 COLOR_YELLOW = Vec3.createVectorHelper(0.8, 0.8, 0);
-    protected static final Vec3 COLOR_RED = Vec3.createVectorHelper(0.8, 0, 0);
+    protected static final Vec3 COLOR_GREEN = Vec3.createVectorHelper(0, 0.9, 0);
+    protected static final Vec3 COLOR_YELLOW = Vec3.createVectorHelper(0.9, 0.9, 0);
+    protected static final Vec3 COLOR_RED = Vec3.createVectorHelper(0.9, 0, 0);
 
     private boolean aerIsActive = false;
     private int aerCooldownRemaining = 0;

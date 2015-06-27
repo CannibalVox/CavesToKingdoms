@@ -60,12 +60,14 @@ public class DawnMachineSpoutRenderer extends TileEntitySpecialRenderer {
                     maxV = -0.0625f;
                 } else {
                     bindTexture(normalTexture);
+                    GL11.glDisable(GL11.GL_BLEND);
+                    GL11.glEnable(GL11.GL_ALPHA_TEST);
+                    GL11.glEnable(GL11.GL_LIGHTING);
                 }
 
                 GL11.glEnable(GL11.GL_BLEND);
                 GL11.glDisable(GL11.GL_ALPHA_TEST);
                 GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-                GL11.glColor4f(1,1,1,1);
                 DawnMachineResource resource = DawnMachineResource.getResourceFromAspect(dirAspect);
                 GL11.glBegin(GL11.GL_QUADS);
                 GL11.glTexCoord2f(resource.getU(), resource.getV() + 0.5f);
@@ -81,10 +83,11 @@ public class DawnMachineSpoutRenderer extends TileEntitySpecialRenderer {
                 GL11.glNormal3f(0, 0, -1);
                 GL11.glVertex3f(maxU, minV, -0.5001f);
                 GL11.glEnd();
-                GL11.glDisable(GL11.GL_BLEND);
-                GL11.glEnable(GL11.GL_ALPHA_TEST);
-                GL11.glEnable(GL11.GL_LIGHTING);
             }
+
+            GL11.glDisable(GL11.GL_BLEND);
+            GL11.glEnable(GL11.GL_ALPHA_TEST);
+            GL11.glEnable(GL11.GL_LIGHTING);
 
             GL11.glPopMatrix();
             GL11.glRotatef(90, 0, 1, 0);

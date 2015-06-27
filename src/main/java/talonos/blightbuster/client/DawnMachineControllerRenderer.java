@@ -88,7 +88,6 @@ public class DawnMachineControllerRenderer extends TileEntitySpecialRenderer {
 
         GL11.glPushMatrix();
         GL11.glDisable(GL11.GL_LIGHTING);
-        OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)256.0f / 1.0F, (float)256.0f / 1.0F);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         GL11.glTranslated(x + 0.5, y + 0.5, z + 0.5);
         GL11.glEnable(GL11.GL_BLEND);
@@ -103,12 +102,16 @@ public class DawnMachineControllerRenderer extends TileEntitySpecialRenderer {
             GL11.glRotatef(90, 0, 1, 0);
             GL11.glBegin(GL11.GL_QUADS);
             GL11.glTexCoord2f(glow.getMinU(), glow.getMaxV());
+            GL11.glNormal3f(0, 0, -1);
             GL11.glVertex3f(-0.5f, -0.5f, -0.5001f);
             GL11.glTexCoord2f(glow.getMinU(), glow.getMinV());
+            GL11.glNormal3f(0, 0, -1);
             GL11.glVertex3f(-0.5f, 0.5f, -0.5001f);
             GL11.glTexCoord2f(glow.getMaxU(), glow.getMinV());
+            GL11.glNormal3f(0, 0, -1);
             GL11.glVertex3f(0.5f, 0.5f, -0.5001f);
             GL11.glTexCoord2f(glow.getMaxU(), glow.getMaxV());
+            GL11.glNormal3f(0, 0, -1);
             GL11.glVertex3f(0.5f, -0.5f, -0.5001f);
             GL11.glEnd();
         }
