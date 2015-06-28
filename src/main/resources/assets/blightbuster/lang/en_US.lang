@@ -24,3 +24,9 @@ tc.research_page.DAWNTOTEM.1=By infusing ethereal blooms into a silverwood log, 
 blightbuster.researchnote=The alien grimoire reveals secret thaumaturgic knowledge!
 
 gui.offering.pairFailed=Your wand failed to attune to the Dawn Machine.
+gui.offering.pairSucceeded=Your wand attunes to the Dawn Machine.
+gui.offering.pairAlreadyExists=Your wand was already attuned to this Dawn Machine.
+gui.offering.noPairing=This wand isn't attuned to a Dawn Machine.
+gui.offering.wrongDimension=You cannot transport a Dawn Machine across dimensions.
+gui.offering.pairingDestroyed=The attuned Dawn Machine has been moved or destroyed.
+gui.offering.clearArea=Clear the area around the offering.
