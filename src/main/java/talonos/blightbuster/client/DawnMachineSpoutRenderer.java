@@ -60,8 +60,6 @@ public class DawnMachineSpoutRenderer extends TileEntitySpecialRenderer {
                     maxV = -0.0625f;
                 } else {
                     bindTexture(normalTexture);
-                    GL11.glDisable(GL11.GL_BLEND);
-                    GL11.glEnable(GL11.GL_ALPHA_TEST);
                     GL11.glEnable(GL11.GL_LIGHTING);
                 }
 

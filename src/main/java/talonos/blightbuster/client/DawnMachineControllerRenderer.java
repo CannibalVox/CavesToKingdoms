@@ -87,16 +87,12 @@ public class DawnMachineControllerRenderer extends TileEntitySpecialRenderer {
         IIcon glow = BBBlock.dawnMachine.getGlowIcon();
 
         GL11.glPushMatrix();
-        GL11.glDisable(GL11.GL_LIGHTING);
-        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         GL11.glTranslated(x + 0.5, y + 0.5, z + 0.5);
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glDisable(GL11.GL_LIGHTING);
         GL11.glDisable(GL11.GL_ALPHA_TEST);
         GL11.glColor4d(color.xCoord, color.yCoord, color.zCoord, 1);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GL11.glDepthMask(true);
-
 
         for (int i = 0; i < 4; i++) {
             GL11.glRotatef(90, 0, 1, 0);
@@ -117,5 +113,9 @@ public class DawnMachineControllerRenderer extends TileEntitySpecialRenderer {
         }
 
         GL11.glPopMatrix();
+
+        GL11.glEnable(GL11.GL_LIGHTING);
+        GL11.glDisable(GL11.GL_BLEND);
+        GL11.glEnable(GL11.GL_ALPHA_TEST);
     }
 }
