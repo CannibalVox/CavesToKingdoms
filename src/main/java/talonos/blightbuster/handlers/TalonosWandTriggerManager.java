@@ -3,9 +3,14 @@ package talonos.blightbuster.handlers;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.world.World;
 import org.apache.commons.lang3.tuple.Pair;
 import talonos.blightbuster.blocks.BBBlock;
+import talonos.blightbuster.multiblock.BlockMultiblock;
 import talonos.blightbuster.multiblock.Multiblock;
 import talonos.blightbuster.multiblock.entries.MultiblockEntry;
 import thaumcraft.api.aspects.Aspect;
@@ -22,14 +27,42 @@ public class TalonosWandTriggerManager implements IWandTriggerManager {
 
         switch (event) {
             case 0:
-            if (ResearchManager.isResearchComplete(
-                    player.getCommandSenderName(), "DAWNMACHINE"))
-            {
-                return createDawnMachine(wand, player, world, x, y, z);
-            }
+                if (ResearchManager.isResearchComplete(
+                        player.getCommandSenderName(), "DAWNMACHINE"))
+                {
+                    boolean success = createDawnMachine(wand, player, world, x, y, z);
+                    if (success) {
+                        Block convertedBlock = world.getBlock(x, y, z);
+                        if (convertedBlock instanceof BlockMultiblock) {
+                            TileEntity controller = ((BlockMultiblock)convertedBlock).getMultiblockController(world, x, y, z);
+                            if (controller != null) {
+                                pairDawnMachineToWand(wand, controller.getWorldObj().provider.dimensionId, controller.xCoord, controller.yCoord, controller.zCoord);
+                                return true;
+                            }
+                        }
+
+                        player.addChatMessage(new ChatComponentTranslation("gui.offering.pairFailed"));
+                    }
+                    return success;
+                }
             break;
         }
         return false;
+    }
+
+    private void pairDawnMachineToWand(ItemStack wand, int dimension, int x, int y, int z) {
+        NBTTagCompound wandTag = wand.getTagCompound();
+        if (wandTag == null) {
+            wandTag = new NBTTagCompound();
+            wand.setTagCompound(wandTag);
+        }
+
+        NBTTagCompound dawnMachineTag = wandTag.getCompoundTag("DawnMachine");
+        dawnMachineTag.setInteger("Dimension", dimension);
+        dawnMachineTag.setInteger("X", x);
+        dawnMachineTag.setInteger("Y", y);
+        dawnMachineTag.setInteger("Z", z);
+        wandTag.setTag("DawnMachine", dawnMachineTag);
     }
 
     private boolean createDawnMachine(ItemStack stack, EntityPlayer player,

@@ -22,3 +22,5 @@ tc.research_text.DAWNTOTEM=The start of a glorious new era!
 tc.research_page.DAWNTOTEM.1=By infusing ethereal blooms into a silverwood log, you have created the totem of dawn. It is the greatest magical protection against taint you have yet devised. Boasting an area much larger than a bloom, this totem also excels in keeping the edges of its area free of taint. It may take slightly longer to completely clean an area, however.
 
 blightbuster.researchnote=The alien grimoire reveals secret thaumaturgic knowledge!
+
+gui.offering.pairFailed=Your wand failed to attune to the Dawn Machine.
