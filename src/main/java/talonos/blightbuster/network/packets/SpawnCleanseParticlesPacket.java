@@ -2,6 +2,8 @@ package talonos.blightbuster.network.packets;
 
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.world.World;
@@ -9,7 +11,7 @@ import talonos.blightbuster.BlightBuster;
 
 import java.util.Random;
 
-public class SpawnCleanseParticlesPacket extends BlightbusterPacketBase {
+public class SpawnCleanseParticlesPacket implements IMessage {
 
     private int spawnX;
     private int spawnZ;
@@ -23,35 +25,20 @@ public class SpawnCleanseParticlesPacket extends BlightbusterPacketBase {
     }
 
     @Override
-    public void write(ByteArrayDataOutput out) {
-        out.writeInt(spawnX);
-        out.writeInt(spawnZ);
-        out.writeBoolean(useFlameParticles);
-    }
-
-    @Override
-    public void read(ByteArrayDataInput in) {
+    public void fromBytes(ByteBuf in) {
         spawnX = in.readInt();
         spawnZ = in.readInt();
         useFlameParticles = in.readBoolean();
     }
 
     @Override
-    public void handleClient(World world, EntityPlayer player) {
-        //System.out.println("Trying to spawn particles:");
-
-        double height = BlightBuster.proxy.getBestCleanseSpawnHeight();
-        Random r = new Random();
-        for (int y = 0; y < 50; y++)
-        {
-            double d1 = r.nextGaussian() * 0.02D;
-            double d2 = r.nextGaussian() * 0.02D;
-            world.spawnParticle(useFlameParticles?"flame":"smoke", spawnX+r.nextDouble(), height - 5 + (r.nextDouble()*15), spawnZ+r.nextDouble(), 0, d1,d2);
-        }
+    public void toBytes(ByteBuf out) {
+        out.writeInt(spawnX);
+        out.writeInt(spawnZ);
+        out.writeBoolean(useFlameParticles);
     }
 
-    @Override
-    public void handleServer(World world, EntityPlayerMP player) {
-        //We shouldn't be here
-    }
+    public int getSpawnX() { return spawnX; }
+    public int getSpawnZ() { return spawnZ; }
+    public boolean doUseFlameParticles() { return useFlameParticles; }
 }

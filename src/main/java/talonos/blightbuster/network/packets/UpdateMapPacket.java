@@ -2,13 +2,14 @@ package talonos.blightbuster.network.packets;
 
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.world.World;
 import talonos.biomescanner.map.MapScanner;
-import talonos.blightbuster.network.packets.BlightbusterPacketBase;
 
-public class UpdateMapPacket extends BlightbusterPacketBase {
+public class UpdateMapPacket implements IMessage {
 
     private int mapX;
     private int mapY;
@@ -30,31 +31,27 @@ public class UpdateMapPacket extends BlightbusterPacketBase {
     }
 
     @Override
-    public void write(ByteArrayDataOutput out) {
-        out.writeInt(mapX);
-        out.writeInt(mapY);
-        out.writeInt(updateWidth);
-        out.writeInt(updateHeight);
-        out.write(updateData);
-    }
-
-    @Override
-    public void read(ByteArrayDataInput in) {
+    public void fromBytes(ByteBuf in) {
         this.mapX = in.readInt();
         this.mapY = in.readInt();
         this.updateWidth = in.readInt();
         this.updateHeight = in.readInt();
         this.updateData = new byte[updateWidth * updateHeight];
-        in.readFully(this.updateData, 0, updateData.length);
+        in.readBytes(this.updateData, 0, updateData.length);
     }
 
     @Override
-    public void handleClient(World world, EntityPlayer player) {
-        MapScanner.instance.updateFromNetwork(mapX, mapY, updateWidth, updateHeight, updateData);
+    public void toBytes(ByteBuf out) {
+        out.writeInt(mapX);
+        out.writeInt(mapY);
+        out.writeInt(updateWidth);
+        out.writeInt(updateHeight);
+        out.writeBytes(updateData);
     }
 
-    @Override
-    public void handleServer(World world, EntityPlayerMP player) {
-        //Shouldn't be here
-    }
+    public int getMapX() { return mapX; }
+    public int getMapY() { return mapY; }
+    public int getUpdateHeight() { return updateHeight; }
+    public int getUpdateWidth() { return updateWidth; }
+    public byte[] getUpdateData() { return updateData; }
 }
