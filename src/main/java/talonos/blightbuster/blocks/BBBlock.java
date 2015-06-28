@@ -37,6 +37,7 @@ public class BBBlock extends Block
     public static BlockDawnMachine dawnMachine;
     public static Block cyberTotem;
     public static Multiblock dawnMachineMultiblock;
+    public static Block offering;
 
 	public static void init() 
 	{
@@ -47,6 +48,7 @@ public class BBBlock extends Block
         dawnMachineBuffer = new BlockDawnMachineDummy();
         dawnMachine = new BlockDawnMachine();
         cyberTotem = new BlockCyberTotem();
+        offering = new BlockOffering();
 
         dawnMachineMultiblock.init();
 	}
