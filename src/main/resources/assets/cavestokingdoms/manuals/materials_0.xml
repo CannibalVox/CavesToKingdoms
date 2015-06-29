@@ -486,7 +486,7 @@ Class: Ranged Projectile Launcher</text>
 
 Effects:
 - 500 extra durability
-- Mining level increased to level 3
+- NO EFFECT ON MINING LEVEL!
 
 Type: Single-use
 Stackable: No</text>
@@ -503,7 +503,7 @@ Stackable: No</text>
 
 Effects:
 - 50% more durability
-- Mining level increased to level 2
+- NO EFFECT ON MINING LEVEL!
 
 Type: Single-use
 Stackable: No</text>
@@ -521,7 +521,7 @@ Stackable: No</text>
 Effects:
 - Each redstone dust increases mining speed by 0.08.
 - At 50/50 the boost is 4.0, making a wood pickaxe equivalent in speed to iron.
-- Not useful on weapons
+- Not useful on melee weapons.
 
 Type: Multi-use
 Stackable: Yes</text>
@@ -539,6 +539,7 @@ Stackable: Yes</text>
 Effects:
 - The tool slowly repairs itself
 - Sunlight speeds up the process
+- Expensive to make! Moss doesn't work normally on this planet.
 
 Type: Single-use
 Stackable: Yes</text>
@@ -568,13 +569,9 @@ Stackable: No</text>
 <recipe>lavacrystalmod</recipe>
 </page>
 
-<page type="crafting">
-<text>Ball of Moss</text>
-<recipe>
- <name>mossball</name>
- <size>three</size>
-</recipe>
-</page>
+    <page type = "text">
+        <text></text>
+    </page>
 
 <page type="crafting">
 <text>Lava Crystal</text>
@@ -792,6 +789,7 @@ Effects:
 - Allows the tool to be charged with Redstone Flux
 - Uses energy instead of durability while charged
 - Available from Thermal Expansion
+- Requires two modifier slots!
 
 Type: Single-use
 Stackable: No</text>
@@ -810,6 +808,7 @@ Effects:
 - Allows the tool to be charged with Redstone Flux
 - Uses energy instead of durability while charged
 - Available from Thermal Expansion
+- Requires two modifier slots!
 
 Type: Single-use
 Stackable: No</text>
@@ -818,54 +817,6 @@ Stackable: No</text>
 <page type="modifier">
 <tooltype>tool</tooltype>
 <recipe>fluxmod2</recipe>
-</page>
-
-<page type="sectionpage">
-<title>Additional Modifiers</title>
-<text>Working the tool with a block of gold and a diamond makes the tool more malleable, allowing for more modification.
-
-Effects:
-- Adds an additional modifier slot to the tool
-
-Type: Single-use
-Stackable: No</text>
-</page>
-
-<page type="modifier">
-<tooltype>tool</tooltype>
-<recipe>tier1free</recipe>
-</page>
-
-<page type="sectionpage">
-<title>Additional Modifiers</title>
-<text>Attaching a solid gold apple and encrusting the tool with a block of diamond warps the tool in places you did not notice before.
-
-Effects:
-- Adds an additional modifier slot to the tool
-
-Type: Single-use
-Stackable: No</text>
-</page>
-
-<page type="modifier">
-<tooltype>tool</tooltype>
-<recipe>tier1.5free</recipe>
-</page>
-
-<page type="sectionpage">
-<title>Additional Modifiers</title>
-<text>Working the tool with a nether star gives it the ability to attach parts they would not otherwise stay.
-
-Effects:
-- Adds an additional modifier slot to the tool
-
-Type: Single-use
-Stackable: No</text>
-</page>
-
-<page type="modifier">
-<tooltype>tool</tooltype>
-<recipe>tier2free</recipe>
 </page>
 
 </book>

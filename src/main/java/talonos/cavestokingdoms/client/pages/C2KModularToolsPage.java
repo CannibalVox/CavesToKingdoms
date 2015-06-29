@@ -42,8 +42,6 @@ public class C2KModularToolsPage extends OreDiscoveryPage
     @Override
     public void readPageFromXML (Element element)
     {
-    	//System.out.println("Reading page...");
-    	//Ingot
         icons = new ItemStack[2];
         
         NodeList nodes = element.getElementsByTagName("title");

@@ -1,10 +1,7 @@
 package talonos.cavestokingdoms.proxies;
 
 import mantle.client.MProxyClient;
-import talonos.cavestokingdoms.client.pages.BowMaterialsPage;
-import talonos.cavestokingdoms.client.pages.C2KContentsPage;
-import talonos.cavestokingdoms.client.pages.C2KModularToolsPage;
-import talonos.cavestokingdoms.client.pages.ExtMaterialsUsagePage;
+import talonos.cavestokingdoms.client.pages.*;
 
 public class ClientProxy extends CommonProxy
 {
@@ -17,5 +14,6 @@ public class ClientProxy extends CommonProxy
         MProxyClient.registerManualPage("extMaterialUsePage", ExtMaterialsUsagePage.class);
         MProxyClient.registerManualPage("bowMaterialsPage", BowMaterialsPage.class);
         MProxyClient.registerManualPage("c2kContentsPage", C2KContentsPage.class);
+        MProxyClient.registerManualPage("c2kClassicToolsPage", C2KClassicToolsPage.class);
     }
 }
