@@ -15,5 +15,6 @@ public class ClientProxy extends CommonProxy
         MProxyClient.registerManualPage("bowMaterialsPage", BowMaterialsPage.class);
         MProxyClient.registerManualPage("c2kContentsPage", C2KContentsPage.class);
         MProxyClient.registerManualPage("c2kClassicToolsPage", C2KClassicToolsPage.class);
+        MProxyClient.registerManualPage("c2kArmorPage", C2KArmorPage.class);
     }
 }

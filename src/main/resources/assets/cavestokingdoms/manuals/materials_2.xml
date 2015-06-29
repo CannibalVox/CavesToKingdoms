@@ -5,9 +5,9 @@
 <book>
    <page type="intro">
       <text>Materials - The Modular Tools Edition.
-         A Guide to Material Properties
+A Guide to Material Properties
 
-         By Ayumu Nagasawa</text>
+By Ayumu Nagasawa</text>
    </page>
 
    <page type="text">
@@ -96,30 +96,30 @@
       <title>Material Traits</title>
       <text>Some materials have traits that augment their natural uses.
 
-         - Reinforced: 10% chance per level of not using durability
-         - Stonebound: The tool mines faster as it wears out, but does less damage
-         - Jagged: The tool does more damage as it wears out, but mines slower
-         - Writable: One extra modifier per piece
-         - Tasty: Sometimes drops food items</text>
+- Reinforced: 10% chance per level of not using durability
+- Stonebound: The tool mines faster as it wears out, but does less damage
+- Jagged: The tool does more damage as it wears out, but mines slower
+- Writable: One extra modifier per piece
+- Tasty: Sometimes drops food items</text>
    </page>
 
    <page type="sectionpage">
       <title>Material Statistics:</title>
       <text>Materials have more possible attributes than
-         when Skyla wrote his seminal work.
+when Skyla wrote his seminal work.
 
-         - Harvest level: The maximum hardness a
-         tool can mine.
-         - Durability: How many times the material
-         can be used before breaking.
-         - Handle Mod: Tools with this as a handle
-         multiply their durability by this amount.
-         - Mining Speed: How quickly the tool mines
-         materials it is effective against.
-         - Attack Damage: How much extra damage this
-         tool does when attacking
-         - XP Required: How much XP this material
-         requires to level up.</text>
+- Harvest level: The maximum hardness a
+  tool can mine.
+- Durability: How many times the material
+  can be used before breaking.
+- Handle Mod: Tools with this as a handle
+  multiply their durability by this amount.
+- Mining Speed: How quickly the tool mines
+  materials it is effective against.
+- Attack Damage: How much extra damage this
+  tool does when attacking
+- XP Required: How much XP this material
+  requires to level up.</text>
    </page>
 
    <!-- Wood Materials -->
