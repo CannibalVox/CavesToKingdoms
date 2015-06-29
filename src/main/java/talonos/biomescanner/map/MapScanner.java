@@ -8,6 +8,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
@@ -256,7 +257,7 @@ public class MapScanner {
         bus().post(new UpdateMapEvent(minX, minY, width, height));
     }
 
-    public void sendEntireMap(EntityPlayer entityPlayer) {
+    public void sendEntireMap(EntityPlayerMP entityPlayer) {
         int width = 5*blockWidth;
         int height = 7*blockHeight;
 

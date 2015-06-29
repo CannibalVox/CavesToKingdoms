@@ -98,9 +98,13 @@ public class AddedResearch
 		dawnTotemResearch.setParents(new String[] { "SILVERPOTION" , "PURITYFOCUS"});
 		dawnTotemResearch.registerResearchItem();
 
-		
-		WandTriggerRegistry.registerWandBlockTrigger(new TalonosWandTriggerManager(), 0, BBBlock.cyberTotem, -1, "cavestokingdoms");
-		WandTriggerRegistry.registerWandBlockTrigger(new TalonosWandTriggerManager(), 0, ConfigBlocks.blockMagicalLog, 1, "cavestokingdoms");
+		TalonosWandTriggerManager wandTrigger = new TalonosWandTriggerManager();
+		WandTriggerRegistry.registerWandBlockTrigger(wandTrigger, 0, BBBlock.cyberTotem, -1, "cavestokingdoms");
+		WandTriggerRegistry.registerWandBlockTrigger(wandTrigger, 0, ConfigBlocks.blockMagicalLog, 1, "cavestokingdoms");
+		WandTriggerRegistry.registerWandBlockTrigger(wandTrigger, 1, BBBlock.dawnMachine, -1, "cavestokingdoms");
+		WandTriggerRegistry.registerWandBlockTrigger(wandTrigger, 1, BBBlock.dawnMachineInput, -1, "cavestokingdoms");
+		WandTriggerRegistry.registerWandBlockTrigger(wandTrigger, 1, BBBlock.dawnMachineBuffer, -1, "cavestokingdoms");
+		WandTriggerRegistry.registerWandBlockTrigger(wandTrigger, 2, BBBlock.offering, -1, "cavestokingdoms");
 	}
 
 }
