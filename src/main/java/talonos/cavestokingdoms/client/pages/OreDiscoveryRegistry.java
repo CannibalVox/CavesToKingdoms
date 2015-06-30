@@ -11,6 +11,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import mantle.client.gui.GuiManual;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -76,7 +77,7 @@ public class OreDiscoveryRegistry {
         //Handle registry code.
         registerDiscovery("minecraft:gravel", "discover.cavestokingdoms.gravel");
         registerDiscovery("minecraft:reeds", "discover.cavestokingdoms.reed");
-        registerDiscovery("thismoddoesbtexist:imusingittotestrobustness", "discover.cavestokingdoms.falseitem");
+        //registerDiscovery("thismoddoesbtexist:imusingittotestrobustness", "discover.cavestokingdoms.falseitem");
 
         FMLCommonHandler.instance().bus().register(this);
     }
@@ -138,6 +139,9 @@ public class OreDiscoveryRegistry {
     }
 
     public String findDiscovery(ItemStack stack) {
+        if (stack == null)
+            return null;
+
         int size = discoverData.size();
         for (int i = 0; i < size; i++) {
             if (discoverData.get(i).matches(stack))
@@ -151,11 +155,33 @@ public class OreDiscoveryRegistry {
     public void playerReceivedItem(PlayerEvent.ItemPickupEvent event) {
         ItemStack item = event.pickedUp.getEntityItem();
 
+        checkDiscovery(item, event.player);
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOW)
+    public void onCrafting(PlayerEvent.ItemCraftedEvent event) {
+        ItemStack item = event.crafting;
+
+        checkDiscovery(item, event.player);
+    }
+
+    protected void checkDiscovery(ItemStack item, EntityPlayer player) {
+        if (player.worldObj.isRemote)
+            return;
+
         String discoveryOre = findDiscovery(item);
 
-        if (discoveryOre != null && !hasDiscovery(event.player, discoveryOre)) {
-            addDiscovery(event.player, discoveryOre);
-            event.player.addChatMessage(new ChatComponentTranslation("blightfallmanual.discovery.add", new Object[] {StatCollector.translateToLocal(discoveryOre)}));
+        if (discoveryOre != null && !hasDiscovery(player, discoveryOre)) {
+            addDiscovery(player, discoveryOre);
+            player.addChatMessage(new ChatComponentTranslation("blightfallmanual.discovery.add", new Object[] {StatCollector.translateToLocal(discoveryOre)}));
+        }
+    }
+
+    public void scanPlayerForDiscoveries(EntityPlayer player) {
+        InventoryPlayer inventory = player.inventory;
+        for (int i = 0; i < inventory.getSizeInventory(); i++) {
+            ItemStack stack = inventory.getStackInSlot(i);
+            checkDiscovery(stack, player);
         }
     }
 
