@@ -53,6 +53,9 @@ manual.cavestokingdoms.undiscovered=This material has not been discovered!
 manual.cavestokingdoms.pleasetouch=You must acquire the following item
 manual.cavestokingdoms.tounlock=To unlock it!
 
+manual.cavestokingdoms.location.all=Everywhere except the outer oceans.
+manual.cavestokingdoms.location.nether=On the western islands. More common under the volcanic island.
+
 manual.cavestokingdoms.harvestlevel=Harvest Level
 manual.cavestokingdoms.durability=Durability
 manual.cavestokingdoms.handlemod=Handle Mod
@@ -64,11 +67,29 @@ manual.cavestokingdoms.hearts=Hearts
 manual.cavestokingdoms.materialtraits=Material Traits
 manual.cavestokingdoms.extramod=+1 Modifiers
 manual.cavestokingdoms.normal=normal
+manual.cavestokingdoms.freelevels=Free Ench. Levels
+manual.cavestokingdoms.armorpoints=Armor Points
+manual.cavestokingdoms.minesaslevel=Mines as
+manual.cavestokingdoms.requiredtomine=Can be Mined by
+manual.cavestokingdoms.biome=Found
+manual.cavestokingdoms.height=Occurs
+manual.cavestokingdoms.between=Between Heights
+manual.cavestokingdoms.and=and
 
 blightfallmanual.discovery.add=Your discovery of %s has unlocked more info in your materials books!
 
 discover.cavestokingdoms.gravel=Gravel
 discover.cavestokingdoms.reeds=Sugarcane
+
+discover.cavestokingdoms.harvestlevel0=You should never see this.
+discover.cavestokingdoms.harvestlevel1=a hard non-metal material
+discover.cavestokingdoms.harvestlevel2=a soft metal material
+discover.cavestokingdoms.harvestlevel3=a hard metal material
+discover.cavestokingdoms.harvestlevel4=a diamond-level material
+discover.cavestokingdoms.harvestlevel5=a supra-diamond level material
+discover.cavestokingdoms.harvestlevel6=an alien-hardness material
+discover.cavestokingdoms.harvestlevel7=an extremely hard material
+discover.cavestokingdoms.harvestlevel8=an epically hard material
 
 gui.oreDiscovery.notPlayer=This command can only be called by a player.
 gui.oreDiscovery.addedAll=All ore discoveries added to player.
