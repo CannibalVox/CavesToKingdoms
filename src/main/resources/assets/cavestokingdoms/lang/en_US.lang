@@ -69,3 +69,7 @@ blightfallmanual.discovery.add=Your discovery of %s has unlocked more info in yo
 
 discover.cavestokingdoms.gravel=Gravel
 discover.cavestokingdoms.reeds=Sugarcane
+
+gui.oreDiscovery.notPlayer=This command can only be called by a player.
+gui.oreDiscovery.addedAll=All ore discoveries added to player.
+gui.oreDiscovery.wiped=All ore discoveries removed from player.

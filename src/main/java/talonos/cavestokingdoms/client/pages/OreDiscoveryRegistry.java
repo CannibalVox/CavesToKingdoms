@@ -166,6 +166,18 @@ public class OreDiscoveryRegistry {
         addDiscovery(player.getEntityData(), discoveryOre);
     }
 
+    public void addAllDiscoveries(NBTTagCompound tag) {
+        for (DiscoveryEntry entry : discoverData) {
+            addDiscovery(tag, entry.getDiscoveredOreData());
+        }
+    }
+
+    public void clearDiscoveries(NBTTagCompound tag) {
+        NBTTagList list = tag.getTagList("cavesToKingdomsOreDiscoveries", 8);
+        if (list.tagCount() > 0)
+            tag.removeTag("cavesToKingdomsOreDiscoveries");
+    }
+
     public boolean hasDiscovery(NBTTagCompound tag, String discoveryOre) {
         if (tag == null)
         {
