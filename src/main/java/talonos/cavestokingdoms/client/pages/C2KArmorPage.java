@@ -138,7 +138,6 @@ public class C2KArmorPage extends OreDiscoveryPage
         RenderHelper.enableGUIStandardItemLighting();
 
         manual.renderitem.zLevel = 100;
-        ItemPickaxe pickItem = null;
 
         for (int armor = 0; armor < 4; armor++)
         {
@@ -147,8 +146,12 @@ public class C2KArmorPage extends OreDiscoveryPage
 
         manual.renderitem.zLevel = 0;
 
+        RenderHelper.disableStandardItemLighting();
+        GL11.glDisable(GL12.GL_RESCALE_NORMAL);
+
         manual.fonts.drawString(durability+": ", localWidth + 25, localHeight+36, 0);
         manual.fonts.drawString(armorpoints+": ", localWidth + 15, localHeight+46, 0);
+        manual.fonts.drawString(freelevels+": "+((ItemArmor)icons[0][i].getItem()).getArmorMaterial().getEnchantability(), localWidth + 0, localHeight+58, 0);
 
         for (int armor = 0; armor < 4; armor++)
         {
@@ -161,6 +164,8 @@ public class C2KArmorPage extends OreDiscoveryPage
                 manual.fonts.drawString(""+protection, localWidth + 82+(armor*18), localHeight+46, 0);
             }
         }
+
+
     }
 
     private void drawLocked(int localWidth, int localHeight, int i)

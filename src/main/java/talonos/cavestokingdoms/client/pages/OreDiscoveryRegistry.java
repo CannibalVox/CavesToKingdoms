@@ -76,6 +76,7 @@ public class OreDiscoveryRegistry {
         //Handle registry code.
         registerDiscovery("minecraft:gravel", "discover.cavestokingdoms.gravel");
         registerDiscovery("minecraft:reeds", "discover.cavestokingdoms.reed");
+        registerDiscovery("thismoddoesbtexist:imusingittotestrobustness", "discover.cavestokingdoms.falseitem");
 
         FMLCommonHandler.instance().bus().register(this);
     }

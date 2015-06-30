@@ -20,10 +20,21 @@ To avoid confusing users, this book is intentionally incomplete. You will notice
    <title>Iron</title>
    <min>0</min>
    <max>64</max>
+    <minesAsLevel>2</minesAsLevel>
    <location>all</location>
 <ore>minecraft:iron_ore</ore>
-<text>Test Text.</text>
+<text>I can also stick a descriptive string here if I need to.</text>
 </page>
+
+    <page type="c2kMiningPage">
+        <title>Ardite</title>
+        <min>46</min>
+        <max>61</max>
+        <minesAsLevel>2</minesAsLevel>
+        <location>nether</location>
+        <ore>TConstruct:SearedBrick:2</ore>
+        <text></text>
+    </page>
 
 
 </book>
