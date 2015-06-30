@@ -2,6 +2,7 @@ package talonos.cavestokingdoms;
 
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import talonos.cavestokingdoms.blocks.CtKBlock;
 import talonos.cavestokingdoms.client.pages.OreDiscoveryRegistry;
 import talonos.cavestokingdoms.command.DiscoverAll;
