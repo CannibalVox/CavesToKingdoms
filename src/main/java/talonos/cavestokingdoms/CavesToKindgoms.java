@@ -43,8 +43,6 @@ public class CavesToKindgoms
     {
     	MinecraftForge.EVENT_BUS.register(new OrbEventHandler());
 
-        OreDiscoveryRegistry.getInstance().registerDiscovery(Items.coal, "thaumcraft:magicalLog");
-
         manualInfo = new ManualInfo();
     }
 
