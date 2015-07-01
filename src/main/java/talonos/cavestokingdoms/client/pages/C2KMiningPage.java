@@ -17,6 +17,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -47,12 +49,15 @@ public class C2KMiningPage extends OreDiscoveryPage
     //The resource to display:
     ResourceLocation background;
 
+    //Where is it found?
     String whereFound = "Unknown.";
 
-    String heightFound = "Unknown.";
-
+    //What picture from the list is displayed?
     int locationImg = 0;
     int indexNum = 0;
+
+    //If it is locked, what unlocks it?
+    List<String> examples = new ArrayList<String>();
 
     @Override
     public void readPageFromXML (Element element)
@@ -66,6 +71,17 @@ public class C2KMiningPage extends OreDiscoveryPage
         if (nodes != null)
         {
             description = nodes.item(0).getTextContent();
+        }
+
+        nodes = element.getElementsByTagName("min");
+        if (nodes != null)
+        {
+            minheight = Integer.parseInt(nodes.item(0).getTextContent());
+        }
+        nodes = element.getElementsByTagName("max");
+        if (nodes != null)
+        {
+            maxheight = Integer.parseInt(nodes.item(0).getTextContent());
         }
 
         nodes = element.getElementsByTagName("location");
@@ -106,6 +122,11 @@ public class C2KMiningPage extends OreDiscoveryPage
                     {
                         ore = new ItemStack(GameRegistry.findItem(mod, itemName), 1, meta);
                         requiredLevel = GameRegistry.findBlock(mod, itemName).getHarvestLevel(meta);
+                        if (requiredLevel == -1)
+                        {
+                            requiredLevel = 0;
+                        }
+                        populateExamplesList();
                     }
             }
 
@@ -133,25 +154,78 @@ public class C2KMiningPage extends OreDiscoveryPage
     @Override
     public void renderContentLayer (int localWidth, int localHeight, boolean isTranslatable)
     {
-        //if (isDiscovered(requiredLevel))
+        if (isDiscovered(requiredLevel))
         {
             drawNormal(localWidth, localHeight);
         }
-        //else
+        else
         {
-           // drawLocked(localWidth, localHeight+(76));
+            drawLocked(localWidth, localHeight);
         }
     }
 
     private void loadStringsAndImageLoc(String location)
     {
-        if (location.equals("all"))
+        if (location.equals("all")||location.equals(("chunkerror")))
         {
             locationImg = 0;
         }
-        if (location.equals("nether"))
+        else if (location.equals("nether"))
         {
             locationImg = 1;
+        }
+        else if (location.equals("eerie"))
+        {
+            locationImg = 2;
+        }
+        else if (location.equals("cache"))
+        {
+            locationImg = 3;
+        }
+        else if (location.equals("alldesert"))
+        {
+            locationImg = 4;
+        }
+        else if (location.equals("swamps"))
+        {
+            locationImg = 5;
+        }
+        else if (location.equals("desert"))
+        {
+            locationImg = 15;
+        }
+        else if (location.equals("plains"))
+        {
+            locationImg = 7;
+        }
+        else if (location.equals("mountains"))
+        {
+            locationImg = 8;
+        }
+
+        else if (location.equals("magic"))
+        {
+            locationImg = 9;
+        }
+        else if (location.equals("cold"))
+        {
+            locationImg = 10;
+        }
+        else if (location.equals("ocean"))
+        {
+            locationImg = 11;
+        }
+        else if (location.equals("mushroom"))
+        {
+            locationImg = 12;
+        }
+        else if (location.equals("forests"))
+        {
+            locationImg = 13;
+        }
+        else
+        {
+            locationImg = 14;
         }
 
         whereFound = StatCollector.translateToLocal("manual.cavestokingdoms.location."+location.toLowerCase());
@@ -179,13 +253,13 @@ public class C2KMiningPage extends OreDiscoveryPage
 
         manual.renderitem.zLevel = 100;
 
-        manual.fonts.drawString(minesAsLevel+": "+this.minesAsLevel+" ("+ HarvestLevels.getHarvestLevelName(this.minesAsLevel)+")", localWidth + 0, localHeight+25, 0);
-        if (requiredLevel != -1)
+        if (this.minesAsLevel != -1)
         {
-            manual.fonts.drawSplitString(requiredToMine + ": " + requiredLevel + " (" + HarvestLevels.getHarvestLevelName(requiredLevel) + ")", localWidth + 0, localHeight + 35, 100, 0);
+            manual.fonts.drawString(minesAsLevel + ": " + this.minesAsLevel + " (" + HarvestLevels.getHarvestLevelName(this.minesAsLevel) + ")", localWidth + 0, localHeight + 25, 0);
         }
+        manual.fonts.drawSplitString(requiredToMine + ": " + requiredLevel + " (" + HarvestLevels.getHarvestLevelName(requiredLevel) + ")", localWidth + 0, localHeight + 35, 100, 0);
         manual.fonts.drawSplitString("\u00a7l"+biome + ": \u00a7r" + whereFound, localWidth + 0, localHeight + 60, 106, 0);
-        manual.fonts.drawSplitString("\u00a7l"+height + ": \u00a7r" + between + " " + maxheight + " " + and + " " + minheight + ".", localWidth + 0, localHeight + 105, 100, 0);
+        manual.fonts.drawSplitString("\u00a7l"+height + ": \u00a7r" + between + " " + minheight + " " + and + " " + maxheight + ".", localWidth + 0, localHeight + 105, 100, 0);
         manual.fonts.drawSplitString(description, localWidth, localHeight + 130, 178, 0);
 
         manual.renderitem.zLevel = 0;
@@ -193,30 +267,103 @@ public class C2KMiningPage extends OreDiscoveryPage
 
     private void drawLocked(int localWidth, int localHeight)
     {
-        String undiscovered = StatCollector.translateToLocal("manual.cavestokingdoms.undiscovered");
-        String pleasetouch = StatCollector.translateToLocal("manual.cavestokingdoms.pleasetouch");
-        String tounlock = StatCollector.translateToLocal("manual.cavestokingdoms.tounlock");
+        String entryOn = StatCollector.translateToLocal("manual.cavestokingdoms.entryon");
+        String isLocked = StatCollector.translateToLocal("manual.cavestokingdoms.islocked");
+        String toUnlock = StatCollector.translateToLocal("manual.cavestokingdoms.tounlock");
+        String suchAs = StatCollector.translateToLocal("manual.cavestokingdoms.suchas");
+        String required = StatCollector.translateToLocal("discover.cavestokingdoms.harvestlevel"+requiredLevel);
 
-        manual.fonts.drawString("\u00a7n" + undiscovered, localWidth + 14, localHeight + 4, 0);
-        manual.fonts.drawString(pleasetouch, localWidth + 18, localHeight + 16, 0);
-        manual.fonts.drawString(tounlock, localWidth + 60, localHeight + 26, 0);
+        manual.fonts.drawString("\u00a7n" + entryOn+" "+title+" "+isLocked, localWidth + 28, localHeight + 4, 0);
+        manual.fonts.drawString(toUnlock+" ", localWidth + 50, localHeight + 18, 0);
+        manual.fonts.drawString(required+" "+suchAs, localWidth + 70-(int)(required.length()*1.8), localHeight + 26, 0);
+        int yoffset = 0;
+        for (String s : examples)
+        {
+            yoffset+= 12;
+            manual.fonts.drawString(" - "+s, localWidth + 44, localHeight + 36+yoffset, 0);
+        }
     }
 
 
     public void renderBackgroundLayer (int localWidth, int localHeight)
     {
-        int xIndex = indexNum%3;
-        int yIndex = indexNum/3;
-        if (background != null)
+        if (isDiscovered(requiredLevel))
         {
-            manual.getMC().getTextureManager().bindTexture(background);
+            int xIndex = indexNum%3;
+            int yIndex = indexNum/3;
+            if (background != null)
+            {
+                manual.getMC().getTextureManager().bindTexture(background);
+            }
+            manual.drawTexturedModalRect(localWidth+110, localHeight + 15, xIndex*70, yIndex*85, 70, 85);
         }
-        //manual.getMC().renderEngine.bindTexture(location);
-        manual.drawTexturedModalRect(localWidth+110, localHeight + 15, xIndex*70, yIndex*85, 70, 85);
+    }
+
+    public void populateExamplesList()
+    {
+        switch(this.requiredLevel)
+        {
+            case 1:
+                examples.add("Flint");
+                examples.add("Ghostwood");
+                examples.add("Plastic");
+                examples.add("Cardboard");
+                break;
+            case 2:
+                examples.add("Prometheum");
+                examples.add("Copper");
+                examples.add("Deep Iron");
+                examples.add("Darkwood");
+                examples.add("Certus Quartz");
+                break;
+            case 3:
+                examples.add("Oureclase");
+                examples.add("Bronze");
+                examples.add("Iron Pick Head");
+                examples.add("Fusewood");
+                examples.add("Thaumium");
+                examples.add("NetherQuartz");
+                break;
+            case 4:
+                examples.add("Steel");
+                examples.add("Damascus Steel");
+                examples.add("Hepatizon");
+                examples.add("Invar");
+                examples.add("Manasteel");
+                examples.add("Bloodwood");
+                break;
+            case 5:
+                examples.add("Platinum");
+                examples.add("Ardite");
+                examples.add("Astral Silver");
+                examples.add("Void Metal");
+                examples.add("Elementium");
+                break;
+            case 6:
+                examples.add("Alumite");
+                examples.add("Mithril");
+                examples.add("Cobalt");
+                examples.add("Carmot");
+                break;
+            case 7:
+                examples.add("Orichalcum");
+                examples.add("Manyullyn");
+                examples.add("Pokefennium");
+                break;
+            case 8:
+                examples.add("Adamantine");
+                examples.add("Sanguinite");
+                examples.add("Desichalkos");
+                break;
+        }
     }
 
     private boolean isDiscovered(int level)
     {
+        if (level == 0)
+        {
+            return true;
+        }
         return isDiscovered("discover.cavestokingdoms.harvestlevel"+level);
     }
 }

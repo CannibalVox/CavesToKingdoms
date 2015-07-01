@@ -74,9 +74,11 @@ public class OreDiscoveryRegistry {
         }
 
         //Handle registry code.
-        registerDiscovery("minecraft:gravel", "discover.cavestokingdoms.gravel");
-        registerDiscovery("minecraft:reeds", "discover.cavestokingdoms.reed");
-        registerDiscovery("thismoddoesbtexist:imusingittotestrobustness", "discover.cavestokingdoms.falseitem");
+        registerDiscovery((Item)Item.itemRegistry.getObject("minecraft:gravel"), "discover.cavestokingdoms.gravel");
+        registerDiscovery((Item)Item.itemRegistry.getObject("minecraft:reeds"), "discover.cavestokingdoms.reed");
+        registerDiscovery((Item)Item.itemRegistry.getObject("thismoddoesbtexist:imusingittotestrobustness"), "discover.cavestokingdoms.falseitem");
+
+        Item.itemRegistry.getObject("minecraft:gravel");
 
         FMLCommonHandler.instance().bus().register(this);
     }
@@ -95,35 +97,6 @@ public class OreDiscoveryRegistry {
 
     public void registerDiscovery(Item item, String discovery) {
         this.registerDiscovery(item, 0, 0, discovery);
-    }
-
-    /**
-     * Registers a discovery using a string instead of an item. Here to provide lookup functionality instead of
-     * repeating code over and over.
-     * @param itemString A string representing the item in question, in the format "mod:name[:optional meta]"
-     * @param discovery The discovery this maps to.
-     */
-    public void registerDiscovery(String itemString, String discovery) {
-        if (itemString != null) {
-            String mod = itemString.substring(0, itemString.indexOf(':'));
-            String itemName = itemString.substring(itemString.indexOf(':') + 1);
-            int secondColonPosition = itemName.indexOf(':');
-            int meta = 0;
-            if (secondColonPosition != -1) {
-                meta = Integer.parseInt(itemName.substring(itemName.indexOf(':') + 1));
-                itemName = itemName.substring(0, itemName.indexOf(':'));
-            }
-            Item item = GameRegistry.findItem(mod, itemName);
-            if (item != null) {
-                this.registerDiscovery(item, meta, 0xF, discovery);
-            } else {
-                throw new RuntimeException("Exception: Cannot find item " + itemName);
-            }
-        } else {
-            throw new RuntimeException("Exception: null string passed to registerDiscovery");
-        }
-        //There's all sorts of opportunity for ArrayOutOfBounds because of missing colons, etc.
-        //But if we're throwing runtime exceptions anyway, I guess we don't care..?
     }
 
     public void registerDiscovery(Item item, int meta, String discovery) {
