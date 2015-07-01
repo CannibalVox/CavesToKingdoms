@@ -1,9 +1,13 @@
 package talonos.cavestokingdoms;
 
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import talonos.cavestokingdoms.blocks.CtKBlock;
 import talonos.cavestokingdoms.client.pages.OreDiscoveryRegistry;
+import talonos.cavestokingdoms.command.DiscoverAll;
 import talonos.cavestokingdoms.command.ListShaftMaterials;
+import talonos.cavestokingdoms.command.WipeDiscoveryProgress;
 import talonos.cavestokingdoms.extendedproperties.OrbEventHandler;
 import talonos.cavestokingdoms.lib.DEFS;
 import talonos.cavestokingdoms.proxies.CommonProxy;
@@ -47,6 +51,8 @@ public class CavesToKindgoms
     public static void serverLoad(FMLServerStartingEvent event)
     {
         event.registerServerCommand(new ListShaftMaterials());
+        event.registerServerCommand(new DiscoverAll());
+        event.registerServerCommand(new WipeDiscoveryProgress());
     }
  
     @Mod.EventHandler

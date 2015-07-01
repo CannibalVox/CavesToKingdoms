@@ -107,3 +107,7 @@ discover.cavestokingdoms.harvestlevel5=a supra-diamond level material
 discover.cavestokingdoms.harvestlevel6=an alien-hardness material
 discover.cavestokingdoms.harvestlevel7=an extremely hard material
 discover.cavestokingdoms.harvestlevel8=an epically hard material
+
+gui.oreDiscovery.notPlayer=This command can only be called by a player.
+gui.oreDiscovery.addedAll=All ore discoveries added to player.
+gui.oreDiscovery.wiped=All ore discoveries removed from player.

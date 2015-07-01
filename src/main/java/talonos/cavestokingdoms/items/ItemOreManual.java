@@ -17,6 +17,8 @@ public class ItemOreManual extends Item
         if (stack.getTagCompound() == null)
             stack.setTagCompound(new NBTTagCompound());
 
+        OreDiscoveryRegistry.getInstance().scanPlayerForDiscoveries(player);
+
         OreDiscoveryRegistry.getInstance().copyDiscoveries(player.getEntityData(), stack.getTagCompound());
         return super.onItemRightClick(stack, world, player);
     }
