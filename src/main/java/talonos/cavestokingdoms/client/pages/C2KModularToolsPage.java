@@ -1,11 +1,7 @@
 package talonos.cavestokingdoms.client.pages;
 
 import iguanaman.iguanatweakstconstruct.override.XPAdjustmentMap;
-import mantle.client.pages.BookPage;
-import mantle.lib.client.MantleClientRegistry;
-import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -15,8 +11,8 @@ import org.lwjgl.opengl.*;
 import org.w3c.dom.*;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import talonos.cavestokingdoms.client.pages.orediscovery.OreDiscoveryPage;
 import tconstruct.library.TConstructRegistry;
-import tconstruct.library.crafting.PatternBuilder;
 import tconstruct.library.tools.ToolMaterial;
 import iguanaman.iguanatweakstconstruct.util.HarvestLevels;
 

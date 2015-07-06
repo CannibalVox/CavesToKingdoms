@@ -3,10 +3,7 @@ package talonos.cavestokingdoms.client.pages;
 import cpw.mods.fml.common.registry.GameRegistry;
 import iguanaman.iguanatweakstconstruct.util.HarvestLevels;
 import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
@@ -15,6 +12,7 @@ import org.lwjgl.opengl.GL12;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import talonos.cavestokingdoms.client.pages.orediscovery.OreDiscoveryPage;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -273,9 +271,9 @@ public class C2KMiningPage extends OreDiscoveryPage
         String suchAs = StatCollector.translateToLocal("manual.cavestokingdoms.suchas");
         String required = StatCollector.translateToLocal("discover.cavestokingdoms.harvestlevel"+requiredLevel);
 
-        manual.fonts.drawString("\u00a7n" + entryOn+" "+title+" "+isLocked, localWidth + 28, localHeight + 4, 0);
-        manual.fonts.drawString(toUnlock+" ", localWidth + 50, localHeight + 18, 0);
-        manual.fonts.drawString(required+" "+suchAs, localWidth + 70-(int)(required.length()*1.8), localHeight + 26, 0);
+        manual.fonts.drawString("\u00a7n" + entryOn + " " + title + " " + isLocked, localWidth + 28, localHeight + 4, 0);
+        manual.fonts.drawString(toUnlock + " ", localWidth + 50, localHeight + 18, 0);
+        manual.fonts.drawString(required + " " + suchAs, localWidth + 70 - (int) (required.length() * 1.8), localHeight + 26, 0);
         int yoffset = 0;
         for (String s : examples)
         {

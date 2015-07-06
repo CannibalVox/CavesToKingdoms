@@ -4,7 +4,7 @@ import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentTranslation;
-import talonos.cavestokingdoms.client.pages.OreDiscoveryRegistry;
+import talonos.cavestokingdoms.client.pages.orediscovery.OreDiscoveryRegistry;
 
 public class DiscoverAll extends CommandBase {
     @Override

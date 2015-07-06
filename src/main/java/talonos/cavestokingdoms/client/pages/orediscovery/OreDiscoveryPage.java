@@ -1,4 +1,4 @@
-package talonos.cavestokingdoms.client.pages;
+package talonos.cavestokingdoms.client.pages.orediscovery;
 
 import mantle.client.pages.BookPage;
 import net.minecraft.item.ItemStack;

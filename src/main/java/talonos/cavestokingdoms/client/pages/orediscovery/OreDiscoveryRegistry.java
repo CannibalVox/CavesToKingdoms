@@ -1,6 +1,5 @@
-package talonos.cavestokingdoms.client.pages;
+package talonos.cavestokingdoms.client.pages.orediscovery;
 
-import com.google.common.eventbus.Subscribe;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -19,13 +18,14 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.StatCollector;
-import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
+import net.minecraftforge.oredict.OreDictionary;
+import talonos.cavestokingdoms.client.pages.orediscovery.entries.IDiscoveryEntry;
+import talonos.cavestokingdoms.client.pages.orediscovery.entries.ItemDiscoveryEntry;
+import talonos.cavestokingdoms.client.pages.orediscovery.entries.OreDictionaryDiscoveryEntry;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @SideOnly(Side.CLIENT)
 public class OreDiscoveryRegistry {
@@ -37,34 +37,8 @@ public class OreDiscoveryRegistry {
         return instance;
     }
 
-    private static class DiscoveryEntry {
-        private Item discoveryItem;
-        private int discoveryMeta;
-        private int discoveryMetaFlags;
-        private String discoveredOreData;
-
-        public DiscoveryEntry(Item item, int meta, int metaFlags, String oreData) {
-            this.discoveryItem = item;
-            this.discoveryMeta = meta;
-            this.discoveryMetaFlags = metaFlags;
-            this.discoveredOreData = oreData;
-        }
-
-        public Item getDiscoveryItem() { return discoveryItem; }
-        public int getDiscoveryMeta() { return discoveryMeta; }
-        public int getDiscoveryMetaFlags() { return discoveryMetaFlags; }
-        public String getDiscoveredOreData() { return discoveredOreData; }
-
-        public boolean matches(ItemStack stack) {
-            if (getDiscoveryItem() != stack.getItem())
-                return false;
-
-            return ((getDiscoveryMeta() & getDiscoveryMetaFlags()) == (stack.getItemDamage() & getDiscoveryMetaFlags()));
-        }
-    }
-
     private Field manualItemStack = null;
-    private List<DiscoveryEntry> discoverData = new ArrayList<DiscoveryEntry>();
+    private List<IDiscoveryEntry> discoverData = new ArrayList<IDiscoveryEntry>();
 
     public OreDiscoveryRegistry() {
         try {
@@ -80,6 +54,10 @@ public class OreDiscoveryRegistry {
         registerDiscovery((Item)Item.itemRegistry.getObject("thismoddoesbtexist:imusingittotestrobustness"), "discover.cavestokingdoms.falseitem");
 
         FMLCommonHandler.instance().bus().register(this);
+    }
+
+    public void registerDiscovery(String oreDictionaryEntry, String discovery) {
+        discoverData.add(new OreDictionaryDiscoveryEntry(oreDictionaryEntry, discovery));
     }
 
     public void registerDiscovery(Block block, String discovery) {
@@ -106,7 +84,7 @@ public class OreDiscoveryRegistry {
         if (findDiscovery(new ItemStack(item, 1, meta & metaFlags)) != null)
             throw new RuntimeException("A matching discovery already exists in the registry.  Adding that discovery would be ambiguous.");
 
-        discoverData.add(new DiscoveryEntry(item, meta, metaFlags, discovery));
+        discoverData.add(new ItemDiscoveryEntry(item, meta, metaFlags, discovery));
     }
 
     public String findDiscovery(ItemStack stack) {
@@ -165,7 +143,7 @@ public class OreDiscoveryRegistry {
     }
 
     public void addAllDiscoveries(NBTTagCompound tag) {
-        for (DiscoveryEntry entry : discoverData) {
+        for (IDiscoveryEntry entry : discoverData) {
             addDiscovery(tag, entry.getDiscoveredOreData());
         }
     }
