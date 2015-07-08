@@ -27,7 +27,6 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-@SideOnly(Side.CLIENT)
 public class OreDiscoveryRegistry {
     private static OreDiscoveryRegistry instance = null;
 
@@ -37,17 +36,9 @@ public class OreDiscoveryRegistry {
         return instance;
     }
 
-    private Field manualItemStack = null;
     private List<IDiscoveryEntry> discoverData = new ArrayList<IDiscoveryEntry>();
 
     public OreDiscoveryRegistry() {
-        try {
-            manualItemStack = GuiManual.class.getDeclaredField("itemstackBook");
-            manualItemStack.setAccessible(true);
-        } catch (NoSuchFieldException ex) {
-            throw new RuntimeException("Failed to find 'itemstackBook' field of GuiManual.", ex);
-        }
-
         //Handle registry code.
         registerDiscovery((Item)Item.itemRegistry.getObject("minecraft:gravel"), "discover.cavestokingdoms.gravel");
         registerDiscovery((Item)Item.itemRegistry.getObject("minecraft:reeds"), "discover.cavestokingdoms.reed");
@@ -181,14 +172,6 @@ public class OreDiscoveryRegistry {
 
             if (!hasDiscovery(to, discovery))
                 addDiscovery(to, discovery);
-        }
-    }
-
-    public ItemStack getManualBook(GuiManual manual) {
-        try {
-            return (ItemStack)manualItemStack.get(manual);
-        } catch (IllegalAccessException ex) {
-            throw new RuntimeException("Failed to change accessibility for 'itemstackBook' field of GuiManual.", ex);
         }
     }
 }
