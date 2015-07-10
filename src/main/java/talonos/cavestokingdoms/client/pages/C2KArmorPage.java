@@ -178,7 +178,7 @@ public class C2KArmorPage extends OreDiscoveryPage
         manual.fonts.drawString(pleasetouch, localWidth + 18, localHeight + 16, 0);
         manual.fonts.drawString(tounlock, localWidth + 60, localHeight + 26, 0);
 
-        String nameOfItem = icons[0][0].getDisplayName();
+        String nameOfItem = requiredIcon[i].getDisplayName();
 
         manual.fonts.drawString(nameOfItem, localWidth + 83-(int)(nameOfItem.length()*1.7), localHeight + 62, 0);
 
@@ -188,7 +188,7 @@ public class C2KArmorPage extends OreDiscoveryPage
         //Put it in front of stuff. I think.
         manual.renderitem.zLevel = 100;
 
-        manual.renderitem.renderItemAndEffectIntoGUI(manual.fonts, manual.getMC().renderEngine, icons[0][0], localWidth + 75, localHeight + 38);
+        manual.renderitem.renderItemAndEffectIntoGUI(manual.fonts, manual.getMC().renderEngine, requiredIcon[i], localWidth + 75, localHeight + 38);
 
         //Switch back to normal layer.
         manual.renderitem.zLevel = 0;

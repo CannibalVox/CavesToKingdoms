@@ -58,25 +58,25 @@ public class ItemManual extends ItemOreManual
         switch (stack.getItemDamage())
         {
         case 0:
-            return CavesToKindgoms.manualInfo.mats1;
-        case 1:
-            return CavesToKindgoms.manualInfo.mats2;
-        case 2:
-            return CavesToKindgoms.manualInfo.mats3;
-        case 3:
-            return CavesToKindgoms.manualInfo.mats4;
-        case 4:
             return CavesToKindgoms.manualInfo.mats0;
+        case 1:
+            return CavesToKindgoms.manualInfo.mats1;
+        case 2:
+            return CavesToKindgoms.manualInfo.mats2;
+        case 3:
+            return CavesToKindgoms.manualInfo.mats3;
+        case 4:
+            return CavesToKindgoms.manualInfo.mats4;
         case 5:
             return CavesToKindgoms.manualInfo.mats5;
         case 6:
-            return CavesToKindgoms.manualInfo.mats6;
+            return CavesToKindgoms.manualInfo.ben3;
         case 7:
-            return CavesToKindgoms.manualInfo.mats7;
-        case 8:
             return CavesToKindgoms.manualInfo.ben4;
+        case 8:
+            return CavesToKindgoms.manualInfo.ben1;
         case 9:
-            return CavesToKindgoms.manualInfo.ben5;
+            return CavesToKindgoms.manualInfo.ben2;
         case 10:
             return CavesToKindgoms.manualInfo.taint1;
         case 11:
@@ -92,18 +92,18 @@ public class ItemManual extends ItemOreManual
     {
         switch (stack.getItemDamage())
         {
-        case 0:
-        case 1:
-        case 2:
-        case 3:
-        case 4:
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+            case 4:
             case 5:
-            case 6:
-            case 7:
             list.add("\u00a7o" + StatCollector.translateToLocal("blightfallmanual.geology"));
             break;
-        case 8:
-        case 9:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
             list.add("\u00a7o" + StatCollector.translateToLocal("blightfallmanual.ben"));
             break;
         case 10:

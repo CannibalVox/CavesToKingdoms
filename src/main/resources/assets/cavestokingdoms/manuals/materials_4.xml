@@ -16,9 +16,9 @@ By Ayumu Nagasawa</text>
 
     <page type = "c2kClassicToolsPage">
         <title>Electrum</title>
-        <requires>discover.cavestokingdoms.gravel</requires>
+        <requires>discover.cavestokingdoms.electrum</requires>
         <requiresIcon>Thaumcraft:ItemPickThaumium</requiresIcon>
-        <text>It's Electrum.</text>
+        <text></text>
         <tools>
             <tool>Thaumcraft:ItemPickThaumium</tool>
             <tool>Thaumcraft:ItemShovelThaumium</tool>
