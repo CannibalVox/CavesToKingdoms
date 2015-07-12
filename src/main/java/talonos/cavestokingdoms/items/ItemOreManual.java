@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import talonos.cavestokingdoms.client.pages.OreDiscoveryRegistry;
+import talonos.cavestokingdoms.client.pages.orediscovery.OreDiscoveryRegistry;
 
 public class ItemOreManual extends Item
 {

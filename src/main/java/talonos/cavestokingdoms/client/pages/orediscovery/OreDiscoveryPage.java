@@ -1,8 +1,13 @@
-package talonos.cavestokingdoms.client.pages;
+package talonos.cavestokingdoms.client.pages.orediscovery;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import mantle.client.pages.BookPage;
 import net.minecraft.item.ItemStack;
+import talonos.cavestokingdoms.CavesToKindgoms;
+import talonos.cavestokingdoms.proxies.ClientProxy;
 
+@SideOnly(Side.CLIENT)
 public abstract class OreDiscoveryPage extends BookPage {
 
     private String discoveryName;
@@ -25,7 +30,7 @@ public abstract class OreDiscoveryPage extends BookPage {
             //No discovery needed; default to true;
             return true;
         }
-        ItemStack book = OreDiscoveryRegistry.getInstance().getManualBook(manual);
+        ItemStack book = ((ClientProxy)CavesToKindgoms.proxy).getManualBook(manual);
         if (OreDiscoveryRegistry.getInstance().hasDiscovery(book.getTagCompound(), neededDiscovery))
             return true;
 

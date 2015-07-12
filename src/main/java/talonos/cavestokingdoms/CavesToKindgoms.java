@@ -1,10 +1,8 @@
 package talonos.cavestokingdoms;
 
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import talonos.cavestokingdoms.blocks.CtKBlock;
-import talonos.cavestokingdoms.client.pages.OreDiscoveryRegistry;
+import talonos.cavestokingdoms.client.pages.orediscovery.OreDiscoveryRegistry;
 import talonos.cavestokingdoms.command.DiscoverAll;
 import talonos.cavestokingdoms.command.ListShaftMaterials;
 import talonos.cavestokingdoms.command.WipeDiscoveryProgress;
@@ -17,8 +15,6 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import tconstruct.library.TConstructRegistry;
-import tconstruct.library.tools.ToolMaterial;
 
 @Mod(modid = DEFS.MODID, name = DEFS.MODNAME, version = DEFS.VERSION, dependencies = DEFS.DEPS)
 public class CavesToKindgoms
