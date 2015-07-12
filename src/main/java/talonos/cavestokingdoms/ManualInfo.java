@@ -89,11 +89,11 @@ public class ManualInfo
     public void readManuals ()
     {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        mats0Doc = readManual("/assets/cavestokingdoms/manuals/materials_0.xml", dbFactory);
         mats1Doc = readManual("/assets/cavestokingdoms/manuals/materials_1.xml", dbFactory);
         mats2Doc = readManual("/assets/cavestokingdoms/manuals/materials_2.xml", dbFactory);
         mats3Doc = readManual("/assets/cavestokingdoms/manuals/materials_3.xml", dbFactory);
         mats4Doc = readManual("/assets/cavestokingdoms/manuals/materials_4.xml", dbFactory);
-        mats0Doc = readManual("/assets/cavestokingdoms/manuals/materials_0.xml", dbFactory);
         mats5doc = readManual("/assets/cavestokingdoms/manuals/materials_5.xml", dbFactory);
         ben1doc = readManual("/assets/cavestokingdoms/manuals/xillith_1.xml", dbFactory);
         ben2doc = readManual("/assets/cavestokingdoms/manuals/xillith_2.xml", dbFactory);

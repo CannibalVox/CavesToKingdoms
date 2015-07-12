@@ -20,7 +20,7 @@ public abstract class OreDiscoveryPage extends BookPage {
 
     protected boolean isDiscovered(String neededDiscovery)
     {
-        if (neededDiscovery == null)
+        if (neededDiscovery == null||neededDiscovery.equals(""))
         {
             //No discovery needed; default to true;
             return true;

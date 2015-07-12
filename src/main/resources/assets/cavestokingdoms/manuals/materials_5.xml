@@ -430,8 +430,8 @@ By Ayumu Nagasawa</text>
 
    <page type = "c2kArmorPage">
       <title>Electrum</title>
-      <requires>ThermalFoundation:material:71</requires>
-      <requiresIcon>Metallurgy:electrum.ingot</requiresIcon>
+      <requires>discover.cavestokingdoms.electrum</requires>
+      <requiresIcon>ThermalFoundation:material:71</requiresIcon>
       <text></text>
       <armors>
          <armor>Metallurgy:metallurgy.electrum.helmet</armor>

@@ -117,14 +117,15 @@ public class C2KClassicToolsPage extends OreDiscoveryPage
     @Override
     public void renderContentLayer (int localWidth, int localHeight, boolean isTranslatable)
     {
-        for (int i = 0; i < 2; i++)
-        if (isDiscovered(requires[i]))
-        {
-            drawNormal(localWidth, localHeight+(70*i), i);
-        }
-        else
-        {
-            drawLocked(localWidth, localHeight+(70*i), i);
+        for (int i = 0; i < 2; i++) {
+            if (isDiscovered(requires[i]))
+            {
+                drawNormal(localWidth, localHeight + (70 * i), i);
+            }
+            else
+            {
+                drawLocked(localWidth, localHeight + (70 * i), i);
+            }
         }
     }
 

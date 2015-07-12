@@ -43,10 +43,6 @@ public class ItemManual extends ItemOreManual
     public ItemStack onItemRightClick (ItemStack stack, World world, EntityPlayer player)
     {
         super.onItemRightClick(stack, world, player);
-    	for (tconstruct.library.tools.ToolMaterial m : TConstructRegistry.toolMaterials.values())
-    	{
-    		System.out.println("Tool: "+m.name());
-    	}
         Side side = FMLCommonHandler.instance().getEffectiveSide();
         player.openGui(Mantle.instance, mantle.client.MProxyClient.manualGuiID, world, 0, 0, 0);
         FMLClientHandler.instance().displayGuiScreen(player, new GuiManual(stack, getData(stack)));
