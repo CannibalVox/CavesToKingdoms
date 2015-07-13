@@ -545,8 +545,8 @@ By Ayumu Nagasawa</text>
 
    <page type = "c2kArmorPage">
       <title>Wood</title>
-      <requires>discover.cavestokingdoms.wood</requires>
-      <requiresIcon>minecraft:log</requiresIcon>
+      <requires></requires>
+      <requiresIcon></requiresIcon>
       <text>Takes lots of wood to make, but at least wood is highly renewable.</text>
       <armors>
          <armor>TConstruct:helmetWood</armor>
