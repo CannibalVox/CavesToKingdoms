@@ -22,6 +22,8 @@ public class ItemDiscoveryEntry implements IDiscoveryEntry {
     public String getDiscoveredOreData() { return discoveredOreData; }
 
     public boolean matches(ItemStack stack) {
+        if (discoveryItem == null || stack.getItem() == null)
+            return false;
         if (getDiscoveryItem() != stack.getItem())
             return false;
 
