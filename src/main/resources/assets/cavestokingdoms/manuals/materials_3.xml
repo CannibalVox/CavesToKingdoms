@@ -29,14 +29,12 @@ This book serves as documentation for all the new material attributes involved i
   projectiles fired from a bow would be.
 - XP Required: How much XP this material
   requires to level up.
-- Mass: How well this material penetrates
-  armor. Also, how much gravity affects
-  it. Galileo? Never heard of him.
-- Break Chance: The chance of an arrowhead
-  make of this material breaking on impact
-  with terrain.
+- Mass: How well this material penetrates armor.
+  and how much gravity affects it. Galileo who?
+- Break Chance: The chance an arrowhead make
+  of this material will break if you miss.
 - Attack Damage: How much extra damage this
-  tool does when attacking
+  does as an arrowhead.
       </text>
    </page>
 

@@ -267,7 +267,7 @@ public class C2KMiningPage extends OreDiscoveryPage
     {
         String entryOn = StatCollector.translateToLocal("manual.cavestokingdoms.entryon");
         String isLocked = StatCollector.translateToLocal("manual.cavestokingdoms.islocked");
-        String toUnlock = StatCollector.translateToLocal("manual.cavestokingdoms.tounlock");
+        String toUnlock = StatCollector.translateToLocal("manual.cavestokingdoms.tounlockobtain");
         String suchAs = StatCollector.translateToLocal("manual.cavestokingdoms.suchas");
         String required = StatCollector.translateToLocal("discover.cavestokingdoms.harvestlevel"+requiredLevel);
 

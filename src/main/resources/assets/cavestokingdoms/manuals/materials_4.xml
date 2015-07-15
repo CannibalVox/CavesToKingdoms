@@ -4,6 +4,8 @@
 
 <!-- This is going to be the normal tools guide book. -->
 
+<!-- This is going to be the normal tools guide book. -->
+
 <book>
     <page type="intro">
         <text>Materials - The Classical Tools and Weapons Edition.
@@ -633,6 +635,139 @@
             <tool>ForbiddenMagic:MorphShovel</tool>
             <tool>ForbiddenMagic:MorphAxe</tool>
             <tool>ForbiddenMagic:MorphSword</tool>
+        </tools>
+    </page>
+
+    <page type = "c2kClassicToolsPage">
+        <title>Ichorium</title>
+        <requires>discover.cavestokingdoms.ichorium</requires>
+        <requiresIcon>ThaumicTinkerer:kamiResource:2</requiresIcon>
+        <text></text>
+        <tools>
+            <tool>ThaumicTinkerer:ichorPick</tool>
+            <tool>ThaumicTinkerer:ichorShovel</tool>
+            <tool>ThaumicTinkerer:ichorAxe</tool>
+            <tool>ThaumicTinkerer:ichorSword</tool>
+
+
+        </tools>
+        <title>Awakened Ichorium</title>
+        <requires>discover.cavestokingdoms.awakenedichorium</requires>
+        <requiresIcon>ThaumicTinkerer:ichorPick</requiresIcon>
+        <text></text>
+        <tools>
+            <tool>ThaumicTinkerer:ichorPickGem</tool>
+            <tool>ThaumicTinkerer:ichorShovelGem</tool>
+            <tool>ThaumicTinkerer:ichorAxeGem</tool>
+            <tool>ThaumicTinkerer:ichorSwordGem</tool>
+        </tools>
+    </page>
+
+    <page type = "c2kClassicToolsPage">
+        <title>Void</title>
+        <requires>discover.cavestokingdoms.void</requires>
+        <requiresIcon>Thaumcraft:ItemResource:16</requiresIcon>
+        <text></text>
+        <tools>
+            <tool>Thaumcraft:ItemPickVoid</tool>
+            <tool>Thaumcraft:ItemShovelVoid</tool>
+            <tool>Thaumcraft:ItemAxeVoid</tool>
+            <tool>Thaumcraft:ItemHoeVoid</tool>
+            <tool>Thaumcraft:ItemSwordVoid</tool>
+        </tools>
+        <title>Quartz</title>
+        <requires>discover.cavestokingdoms.quartz</requires>
+        <requiresIcon>minecraft:quartz_block</requiresIcon>
+        <text></text>
+        <tools>
+            <tool>Natura:natura.pickaxe.netherquartz</tool>
+            <tool>Natura:natura.shovel.netherquartz</tool>
+            <tool>Natura:natura.axe.netherquartz</tool>
+            <tool>Natura:natura.sword.netherquartz</tool>
+        </tools>
+    </page>
+
+    <page type = "c2kClassicToolsPage">
+        <title>Ghostwood</title>
+        <requires>discover.cavestokingdoms.ghostwood</requires>
+        <requiresIcon>Natura:planks:2</requiresIcon>
+        <text></text>
+        <tools>
+            <tool>Natura:natura.pickaxe.ghostwood</tool>
+            <tool>Natura:natura.shovel.ghostwood</tool>
+            <tool>Natura:natura.axe.ghostwood</tool>
+            <tool>Natura:natura.sword.ghostwood</tool>
+        </tools>
+        <title>Darkwood</title>
+        <requires>discover.cavestokingdoms.darkwood</requires>
+        <requiresIcon>Natura:planks:11</requiresIcon>
+        <text></text>
+        <tools>
+            <tool>Natura:natura.pickaxe.darkwood</tool>
+            <tool>Natura:natura.shovel.darkwood</tool>
+            <tool>Natura:natura.axe.darkwood</tool>
+            <tool>Natura:natura.sword.darkwood</tool>
+        </tools>
+    </page>
+
+    <page type = "c2kClassicToolsPage">
+        <title>Fusewood</title>
+        <requires>discover.cavestokingdoms.fusewood</requires>
+        <requiresIcon>Natura:planks:12</requiresIcon>
+        <text></text>
+        <tools>
+            <tool>Natura:natura.pickaxe.fusewood</tool>
+            <tool>Natura:natura.shovel.fusewood</tool>
+            <tool>Natura:natura.axe.fusewood</tool>
+            <tool>Natura:natura.sword.fusewood</tool>
+        </tools>
+        <title>Bloodwood</title>
+        <requires>discover.cavestokingdoms.bloodwood</requires>
+        <requiresIcon>Natura:planks:4</requiresIcon>
+        <text></text>
+        <tools>
+            <tool>Natura:natura.pickaxe.bloodwood</tool>
+            <tool>Natura:natura.shovel.bloodwood</tool>
+            <tool>Natura:natura.axe.bloodwood</tool>
+            <tool>Natura:natura.sword.bloodwood</tool>
+        </tools>
+    </page>
+
+    <page type = "c2kClassicToolsPage">
+        <title>Cardboard</title>
+        <requires>discover.cavestokingdoms.cardboard</requires>
+        <requiresIcon>betterstorage:cardboardSheet</requiresIcon>
+        <text></text>
+        <tools>
+            <tool>betterstorage:cardboardPickaxe</tool>
+            <tool>betterstorage:cardboardShovel</tool>
+            <tool>betterstorage:cardboardAxe</tool>
+            <tool>betterstorage:cardboardHoe</tool>
+            <tool>betterstorage:cardboardSword</tool>
+        </tools>
+        <title>Unstable</title>
+        <requires>discover.cavestokingdoms.unstable</requires>
+        <requiresIcon>ExtraUtilities:unstableingot</requiresIcon>
+        <text></text>
+        <tools>
+            <tool>ExtraUtilities:destructionpickaxe</tool>
+            <tool>ExtraUtilities:erosionShovel</tool>
+            <tool>ExtraUtilities:defoliageAxe</tool>
+            <tool>ExtraUtilities:temporalHoe</tool>
+            <tool>ExtraUtilities:ethericsword</tool>
+        </tools>
+    </page>
+
+    <page type = "c2kClassicToolsPage">
+        <title>Bound</title>
+        <requires>discover.cavestokingdoms.bound</requires>
+        <requiresIcon>AWWayofTime:masterStone</requiresIcon>
+        <text></text>
+        <tools>
+            <tool>AWWayofTime:boundPickaxe</tool>
+            <tool>AWWayofTime:boundShovel</tool>
+            <tool>AWWayofTime:boundAxe</tool>
+            <tool>AWWayofTime:energySword</tool>
         </tools>
     </page>
 

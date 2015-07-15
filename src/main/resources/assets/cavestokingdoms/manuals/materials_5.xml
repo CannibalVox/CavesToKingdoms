@@ -545,29 +545,6 @@ By Ayumu Nagasawa</text>
 
    <page type = "c2kArmorPage">
       <title>Wood</title>
-      <requires></requires>
-      <requiresIcon></requiresIcon>
-      <text>Takes lots of wood to make, but at least wood is highly renewable.</text>
-      <armors>
-         <armor>TConstruct:helmetWood</armor>
-         <armor>TConstruct:chestplateWood</armor>
-         <armor>TConstruct:leggingsWood</armor>
-         <armor>TConstruct:bootsWood</armor>
-      </armors>
-      <title>Flux-Infused</title>
-      <requires>discover.cavestokingdoms.fluxinfused</requires>
-      <requiresIcon>RedstoneArsenal:material:32</requiresIcon>
-      <text>Can be repaired by recharging it in an energetic infuser.</text>
-      <armors>
-         <armor>Thaumcraft:ItemHelmetThaumium</armor>
-         <armor>Thaumcraft:ItemChestplateThaumium</armor>
-         <armor>Thaumcraft:ItemLeggingsThaumium</armor>
-         <armor>Thaumcraft:ItemBootsThaumium</armor>
-      </armors>
-   </page>
-
-   <page type = "c2kArmorPage">
-      <title>Wood</title>
       <requires>discover.cavestokingdoms.wood</requires>
       <requiresIcon>minecraft:log</requiresIcon>
       <text>Takes lots of wood to make, but at least wood is highly renewable.</text>
@@ -710,6 +687,7 @@ By Ayumu Nagasawa</text>
       <text>More decorative than functional. Uncraftable. A rare drop from some aliens.</text>
       <armors>
          <armor>customnpcs:npcAssassinHead</armor>
+         <armor>customnpcs:npcAssassinChest</armor>
          <armor>customnpcs:npcAssassinLeggings</armor>
          <armor>customnpcs:npcAssassinBoots</armor>
       </armors>
@@ -739,29 +717,6 @@ By Ayumu Nagasawa</text>
       <requires>discover.cavestokingdoms.ichorcloth</requires>
       <requiresIcon>ThaumicTinkerer:kamiResource:1</requiresIcon>
       <text>I don't understand how this can be so protective and yet so light.</text>
-      <armors>
-         <armor>ThaumicTinkerer:ichorclothHelm</armor>
-         <armor>ThaumicTinkerer:ichorclothChest</armor>
-         <armor>ThaumicTinkerer:ichorclothLegs</armor>
-         <armor>ThaumicTinkerer:ichorclothBoots</armor>
-      </armors>
-   </page>
-
-   <page type = "c2kArmorPage">
-      <title>Hardened Leather</title>
-      <requires>discover.cavestokingdoms.wax</requires>
-      <requiresIcon>harvestcraft:beeswaxItem</requiresIcon>
-      <text>Surprisingly protective. Also a rare drop from some aliens.</text>
-      <armors>
-         <armor>harvestcraft:hardenedleatherhelmItem</armor>
-         <armor>harvestcraft:hardenedleatherchestItem</armor>
-         <armor>harvestcraft:hardenedleatherleggingsItem</armor>
-         <armor>harvestcraft:hardenedleatherbootsItem</armor>
-      </armors>
-      <title>Ichorcloth</title>
-      <requires>discover.cavestokingdoms.ichorcloth</requires>
-      <requiresIcon>ThaumicTinkerer:kamiResource:1</requiresIcon>
-      <text>I don't understand how this can be so protective and yet so light. Absolutely Indestructible.</text>
       <armors>
          <armor>ThaumicTinkerer:ichorclothHelm</armor>
          <armor>ThaumicTinkerer:ichorclothChest</armor>

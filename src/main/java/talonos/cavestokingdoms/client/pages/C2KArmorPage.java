@@ -131,7 +131,11 @@ public class C2KArmorPage extends OreDiscoveryPage
         String freelevels =  StatCollector.translateToLocal("manual.cavestokingdoms.freelevels");
 
         manual.fonts.drawString("\u00a7n" + title[i], localWidth + 70, localHeight + 4, 0);
-        manual.fonts.drawSplitString(description[i], localWidth, localHeight + 58, 178, 0);
+
+        if (description[i] != null && !description[i].equals(""))
+        {
+            manual.fonts.drawSplitString(description[i], localWidth, localHeight + 58, 178, 0);
+        }
 
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
         RenderHelper.enableGUIStandardItemLighting();
@@ -150,12 +154,15 @@ public class C2KArmorPage extends OreDiscoveryPage
 
         manual.fonts.drawString(durability+": ", localWidth + 25, localHeight+36, 0);
         manual.fonts.drawString(armorpoints+": ", localWidth + 15, localHeight+46, 0);
-        manual.fonts.drawString(freelevels+": "+((ItemArmor)icons[0][i].getItem()).getArmorMaterial().getEnchantability(), localWidth + 0, localHeight+58, 0);
+        if (icons[0][i]!=null &&icons[0][i].getItem() instanceof ItemArmor)
+        {
+            manual.fonts.drawString(freelevels + ": " + ((ItemArmor) icons[0][i].getItem()).getArmorMaterial().getEnchantability(), localWidth + 0, localHeight + 58, 0);
+        }
 
         for (int armor = 0; armor < 4; armor++)
         {
             ItemStack armorStack = icons[armor][i];
-            if (armorStack.getItem() instanceof ItemArmor)
+            if (armorStack != null && armorStack.getItem() instanceof ItemArmor)
             {
                 int maxDurability = ((ItemArmor)armorStack.getItem()).getMaxDamage(armorStack);
                 int protection = ((ItemArmor)armorStack.getItem()).damageReduceAmount;

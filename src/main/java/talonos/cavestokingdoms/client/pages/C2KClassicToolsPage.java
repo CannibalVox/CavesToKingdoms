@@ -135,8 +135,15 @@ public class C2KClassicToolsPage extends OreDiscoveryPage
         String heart_ =  StatCollector.translateToLocal("manual.cavestokingdoms.heart");
         String hearts =   StatCollector.translateToLocal("manual.cavestokingdoms.hearts");
 
-        manual.fonts.drawString("\u00a7n" + title[i], localWidth + 70, localHeight + 4, 0);
-        manual.fonts.drawSplitString(description[i], localWidth, localHeight + 16, 178, 0);
+        if (title[i]!=null)
+        {
+            manual.fonts.drawString("\u00a7n" + title[i], localWidth + 70, localHeight + 4, 0);
+        }
+
+        if (description[i] != null && !description[i].equals(""))
+        {
+            manual.fonts.drawSplitString(description[i], localWidth, localHeight + 16, 178, 0);
+        }
 
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
         RenderHelper.enableGUIStandardItemLighting();

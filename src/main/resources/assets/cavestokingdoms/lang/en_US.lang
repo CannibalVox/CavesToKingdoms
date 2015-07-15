@@ -92,7 +92,8 @@ manual.cavestokingdoms.between=Between Heights
 manual.cavestokingdoms.and=and
 manual.cavestokingdoms.entryon=The entry on
 manual.cavestokingdoms.islocked=is locked!
-manual.cavestokingdoms.tounlock=To unlock it, obtain
+manual.cavestokingdoms.tounlockobtain=To unlock it, obtain
+manual.cavestokingdoms.tounlock=to unlock it:
 manual.cavestokingdoms.suchas=such as
 
 blightfallmanual.discovery.add=Your discovery of %s has unlocked more info in your materials books!
