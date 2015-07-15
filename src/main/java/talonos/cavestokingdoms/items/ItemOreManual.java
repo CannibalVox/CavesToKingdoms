@@ -12,7 +12,6 @@ import talonos.cavestokingdoms.client.pages.orediscovery.OreDiscoveryRegistry;
 public class ItemOreManual extends Item
 {
     @Override
-    @SideOnly(Side.CLIENT)
     public ItemStack onItemRightClick (ItemStack stack, World world, EntityPlayer player) {
         if (stack.getTagCompound() == null)
             stack.setTagCompound(new NBTTagCompound());
