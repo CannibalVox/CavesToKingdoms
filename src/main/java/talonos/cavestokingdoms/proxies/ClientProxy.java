@@ -1,7 +1,10 @@
 package talonos.cavestokingdoms.proxies;
 
+import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import mantle.client.MProxyClient;
 import mantle.client.gui.GuiManual;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import talonos.cavestokingdoms.client.pages.*;
 
@@ -40,5 +43,10 @@ public class ClientProxy extends CommonProxy
         } catch (IllegalAccessException ex) {
             throw new RuntimeException("Failed to change accessibility for 'itemstackBook' field of GuiManual.", ex);
         }
+    }
+
+    @Override
+    public EntityPlayer getPlayerFromContext(MessageContext context) {
+        return Minecraft.getMinecraft().thePlayer;
     }
 }

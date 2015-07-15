@@ -8,6 +8,7 @@ import talonos.cavestokingdoms.command.ListShaftMaterials;
 import talonos.cavestokingdoms.command.WipeDiscoveryProgress;
 import talonos.cavestokingdoms.extendedproperties.OrbEventHandler;
 import talonos.cavestokingdoms.lib.DEFS;
+import talonos.cavestokingdoms.network.CavesToKingdomsNetwork;
 import talonos.cavestokingdoms.proxies.CommonProxy;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
@@ -39,6 +40,7 @@ public class CavesToKindgoms
     public static void init(FMLInitializationEvent event)
     {
     	MinecraftForge.EVENT_BUS.register(new OrbEventHandler());
+        CavesToKingdomsNetwork.init();
 
         manualInfo = new ManualInfo();
     }

@@ -10,6 +10,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import mantle.client.gui.GuiManual;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -22,6 +23,8 @@ import net.minecraftforge.oredict.OreDictionary;
 import talonos.cavestokingdoms.client.pages.orediscovery.entries.IDiscoveryEntry;
 import talonos.cavestokingdoms.client.pages.orediscovery.entries.ItemDiscoveryEntry;
 import talonos.cavestokingdoms.client.pages.orediscovery.entries.OreDictionaryDiscoveryEntry;
+import talonos.cavestokingdoms.network.CavesToKingdomsNetwork;
+import talonos.cavestokingdoms.network.packets.AddDiscoveryPacket;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -256,6 +259,8 @@ public class OreDiscoveryRegistry {
 
     public void addDiscovery(EntityPlayer player, String discoveryOre) {
         addDiscovery(player.getEntityData(), discoveryOre);
+        if (player instanceof EntityPlayerMP)
+            CavesToKingdomsNetwork.sendToPlayer(new AddDiscoveryPacket(discoveryOre), (EntityPlayerMP)player);
     }
 
     public void addAllDiscoveries(NBTTagCompound tag) {
