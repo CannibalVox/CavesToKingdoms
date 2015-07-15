@@ -46,7 +46,7 @@
     <page type = "c2kClassicToolsPage">
         <title>Ferrous</title>
         <requires>discover.cavestokingdoms.ferrous</requires>
-        <requiresIcon>TConstruct:materials:68</requiresIcon>
+        <requiresIcon>ThermalFoundation:material:68</requiresIcon>
         <text></text>
         <tools>
             <tool>ThermalFoundation:tool.pickaxeNickel</tool>
@@ -71,7 +71,7 @@
     <page type = "c2kClassicToolsPage">
         <title>Silver</title>
         <requires>discover.cavestokingdoms.silver</requires>
-        <requiresIcon>TConstruct:materials:66</requiresIcon>
+        <requiresIcon>ThermalFoundation:material:66</requiresIcon>
         <text></text>
         <tools>
             <tool>Metallurgy:silver.pickaxe</tool>

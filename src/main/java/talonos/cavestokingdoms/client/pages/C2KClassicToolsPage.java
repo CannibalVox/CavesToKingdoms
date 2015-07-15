@@ -79,9 +79,11 @@ public class C2KClassicToolsPage extends OreDiscoveryPage
                         itemName = itemName.substring(0, itemName.indexOf(':'));
                     }
                     Item iconItem = GameRegistry.findItem(mod, itemName);
+                    System.out.println("Item: "+iconItem+", meta: "+meta);
                     if (iconItem != null)
                     {
                         icons[j][i] = new ItemStack(GameRegistry.findItem(mod, itemName), 1, meta);
+                        System.out.println("Name: "+icons[j][i].getDisplayName());
                     }
                 }
             }
@@ -103,9 +105,11 @@ public class C2KClassicToolsPage extends OreDiscoveryPage
                     itemName = itemName.substring(0, itemName.indexOf(':'));
                 }
                 Item iconItem = GameRegistry.findItem(mod, itemName);
+                System.out.println("Item: "+iconItem+", meta: "+meta);
                 if (iconItem != null)
                 {
                     requiredIcon[i] = new ItemStack(GameRegistry.findItem(mod, itemName), 1, meta);
+                    System.out.println("Name: "+requiredIcon[i].getDisplayName());
                 }
             }
         }

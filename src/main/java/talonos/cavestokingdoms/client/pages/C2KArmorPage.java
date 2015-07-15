@@ -134,7 +134,14 @@ public class C2KArmorPage extends OreDiscoveryPage
 
         if (description[i] != null && !description[i].equals(""))
         {
-            manual.fonts.drawSplitString(description[i], localWidth, localHeight + 58, 178, 0);
+            if (icons[0][i]!=null &&icons[0][i].getItem() instanceof ItemArmor)
+            {
+                manual.fonts.drawSplitString(description[i]+" "+freelevels + ": " + ((ItemArmor) icons[0][i].getItem()).getArmorMaterial().getEnchantability(), localWidth + 0, localHeight + 58, 178, 0);
+            }
+            else
+            {
+                manual.fonts.drawSplitString(description[i], localWidth, localHeight + 58, 178, 0);
+            }
         }
 
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
@@ -154,10 +161,7 @@ public class C2KArmorPage extends OreDiscoveryPage
 
         manual.fonts.drawString(durability+": ", localWidth + 25, localHeight+36, 0);
         manual.fonts.drawString(armorpoints+": ", localWidth + 15, localHeight+46, 0);
-        if (icons[0][i]!=null &&icons[0][i].getItem() instanceof ItemArmor)
-        {
-            manual.fonts.drawString(freelevels + ": " + ((ItemArmor) icons[0][i].getItem()).getArmorMaterial().getEnchantability(), localWidth + 0, localHeight + 58, 0);
-        }
+
 
         for (int armor = 0; armor < 4; armor++)
         {
