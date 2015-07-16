@@ -237,10 +237,9 @@ public class OreDiscoveryRegistry {
             return;
 
         List<String> discoveryOres = findDiscoveries(item);
-        int discoveryCount = discoveryOres.size();
 
-        if (discoveryOres != null && discoveryCount != 0) {
-
+        if (discoveryOres != null && discoveryOres.size() != 0) {
+            int discoveryCount = discoveryOres.size();
             for (int i = 0; i < discoveryCount; i++) {
                 String discovery = discoveryOres.get(i);
                 addDiscovery(player, discovery);
