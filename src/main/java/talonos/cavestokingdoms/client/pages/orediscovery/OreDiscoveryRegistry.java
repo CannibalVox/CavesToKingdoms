@@ -293,23 +293,22 @@ public class OreDiscoveryRegistry {
     }
 
     public void registerDiscovery(Item item, int meta, int metaFlags, String discovery) {
-        if (findDiscovery(new ItemStack(item, 1, meta & metaFlags)) != null)
-            throw new RuntimeException("A matching discovery already exists in the registry.  Adding that discovery would be ambiguous.");
-
         discoverData.add(new ItemDiscoveryEntry(item, meta, metaFlags, discovery));
     }
 
-    public String findDiscovery(ItemStack stack) {
+    public List<String> findDiscoveries(ItemStack stack) {
         if (stack == null)
             return null;
+
+        List<String> discoveries = new ArrayList<String>();
 
         int size = discoverData.size();
         for (int i = 0; i < size; i++) {
             if (discoverData.get(i).matches(stack))
-                return discoverData.get(i).getDiscoveredOreData();
+                discoveries.add(discoverData.get(i).getDiscoveredOreData());
         }
 
-        return null;
+        return discoveries;
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)
@@ -330,11 +329,15 @@ public class OreDiscoveryRegistry {
         if (player.worldObj.isRemote)
             return;
 
-        String discoveryOre = findDiscovery(item);
+        List<String> discoveryOres = findDiscoveries(item);
 
-        if (discoveryOre != null && !hasDiscovery(player, discoveryOre)) {
-            addDiscovery(player, discoveryOre);
-            player.addChatMessage(new ChatComponentTranslation("blightfallmanual.discovery.add", new Object[] {StatCollector.translateToLocal(discoveryOre)}));
+        if (discoveryOres != null && discoveryOres.size() != 0) {
+            int discoveryCount = discoveryOres.size();
+            for (int i = 0; i < discoveryCount; i++) {
+                String discovery = discoveryOres.get(i);
+                addDiscovery(player, discovery);
+                player.addChatMessage(new ChatComponentTranslation("blightfallmanual.discovery.add", new Object[] {StatCollector.translateToLocal(discovery)}));
+            }
         }
     }
 
@@ -351,6 +354,9 @@ public class OreDiscoveryRegistry {
     }
 
     public void addDiscovery(EntityPlayer player, String discoveryOre) {
+        if (hasDiscovery(player, discoveryOre))
+            return;
+
         addDiscovery(player.getEntityData(), discoveryOre);
         if (player instanceof EntityPlayerMP)
             CavesToKingdomsNetwork.sendToPlayer(new AddDiscoveryPacket(discoveryOre), (EntityPlayerMP)player);
