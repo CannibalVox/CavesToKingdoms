@@ -109,6 +109,37 @@ public class OreDiscoveryRegistry {
 
 
 
+        //Now do it all again, but for the mining levels.
+        registerDiscovery("crystalCertusQuartz","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery("crystalNetherQuartz","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery("gemAmethyst","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery("gemRuby","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery("gemSapphire","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery("gravel","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery("netherrack","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery("obsidian","discover.cavestokingdoms.harvestlevel1");
+
+        //Some things lack oredict entries.
+        registerDiscovery(GameRegistry.findItem("ExtraUtilities","bedrockiumIngot"), "discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(GameRegistry.findItem("Natura","bloodwood"), 0, "discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(GameRegistry.findItem("Natura","planks"),  4, "discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(GameRegistry.findItem("Tconstruct","strangeFood"),  1, "discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(GameRegistry.findItem("minecraft","dye"),  15, "discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(GameRegistry.findItem("minecraft","cactus"), "discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),  1, "discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(GameRegistry.findItem("Natura","Dark Tree"),  0, "discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(GameRegistry.findItem("Natura","planks"),  11, "discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(GameRegistry.findItem("Natura","Dark Tree"),  1, "discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(GameRegistry.findItem("Natura","planks"),  12, "discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(GameRegistry.findItem("Natura","tree"),  2, "discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(GameRegistry.findItem("Natura","planks"),  2, "discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(GameRegistry.findItem("Tconstruct","materials"),  36, "discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(GameRegistry.findItem("minecraft","slime_ball"), "discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(GameRegistry.findItem("minecraft","leather"), "discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(GameRegistry.findItem("Thaumcraft","ItemResource"),  7, "discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(GameRegistry.findItem("ExtraTiC","chunk"),  165, "discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(GameRegistry.findItem("minecraft","reeds"), "discover.cavestokingdoms.harvestlevel1");
+
         FMLCommonHandler.instance().bus().register(this);
     }
 
@@ -173,6 +204,68 @@ public class OreDiscoveryRegistry {
         registerDiscovery(type+"Void","discover.cavestokingdoms.voidmetal");
         registerDiscovery(type+"Vulcanite","discover.cavestokingdoms.vulcanite");
         registerDiscovery(type+"Vyroxeres","discover.cavestokingdoms.vyroxeres");
+
+
+        //Also handle the mining level stuff
+        registerDiscovery(type+"Adamantine","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Alumite","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Amordrine","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Angmallen","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Ardite","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"AstralSilver","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Atlarus","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"BlackSteel","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Brass","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Bronze","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Carmot","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Celenegil","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Ceruclase","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Cobalt","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Copper","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"DamascusSteel","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"DeepIron","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Desichalkos","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Electrum","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"ElvenElementium","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Enderium","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Eximite","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Fairy","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"ElectrumFlux","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Gold","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Haderoth","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Hepatizon","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Ignatius","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Inolashite","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Invar","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Iron","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Kalendrite","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Lead","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Lumium","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Manasteel","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Manyullyn","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Midasium","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Mithril","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Nickel","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Orichalcum","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Oureclase","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"PigIron","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Platinum","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Pokefennium","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Prometheum","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Quicksilver","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Sanguinite","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"ShadowIron","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"ShadowSteel","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Signalum","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Silver","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Steel","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Tartarite","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Terrasteel","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Thaumium","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Tin","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Void","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Vulcanite","discover.cavestokingdoms.harvestlevel1");
+        registerDiscovery(type+"Vyroxeres","discover.cavestokingdoms.harvestlevel1");
     }
 
     public void registerDiscovery(String oreDictionaryEntry, String discovery) {

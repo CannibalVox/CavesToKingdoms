@@ -106,6 +106,7 @@ public class C2KModularToolsPage extends OreDiscoveryPage
     @Override
     public void renderContentLayer (int localWidth, int localHeight, boolean isTranslatable)
     {
+        System.out.println(requires);
         if (isDiscovered(requires))
         {
             drawNormal(localWidth, localHeight);
