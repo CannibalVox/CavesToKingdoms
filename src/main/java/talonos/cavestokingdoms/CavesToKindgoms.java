@@ -5,6 +5,7 @@ import talonos.cavestokingdoms.blocks.CtKBlock;
 import talonos.cavestokingdoms.client.pages.orediscovery.OreDiscoveryRegistry;
 import talonos.cavestokingdoms.command.DiscoverAll;
 import talonos.cavestokingdoms.command.ListShaftMaterials;
+import talonos.cavestokingdoms.command.ScanBlocks;
 import talonos.cavestokingdoms.command.WipeDiscoveryProgress;
 import talonos.cavestokingdoms.extendedproperties.OrbEventHandler;
 import talonos.cavestokingdoms.lib.DEFS;
@@ -51,6 +52,7 @@ public class CavesToKindgoms
         event.registerServerCommand(new ListShaftMaterials());
         event.registerServerCommand(new DiscoverAll());
         event.registerServerCommand(new WipeDiscoveryProgress());
+        event.registerServerCommand(new ScanBlocks());
     }
  
     @Mod.EventHandler
