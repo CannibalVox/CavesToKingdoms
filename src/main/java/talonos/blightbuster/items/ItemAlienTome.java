@@ -1,4 +1,4 @@
-package talonos.blightbuster;
+package talonos.blightbuster.items;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import exterminatorJeff.undergroundBiomes.api.UBAPIHook;
@@ -15,6 +15,8 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.layer.IntCache;
+import talonos.blightbuster.BBStrings;
+import talonos.blightbuster.BlightBuster;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.config.ConfigBlocks;

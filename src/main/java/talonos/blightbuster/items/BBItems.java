@@ -1,7 +1,6 @@
 package talonos.blightbuster.items;
 
 import net.minecraft.item.Item;
-import talonos.blightbuster.ItemAlienTome;
 
 public class BBItems 
 {

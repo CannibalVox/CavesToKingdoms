@@ -53,7 +53,7 @@ public class ItemPurityFocus extends ItemFocusBasic
 
 	public String getSortingHelper(ItemStack itemstack)
 	{
-		return "BE" + super.getSortingHelper(itemstack);
+		return "PU" + super.getSortingHelper(itemstack);
 	}
 
 	private static final AspectList cost = new AspectList().add(Aspect.EARTH, 10).add(Aspect.ORDER, 15);
