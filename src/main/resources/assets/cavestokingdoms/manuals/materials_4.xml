@@ -9,16 +9,16 @@
 <book>
     <page type="intro">
         <text>Materials - The Classical Tools and Weapons Edition.
-            A Guide to Material Properties
+A Guide to Material Properties
 
-            By Ayumu Nagasawa</text>
+By Ayumu Nagasawa</text>
     </page>
 
     <page type="text">
         <text>While most tools and weapons created these days use Dr. Diyo's modular tool system, some people (especially those fond of enchantments) prefer classical tools. This book describes the properties of such tools.</text>
     </page>
 
-    <page type = "c2kClassicToolsPage">
+<!--    <page type = "c2kClassicToolsPage">
         <title>Tin</title>
         <requires>discover.cavestokingdoms.tin</requires>
         <requiresIcon>TConstruct:materials:10</requiresIcon>
@@ -45,7 +45,7 @@
 
     <page type = "c2kClassicToolsPage">
         <title>Ferrous</title>
-        <requires>discover.cavestokingdoms.ferrous</requires>
+        <requires>discover.cavestokingdoms.nickel</requires>
         <requiresIcon>ThermalFoundation:material:68</requiresIcon>
         <text></text>
         <tools>
@@ -66,7 +66,7 @@
             <tool>ThermalFoundation:tool.hoeInvar</tool>
             <tool>ThermalFoundation:tool.swordInvar</tool>
         </tools>
-    </page>
+    </page> -->
 
     <page type = "c2kClassicToolsPage">
         <title>Silver</title>
@@ -548,7 +548,7 @@
 
     <page type = "c2kClassicToolsPage">
         <title>Vitreous</title>
-        <requires>discover.cavestokingdoms.vitreous</requires>
+        <requires>discover.cavestokingdoms.manasteel</requires>
         <requiresIcon>Botania:manaResource</requiresIcon>
         <text></text>
         <tools>
@@ -617,7 +617,7 @@
 
     <page type = "c2kClassicToolsPage">
         <title>Enhanced Thaumium</title>
-        <requires>discover.cavestokingdoms.forbiddenthaumium</requires>
+        <requires>discover.cavestokingdoms.enhancedthaumium</requires>
         <requiresIcon>Thaumcraft:ItemPickThaumium</requiresIcon>
         <text></text>
         <tools>
@@ -652,7 +652,7 @@
 
         </tools>
         <title>Awakened Ichorium</title>
-        <requires>discover.cavestokingdoms.awakenedichorium</requires>
+        <requires>discover.cavestokingdoms.ichorium</requires>
         <requiresIcon>ThaumicTinkerer:ichorPick</requiresIcon>
         <text></text>
         <tools>
@@ -665,7 +665,7 @@
 
     <page type = "c2kClassicToolsPage">
         <title>Void</title>
-        <requires>discover.cavestokingdoms.void</requires>
+        <requires>discover.cavestokingdoms.voidmetal</requires>
         <requiresIcon>Thaumcraft:ItemResource:16</requiresIcon>
         <text></text>
         <tools>
@@ -676,7 +676,7 @@
             <tool>Thaumcraft:ItemSwordVoid</tool>
         </tools>
         <title>Quartz</title>
-        <requires>discover.cavestokingdoms.quartz</requires>
+        <requires>discover.cavestokingdoms.netherquartz</requires>
         <requiresIcon>minecraft:quartz_block</requiresIcon>
         <text></text>
         <tools>
@@ -735,8 +735,8 @@
 
     <page type = "c2kClassicToolsPage">
         <title>Cardboard</title>
-        <requires>discover.cavestokingdoms.cardboard</requires>
-        <requiresIcon>betterstorage:cardboardSheet</requiresIcon>
+        <requires>discover.cavestokingdoms.reeds</requires>
+        <requiresIcon>minecraft:reeds</requiresIcon>
         <text></text>
         <tools>
             <tool>betterstorage:cardboardPickaxe</tool>

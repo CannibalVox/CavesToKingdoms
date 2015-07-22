@@ -106,6 +106,27 @@ public class OreDiscoveryRegistry {
         registerDiscovery(GameRegistry.findItem("customnpcs","npcAssassinHead"), "discover.cavestokingdoms.assassin");
         registerDiscovery(GameRegistry.findItem("customnpcs","npcAssassinBoots"), "discover.cavestokingdoms.assassin");
         registerDiscovery(GameRegistry.findItem("customnpcs","npcAssassinLeggings"), "discover.cavestokingdoms.assassin");
+        registerDiscovery(GameRegistry.findItem("MineFactoryReloaded","pinkslime"), "discover.cavestokingdoms.pinkslime");
+        registerDiscovery(GameRegistry.findItem("MineFactoryReloaded","rubber.raw"), "discover.cavestokingdoms.plastic");
+        registerDiscovery(GameRegistry.findItem("MineFactoryReloaded","plastic.raw"), "discover.cavestokingdoms.plastic");
+        registerDiscovery(GameRegistry.findItem("MineFactoryReloaded","plastic.sheets"), "discover.cavestokingdoms.plastic");
+
+        registerDiscovery(GameRegistry.findItem("Thaumcraft","blockStoneDevice"), 2, "discover.cavestokingdoms.enhancedthaumium");
+        registerDiscovery(GameRegistry.findItem("Thaumcraft","ItemSwordElemental"), "discover.cavestokingdoms.enhancedthaumium");
+        registerDiscovery(GameRegistry.findItem("Thaumcraft","ItemAxeElemental"), "discover.cavestokingdoms.enhancedthaumium");
+        registerDiscovery(GameRegistry.findItem("Thaumcraft","ItemPickaxeElemental"), "discover.cavestokingdoms.enhancedthaumium");
+        registerDiscovery(GameRegistry.findItem("Thaumcraft","ItemHoeElemental"), "discover.cavestokingdoms.enhancedthaumium");
+        registerDiscovery(GameRegistry.findItem("Thaumcraft","ItemShovelElemental"), "discover.cavestokingdoms.enhancedthaumium");
+
+        registerDiscovery(GameRegistry.findItem("ForbiddenMagic","NetherShard"), 1, "discover.cavestokingdoms.chameleon");
+        registerDiscovery(GameRegistry.findItem("ThaumicTinkerer","kamiResource"), 2, "discover.cavestokingdoms.ichorium");
+
+        registerDiscovery(GameRegistry.findItem("AWWayofTime","masterStone"), "discover.cavestokingdoms.bound");
+        registerDiscovery(GameRegistry.findItem("AWWayofTime","energySword"), "discover.cavestokingdoms.bound");
+        registerDiscovery(GameRegistry.findItem("AWWayofTime","boundPickaxe"), "discover.cavestokingdoms.bound");
+        registerDiscovery(GameRegistry.findItem("AWWayofTime","boundAxe"), "discover.cavestokingdoms.bound");
+        registerDiscovery(GameRegistry.findItem("AWWayofTime","boundShovel"), "discover.cavestokingdoms.bound");
+
 
 
 
@@ -195,6 +216,7 @@ public class OreDiscoveryRegistry {
         registerDiscovery(type+"Void","discover.cavestokingdoms.voidmetal");
         registerDiscovery(type+"Vulcanite","discover.cavestokingdoms.vulcanite");
         registerDiscovery(type+"Vyroxeres","discover.cavestokingdoms.vyroxeres");
+        registerDiscovery(type+"Unstable","discover.cavestokingdoms.unstable");
 
 
         //Also handle the mining level stuff
