@@ -323,8 +323,8 @@ This book serves as documentation for all the new material attributes involved i
       <icon>Metallurgy:damascus.steel.ingot</icon>
       <mat>Alumite</mat>
       <requires>discover.cavestokingdoms.alumite</requires>
-      <requiresIcon>TConstruct:materials:9</requiresIcon>
-      <icon>TConstruct:materials:9</icon>
+      <requiresIcon>TConstruct:materials:15</requiresIcon>
+      <icon>TConstruct:materials:15</icon>
    </page>
 
    <page type="bowMaterialsPage">

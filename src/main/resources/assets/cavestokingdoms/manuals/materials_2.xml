@@ -549,8 +549,8 @@ when Skyla wrote his seminal work.
    <page type="c2kModularToolsPage">
       <title>Alumite</title>
       <requires>discover.cavestokingdoms.alumite</requires>
-      <requiresIcon>TConstruct:materials:9</requiresIcon>
-      <icon>TConstruct:materials:9</icon>
+      <requiresIcon>TConstruct:materials:15</requiresIcon>
+      <icon>TConstruct:materials:15</icon>
       <text>Alloy of iron, obsidian, and aluminum. Comparable to steel, but easier to make and levels up more slowly.</text>
    </page>
 
