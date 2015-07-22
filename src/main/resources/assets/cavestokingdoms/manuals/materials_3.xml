@@ -384,7 +384,7 @@ This book serves as documentation for all the new material attributes involved i
 
    <page type="bowMaterialsPage">
       <mat>Celenegil</mat>
-      <requires>discover.cavestokingdoms.celengil</requires>
+      <requires>discover.cavestokingdoms.celenegil</requires>
       <requiresIcon>Metallurgy:celenegil.ingot</requiresIcon>
       <icon>Metallurgy:celenegil.ingot</icon>
       <mat>Quicksilver</mat>

@@ -113,7 +113,6 @@ public class C2KBowMaterialsPage extends OreDiscoveryPage
                     String itemName = total.substring(total.indexOf(':') + 1);
                     int secondColonPosition = itemName.indexOf(':');
                     int meta = 0;
-                    System.out.println("mod: "+mod+", itemName: "+itemName);
                     if (secondColonPosition != -1)
                     {
                         meta = Integer.parseInt(itemName.substring(itemName.indexOf(':') + 1));
