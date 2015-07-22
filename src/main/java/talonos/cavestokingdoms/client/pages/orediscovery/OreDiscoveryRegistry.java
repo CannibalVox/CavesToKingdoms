@@ -322,7 +322,6 @@ public class OreDiscoveryRegistry {
             for (int i = 0; i < discoveryCount; i++) {
                 String discovery = discoveryOres.get(i);
                 addDiscovery(player, discovery);
-                player.addChatMessage(new ChatComponentTranslation("blightfallmanual.discovery.add", new Object[] {StatCollector.translateToLocal(discovery)}));
             }
         }
     }
@@ -344,6 +343,7 @@ public class OreDiscoveryRegistry {
             return;
 
         addDiscovery(player.getEntityData(), discoveryOre);
+        player.addChatMessage(new ChatComponentTranslation("blightfallmanual.discovery.add", new Object[] {StatCollector.translateToLocal(discoveryOre)}));
         if (player instanceof EntityPlayerMP)
             CavesToKingdomsNetwork.sendToPlayer(new AddDiscoveryPacket(discoveryOre), (EntityPlayerMP)player);
     }
