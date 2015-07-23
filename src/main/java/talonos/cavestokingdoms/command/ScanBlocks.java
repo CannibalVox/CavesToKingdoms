@@ -70,7 +70,7 @@ public class ScanBlocks extends CommandBase {
                     total += 1.0;
                     Block block = world.getBlock(x, y, z);
                     int meta = world.getBlockMetadata(x, y, z);
-                    String blockName = block.getUnlocalizedName() + ":" + Integer.toString(meta);
+                    String blockName = Block.blockRegistry.getNameForObject(block) + ":" + Integer.toString(meta);
                     int blockCount = 0;
                     if (blockData.containsKey(blockName))
                         blockCount = blockData.get(blockName);
