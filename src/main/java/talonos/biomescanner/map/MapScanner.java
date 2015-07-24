@@ -14,7 +14,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.event.world.WorldEvent;
-import scala.actors.threadpool.Arrays;
 import talonos.biomescanner.map.event.UpdateMapEvent;
 import talonos.blightbuster.network.BlightbusterNetwork;
 import talonos.blightbuster.network.packets.UpdateMapPacket;
