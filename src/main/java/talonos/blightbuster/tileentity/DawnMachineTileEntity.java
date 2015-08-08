@@ -302,7 +302,7 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
             if (thisIsCrustedTaint && haveEnoughFor(DawnMachineResource.IGNIS) && haveEnoughFor(DawnMachineResource.VACUOS))
                 columnCrustedTaint++;
 
-            if (!foundTopBlock && (canHerba || canArbor) && block.isBlockNormalCube()) {
+            if (!foundTopBlock && (canHerba || canArbor) && block.isOpaqueCube()) {
                 foundTopBlock = true;
                 topBlock = y;
             }
