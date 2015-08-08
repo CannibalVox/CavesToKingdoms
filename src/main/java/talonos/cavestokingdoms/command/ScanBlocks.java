@@ -6,6 +6,8 @@ import cpw.mods.fml.common.gameevent.TickEvent;
 import net.minecraft.block.Block;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 import org.apache.commons.io.FileUtils;
@@ -70,7 +72,7 @@ public class ScanBlocks extends CommandBase {
                     total += 1.0;
                     Block block = world.getBlock(x, y, z);
                     int meta = world.getBlockMetadata(x, y, z);
-                    String blockName = Block.blockRegistry.getNameForObject(block) + ":" + Integer.toString(meta);
+                    String blockName = toBlockString(new ItemStack (block, 1, meta));
                     int blockCount = 0;
                     if (blockData.containsKey(blockName))
                         blockCount = blockData.get(blockName);
@@ -79,6 +81,20 @@ public class ScanBlocks extends CommandBase {
                 }
                 x++;
             }
+        }
+
+        public String toBlockString(ItemStack stack) {
+            StringBuilder result = new StringBuilder();
+            result.append('<');
+            result.append(Item.itemRegistry.getNameForObject(stack.getItem()));
+
+            if (stack.getItemDamage() > 0)
+            {
+                result.append(':').append(stack.getItemDamage());
+            }
+            result.append('>');
+
+            return result.toString();
         }
 
         private void writeValues() {
