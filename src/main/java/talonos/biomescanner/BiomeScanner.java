@@ -39,6 +39,8 @@ public class BiomeScanner
 	public static final String COMMONPROXYLOCATION = "talonos."+MODID+".CommonProxy";
 	public static final String CLIENTPROXYLOCATION = "talonos."+MODID+".ClientProxy";
 
+    public static File baselineFile;
+
     public static final CreativeTabs badgesTab = new CreativeTabs("badges")
     {
         private static final String __OBFID = "CL_00000011";
@@ -75,7 +77,7 @@ public class BiomeScanner
             zoneBaselines[i] = null;
 
         if (useBaselineFile) {
-            File baselineFile = new File(configFile.getParent(), baselineFileName);
+            BiomeScanner.baselineFile = new File(configFile.getParent(), baselineFileName);
             if (baselineFile.exists()) {
                 try {
                     NBTTagCompound loadedData = CompressedStreamTools.readCompressed(new FileInputStream(baselineFile));
@@ -97,6 +99,7 @@ public class BiomeScanner
             else
                 zoneBaselines[i] = null;
         }
+
     }
  
     @Mod.EventHandler
