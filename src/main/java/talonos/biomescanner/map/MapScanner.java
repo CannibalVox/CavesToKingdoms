@@ -14,6 +14,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.event.world.WorldEvent;
+import talonos.biomescanner.BiomeScanner;
 import talonos.biomescanner.map.event.UpdateMapEvent;
 import talonos.blightbuster.network.BlightbusterNetwork;
 import talonos.blightbuster.network.packets.UpdateMapPacket;
@@ -57,7 +58,7 @@ public class MapScanner {
     @SubscribeEvent
     public void onWorldLoad(WorldEvent.Load event) {
         if (event.world.provider.dimensionId == 0 && !event.world.isRemote) {
-            loadData(new File(event.world.getSaveHandler().getWorldDirectory(), "scanner.dat"));
+            loadData(new File(event.world.getSaveHandler().getWorldDirectory(), "scanner.dat"), false);
             bus().post(regionMap.getUpdateEvent(Arrays.asList(Zone.values())));
         }
     }
@@ -69,8 +70,13 @@ public class MapScanner {
         }
     }
 
-    private void loadData(File loadFile) {
+    private void loadData(File loadFile, boolean fillRandomIfFailed) {
         try {
+            if (!loadFile.exists() && !fillRandomIfFailed && BiomeScanner.baselineFile != null) {
+                loadData(BiomeScanner.baselineFile, true);
+                return;
+            }
+
             if (!loadFile.exists()) {
                 fillRandomData();
                 return;
