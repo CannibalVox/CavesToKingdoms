@@ -59,8 +59,22 @@ public class TileEntityGauge extends TileEntity {
         updateZone(event.getZoneCompletion(targetZone));
     }
 
+    @Override
+    public void validate() {
+        super.validate();
+
+        updateGauge();
+    }
+
     protected void updateZone(float completion) {
         this.completion = completion;
+
+        updateGauge();
+    }
+
+    private void updateGauge() {
+        if (this.worldObj == null)
+            return;
         if (this.worldObj.getBlock(xCoord, yCoord-3, zCoord) != BSBlock.gaugeBot)
             return;
         if (this.worldObj.getBlock(xCoord, yCoord-2, zCoord) != BSBlock.gaugeMid)
@@ -89,7 +103,6 @@ public class TileEntityGauge extends TileEntity {
         if (this.worldObj.getBlockMetadata(xCoord, yCoord-1, zCoord) != targetTop)
             worldObj.setBlockMetadataWithNotify(xCoord, yCoord-1, zCoord, targetTop, 3);
     }
-
 
     @Override
     public void readFromNBT(NBTTagCompound par1)
