@@ -19,6 +19,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.StatCollector;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 import talonos.cavestokingdoms.client.pages.orediscovery.entries.IDiscoveryEntry;
 import talonos.cavestokingdoms.client.pages.orediscovery.entries.ItemDiscoveryEntry;
@@ -153,6 +154,7 @@ public class OreDiscoveryRegistry {
         registerDiscovery(GameRegistry.findItem("ExtraTiC","chunk"),  165, "discover.cavestokingdoms.harvestlevel3");
 
         FMLCommonHandler.instance().bus().register(this);
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void registerAllMetalsWith(String type)
@@ -331,6 +333,15 @@ public class OreDiscoveryRegistry {
         ItemStack item = event.crafting;
 
         checkDiscovery(item, event.player);
+    }
+
+    @SubscribeEvent
+    public void onPlayerClone(net.minecraftforge.event.entity.player.PlayerEvent.Clone event) {
+        if (event.wasDeath) {
+            if (event.original.getEntityData().hasKey("cavesToKingdomsOreDiscoveries")) {
+                event.entity.getEntityData().setTag("cavesToKingdomsOreDiscoveries", event.original.getEntityData().getTag("cavesToKingdomsOreDiscoveries"));
+            }
+        }
     }
 
     protected void checkDiscovery(ItemStack item, EntityPlayer player) {
