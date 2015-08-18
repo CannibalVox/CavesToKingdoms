@@ -365,7 +365,8 @@ public class OreDiscoveryRegistry {
             return;
 
         addDiscovery(player.getEntityData(), discoveryOre);
-        player.addChatMessage(new ChatComponentTranslation("blightfallmanual.discovery.add", new Object[] {StatCollector.translateToLocal(discoveryOre)}));
+        if (!player.worldObj.isRemote)
+            player.addChatMessage(new ChatComponentTranslation("blightfallmanual.discovery.add", new Object[] {StatCollector.translateToLocal(discoveryOre)}));
         if (player instanceof EntityPlayerMP)
             CavesToKingdomsNetwork.sendToPlayer(new AddDiscoveryPacket(discoveryOre), (EntityPlayerMP)player);
     }
