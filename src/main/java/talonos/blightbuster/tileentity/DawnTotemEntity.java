@@ -19,6 +19,8 @@ public class DawnTotemEntity extends TileEntity {
     public void updateEntity() {
         super.updateEntity();
 
+        if (worldObj.isRemote) return;
+
         if (this.offset < 0)
             this.offset = worldObj.rand.nextInt(20);
 
@@ -35,13 +37,30 @@ public class DawnTotemEntity extends TileEntity {
         }
     }
 
+    private long onValidateLastTick = -1;
+    @Override
+    public void validate() {
+        super.validate();
+
+        if (this.onValidateLastTick >= 0) {
+            long passedTicks = Math.max(getWorldObj().getWorldTime() - this.onValidateLastTick, 0);
+            queuedTicks += passedTicks;
+            this.onValidateLastTick = -1;
+        }
+    }
+
     @Override
     public void readFromNBT(NBTTagCompound tag) {
         super.readFromNBT(tag);
         long lastWorldTick = tag.getLong("LastWorldTick");
         queuedTicks = tag.getLong("QueuedTicks");
-        long passedTicks = Math.max(getWorldObj().getWorldTime() - lastWorldTick, 0);
-        queuedTicks += passedTicks;
+
+        if (getWorldObj() != null) {
+            long passedTicks = Math.max(getWorldObj().getWorldTime() - lastWorldTick, 0);
+            queuedTicks += passedTicks;
+        } else {
+            this.onValidateLastTick = lastWorldTick;
+        }
         offset = tag.getLong("TickOffset");
     }
 
