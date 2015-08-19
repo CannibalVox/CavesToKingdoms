@@ -59,13 +59,6 @@ public class TileEntityGauge extends TileEntity {
         updateZone(event.getZoneCompletion(targetZone));
     }
 
-    @Override
-    public void validate() {
-        super.validate();
-
-        updateGauge();
-    }
-
     protected void updateZone(float completion) {
         this.completion = completion;
 
