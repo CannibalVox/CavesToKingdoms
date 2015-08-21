@@ -202,7 +202,6 @@ public class OreDiscoveryRegistry {
         registerDiscovery(type+"Platinum","discover.cavestokingdoms.platinum");
         registerDiscovery(type+"Pokefennium","discover.cavestokingdoms.pokefennium");
         registerDiscovery(type+"Prometheum","discover.cavestokingdoms.prometheum");
-        registerDiscovery(type+"Quicksilver","discover.cavestokingdoms.quicksilver");
         registerDiscovery(type+"Sanguinite","discover.cavestokingdoms.sanguinite");
         registerDiscovery(type+"ShadowIron","discover.cavestokingdoms.shadowiron");
         registerDiscovery(type+"ShadowSteel","discover.cavestokingdoms.shadowsteel");
@@ -248,7 +247,7 @@ public class OreDiscoveryRegistry {
         registerDiscovery(type+"Hepatizon","discover.cavestokingdoms.harvestlevel4");
         registerDiscovery(type+"Ignatius","discover.cavestokingdoms.harvestlevel3");
         registerDiscovery(type+"Inolashite","discover.cavestokingdoms.harvestlevel6");
-        registerDiscovery(type+"Invar","discover.cavestokingdoms.harvestlevel3");
+        registerDiscovery(type+"Invar","discover.cavestokingdoms.harvestlevel4");
         registerDiscovery(type+"Kalendrite","discover.cavestokingdoms.harvestlevel6");
         registerDiscovery(type+"Manasteel","discover.cavestokingdoms.harvestlevel5");
         registerDiscovery(type+"Manyullyn","discover.cavestokingdoms.harvestlevel7");
@@ -261,7 +260,6 @@ public class OreDiscoveryRegistry {
         registerDiscovery(type+"Platinum","discover.cavestokingdoms.harvestlevel5");
         registerDiscovery(type+"Pokefennium","discover.cavestokingdoms.harvestlevel7");
         registerDiscovery(type+"Prometheum","discover.cavestokingdoms.harvestlevel2");
-        registerDiscovery(type+"Quicksilver","discover.cavestokingdoms.harvestlevel6");
         registerDiscovery(type+"Sanguinite","discover.cavestokingdoms.harvestlevel8");
         registerDiscovery(type+"ShadowIron","discover.cavestokingdoms.harvestlevel3");
         registerDiscovery(type+"ShadowSteel","discover.cavestokingdoms.harvestlevel4");
@@ -274,6 +272,13 @@ public class OreDiscoveryRegistry {
         registerDiscovery(type+"Void","discover.cavestokingdoms.harvestlevel7");
         registerDiscovery(type+"Vulcanite","discover.cavestokingdoms.harvestlevel7");
         registerDiscovery(type+"Vyroxeres","discover.cavestokingdoms.harvestlevel5");
+
+        //Hardcoded check to avoid derpiness from Thaumcraft Quicksilver.
+        if (!type.equals("nugget"))
+        {
+            registerDiscovery(type+"Quicksilver","discover.cavestokingdoms.quicksilver");
+            registerDiscovery(type+"Quicksilver","discover.cavestokingdoms.harvestlevel6");
+        }
     }
 
     public void registerDiscovery(String oreDictionaryEntry, String discovery) {
