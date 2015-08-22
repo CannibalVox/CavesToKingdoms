@@ -19,6 +19,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.StatCollector;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 import talonos.cavestokingdoms.client.pages.orediscovery.entries.IDiscoveryEntry;
 import talonos.cavestokingdoms.client.pages.orediscovery.entries.ItemDiscoveryEntry;
@@ -153,6 +154,7 @@ public class OreDiscoveryRegistry {
         registerDiscovery(GameRegistry.findItem("ExtraTiC","chunk"),  165, "discover.cavestokingdoms.harvestlevel3");
 
         FMLCommonHandler.instance().bus().register(this);
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void registerAllMetalsWith(String type)
@@ -338,6 +340,15 @@ public class OreDiscoveryRegistry {
         checkDiscovery(item, event.player);
     }
 
+    @SubscribeEvent
+    public void onPlayerClone(net.minecraftforge.event.entity.player.PlayerEvent.Clone event) {
+        if (event.wasDeath) {
+            if (event.original.getEntityData().hasKey("cavesToKingdomsOreDiscoveries")) {
+                event.entity.getEntityData().setTag("cavesToKingdomsOreDiscoveries", event.original.getEntityData().getTag("cavesToKingdomsOreDiscoveries"));
+            }
+        }
+    }
+
     protected void checkDiscovery(ItemStack item, EntityPlayer player) {
         if (player.worldObj.isRemote)
             return;
@@ -370,7 +381,8 @@ public class OreDiscoveryRegistry {
             return;
 
         addDiscovery(player.getEntityData(), discoveryOre);
-        player.addChatMessage(new ChatComponentTranslation("blightfallmanual.discovery.add", new Object[] {StatCollector.translateToLocal(discoveryOre)}));
+        if (!player.worldObj.isRemote)
+            player.addChatMessage(new ChatComponentTranslation("blightfallmanual.discovery.add", new Object[] {StatCollector.translateToLocal(discoveryOre)}));
         if (player instanceof EntityPlayerMP)
             CavesToKingdomsNetwork.sendToPlayer(new AddDiscoveryPacket(discoveryOre), (EntityPlayerMP)player);
     }
