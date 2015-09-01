@@ -83,7 +83,7 @@ public class DawnTotemEntity extends TileEntity {
         if (sendParticleSpawn) {
             int absolutePointX = centerX + this.xCoord;
             int absolutePointZ = centerZ + this.zCoord;
-            BlightbusterNetwork.sendToNearbyPlayers(new SpawnCleanseParticlesPacket(absolutePointX, absolutePointZ, false), worldObj.provider.dimensionId, absolutePointX, 128.0f, absolutePointZ, 150);
+            BlightbusterNetwork.sendToNearbyPlayers(new SpawnCleanseParticlesPacket(absolutePointX, absolutePointZ), worldObj.provider.dimensionId, absolutePointX, 128.0f, absolutePointZ, 150);
         }
 
         for (int x = centerX - 1; x < centerX + 2; x++) {

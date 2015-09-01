@@ -127,7 +127,7 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
             spend(DawnMachineResource.AER);
         }
 
-        for (Object entityObj : getWorldObj().getEntitiesWithinAABB(EntityTaintSporeSwarmer.class, AxisAlignedBB.getBoundingBox(lastCleanseX, 0, lastCleanseZ, lastCleanseX+1, 255, lastCleanseZ+1))) {
+        for (Object entityObj : getWorldObj().getEntitiesWithinAABB(EntityTaintSporeSwarmer.class, AxisAlignedBB.getBoundingBox(lastCleanseX, 0, lastCleanseZ, lastCleanseX+2, 255, lastCleanseZ+2))) {
             Entity entity = (Entity)entityObj;
             if (haveEnoughFor(DawnMachineResource.IGNIS)) {
                 spend(DawnMachineResource.IGNIS);
@@ -140,7 +140,7 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
             }
         }
 
-        for (Object entityObj : getWorldObj().getEntitiesWithinAABB(EntityFallingTaint.class, AxisAlignedBB.getBoundingBox(lastCleanseX, 0, lastCleanseZ, lastCleanseX+1, 255, lastCleanseZ))) {
+        for (Object entityObj : getWorldObj().getEntitiesWithinAABB(EntityFallingTaint.class, AxisAlignedBB.getBoundingBox(lastCleanseX, 0, lastCleanseZ, lastCleanseX+2, 255, lastCleanseZ+2))) {
             if (haveEnoughFor(DawnMachineResource.IGNIS)) {
                 Entity entity = (Entity)entityObj;
                 spend(DawnMachineResource.IGNIS);
@@ -161,20 +161,20 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
         if (haveEnoughFor(DawnMachineResource.SANO))
             cleanseMobs();
 
-        BlightbusterNetwork.sendToNearbyPlayers(new SpawnCleanseParticlesPacket(lastCleanseX, lastCleanseZ, didUseIgnis), worldObj.provider.dimensionId, lastCleanseX, 128.0f, lastCleanseZ, 150);
+        BlightbusterNetwork.sendToNearbyPlayers(new SpawnCleanseParticlesPacket(lastCleanseX, lastCleanseZ, didUseIgnis, true), worldObj.provider.dimensionId, lastCleanseX, 128.0f, lastCleanseZ, 150);
     }
 
     protected boolean hasAnythingToCleanseHere(int secondaryBlocks) {
         //Can cleanse biome?
-        for (int z = -1; z <= 1; z++) {
-            for (int x = -1; x <= 1; x++) {
+        for (int z = -1; z <= 2; z++) {
+            for (int x = -1; x <= 2; x++) {
                 if (z < 0 && (secondaryBlocks & 0x4) == 0)
                     continue;
-                if (z > 0 && (secondaryBlocks & 0x8) == 0)
+                if (z > 1 && (secondaryBlocks & 0x8) == 0)
                     continue;
                 if (x < 0 && (secondaryBlocks & 0x1) == 0)
                     continue;
-                if (x > 0 && (secondaryBlocks & 0x2) == 0)
+                if (x > 1 && (secondaryBlocks & 0x2) == 0)
                     continue;
 
                 BiomeGenBase biome = getWorldObj().getBiomeGenForCoords(lastCleanseX+x, lastCleanseZ+z);
@@ -185,35 +185,44 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
             }
         }
 
-        int herbaTopBlock = -1;
-        boolean canHerba = haveEnoughFor(DawnMachineResource.HERBA);
-        if (canHerba) {
-            herbaTopBlock = getWorldObj().getTopSolidOrLiquidBlock(lastCleanseX, lastCleanseZ);
+        if (haveEnoughFor(DawnMachineResource.SANO)) {
+            if (getWorldObj().getEntitiesWithinAABB(ITaintedMob.class, AxisAlignedBB.getBoundingBox(lastCleanseX, 0, lastCleanseZ, lastCleanseX+2, 255, lastCleanseZ+2)).size() > 0)
+                return true;
         }
 
-        boolean canIgnis = haveEnoughFor(DawnMachineResource.IGNIS);
-        boolean canVacuos = haveEnoughFor(DawnMachineResource.VACUOS);
-        boolean canAura = haveEnoughFor(DawnMachineResource.AURAM);
-        if (canIgnis || canVacuos || canHerba || canAura) {
-            //Are there any taint blocks to cleanse?
-            for (int i = 0; i < 256; i++) {
-                Block block = getWorldObj().getBlock(lastCleanseX, i, lastCleanseZ);
-                int meta = getWorldObj().getBlockMetadata(lastCleanseX, i, lastCleanseZ);
+        for (int z = 0; z <= 1; z++) {
+            for (int x = 0; x <= 1; x++) {
+                int herbaTopBlock = -1;
+                boolean canHerba = haveEnoughFor(DawnMachineResource.HERBA);
+                if (canHerba) {
+                    herbaTopBlock = getWorldObj().getTopSolidOrLiquidBlock(lastCleanseX+x, lastCleanseZ+z);
+                }
 
-                if (canIgnis && block == ConfigBlocks.blockTaintFibres)
-                    return true;
-                if (canIgnis && block == ConfigBlocks.blockTaint && meta != 2)
-                    return true;
-                if (canVacuos && block == ConfigBlocks.blockFluxGoo)
-                    return true;
-                if (canHerba && i == herbaTopBlock && block == Blocks.dirt)
-                    return true;
-                if (canAura && block == ConfigBlocks.blockAiry) {
-                    if (meta == 0) {
-                        TileNode node = (TileNode)getWorldObj().getTileEntity(lastCleanseX, i, lastCleanseZ);
-                        if (node != null) {
-                            if (node.getNodeType() == NodeType.TAINTED) {
-                                return true;
+                boolean canIgnis = haveEnoughFor(DawnMachineResource.IGNIS);
+                boolean canVacuos = haveEnoughFor(DawnMachineResource.VACUOS);
+                boolean canAura = haveEnoughFor(DawnMachineResource.AURAM);
+                if (canIgnis || canVacuos || canHerba || canAura) {
+                    //Are there any taint blocks to cleanse?
+                    for (int i = 0; i < 256; i++) {
+                        Block block = getWorldObj().getBlock(lastCleanseX+x, i, lastCleanseZ+z);
+                        int meta = getWorldObj().getBlockMetadata(lastCleanseX+x, i, lastCleanseZ+z);
+
+                        if (canIgnis && block == ConfigBlocks.blockTaintFibres)
+                            return true;
+                        if (canIgnis && block == ConfigBlocks.blockTaint && meta != 2)
+                            return true;
+                        if (canVacuos && block == ConfigBlocks.blockFluxGoo)
+                            return true;
+                        if (canHerba && i == herbaTopBlock && block == Blocks.dirt)
+                            return true;
+                        if (canAura && block == ConfigBlocks.blockAiry) {
+                            if (meta == 0) {
+                                TileNode node = (TileNode)getWorldObj().getTileEntity(lastCleanseX+x, i, lastCleanseZ+z);
+                                if (node != null) {
+                                    if (node.getNodeType() == NodeType.TAINTED) {
+                                        return true;
+                                    }
+                                }
                             }
                         }
                     }
@@ -221,25 +230,20 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
             }
         }
 
-        if (haveEnoughFor(DawnMachineResource.SANO)) {
-            if (getWorldObj().getEntitiesWithinAABB(ITaintedMob.class, AxisAlignedBB.getBoundingBox(lastCleanseX, 0, lastCleanseZ, lastCleanseX+1, 255, lastCleanseZ+1)).size() > 0)
-                return true;
-        }
-
         return false;
     }
 
     protected void cleanseBiome(int secondaryBlocks) {
         boolean canVacuos = haveEnoughFor(DawnMachineResource.VACUOS);
-        for (int z = -1; z <= 1; z++) {
-            for (int x = -1; x <= 1; x++) {
+        for (int z = -1; z <= 2; z++) {
+            for (int x = -1; x <= 2; x++) {
                 if (z < 0 && (secondaryBlocks & 0x4) == 0)
                     continue;
-                if (z > 0 && (secondaryBlocks & 0x8) == 0)
+                if (z > 1 && (secondaryBlocks & 0x8) == 0)
                     continue;
                 if (x < 0 && (secondaryBlocks & 0x1) == 0)
                     continue;
-                if (x > 0 && (secondaryBlocks & 0x2) == 0)
+                if (x > 1 && (secondaryBlocks & 0x2) == 0)
                     continue;
 
                 BiomeGenBase biome = getWorldObj().getBiomeGenForCoords(lastCleanseX+x, lastCleanseZ+z);
@@ -257,7 +261,7 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
                 if (!canVacuos)
                     continue;
 
-                if (x != 0 || z != 0) {
+                if (x < 0 || z < 0 || x > 1 || z > 1) {
                     for (int y = 0; y < 255; y++) {
                         Block block = getWorldObj().getBlock(lastCleanseX+x, y, lastCleanseZ+z);
                         if (block == ConfigBlocks.blockFluxGoo) {
@@ -277,62 +281,66 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
     protected boolean cleanseBlocks() {
         boolean haveUsedIgnis = false;
 
-        // - Ignis is used to cleanse tainted blocks
-        // - Vacuos will remove crusted taint blocks when ignis acts on them, instead of converting to flux goo
-        // - Herba will convert the top dirt block to grass/top tainted soil block to grass instead of dirt
-        // - Auram will convert tained node blocks to normal node blocks
-        // - Arbor will detect when we've found a stack of crusted taint 3 high and put a sapling there
-        boolean canArbor = haveEnoughFor(DawnMachineResource.ARBOR);
-        boolean canHerba = haveEnoughFor(DawnMachineResource.HERBA);
+        for (int x = 0; x <= 1; x++) {
+            for (int z = 0; z <= 1; z++) {
+                // - Ignis is used to cleanse tainted blocks
+                // - Vacuos will remove crusted taint blocks when ignis acts on them, instead of converting to flux goo
+                // - Herba will convert the top dirt block to grass/top tainted soil block to grass instead of dirt
+                // - Auram will convert tained node blocks to normal node blocks
+                // - Arbor will detect when we've found a stack of crusted taint 3 high and put a sapling there
+                boolean canArbor = haveEnoughFor(DawnMachineResource.ARBOR);
+                boolean canHerba = haveEnoughFor(DawnMachineResource.HERBA);
 
-        //Get the y-value of the block herba might want to act on
-        boolean foundTopBlock = false;
-        int topBlock = -1;
+                //Get the y-value of the block herba might want to act on
+                boolean foundTopBlock = false;
+                int topBlock = -1;
 
-        //We do the cleanse from top to bottom and every time we find crusted taint, we count how many consecutive
-        //ones we cleanse.  When we find something that isn't crusted taint, after cleansing it, we plant a sapling on
-        //it if there was enough crusted taint above it
-        int columnCrustedTaint = 0;
-        for (int y = 255; y >= 0; y--) {
-            Block block = getWorldObj().getBlock(lastCleanseX, y, lastCleanseZ);
-            int meta = getWorldObj().getBlockMetadata(lastCleanseX, y, lastCleanseZ);
+                //We do the cleanse from top to bottom and every time we find crusted taint, we count how many consecutive
+                //ones we cleanse.  When we find something that isn't crusted taint, after cleansing it, we plant a sapling on
+                //it if there was enough crusted taint above it
+                int columnCrustedTaint = 0;
+                for (int y = 255; y >= 0; y--) {
+                    Block block = getWorldObj().getBlock(lastCleanseX+x, y, lastCleanseZ+z);
+                    int meta = getWorldObj().getBlockMetadata(lastCleanseX+x, y, lastCleanseZ+z);
 
-            boolean thisIsCrustedTaint = (block == ConfigBlocks.blockTaint && meta == 0);
+                    boolean thisIsCrustedTaint = (block == ConfigBlocks.blockTaint && meta == 0);
 
-            if (thisIsCrustedTaint && haveEnoughFor(DawnMachineResource.IGNIS) && haveEnoughFor(DawnMachineResource.VACUOS))
-                columnCrustedTaint++;
+                    if (thisIsCrustedTaint && haveEnoughFor(DawnMachineResource.IGNIS) && haveEnoughFor(DawnMachineResource.VACUOS))
+                        columnCrustedTaint++;
 
-            if (!foundTopBlock && (canHerba || canArbor) && block.isOpaqueCube()) {
-                foundTopBlock = true;
-                topBlock = y;
+                    if (!foundTopBlock && (canHerba || canArbor) && block.isOpaqueCube()) {
+                        foundTopBlock = true;
+                        topBlock = y;
+                    }
+
+                    boolean didUseIgnis = cleanseSingleBlock(lastCleanseX+x, y, lastCleanseZ+z, block, meta, canHerba && foundTopBlock && y == topBlock);
+                    haveUsedIgnis = didUseIgnis || haveUsedIgnis;
+
+                    if (didUseIgnis && getWorldObj().getBlock(lastCleanseX+x, y, lastCleanseZ+z) != Blocks.dirt)
+                        foundTopBlock = false;
+                }
+
+                if (columnCrustedTaint >= 3 && foundTopBlock) {
+                    BiomeGenBase biome = getWorldObj().getBiomeGenForCoords(lastCleanseX+x, lastCleanseZ+z);
+                    String biomeName = biome.biomeName.toLowerCase(Locale.ENGLISH);
+
+                    //Default to oak
+                    int treeType = 0;
+                    if (biomeName.contains("jungle"))
+                        treeType = 3; //Jungle tree
+                    else if (biomeName.contains("taiga") || biomeName.contains("tundra"))
+                        treeType = 2; //Spruce trees
+                    else if (biomeName.contains("birch"))
+                        treeType = 1; //Birch trees
+                    else if (biomeName.contains("savanna"))
+                        treeType = 4; //Acacia trees
+                    else if (biomeName.contains("roof"))
+                        treeType = 5;
+
+                    getWorldObj().setBlock(lastCleanseX+x, topBlock + 1, lastCleanseZ+z, Blocks.sapling, treeType, 3);
+                    spend(DawnMachineResource.ARBOR);
+                }
             }
-
-            boolean didUseIgnis = cleanseSingleBlock(lastCleanseX, y, lastCleanseZ, block, meta, canHerba && foundTopBlock && y == topBlock);
-            haveUsedIgnis = didUseIgnis || haveUsedIgnis;
-
-            if (didUseIgnis && getWorldObj().getBlock(lastCleanseX, y, lastCleanseZ) != Blocks.dirt)
-                foundTopBlock = false;
-        }
-
-        if (columnCrustedTaint >= 3 && foundTopBlock) {
-            BiomeGenBase biome = getWorldObj().getBiomeGenForCoords(lastCleanseX, lastCleanseZ);
-            String biomeName = biome.biomeName.toLowerCase(Locale.ENGLISH);
-
-            //Default to oak
-            int treeType = 0;
-            if (biomeName.contains("jungle"))
-                treeType = 3; //Jungle tree
-            else if (biomeName.contains("taiga") || biomeName.contains("tundra"))
-                treeType = 2; //Spruce trees
-            else if (biomeName.contains("birch"))
-                treeType = 1; //Birch trees
-            else if (biomeName.contains("savanna"))
-                treeType = 4; //Acacia trees
-            else if (biomeName.contains("roof"))
-                treeType = 5;
-
-            getWorldObj().setBlock(lastCleanseX, topBlock + 1, lastCleanseZ, Blocks.sapling, treeType, 3);
-            spend(DawnMachineResource.ARBOR);
         }
 
         return haveUsedIgnis;
@@ -355,7 +363,7 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
                 replaceMeta = 0;
             }
 
-            getWorldObj().setBlock(lastCleanseX, y, lastCleanseZ, replaceBlock, replaceMeta, 3);
+            getWorldObj().setBlock(x, y, z, replaceBlock, replaceMeta, 3);
             return true;
         }
 
@@ -369,37 +377,37 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
                 replaceBlock = Blocks.grass;
             }
 
-            getWorldObj().setBlock(lastCleanseX, y, lastCleanseZ, replaceBlock);
+            getWorldObj().setBlock(x, y, z, replaceBlock);
             return true;
         }
 
         //Cleanse taint fibres
         if (canIgnis && block == ConfigBlocks.blockTaintFibres) {
             spend(DawnMachineResource.IGNIS);
-            getWorldObj().setBlock(lastCleanseX, y, lastCleanseZ, Blocks.air);
+            getWorldObj().setBlock(x, y, z, Blocks.air);
             return true;
         }
 
         if (canVacuos && block == ConfigBlocks.blockFluxGoo) {
             spend(DawnMachineResource.VACUOS);
 
-            getWorldObj().setBlock(lastCleanseX, y, lastCleanseZ, Blocks.air);
+            getWorldObj().setBlock(x, y, z, Blocks.air);
             return false;
         }
 
         if (doHerbaCheck && block == Blocks.dirt) {
             spend(DawnMachineResource.HERBA);
-            getWorldObj().setBlock(lastCleanseX, y, lastCleanseZ, Blocks.grass);
+            getWorldObj().setBlock(x, y, z, Blocks.grass);
             return false;
         }
 
         if (haveEnoughFor(DawnMachineResource.AURAM) && block == ConfigBlocks.blockAiry && meta == 0) {
-            TileNode node = (TileNode)getWorldObj().getTileEntity(lastCleanseX, y, lastCleanseZ);
+            TileNode node = (TileNode)getWorldObj().getTileEntity(x, y, z);
             if (node != null && node.getNodeType() == NodeType.TAINTED) {
                 spend(DawnMachineResource.AURAM);
                 node.setNodeType(NodeType.NORMAL);
                 node.markDirty();
-                getWorldObj().markBlockForUpdate(lastCleanseX, y, lastCleanseZ);
+                getWorldObj().markBlockForUpdate(x, y, z);
             }
             return false;
         }
@@ -408,7 +416,7 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
     }
 
     protected void cleanseMobs() {
-        List entities = getWorldObj().getEntitiesWithinAABB(ITaintedMob.class, AxisAlignedBB.getBoundingBox(lastCleanseX, 0, lastCleanseZ, lastCleanseX + 1, 256, lastCleanseZ + 1));
+        List entities = getWorldObj().getEntitiesWithinAABB(ITaintedMob.class, AxisAlignedBB.getBoundingBox(lastCleanseX, 0, lastCleanseZ, lastCleanseX + 2, 256, lastCleanseZ + 2));
 
         for (Object entityObj : entities) {
             if (entityObj instanceof EntityTaintSheep)
@@ -568,15 +576,18 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
 
     private void generateScanlineCoords(int minX, int minZ, int maxX, int maxZ) {
         if (lastCleanseX == Integer.MAX_VALUE || lastCleanseX < minX)
-            lastCleanseX = minX-1;
+            lastCleanseX = minX-2;
         if (lastCleanseZ == Integer.MAX_VALUE || lastCleanseZ < minZ)
             lastCleanseZ = minZ;
 
-        lastCleanseX++;
+        lastCleanseX -= (lastCleanseX % 2);
+        lastCleanseZ -= (lastCleanseZ % 2);
+
+        lastCleanseX += 2;
 
         if (lastCleanseX > maxX) {
             lastCleanseX = minX;
-            lastCleanseZ++;
+            lastCleanseZ += 2;
         }
 
         if (lastCleanseZ > maxZ) {
@@ -590,6 +601,9 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
 
         lastCleanseX = getWorldObj().rand.nextInt(diffX) + minX;
         lastCleanseZ = getWorldObj().rand.nextInt(diffZ) + minZ;
+
+        lastCleanseX -= (lastCleanseX % 2);
+        lastCleanseZ -= (lastCleanseZ % 2);
     }
 
     @Override

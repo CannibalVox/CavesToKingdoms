@@ -4,16 +4,16 @@ import thaumcraft.api.aspects.Aspect;
 
 public enum DawnMachineResource {
 
-    SANO(Aspect.HEAL, 128, 2, 4096, 63, 0.6f, 0.5f),
-    IGNIS(Aspect.FIRE, 512, 2, 16384, 16, 0, 0.5f),
+    SANO(Aspect.HEAL, 512, 2, 16384, 16, 0.6f, 0.5f),
+    IGNIS(Aspect.FIRE, 2048, 2, 65536, 4, 0, 0.5f),
     AER(Aspect.AIR, 128, 2, 4096, 63, 0, 0),
     COGNITIO(Aspect.MIND, 128, 2, 4096, 63, 0.6f, 0),
     MACHINA(Aspect.MECHANISM, 128, 2, 4096, 63, 0.2f, 0.5f),
-    AURAM(Aspect.AURA, 1, 16, 32, 64000, 0.4f, 0),
-    VACUOS(Aspect.VOID, 128, 2, 4096, 63, 0.8f, 0.5f),
+    AURAM(Aspect.AURA, 1, 4, 32, 16000, 0.4f, 0),
+    VACUOS(Aspect.VOID, 512, 2, 16384, 16, 0.8f, 0.5f),
     ORDO(Aspect.ORDER, 128, 2, 4096, 63, 0.4f, 0.5f),
-    ARBOR(Aspect.TREE, 64, 2, 2048, 125, 0.2f, 0),
-    HERBA(Aspect.PLANT, 128, 2, 4096, 63, 0.8f, 0);
+    ARBOR(Aspect.TREE, 256, 2, 8192, 32, 0.2f, 0),
+    HERBA(Aspect.PLANT, 512, 2, 16384, 16, 0.8f, 0);
 
     private Aspect aspect;
     private int valueMultiplier;
