@@ -133,12 +133,17 @@ public class MapScanner {
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public void onRenderTick(TickEvent.RenderTickEvent event) {
+        if (BiomeScanner.disableEverything)
+            return;
         if (Minecraft.getMinecraft().theWorld != null)
             BiomeMapColors.updateFlash(Minecraft.getMinecraft().theWorld.getWorldTime());
     }
 
     @SubscribeEvent
     public void onWorldTick(TickEvent.WorldTickEvent event) {
+        if (BiomeScanner.disableEverything)
+            return;
+
         if (event.phase == TickEvent.Phase.END)
             return;
 

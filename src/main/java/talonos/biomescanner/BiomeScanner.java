@@ -59,6 +59,8 @@ public class BiomeScanner
 
     public static Integer[] zoneBaselines = new Integer[Zone.values().length];
 
+    public static boolean disableEverything = false;
+
 	@Mod.EventHandler
     public static void preInit(FMLPreInitializationEvent event)
     {
@@ -71,6 +73,7 @@ public class BiomeScanner
 
         boolean useBaselineFile = config.get(Configuration.CATEGORY_GENERAL, "useBaselineFile", false).getBoolean();
         String baselineFileName = config.get(Configuration.CATEGORY_GENERAL, "baselineFileName", "baseline.dat").getString();
+        disableEverything = config.get(Configuration.CATEGORY_GENERAL, "disableEverything", false).getBoolean();
         config.save();
 
         for (int i = 0; i < zoneBaselines.length; i++)

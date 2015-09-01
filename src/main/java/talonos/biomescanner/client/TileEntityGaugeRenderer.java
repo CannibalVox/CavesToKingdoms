@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
+import talonos.biomescanner.BiomeScanner;
 import talonos.biomescanner.block.BlockScannerGauge;
 import talonos.biomescanner.map.Zone;
 import talonos.biomescanner.tileentity.TileEntityGauge;
@@ -45,7 +46,8 @@ public class TileEntityGaugeRenderer extends TileEntitySpecialRenderer {
 
         if (renderEngine == null)
             return;
-
+        if (BiomeScanner.disableEverything)
+            return;
 
         GL11.glPushMatrix();
 

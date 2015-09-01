@@ -10,6 +10,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
+import talonos.biomescanner.BiomeScanner;
 import talonos.biomescanner.map.MapScanner;
 import talonos.biomescanner.tileentity.TileEntityIslandMapper;
 
@@ -36,6 +37,8 @@ public class TileEntityMapperRenderer extends TileEntitySpecialRenderer
     public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float par8)
     {
     	TileEntityIslandMapper mapper = (TileEntityIslandMapper)entity;
+        if (BiomeScanner.disableEverything)
+            return;
 
         for (int pixY = 0; pixY < MapScanner.blockHeight; pixY++) {
             for (int pixX = 0; pixX < MapScanner.blockWidth; pixX++) {
