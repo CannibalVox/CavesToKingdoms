@@ -13,6 +13,7 @@ import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.storage.ISaveHandler;
 import net.minecraftforge.event.world.WorldEvent;
 import talonos.biomescanner.BiomeScanner;
 import talonos.biomescanner.map.event.UpdateMapEvent;
@@ -58,7 +59,7 @@ public class MapScanner {
     @SubscribeEvent
     public void onWorldLoad(WorldEvent.Load event) {
         if (event.world.provider.dimensionId == 0 && !event.world.isRemote) {
-            loadData(new File(event.world.getSaveHandler().getWorldDirectory(), "scanner.dat"), false);
+            loadData(event.world.getSaveHandler());
             bus().post(regionMap.getUpdateEvent(Arrays.asList(Zone.values())));
         }
     }
@@ -70,22 +71,32 @@ public class MapScanner {
         }
     }
 
-    private void loadData(File loadFile, boolean fillRandomIfFailed) {
-        try {
-            if (!loadFile.exists() && !fillRandomIfFailed && BiomeScanner.baselineFile != null) {
-                loadData(BiomeScanner.baselineFile, true);
-                return;
-            }
+    private void loadData(ISaveHandler saveHandler) {
+        File worldScannerFile = new File(saveHandler.getWorldDirectory(), "scanner.dat");
+        if (loadDataFile(worldScannerFile))
+            return;
 
-            if (!loadFile.exists()) {
-                fillRandomData();
-                return;
-            }
+        if (BiomeScanner.baselineFile != null && loadDataFile(BiomeScanner.baselineFile))
+            return;
+
+        if (!loadDataFile(worldScannerFile, true))
+            fillRandomData();
+    }
+
+    private boolean loadDataFile(File loadFile) {
+        return loadDataFile(loadFile, false);
+    }
+
+    private boolean loadDataFile(File loadFile, boolean forceLoad) {
+        if (!loadFile.exists())
+            return false;
+
+        try {
             NBTTagCompound loadedData = CompressedStreamTools.readCompressed(new FileInputStream(loadFile));
-            readNBT(loadedData);
+            return readNBT(loadedData, forceLoad);
         } catch (IOException ex) {
             ex.printStackTrace();
-            fillRandomData();
+            return false;
         }
     }
 
@@ -107,15 +118,21 @@ public class MapScanner {
         }
     }
 
-    private void readNBT(NBTTagCompound tag) {
+    private boolean readNBT(NBTTagCompound tag, boolean forceLoad) {
         lastScannedChunk = tag.getInteger("LastScannedChunk");
         NBTTagCompound dataTag = tag.getCompoundTag("Data");
         for (int y = 0; y < 7*blockHeight; y++) {
             mapPixels[y] = dataTag.getByteArray(Integer.toString(y));
         }
 
-        if (regionMap.read(tag.getCompoundTag("RegionMap")))
-            lastScannedChunk = 0;
+        if (regionMap.read(tag.getCompoundTag("RegionMap"))) {
+            if (forceLoad)
+                lastScannedChunk = 0;
+            else
+                return false;
+        }
+
+        return true;
     }
 
     private void writeNBT(NBTTagCompound tag) {
