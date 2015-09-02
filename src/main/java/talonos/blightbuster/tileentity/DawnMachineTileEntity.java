@@ -3,6 +3,7 @@ package talonos.blightbuster.tileentity;
 import codechicken.lib.math.MathHelper;
 import cofh.api.energy.IEnergyReceiver;
 import cofh.api.energy.IEnergyStorage;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -401,13 +402,17 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
             return false;
         }
 
-        if (haveEnoughFor(DawnMachineResource.AURAM) && block == ConfigBlocks.blockAiry && meta == 0) {
-            TileNode node = (TileNode)getWorldObj().getTileEntity(x, y, z);
-            if (node != null && node.getNodeType() == NodeType.TAINTED) {
-                spend(DawnMachineResource.AURAM);
-                node.setNodeType(NodeType.NORMAL);
-                node.markDirty();
-                getWorldObj().markBlockForUpdate(x, y, z);
+        if (haveEnoughFor(DawnMachineResource.AURAM) && GameRegistry.findUniqueIdentifierFor(block).modId.equals("Thaumcraft")) {
+            TileEntity tile = getWorldObj().getTileEntity(x, y, z);
+
+            if (tile != null && tile instanceof TileNode) {
+                TileNode node = (TileNode)tile;
+                if (node != null && node.getNodeType() == NodeType.TAINTED) {
+                    spend(DawnMachineResource.AURAM);
+                    node.setNodeType(NodeType.NORMAL);
+                    node.markDirty();
+                    getWorldObj().markBlockForUpdate(x, y, z);
+                }
             }
             return false;
         }
