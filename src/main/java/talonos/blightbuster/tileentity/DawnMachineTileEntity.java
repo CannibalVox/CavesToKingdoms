@@ -76,6 +76,10 @@ public class DawnMachineTileEntity extends TileEntity implements IAspectSource, 
 
     @Override
     public void updateEntity() {
+
+        if (getWorldObj().getBlockPowerInput(xCoord, yCoord, zCoord) > 0)
+            return;
+
         if (getWorldObj().isRemote) {
             if (currentRf <= FULLRED_RF)
                 blinkProgress += 1.0;
