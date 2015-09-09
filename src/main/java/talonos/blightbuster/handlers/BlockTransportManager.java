@@ -131,6 +131,7 @@ public class BlockTransportManager {
     }
 
     protected void wipeBlock(World world, int x, int y, int z) {
+        world.removeTileEntity(x, y, z);
         world.setBlock(x, y, z, Blocks.air, 0, 2);
     }
 
