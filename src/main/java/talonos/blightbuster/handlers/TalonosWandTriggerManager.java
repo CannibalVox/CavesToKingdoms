@@ -114,7 +114,12 @@ public class TalonosWandTriggerManager implements IWandTriggerManager {
                     }
                 }
 
-                return blockTransportManager.transport(world, dawnMachineX, dawnMachineY+1, dawnMachineZ, x, y+2, z);
+                boolean result = blockTransportManager.transport(world, dawnMachineX, dawnMachineY+1, dawnMachineZ, x, y+2, z);
+
+                if (result) {
+                    TileEntity controller = world.getTileEntity(x, y+1, z);
+                    pairDawnMachineToWand(wand, controller.getWorldObj().provider.dimensionId, controller.xCoord, controller.yCoord, controller.zCoord);
+                }
         }
         return false;
     }
