@@ -15,7 +15,9 @@ import talonos.blightbuster.entities.EntitySilverPotion;
 import talonos.blightbuster.handlers.PurityFocusEventHandler;
 import talonos.blightbuster.items.BBItems;
 import talonos.blightbuster.network.BlightbusterNetwork;
+import talonos.blightbuster.tileentity.DawnMachineSpoutTileEntity;
 import talonos.blightbuster.tileentity.dawnmachine.DawnMachineChunkLoader;
+import thaumicenergistics.api.ThEApi;
 
 @Mod(modid = BlightBuster.MODID, name = BlightBuster.MODNAME, version = BlightBuster.VERSION, dependencies = BlightBuster.DEPS)
 public class BlightBuster
@@ -56,6 +58,8 @@ public class BlightBuster
 
         chunkLoader = new DawnMachineChunkLoader();
         ForgeChunkManager.setForcedChunkLoadingCallback(this, chunkLoader);
+
+        ThEApi.instance().transportPermissions().addAspectContainerTileToInjectPermissions(DawnMachineSpoutTileEntity.class, 32);
     }
  
     @Mod.EventHandler
