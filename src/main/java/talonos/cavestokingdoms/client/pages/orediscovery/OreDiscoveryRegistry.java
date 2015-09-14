@@ -58,7 +58,7 @@ public class OreDiscoveryRegistry {
         registerDiscovery("crystalNetherQuartz","discover.cavestokingdoms.netherquartz");
         registerDiscovery("gemAmethyst","discover.cavestokingdoms.amethyst");
         registerDiscovery("gemRuby","discover.cavestokingdoms.ruby");
-        registerDiscovery("gemSapphire","discover.cavestokingdoms.sapphire");
+        registerDiscovery("gemSaphire","discover.cavestokingdoms.sapphire");
         registerDiscovery("gravel","discover.cavestokingdoms.gravel");
         registerDiscovery("netherrack","discover.cavestokingdoms.netherrack");
         registerDiscovery("obsidian","discover.cavestokingdoms.obsidian");
@@ -136,7 +136,7 @@ public class OreDiscoveryRegistry {
         registerDiscovery("crystalNetherQuartz","discover.cavestokingdoms.harvestlevel3");
         registerDiscovery("gemAmethyst","discover.cavestokingdoms.harvestlevel4");
         registerDiscovery("gemRuby","discover.cavestokingdoms.harvestlevel3");
-        registerDiscovery("gemSapphire","discover.cavestokingdoms.harvestlevel3");
+        registerDiscovery("gemSaphire","discover.cavestokingdoms.harvestlevel3");
         registerDiscovery("gravel","discover.cavestokingdoms.harvestlevel1");
         registerDiscovery("netherrack","discover.cavestokingdoms.harvestlevel1");
         registerDiscovery("obsidian","discover.cavestokingdoms.harvestlevel4");

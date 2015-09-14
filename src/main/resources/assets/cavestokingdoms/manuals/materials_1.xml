@@ -311,7 +311,7 @@ To avoid confusing users, this book is intentionally incomplete. You will notice
         <minesAsLevel>-1</minesAsLevel>
         <location>nether</location>
         <ore>Metallurgy:nether.ore:2</ore>
-        <text>Allows with Shadow Iron</text>
+        <text>Alloys with Shadow Iron</text>
     </page>
     <page type="c2kMiningPage">
         <title>Midasium</title>
@@ -391,7 +391,7 @@ To avoid confusing users, this book is intentionally incomplete. You will notice
         <max>27</max>
         <minesAsLevel>5</minesAsLevel>
         <location>nether</location>
-        <ore>Metallurgy:nether.ore:4</ore>
+        <ore>Metallurgy:nether.ore:5</ore>
         <text></text>
     </page>
     <page type="c2kMiningPage">
