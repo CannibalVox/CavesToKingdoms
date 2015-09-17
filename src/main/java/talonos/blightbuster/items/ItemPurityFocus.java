@@ -46,7 +46,7 @@ public class ItemPurityFocus extends ItemFocusBasic {
     }
 
     private static final AspectList cost = new AspectList().add(Aspect.EARTH, 10).add(Aspect.ORDER, 15);
-    private static final AspectList auraCost = new AspectList().add(Aspect.EARTH, 1000).add(Aspect.ORDER, 1500);
+    private static final AspectList auraCost = new AspectList().add(Aspect.EARTH, 10000).add(Aspect.ORDER, 15000);
 
     public boolean isVisCostPerTick() {
         return false;
