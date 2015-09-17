@@ -59,7 +59,8 @@ public class BlightBuster
         chunkLoader = new DawnMachineChunkLoader();
         ForgeChunkManager.setForcedChunkLoadingCallback(this, chunkLoader);
 
-        ThEApi.instance().transportPermissions().addAspectContainerTileToInjectPermissions(DawnMachineSpoutTileEntity.class, 32);
+        if (ThEApi.instance() != null)
+            ThEApi.instance().transportPermissions().addAspectContainerTileToInjectPermissions(DawnMachineSpoutTileEntity.class, 32);
     }
  
     @Mod.EventHandler
