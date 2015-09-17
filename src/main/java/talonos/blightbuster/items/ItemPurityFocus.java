@@ -131,8 +131,9 @@ public class ItemPurityFocus extends ItemFocusBasic {
                 node.setNodeType(NodeType.NORMAL);
                 node.markDirty();
                 player.getEntityWorld().markBlockForUpdate(x, y, z);
-                return true;
             }
+
+            return true;
         }
 
         return false;
