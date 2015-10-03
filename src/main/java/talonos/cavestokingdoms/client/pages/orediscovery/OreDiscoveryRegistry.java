@@ -381,6 +381,10 @@ public class OreDiscoveryRegistry {
             return;
 
         addDiscovery(player.getEntityData(), discoveryOre);
+
+        if (!player.addedToChunk)
+            return;
+
         if (!player.worldObj.isRemote)
             player.addChatMessage(new ChatComponentTranslation("blightfallmanual.discovery.add", new Object[] {StatCollector.translateToLocal(discoveryOre)}));
         if (player instanceof EntityPlayerMP)
